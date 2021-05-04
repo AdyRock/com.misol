@@ -1,0 +1,12 @@
+{
+    "type": "number",
+    "title": {
+        "en": "Soil Moisture"
+    },
+    "units": {
+        "en": "%"
+    },
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/moisture.svg"
+}

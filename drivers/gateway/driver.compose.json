@@ -1,0 +1,28 @@
+{
+    "name": {
+        "en": "Gateway"
+    },
+    "class": "other",
+    "capabilities": [
+        "measure_humidity",
+        "measure_pressure",
+        "measure_temperature"
+    ],
+    "pair": [
+        {
+            "id": "list_my_devices",
+            "template": "list_devices",
+            "navigation": {
+                "next": "add_my_devices"
+            }
+        },
+        {
+            "id": "add_my_devices",
+            "template": "add_devices"
+        }
+    ],
+    "images": {
+        "small": "/drivers/gateway/assets/images/small.png",
+        "large": "/drivers/gateway/assets/images/large.png"
+    }
+}

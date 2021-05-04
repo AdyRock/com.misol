@@ -1,0 +1,282 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.misol",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "brandColor": "#FF7D4B",
+  "name": {
+    "en": "Misol"
+  },
+  "description": {
+    "en": "Bring Misol product into Homey"
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png"
+  },
+  "author": {
+    "name": "Adrian Rockall",
+    "email": "ady@rockall.plus.com"
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Gateway"
+      },
+      "class": "other",
+      "capabilities": [
+        "measure_humidity",
+        "measure_pressure",
+        "measure_temperature"
+      ],
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "images": {
+        "small": "/drivers/gateway/assets/images/small.png",
+        "large": "/drivers/gateway/assets/images/large.png"
+      },
+      "id": "gateway"
+    },
+    {
+      "name": {
+        "en": "Soil Moisture"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "measure_moisture"
+      ],
+      "energy": {
+        "batteries": [
+          "AA"
+        ]
+      },
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "images": {
+        "small": "/drivers/soil_moisture/assets/images/small.png",
+        "large": "/drivers/soil_moisture/assets/images/large.png"
+      },
+      "id": "soil_moisture"
+    }
+  ],
+  "flow": {
+    "triggers": [
+      {
+        "id": "measure_moisture_changed",
+        "title": {
+          "en": "The soil moisture has changed"
+        },
+        "tokens": [
+          {
+            "name": "measure_moisture",
+            "title": {
+              "en": "Soil Moisture"
+            },
+            "type": "number",
+            "units": "%",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=soil_moisture"
+          }
+        ]
+      },
+      {
+        "id": "measure_moisture_is_less",
+        "title": {
+          "en": "The soil moisture becomes less than"
+        },
+        "titleFormatted": {
+          "en": "The soil moisture becomes less than [[measure_moisture]]%"
+        },
+        "tokens": [
+          {
+            "name": "measure_moisture",
+            "title": {
+              "en": "Soil Moisture"
+            },
+            "type": "number",
+            "units": "%",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=soil_moisture"
+          },
+          {
+            "type": "number",
+            "name": "measure_moisture",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "units": "%",
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Soil Moisture"
+            }
+          }
+        ]
+      },
+      {
+        "id": "measure_moisture_is_greater",
+        "title": {
+          "en": "The soil moisture becomes greater than"
+        },
+        "titleFormatted": {
+          "en": "The soil moisture becomes greater than [[measure_moisture]]%"
+        },
+        "tokens": [
+          {
+            "name": "measure_moisture",
+            "title": {
+              "en": "Soil Moisture"
+            },
+            "type": "number",
+            "units": "%",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=soil_moisture"
+          },
+          {
+            "type": "number",
+            "name": "measure_moisture",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "units": "%",
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Soil Moisture"
+            }
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "measure_moisture_is_less",
+        "title": {
+          "en": "Soil moisture is !{{less|greater}} than"
+        },
+        "hint": {
+          "en": "This Flow will continue if soil moisture is/is not less than the set value."
+        },
+        "titleFormatted": {
+          "en": "The soil moisture is !{{less|greater}} than [[measure_moisture]]%"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=soil_moisture"
+          },
+          {
+            "type": "number",
+            "name": "measure_moisture",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "units": "%",
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Soil Moisture"
+            }
+          }
+        ]
+      },
+      {
+        "id": "measure_moisture_equal",
+        "title": {
+          "en": "Soil moisture is !{{equal|not equal}} to"
+        },
+        "hint": {
+          "en": "This Flow will continue if soil moisture is/is not equal to the set value."
+        },
+        "titleFormatted": {
+          "en": "The soil moisture is !{{equal|not equal}} to [[measure_moisture]]%"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=soil_moisture"
+          },
+          {
+            "type": "number",
+            "name": "measure_moisture",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "units": "%",
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Soil Moisture"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "capabilities": {
+    "measure_moisture": {
+      "type": "number",
+      "title": {
+        "en": "Soil Moisture"
+      },
+      "units": {
+        "en": "%"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/moisture.svg"
+    }
+  }
+}

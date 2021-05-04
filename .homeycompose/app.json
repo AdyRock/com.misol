@@ -1,0 +1,25 @@
+{
+  "id": "com.misol",
+  "version": "0.1.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "brandColor": "#FF7D4B",
+  "name": {
+    "en": "Misol"
+  },
+  "description": {
+    "en": "Bring Misol product into Homey"
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png"
+  },
+  "author": {
+    "name": "Adrian Rockall",
+    "email": "ady@rockall.plus.com"
+  }
+}

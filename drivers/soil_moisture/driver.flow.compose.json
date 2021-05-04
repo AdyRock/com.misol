@@ -1,0 +1,151 @@
+{
+    "triggers": [
+        {
+            "id": "measure_moisture_changed",
+            "title": {
+                "en": "The soil moisture has changed"
+            },
+            "tokens": [
+                {
+                    "name": "measure_moisture",
+                    "title": {
+                        "en": "Soil Moisture"
+                    },
+                    "type": "number",
+                    "units": "%",
+                    "example": 3
+                }
+            ]
+        },
+        {
+            "id": "measure_moisture_is_less",
+            "title": {
+                "en": "The soil moisture becomes less than"
+            },
+            "titleFormatted": {
+                "en": "The soil moisture becomes less than [[measure_moisture]]%"
+            },
+            "tokens": [
+                {
+                    "name": "measure_moisture",
+                    "title": {
+                        "en": "Soil Moisture"
+                    },
+                    "type": "number",
+                    "units": "%",
+                    "example": 3
+                }
+            ],
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_moisture",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "units": "%",
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Soil Moisture"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_moisture_is_greater",
+            "title": {
+                "en": "The soil moisture becomes greater than"
+            },
+            "titleFormatted": {
+                "en": "The soil moisture becomes greater than [[measure_moisture]]%"
+            },
+            "tokens": [
+                {
+                    "name": "measure_moisture",
+                    "title": {
+                        "en": "Soil Moisture"
+                    },
+                    "type": "number",
+                    "units": "%",
+                    "example": 3
+                }
+            ],
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_moisture",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "units": "%",
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Soil Moisture"
+                    }
+                }
+            ]
+        }
+    ],
+    "conditions": [
+        {
+            "id": "measure_moisture_is_less",
+            "title": {
+                "en": "Soil moisture is !{{less|greater}} than"
+            },
+            "hint": {
+                "en": "This Flow will continue if soil moisture is/is not less than the set value."
+            },
+            "titleFormatted": {
+                "en": "The soil moisture is !{{less|greater}} than [[measure_moisture]]%"
+            },
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_moisture",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "units": "%",
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Soil Moisture"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_moisture_equal",
+            "title": {
+                "en": "Soil moisture is !{{equal|not equal}} to"
+            },
+            "hint": {
+                "en": "This Flow will continue if soil moisture is/is not equal to the set value."
+            },
+            "titleFormatted": {
+                "en": "The soil moisture is !{{equal|not equal}} to [[measure_moisture]]%"
+            },
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_moisture",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "units": "%",
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Soil Moisture"
+                    }
+                }
+            ]
+        }
+    ]
+}
