@@ -1,1 +1,19 @@
-{}
+{
+    "settings": {
+        "settings": "Settings",
+        "port": "Port",
+        "connection": "Select the Port to match the setting you made in the WS View app",
+        "detected": "Detected",
+        "diagnosticsLog": "Diagnostics Log",
+        "subtitle": "Application Settings",
+        "saveChanges": "Save Changes",
+        "clearLog": "Clear Log",
+        "sendLog": "Send Log",
+        "detectedDescription": "",
+        "logEnabled": "Log Enabled",
+        "saved": "The settings have been saved",
+        "confirmSend": "Send the log contents to the developer?\n** All identifiers will be removed **",
+        "logSent": "The log has been sent.",
+        "logSendFailed": "Failed to send after 5 attempts.\nThe error messages are at the end of the log."
+    }
+}

@@ -1,0 +1,272 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="lwsa.css">
+
+    <!-- The '/homey.js' script must be included in your settings view to work -->
+    <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+</head>
+
+<body>
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="setPage(event, 'settings')" id="defaultOpen"><span data-i18n="settings.settings"></span></button>
+        <button class="tablinks" onclick="setPage(event, 'detected')"><span data-i18n="settings.detected"></span></button>
+        <button class="tablinks" onclick="setPage(event, 'log')"><span data-i18n="settings.diagnosticsLog"></span></button>
+    </div>
+
+    <!-- SETTINGS PAGE -->
+    <div id="settings" class="tabcontent">
+
+        <p data-i18n="settings.subtitle"></p>
+
+        <fieldset>
+            <legend><span data-i18n="settings.connection"></span></legend>
+            <fieldset>
+                <div class="field row">
+                    <label for="port"><span data-i18n="settings.port"></span></label>
+                    <input id="port" type="text" value="" />
+                </div>
+            </fieldset>
+        </fieldset>
+        <fieldset>
+            <p><button id="save" class="right"><span data-i18n="settings.saveChanges"></span></button></p>
+        </fieldset>
+    </div>
+
+    <!-- detected-->
+    <div id="detected" class="tabcontent">
+        <fieldset>
+            <p><button id="sendDetectedLog"><span data-i18n="settings.sendLog"></span></button></p>
+            <p data-i18n="settings.detectedDescription">
+            </p>
+            <div class="field row">
+                <textarea id="detectedDevices"></textarea>
+            </div>
+        </fieldset>
+    </div>
+
+    <!-- LOG PAGE -->
+    <div id="log" class="tabcontent">
+        <fieldset>
+            <p data-i18n="settings.diagnosticsLog">
+            </p>
+            <div class="field row">
+                <label for="logEnabled"><span data-i18n="settings.logEnabled"></span></label>
+                <input id="logEnabled" type="checkbox" value="logEnabled" />
+            </div>
+        </fieldset>
+        <fieldset>
+            <p><button id="clearDiagLog"><span data-i18n="settings.clearLog"></span></button> <button id="sendDiagLog"><span data-i18n="settings.sendLog"></span></button></p>
+            <div class="field row">
+                <textarea id="diagLog"></textarea>
+            </div>
+        </fieldset>
+    </div>
+
+    <script type="text/javascript">
+        var portElement = document.getElementById('port');
+        var detectedDevicesElement = document.getElementById('detectedDevices');
+        var diagLogElement = document.getElementById('diagLog');
+        var logEnabledElement = document.getElementById('logEnabled');
+
+        var saveElement = document.getElementById('save');
+        var clearLogElement = document.getElementById('clearDiagLog');
+        var sendDiagLogElement = document.getElementById('sendDiagLog');
+        var sendDetectedElement = document.getElementById('sendDetectedLog');
+
+        // a method named 'onHomeyReady' must be present in your code
+        function onHomeyReady(Homey)
+        {
+            document.getElementById("defaultOpen").click();
+
+            Homey.on('com.misol.logupdated', function(data)
+            {
+                diagLogElement.value = data.log;
+            });
+
+            Homey.on('com.misol.detectedDevicesUpdated', function(data)
+            {
+                detectedDevicesElement.value = data.devices;
+            });
+
+            Homey.get('port', function(err, port)
+            {
+                if (err) return Homey.alert(err);
+               portElement.value = port;
+            });
+
+            Homey.get('logEnabled', function(err, logEnabled)
+            {
+                if (err) return Homey.alert(err);
+                logEnabledElement.checked = logEnabled;
+            });
+
+            Homey.api('GET', '/getLog/',
+            {
+                notify: true
+            }, function(err, result)
+            {
+                if (err)
+                {
+                    return Homey.alert(err);
+                }
+                else
+                {
+                    diagLogElement.value = result;
+                }
+            });
+
+            Homey.api('GET', '/getDetect/',
+            {
+                notify: true
+            }, function(err, result)
+            {
+                if (err)
+                {
+                    return Homey.alert(err);
+                }
+                else
+                {
+                    detectedDevicesElement.value = result;
+                }
+            });
+
+            saveElement.addEventListener('click', function(e)
+            {
+                Homey.set('port', UserNameElement.value, function(err)
+                {
+                    if (err) return Homey.alert(err);
+                });
+
+                return Homey.alert(Homey.__('settings.saved'));
+            });
+
+            logEnabledElement.addEventListener('click', function(e)
+            {
+                Homey.set('logEnabled', logEnabledElement.checked, function(err)
+                {
+                    if (err) return Homey.alert(err);
+                });
+            });
+
+            clearLogElement.addEventListener('click', function(e)
+            {
+                Homey.api('POST', '/clearLog/',
+                {
+                    notify: true
+                }, function(err, result)
+                {
+                    if (err)
+                    {
+                        return Homey.alert(err);
+                    }
+                    else
+                    {
+                        diagLogElement.value = "";
+                    }
+                });
+            });
+
+            sendDiagLogElement.addEventListener('click', function(e)
+            {
+                Homey.confirm(Homey.__('settings.confirmSend'), null, function(e, ok)
+                {
+                    if (ok)
+                    {
+                        Homey.api('POST', '/sendLog/',
+                        {
+                            notify: true,
+                            logType: "diag"
+                        }, function(err, result)
+                        {
+                            if (err)
+                            {
+                                return Homey.alert(err);
+                            }
+                            else
+                            {
+                                return Homey.alert(result);
+                            }
+                        });
+                    }
+                });
+            });
+
+            sendDetectedElement.addEventListener('click', function(e)
+            {
+                Homey.confirm(Homey.__('settings.confirmSend'), null, function(e, ok)
+                {
+                    if (ok)
+                    {
+                        Homey.api('POST', '/sendLog/',
+                        {
+                            notify: true,
+                            logType: "detected"
+                        }, function(err, result)
+                        {
+                            if (err)
+                            {
+                                return Homey.alert(err);
+                            }
+                            else
+                            {
+                                return Homey.alert(result);
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Tell Homey we're ready to be displayed
+            Homey.ready();
+        }
+
+        function setPage(evt, tabPage)
+        {
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++)
+            {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++)
+            {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabPage).style.display = "block";
+            evt.currentTarget.className += " active";
+
+            if (tabPage == 'log')
+            {
+                // Refresh the log data
+                Homey.get('logEnabled', function(err, logEnabled)
+                {
+                    if (err) return Homey.alert(err);
+                    logEnabledElement.checked = logEnabled;
+                });
+
+                // Make the log text area fill the page
+                diagLogElement.setAttribute('cols', diagLogElement.parentElement.clientWidth / 8);
+                diagLogElement.style.height = (window.innerHeight - diagLogElement.offsetTop - 20) + 'px';
+            }
+            else if (tabPage == 'detected')
+            {
+                // Make the detected devices text area fill the page
+                detectedDevicesElement.setAttribute('cols', detectedDevicesElement.parentElement.clientWidth / 8);
+                detectedDevicesElement.style.height = (window.innerHeight - detectedDevicesElement.offsetTop - 20) + 'px';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
