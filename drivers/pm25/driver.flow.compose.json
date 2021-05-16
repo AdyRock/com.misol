@@ -1,0 +1,284 @@
+{
+    "triggers": [
+        {
+            "id": "measure_aqi_changed",
+            "title": {
+                "en": "The air quality index has changed"
+            },
+            "tokens": [
+                {
+                    "name": "measure_aqi",
+                    "title": {
+                        "en": "Air quality index"
+                    },
+                    "type": "number",
+                    "example": 3
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi_is_less",
+            "title": {
+                "en": "The air quality index becomes less than"
+            },
+            "titleFormatted": {
+                "en": "The air quality index becomes less than [[measure_aqi]]%"
+            },
+            "tokens": [
+                {
+                    "name": "measure_aqi",
+                    "title": {
+                        "en": "Air quality index"
+                    },
+                    "type": "number",
+                    "example": 3
+                }
+            ],
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Air quality index"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi_is_greater",
+            "title": {
+                "en": "The air quality index becomes greater than"
+            },
+            "titleFormatted": {
+                "en": "The air quality index becomes greater than [[measure_aqi]]%"
+            },
+            "tokens": [
+                {
+                    "name": "measure_aqi",
+                    "title": {
+                        "en": "Air quality index"
+                    },
+                    "type": "number",
+                    "units": "%",
+                    "example": 3
+                }
+            ],
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Air quality index"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi.avg_changed",
+            "title": {
+                "en": "The average air quality index has changed"
+            },
+            "tokens": [
+                {
+                    "name": "measure_aqi.avg",
+                    "title": {
+                        "en": "Average Air quality index"
+                    },
+                    "type": "number",
+                    "example": 3
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi.avg_is_less",
+            "title": {
+                "en": "The average air quality index becomes less than"
+            },
+            "titleFormatted": {
+                "en": "The average air quality index becomes less than [[measure_aqi.avg]]%"
+            },
+            "tokens": [
+                {
+                    "name": "measure_aqi.avg",
+                    "title": {
+                        "en": "Average Air quality index"
+                    },
+                    "type": "number",
+                    "example": 3
+                }
+            ],
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi.avg",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Average Air quality index"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi.avg_is_greater",
+            "title": {
+                "en": "The air quality index becomes greater than"
+            },
+            "titleFormatted": {
+                "en": "The air quality index becomes greater than [[measure_aqi.avg]]%"
+            },
+            "tokens": [
+                {
+                    "name": "measure_aqi.avg",
+                    "title": {
+                        "en": "Average Air quality index"
+                    },
+                    "type": "number",
+                    "units": "%",
+                    "example": 3
+                }
+            ],
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi.avg",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Average Air quality index"
+                    }
+                }
+            ]
+        }
+    ],
+    "conditions": [
+        {
+            "id": "measure_aqi_is_less",
+            "title": {
+                "en": "Air quality index is !{{less|greater}} than"
+            },
+            "hint": {
+                "en": "This Flow will continue if air quality index is/is not less than the set value."
+            },
+            "titleFormatted": {
+                "en": "The air quality index is !{{less|greater}} than [[measure_aqi]]%"
+            },
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Air quality index"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi_equal",
+            "title": {
+                "en": "Air quality index is !{{equal|not equal}} to"
+            },
+            "hint": {
+                "en": "This Flow will continue if air quality index is/is not equal to the set value."
+            },
+            "titleFormatted": {
+                "en": "The air quality index is !{{equal|not equal}} to [[measure_aqi]]%"
+            },
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Air quality index"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi.avg_is_less",
+            "title": {
+                "en": "Average Air quality index is !{{less|greater}} than"
+            },
+            "hint": {
+                "en": "This Flow will continue if average air quality index is/is not less than the set value."
+            },
+            "titleFormatted": {
+                "en": "The average air quality index is !{{less|greater}} than [[measure_aqi.avg]]%"
+            },
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi.avg",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Average Air quality index"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi.avg_equal",
+            "title": {
+                "en": "Average Air quality index is !{{equal|not equal}} to"
+            },
+            "hint": {
+                "en": "This Flow will continue if average air quality index is/is not equal to the set value."
+            },
+            "titleFormatted": {
+                "en": "The average air quality index is !{{equal|not equal}} to [[measure_aqi.avg]]%"
+            },
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi.avg",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Average Air quality index"
+                    }
+                }
+            ]
+        }
+    ]
+}

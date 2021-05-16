@@ -1,5 +1,8 @@
 {
   "0.1.0": {
     "en": "First version"
+  },
+  "0.1.1": {
+    "en": "Added PM2.5 meter"
   }
 }

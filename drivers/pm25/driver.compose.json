@@ -1,0 +1,43 @@
+{
+    "name": {
+        "en": "PM25 Meter"
+    },
+    "class": "sensor",
+    "capabilities": [
+        "measure_pm25",
+        "measure_pm25.avg",
+        "measure_aqi",
+        "measure_aqi.avg",
+        "measure_aq",
+        "measure_aq.avg",
+        "measure_battery"
+    ],
+    "capabilitiesOptions": {
+        "measure_pm25.avg": {"title": "PM2.5 Avg 24h"},
+        "measure_aqi.avg": {"title": "Air Quality Index Avg 24h"},
+        "measure_aq.avg": {"title": "Air Quality Avg 24h"}
+    }
+    ,
+    "energy": {
+        "batteries": [
+            "AA", "AA"
+        ]
+    },
+    "pair": [
+        {
+            "id": "list_my_devices",
+            "template": "list_devices",
+            "navigation": {
+                "next": "add_my_devices"
+            }
+        },
+        {
+            "id": "add_my_devices",
+            "template": "add_devices"
+        }
+    ],
+    "images": {
+        "small": "/drivers/pm25/assets/images/small.png",
+        "large": "/drivers/pm25/assets/images/large.png"
+    }
+}

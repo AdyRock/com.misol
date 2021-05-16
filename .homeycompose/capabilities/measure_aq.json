@@ -1,0 +1,9 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Air Quality"
+    },
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/aqi.svg"
+}

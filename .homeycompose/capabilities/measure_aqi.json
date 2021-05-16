@@ -1,0 +1,11 @@
+{
+    "type": "number",
+    "title": {
+        "en": "Air Quality Index"
+    },
+    "decimals": 0,
+    "insights": true,
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/aqi.svg"
+}
