@@ -1,0 +1,145 @@
+{
+    "triggers": [
+        {
+            "id": "measure_lightning_Changed",
+            "title": {
+                "en": "Lightning Distance Changed"
+            },
+            "tokens": [
+                {
+                    "name": "measure_lightning",
+                    "title": {
+                        "en": "Lightning Distance"
+                    },
+                    "type": "number",
+                    "example": 3
+                }
+            ]
+        },
+        {
+            "id": "measure_lightning_is_less",
+            "title": {
+                "en": "The Lightning distance becomes less than"
+            },
+            "titleFormatted": {
+                "en": "The Lightning distance becomes less than [[measure_lightning]]%"
+            },
+            "tokens": [
+                {
+                    "name": "measure_lightning",
+                    "title": {
+                        "en": "Lightning Distance"
+                    },
+                    "type": "number",
+                    "example": 3
+                }
+            ],
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_lightning",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Lightning Distance"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_lightning_is_greater",
+            "title": {
+                "en": "The Lightning distance becomes greater than"
+            },
+            "titleFormatted": {
+                "en": "The Lightning distance becomes greater than [[measure_lightning]]%"
+            },
+            "tokens": [
+                {
+                    "name": "measure_lightning",
+                    "title": {
+                        "en": "Lightning Distance"
+                    },
+                    "type": "number",
+                    "units": "%",
+                    "example": 3
+                }
+            ],
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_lightning",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Lightning Distance"
+                    }
+                }
+            ]
+        }
+    ],
+    "conditions": [
+        {
+            "id": "measure_lightning_is_less",
+            "title": {
+                "en": "Lightning Distance is !{{less|greater}} than"
+            },
+            "hint": {
+                "en": "This Flow will continue if Lightning Distance is/is not less than the set value."
+            },
+            "titleFormatted": {
+                "en": "The Lightning Distance is !{{less|greater}} than [[measure_lightning]]%"
+            },
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_lightning",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Lightning Distance"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_lightning_equal",
+            "title": {
+                "en": "Lightning Distance is !{{equal|not equal}} to"
+            },
+            "hint": {
+                "en": "This Flow will continue if Lightning Distance is/is not equal to the set value."
+            },
+            "titleFormatted": {
+                "en": "The Lightning Distance is !{{equal|not equal}} to [[measure_lightning]]%"
+            },
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_lightning",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Lightning Distance"
+                    }
+                }
+            ]
+        }
+    ]
+}
