@@ -75,6 +75,8 @@ class MyApp extends Homey.App
                 try
                 {
                     const data = JSON.parse('{"' + bodyMsg.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function(key, value) { return key === "" ? value : decodeURIComponent(value); });
+                    this.updateLog(this.varToString(data), 1);
+                    this.homey.api.realtime('com.misol.detectedDevicesUpdated', JSON.stringify(this.detectedGateways, null, 2));
 
                     // Update discovery array used to add devices
                     if (this.detectedGateways.findIndex(x => x.PASSKEY === data.PASSKEY) === -1)

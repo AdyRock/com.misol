@@ -4,5 +4,8 @@
   },
   "0.1.1": {
     "en": "Added PM2.5 meter"
+  },
+  "0.1.2": {
+    "en": "Added Lightning detector and weather station."
   }
 }

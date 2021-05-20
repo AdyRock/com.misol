@@ -85,6 +85,42 @@
     },
     {
       "name": {
+        "en": "Lightning Detector"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_lightning",
+        "measure_lightning_num",
+        "measure_lightning_time",
+        "measure_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "AA",
+          "AA"
+        ]
+      },
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "images": {
+        "small": "/drivers/pm25/assets/images/small.png",
+        "large": "/drivers/pm25/assets/images/large.png"
+      },
+      "id": "lightning"
+    },
+    {
+      "name": {
         "en": "PM25 Meter"
       },
       "class": "sensor",
@@ -165,10 +201,222 @@
         "large": "/drivers/soil_moisture/assets/images/large.png"
       },
       "id": "soil_moisture"
+    },
+    {
+      "name": {
+        "en": "Weather Station"
+      },
+      "class": "other",
+      "capabilities": [
+        "measure_temperature",
+        "measure_humidity",
+        "measure_temperature.feelsLike",
+        "measure_temperature.dewPoint",
+        "measure_pressure",
+        "measure_wind_angle",
+        "measure_wind_strength",
+        "measure_gust_strength",
+        "measure_gust_strength.daily",
+        "measure_radiation",
+        "measure_ultraviolet",
+        "measure_rain",
+        "measure_rain.event",
+        "measure_rain.hourly",
+        "measure_rain.daily",
+        "measure_rain.weekly",
+        "measure_rain.monthly",
+        "measure_rain.yearly",
+        "measure_rain.total",
+        "alarm_battery"
+      ],
+      "capabilitiesOptions": {
+        "measure_gust_strength.daily": {
+          "title": {
+            "en": "Max Gust Strength"
+          }
+        },
+        "measure_temperature": {
+          "decimals": 1
+        },
+        "measure_temperature.feelsLike": {
+          "title": {
+            "en": "Feels Like",
+            "nl": "Voelt als",
+            "de": "Gefühlte Temperatur"
+          },
+          "decimals": 1
+        },
+        "measure_temperature.dewPoint": {
+          "title": {
+            "en": "Dew point",
+            "nl": "Dauwpunt",
+            "de": "Taupunkt"
+          },
+          "decimals": 1
+        },
+        "measure_rain": {
+          "title": {
+            "en": "Rain Rate"
+          },
+          "units": {
+            "en": "mm/hr"
+          }
+        },
+        "measure_rain.event": {
+          "title": {
+            "en": "Rain Event"
+          }
+        },
+        "measure_rain.hourly": {
+          "title": {
+            "en": "Rain Hourly"
+          }
+        },
+        "measure_rain.daily": {
+          "title": {
+            "en": "Rain daily"
+          }
+        },
+        "measure_rain.weekly": {
+          "title": {
+            "en": "Rain weekly"
+          }
+        },
+        "measure_rain.monthly": {
+          "title": {
+            "en": "Rain monthly"
+          }
+        },
+        "measure_rain.yearly": {
+          "title": {
+            "en": "Rain yearly"
+          }
+        }
+      },
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "images": {
+        "small": "/drivers/gateway/assets/images/small.png",
+        "large": "/drivers/gateway/assets/images/large.png"
+      },
+      "id": "weather_station"
     }
   ],
   "flow": {
     "triggers": [
+      {
+        "id": "measure_lightning_Changed",
+        "title": {
+          "en": "Lightning Distance Changed"
+        },
+        "tokens": [
+          {
+            "name": "measure_lightning",
+            "title": {
+              "en": "Lightning Distance"
+            },
+            "type": "number",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lightning"
+          }
+        ]
+      },
+      {
+        "id": "measure_lightning_is_less",
+        "title": {
+          "en": "The Lightning Distance distance becomes less than"
+        },
+        "titleFormatted": {
+          "en": "The Lightning Distance distance becomes less than [[measure_lightning]]%"
+        },
+        "tokens": [
+          {
+            "name": "measure_lightning",
+            "title": {
+              "en": "Lightning Distance"
+            },
+            "type": "number",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lightning"
+          },
+          {
+            "type": "number",
+            "name": "measure_lightning",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Lightning Distance"
+            }
+          }
+        ]
+      },
+      {
+        "id": "measure_lightning_is_greater",
+        "title": {
+          "en": "The Lightning distance becomes greater than"
+        },
+        "titleFormatted": {
+          "en": "The Lightning distance becomes greater than [[measure_lightning]]%"
+        },
+        "tokens": [
+          {
+            "name": "measure_lightning",
+            "title": {
+              "en": "Lightning Distance"
+            },
+            "type": "number",
+            "units": "%",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lightning"
+          },
+          {
+            "type": "number",
+            "name": "measure_lightning",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Lightning Distance"
+            }
+          }
+        ]
+      },
       {
         "id": "measure_aqi_changed",
         "title": {
@@ -482,6 +730,70 @@
     ],
     "conditions": [
       {
+        "id": "measure_lightning_is_less",
+        "title": {
+          "en": "Lightning Distance is !{{less|greater}} than"
+        },
+        "hint": {
+          "en": "This Flow will continue if Lightning Distance is/is not less than the set value."
+        },
+        "titleFormatted": {
+          "en": "The Lightning Distance is !{{less|greater}} than [[measure_lightning]]%"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lightning"
+          },
+          {
+            "type": "number",
+            "name": "measure_lightning",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Lightning Distance"
+            }
+          }
+        ]
+      },
+      {
+        "id": "measure_lightning_equal",
+        "title": {
+          "en": "Lightning Distance is !{{equal|not equal}} to"
+        },
+        "hint": {
+          "en": "This Flow will continue if Lightning Distance is/is not equal to the set value."
+        },
+        "titleFormatted": {
+          "en": "The Lightning Distance is !{{equal|not equal}} to [[measure_lightning]]%"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lightning"
+          },
+          {
+            "type": "number",
+            "name": "measure_lightning",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Lightning Distance"
+            }
+          }
+        ]
+      },
+      {
         "id": "measure_aqi_is_less",
         "title": {
           "en": "Air quality index is !{{less|greater}} than"
@@ -698,6 +1010,36 @@
       "setable": false,
       "icon": "/assets/aqi.svg"
     },
+    "measure_lightning": {
+      "type": "number",
+      "title": {
+        "en": "Lightning Distance"
+      },
+      "units": {
+        "en": "km"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/lightning_distance.svg"
+    },
+    "measure_lightning_num": {
+      "type": "number",
+      "title": {
+        "en": "Daily Count"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/lightning_count.svg"
+    },
+    "measure_lightning_time": {
+      "type": "string",
+      "title": {
+        "en": "Lightning Time"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/clock.svg"
+    },
     "measure_moisture": {
       "type": "number",
       "title": {
@@ -709,6 +1051,22 @@
       "getable": true,
       "setable": false,
       "icon": "/assets/moisture.svg"
+    },
+    "measure_radiation": {
+      "type": "number",
+      "title": {
+        "en": "Solar Radiation",
+        "nl": "Zonnestraling",
+        "de": "Sonnenstrahlung"
+      },
+      "getable": true,
+      "setable": false,
+      "units": {
+        "en": "W/m²"
+      },
+      "insights": true,
+      "decimals": 1,
+      "icon": "/assets/radiation.svg"
     }
   }
 }
