@@ -110,6 +110,13 @@
             {
                 "en": "Rain yearly"
             }
+        },
+        "measure_rain.total":
+        {
+            "title":
+            {
+                "en": "Rain Total"
+            }
         }
     },
     "pair": [
