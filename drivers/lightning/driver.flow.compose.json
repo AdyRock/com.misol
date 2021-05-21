@@ -1,7 +1,7 @@
 {
     "triggers": [
         {
-            "id": "measure_lightning_Changed",
+            "id": "measure_lightning_changed",
             "title": {
                 "en": "Lightning Distance Changed"
             },
@@ -86,7 +86,7 @@
             ]
         },
         {
-            "id": "measure_lightning_num_Changed",
+            "id": "measure_lightning_num_changed",
             "title": {
                 "en": "Number of lightning strikes Changed"
             },

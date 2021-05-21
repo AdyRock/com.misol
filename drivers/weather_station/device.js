@@ -60,24 +60,24 @@ class WeatherStationDevice extends Device
             var windSpeed = Number(gateway.windspeedmph);
             var relativeHumidity = parseInt(gateway.humidity);
 
-            this.setCapabilityValue('measure_humidity', relativeHumidity);
-            this.setCapabilityValue('measure_pressure', Number(gateway.baromabsin) * 33.8639);
-            this.setCapabilityValue('measure_temperature', (temperatureF - 32) * 5 / 9);
-            this.setCapabilityValue('measure_wind_angle', parseInt(gateway.winddir));
-            this.setCapabilityValue('measure_wind_strength', windSpeed * 1.609344);
-            this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) * 1.609344);
-            this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) * 1.609344);
-            this.setCapabilityValue('measure_radiation', Number(gateway.solarradiation));
-            this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv));
-            this.setCapabilityValue('measure_rain', Number(gateway.rainratein) * 25.4);
-            this.setCapabilityValue('measure_rain.event', Number(gateway.eventrainin) * 25.4);
-            this.setCapabilityValue('measure_rain.hourly', Number(gateway.hourlyrainin) * 25.4);
-            this.setCapabilityValue('measure_rain.daily', Number(gateway.dailyrainin) * 25.4);
-            this.setCapabilityValue('measure_rain.weekly', Number(gateway.weeklyrainin) * 25.4);
-            this.setCapabilityValue('measure_rain.monthly', Number(gateway.monthlyrainin) * 25.4);
-            this.setCapabilityValue('measure_rain.yearly', Number(gateway.yearlyrainin) * 25.4);
-            this.setCapabilityValue('measure_rain.total', Number(gateway.totalrainin) * 25.4);
-            this.setCapabilityValue('alarm_battery', gateway.wh65batt === '1');
+            await this.setCapabilityValue('measure_humidity', relativeHumidity);
+            await this.setCapabilityValue('measure_pressure', Number(gateway.baromabsin) * 33.8639);
+            await this.setCapabilityValue('measure_temperature', (temperatureF - 32) * 5 / 9);
+            await this.setCapabilityValue('measure_wind_angle', parseInt(gateway.winddir));
+            await this.setCapabilityValue('measure_wind_strength', windSpeed * 1.609344);
+            await this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) * 1.609344);
+            await this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) * 1.609344);
+            await this.setCapabilityValue('measure_radiation', Number(gateway.solarradiation));
+            await this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv));
+            await this.setCapabilityValue('measure_rain', Number(gateway.rainratein) * 25.4);
+            await this.setCapabilityValue('measure_rain.event', Number(gateway.eventrainin) * 25.4);
+            await this.setCapabilityValue('measure_rain.hourly', Number(gateway.hourlyrainin) * 25.4);
+            await this.setCapabilityValue('measure_rain.daily', Number(gateway.dailyrainin) * 25.4);
+            await this.setCapabilityValue('measure_rain.weekly', Number(gateway.weeklyrainin) * 25.4);
+            await this.setCapabilityValue('measure_rain.monthly', Number(gateway.monthlyrainin) * 25.4);
+            await this.setCapabilityValue('measure_rain.yearly', Number(gateway.yearlyrainin) * 25.4);
+            await this.setCapabilityValue('measure_rain.total', Number(gateway.totalrainin) * 25.4);
+            await this.setCapabilityValue('alarm_battery', gateway.wh65batt === '1');
 
 
             var feelsLike = 0;
@@ -111,7 +111,7 @@ class WeatherStationDevice extends Device
                 }
             }
 
-            this.setCapabilityValue('measure_temperature.feelsLike', (feelsLike - 32) * 5 / 9);
+            await this.setCapabilityValue('measure_temperature.feelsLike', (feelsLike - 32) * 5 / 9);
 
             relativeHumidity /= 100;
             var dewPoint = (temperatureF - 32) * 5 / 9;
@@ -130,7 +130,7 @@ class WeatherStationDevice extends Device
                 }
             }
 
-            this.setCapabilityValue('measure_temperature.dewPoint', dewPoint);
+            await this.setCapabilityValue('measure_temperature.dewPoint', dewPoint);
         }
     }
 }
