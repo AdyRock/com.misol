@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.misol",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#FF7D4B",
@@ -341,10 +341,10 @@
       {
         "id": "measure_lightning_is_less",
         "title": {
-          "en": "The Lightning Distance distance becomes less than"
+          "en": "The Lightning distance becomes less than"
         },
         "titleFormatted": {
-          "en": "The Lightning Distance distance becomes less than [[measure_lightning]]%"
+          "en": "The Lightning distance becomes less than [[measure_lightning]]%"
         },
         "tokens": [
           {
@@ -413,6 +413,108 @@
             },
             "title": {
               "en": "Lightning Distance"
+            }
+          }
+        ]
+      },
+      {
+        "id": "measure_lightning_num_Changed",
+        "title": {
+          "en": "Number of lightning strikes Changed"
+        },
+        "tokens": [
+          {
+            "name": "measure_lightning_num",
+            "title": {
+              "en": "Number of lightning strikes"
+            },
+            "type": "number",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lightning"
+          }
+        ]
+      },
+      {
+        "id": "measure_lightning_num_is_less",
+        "title": {
+          "en": "The number of lightning strikes becomes less than"
+        },
+        "titleFormatted": {
+          "en": "The number of lightning strikes becomes less than [[measure_lightning_num]]%"
+        },
+        "tokens": [
+          {
+            "name": "measure_lightning_num",
+            "title": {
+              "en": "Lightning Strikes"
+            },
+            "type": "number",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lightning"
+          },
+          {
+            "type": "number",
+            "name": "measure_lightning_num",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Lightning Strikes"
+            }
+          }
+        ]
+      },
+      {
+        "id": "measure_lightning_num_is_greater",
+        "title": {
+          "en": "The number of lightning strikes becomes greater than"
+        },
+        "titleFormatted": {
+          "en": "The number of lightning strikes becomes greater than [[measure_lightning_num]]%"
+        },
+        "tokens": [
+          {
+            "name": "measure_lightning_num",
+            "title": {
+              "en": "Lightning Strikes"
+            },
+            "type": "number",
+            "units": "%",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lightning"
+          },
+          {
+            "type": "number",
+            "name": "measure_lightning_num",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Lightning strikes"
             }
           }
         ]
@@ -789,6 +891,70 @@
             },
             "title": {
               "en": "Lightning Distance"
+            }
+          }
+        ]
+      },
+      {
+        "id": "measure_lightning_num_is_less",
+        "title": {
+          "en": "Lightning strikes is !{{less|greater}} than"
+        },
+        "hint": {
+          "en": "This Flow will continue if number of Lightning strikes is/is not less than the set value."
+        },
+        "titleFormatted": {
+          "en": "The Lightning strikes is !{{less|greater}} than [[measure_lightning_num]]%"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lightning"
+          },
+          {
+            "type": "number",
+            "name": "measure_lightning_num",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Lightning Strikes"
+            }
+          }
+        ]
+      },
+      {
+        "id": "measure_lightning_num_equal",
+        "title": {
+          "en": "Lightning strikes is !{{equal|not equal}} to"
+        },
+        "hint": {
+          "en": "This Flow will continue if Lightning strikes is/is not equal to the set value."
+        },
+        "titleFormatted": {
+          "en": "The Lightning strikes is !{{equal|not equal}} to [[measure_lightning_num]]%"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lightning"
+          },
+          {
+            "type": "number",
+            "name": "measure_lightning_num",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Lightning Strikes"
             }
           }
         ]

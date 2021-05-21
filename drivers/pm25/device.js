@@ -85,13 +85,9 @@ class PM25Device extends Device
             this.setCapabilityValue('measure_aqi.avg', AQI);
             this.setCapabilityValue('measure_aq.avg', this.homey.__(AQITable[ tableIdx ].name));
 
-            const batV = Number(gateway['pm25batt' + dd.meterNumber]);
-            let batP = (batV - 2.6) / (5 - 2.6) * 100;
-            if (batP > 100)
-            {
-                batP = 100;
-            }
-            this.setCapabilityValue('measure_battery', batP);
+            // The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
+            const bat = parseInt(gateway['pm25batt' + dd.meterNumber]) * 20;
+            this.setCapabilityValue('measure_battery', bat);
         }
     }
 }

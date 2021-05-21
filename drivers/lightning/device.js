@@ -54,22 +54,25 @@ class LightningDevice extends Device
     async updateCapabilities(gateway)
     {
         const dd = this.getData();
-        if ((gateway.PASSKEY === dd.PASSKEY) && gateway.lightning)
+        if ((gateway.PASSKEY === dd.PASSKEY) && (gateway.lightning != undefined))
         {
-            this.setCapabilityValue('measure_lightning', gateway.lightning);
-
             const lightning_num = parseInt(gateway.lightning_num);
+            if (gateway.lightning !== '')
+            {
+                this.setCapabilityValue('measure_lightning', Number(gateway.lightning));
+            }
+            else if (lightning_num === 0)
+            {
+                this.setCapabilityValue('measure_lightning', null);
+            }
+
             this.setCapabilityValue('measure_lightning_num', lightning_num);
 
             this.setCapabilityValue('measure_lightning_time', gateway.lightning_time);
 
-            const batV = Number(gateway.wh57batt);
-            let batP = (batV - 2.6) / (5 - 2.6) * 100;
-            if (batP > 100)
-            {
-                batP = 100;
-            }
-            this.setCapabilityValue('measure_battery', batP);
+            // The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
+            const bat = parseInt(gateway.wh57batt) * 20;
+            this.setCapabilityValue('measure_battery', bat);
         }
     }
 }
