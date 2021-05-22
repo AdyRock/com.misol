@@ -76,13 +76,19 @@ class MyApp extends Homey.App
                 {
                     const data = JSON.parse('{"' + bodyMsg.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function(key, value) { return key === "" ? value : decodeURIComponent(value); });
                     this.updateLog(this.varToString(data), 1);
-                    this.homey.api.realtime('com.misol.detectedDevicesUpdated', JSON.stringify(this.detectedGateways, null, 2));
 
                     // Update discovery array used to add devices
-                    if (this.detectedGateways.findIndex(x => x.PASSKEY === data.PASSKEY) === -1)
+                    var gatewatEntry = this.detectedGateways.findIndex(x => x.PASSKEY === data.PASSKEY);
+                    if (gatewatEntry === -1)
                     {
                         this.detectedGateways.push(data);
                     }
+                    else
+                    {
+                        this.detectedGateways[ gatewatEntry ] =  data;
+                    }
+
+                    this.homey.api.realtime('com.misol.detectedDevicesUpdated', JSON.stringify(this.detectedGateways, null, 2));
 
                     const drivers = this.homey.drivers.getDrivers();
                     for (const driver in drivers)
