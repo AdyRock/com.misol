@@ -34,6 +34,7 @@ class MyApp extends Homey.App
             }
         });
 
+        // Conditions for moisture sensor
         let measure_moisture_is_lessCondition = this.homey.flow.getConditionCard('measure_moisture_is_less');
         measure_moisture_is_lessCondition.registerRunListener(async (args, state) =>
         {
@@ -42,10 +43,196 @@ class MyApp extends Homey.App
         });
 
         let measure_moisture_is_equalCondition = this.homey.flow.getConditionCard('measure_moisture_equal');
-        measure_moisture_is_lessCondition.registerRunListener(async (args, state) =>
+        measure_moisture_is_equalCondition.registerRunListener(async (args, state) =>
         {
             let moisture = args.my_device.getCapabilityValue('measure_moisture');
             return moisture === args.measure_moisture;
+        });
+
+
+        // Conditions for weather station
+        let measure_temperature_feelsLike_is_lessCondition = this.homey.flow.getConditionCard('measure_temperature.feelsLike_is_less');
+        measure_temperature_feelsLike_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_temperature.feelsLike');
+            return value === args.value;
+        });
+
+        let measure_temperature_feelsLike_equalCondition = this.homey.flow.getConditionCard('measure_temperature.feelsLike_equal');
+        measure_temperature_feelsLike_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_temperature.feelsLike');
+            return value === args.value;
+        });
+
+        let measure_temperature_dewPoint_is_lessCondition = this.homey.flow.getConditionCard('measure_temperature.dewPoint_is_less');
+        measure_temperature_dewPoint_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_temperature.dewPoint');
+            return value === args.value;
+        });
+
+        let measure_temperature_dewPoint_equalCondition = this.homey.flow.getConditionCard('measure_temperature.dewPoint_equal');
+        measure_temperature_dewPoint_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_temperature.dewPoint');
+            return value === args.value;
+        });
+
+        let measure_rain_event_is_lessCondition = this.homey.flow.getConditionCard('measure_rain.event_is_less');
+        measure_rain_event_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_rain.event');
+            return value === args.value;
+        });
+
+        let measure_rain_event_equalCondition = this.homey.flow.getConditionCard('measure_rain.event_equal');
+        measure_rain_event_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_rain.event');
+            return value === args.value;
+        });
+
+        let measure_rain_hourly_is_lessCondition = this.homey.flow.getConditionCard('measure_rain.hourly_is_less');
+        measure_rain_hourly_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_rain.hourly');
+            return value === args.value;
+        });
+
+        let measure_rain_hourly_equalCondition = this.homey.flow.getConditionCard('measure_rain.hourly_equal');
+        measure_rain_hourly_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_temperature.hourly');
+            return value === args.value;
+        });
+
+        let measure_rain_daily_is_lessCondition = this.homey.flow.getConditionCard('measure_rain.daily_is_less');
+        measure_rain_daily_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_rain.daily');
+            return value === args.value;
+        });
+
+        let measure_rain_daily_equalCondition = this.homey.flow.getConditionCard('measure_rain.daily_equal');
+        measure_rain_daily_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_rain.daily');
+            return value === args.value;
+        });
+
+        let measure_rain_weekly_is_lessCondition = this.homey.flow.getConditionCard('measure_rain.weekly_is_less');
+        measure_rain_weekly_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_rain.weekly');
+            return value === args.value;
+        });
+
+        let measure_rain_weekly_equalCondition = this.homey.flow.getConditionCard('measure_rain.weekly_equal');
+        measure_rain_weekly_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_rain.weekly');
+            return value === args.value;
+        });
+
+        let measure_rain_monthly_is_lessCondition = this.homey.flow.getConditionCard('measure_rain.monthly_is_less');
+        measure_rain_monthly_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_rain.monthly');
+            return value === args.value;
+        });
+
+        let measure_rain_monthly_equalCondition = this.homey.flow.getConditionCard('measure_rain.monthly_equal');
+        measure_rain_monthly_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_rain.monthly');
+            return value === args.value;
+        });
+
+        let measure_rain_yearly_is_lessCondition = this.homey.flow.getConditionCard('measure_rain.yearly_is_less');
+        measure_rain_yearly_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_rain.yearly');
+            return value === args.value;
+        });
+
+        let measure_rain_yearly_equalCondition = this.homey.flow.getConditionCard('measure_rain.yearly_equal');
+        measure_rain_yearly_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_rain.yearly');
+            return value === args.value;
+        });
+
+        let measure_rain_total_is_lessCondition = this.homey.flow.getConditionCard('measure_rain.total_is_less');
+        measure_rain_total_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_rain.total');
+            return value === args.value;
+        });
+
+        let measure_rain_total_equalCondition = this.homey.flow.getConditionCard('measure_rain.total_equal');
+        measure_rain_total_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_rain.total');
+            return value === args.value;
+        });
+
+        // Lightening conditions
+        let measure_lightning_is_lessCondition = this.homey.flow.getConditionCard('measure_lightning_is_less');
+        measure_lightning_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_lightning');
+            return value === args.value;
+        });
+
+        let measure_lightning_equalCondition = this.homey.flow.getConditionCard('measure_lightning_equal');
+        measure_lightning_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_lightning');
+            return value === args.value;
+        });
+
+        let measure_lightning_num_is_lessCondition = this.homey.flow.getConditionCard('measure_lightning_num_is_less');
+        measure_lightning_num_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_lightning_num');
+            return value === args.value;
+        });
+
+        let measure_lightning_num_equalCondition = this.homey.flow.getConditionCard('measure_lightning_num_equal');
+        measure_lightning_num_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_lightning_num');
+            return value === args.value;
+        });
+
+        // PM2.5 conditions
+        let measure_aqi_is_lessCondition = this.homey.flow.getConditionCard('measure_aqi_is_less');
+        measure_aqi_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_aqi');
+            return value === args.value;
+        });
+
+        let measure_aqi_equalCondition = this.homey.flow.getConditionCard('measure_aqi_equal');
+        measure_aqi_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_aqi');
+            return value === args.value;
+        });
+
+        let measure_aqi_avg_is_lessCondition = this.homey.flow.getConditionCard('measure_aqi.avg_is_less');
+        measure_aqi_avg_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_aqi.avg');
+            return value === args.value;
+        });
+
+        let measure_aqi_avg_equalCondition = this.homey.flow.getConditionCard('measure_aqi.avg_equal');
+        measure_aqi_avg_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.my_device.getCapabilityValue('measure_aqi.avg');
+            return value === args.value;
         });
     }
 
