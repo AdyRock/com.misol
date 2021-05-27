@@ -10,6 +10,76 @@ class LightningDriver extends Driver
     async onInit()
     {
         this.log('Lightning Driver has been initialized');
+
+        // Device Triggers
+        this.measure_lightning_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_lightning_changed');
+        this.measure_lightning_is_lessTrigger = this.homey.flow.getDeviceTriggerCard('measure_lightning_is_less');
+        this.measure_lightning_is_lessTrigger.registerRunListener(async (args, state) =>
+        {
+            // If true, this flow should run
+            return args.value < state.value;
+        });
+
+        this.measure_lightning_is_greaterTrigger = this.homey.flow.getDeviceTriggerCard('measure_lightning_is_greater');
+        this.measure_lightning_is_greaterTrigger.registerRunListener(async (args, state) =>
+        {
+            // If true, this flow should run
+            return args.value > state.value;
+        });
+
+        this.measure_lightning_num_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_lightning_num_changed');
+        this.measure_lightning_num_is_lessTrigger = this.homey.flow.getDeviceTriggerCard('measure_lightning_num_is_less');
+        this.measure_lightning_num_is_lessTrigger.registerRunListener(async (args, state) =>
+        {
+            // If true, this flow should run
+            return args.value < state.value;
+        });
+        this.measure_lightning_num_is_greaterTrigger = this.homey.flow.getDeviceTriggerCard('measure_lightning_num_is_greater');
+        this.measure_lightning_num_is_greaterTrigger.registerRunListener(async (args, state) =>
+        {
+            // If true, this flow should run
+            return args.value > state.value;
+        });
+    }
+
+    trigger_measure_lightning(device, lightning)
+    {
+        let tokens = {
+            value: lightning
+        };
+
+        let state = {
+            value: lightning
+        };
+
+        this.measure_lightning_changedTrigger.trigger(device, tokens)
+            .catch(this.error);
+            
+        this.measure_lightning_is_lessTrigger.trigger(device, tokens, state)
+            .catch(this.error);
+            
+        this.measure_lightning_is_greaterTrigger.trigger(device, tokens, state)
+            .catch(this.error);
+    }
+
+    trigger_measure_lightning_num(device, lightning_num)
+    {
+        let tokens = {
+            value: lightning_num
+        };
+
+        let state = {
+            value: lightning_num
+        };
+
+        this.measure_lightning_num_changedTrigger.trigger(device, tokens)
+            .catch(this.error);
+            
+        this.measure_lightning_num_is_lessTrigger.trigger(device, tokens, state)
+            .catch(this.error);
+            
+        this.measure_lightning_num_is_greaterTrigger.trigger(device, tokens, state)
+            .catch(this.error);
     }
 
     /**

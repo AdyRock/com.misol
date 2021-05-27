@@ -59,20 +59,29 @@ class LightningDevice extends Device
             const lightning_num = parseInt(gateway.lightning_num);
             if (gateway.lightning !== '')
             {
-                this.setCapabilityValue('measure_lightning', Number(gateway.lightning));
+                let lightning = Number(gateway.lightning);
+                if (lightning != this.getCapabilityValue('measure_lightning'))
+                {
+                    await this.setCapabilityValue('measure_lightning', lightning);
+                    this.driver.trigger_measure_lightning(this, lightning);
+                }
+
+                if (lightning_num != this.getCapabilityValue('lightning_num'))
+                {
+                    await this.setCapabilityValue('measure_lightning_num', lightning_num);
+                    this.driver.trigger_measure_lightning(this, lightning_num);
+                }
             }
             else if (lightning_num === 0)
             {
-                this.setCapabilityValue('measure_lightning', null);
+                await this.setCapabilityValue('measure_lightning', null);
             }
-
-            this.setCapabilityValue('measure_lightning_num', lightning_num);
-
-            this.setCapabilityValue('measure_lightning_time', gateway.lightning_time);
+            
+            await this.setCapabilityValue('measure_lightning_time', gateway.lightning_time);
 
             // The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
             const bat = parseInt(gateway.wh57batt) * 20;
-            this.setCapabilityValue('measure_battery', bat);
+            await this.setCapabilityValue('measure_battery', bat);
         }
     }
 }

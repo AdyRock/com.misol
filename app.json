@@ -327,7 +327,7 @@
         },
         "tokens": [
           {
-            "name": "measure_lightning",
+            "name": "value",
             "title": {
               "en": "Lightning Distance"
             },
@@ -349,11 +349,11 @@
           "en": "The Lightning distance becomes less than"
         },
         "titleFormatted": {
-          "en": "The Lightning distance becomes less than [[measure_lightning]]%"
+          "en": "The Lightning distance becomes less than [[value]]%"
         },
         "tokens": [
           {
-            "name": "measure_lightning",
+            "name": "value",
             "title": {
               "en": "Lightning Distance"
             },
@@ -369,7 +369,7 @@
           },
           {
             "type": "number",
-            "name": "measure_lightning",
+            "name": "value",
             "min": 0,
             "max": 500,
             "step": 1,
@@ -388,11 +388,11 @@
           "en": "The Lightning distance becomes greater than"
         },
         "titleFormatted": {
-          "en": "The Lightning distance becomes greater than [[measure_lightning]]%"
+          "en": "The Lightning distance becomes greater than [[value]]%"
         },
         "tokens": [
           {
-            "name": "measure_lightning",
+            "name": "value",
             "title": {
               "en": "Lightning Distance"
             },
@@ -409,7 +409,7 @@
           },
           {
             "type": "number",
-            "name": "measure_lightning",
+            "name": "value",
             "min": 0,
             "max": 500,
             "step": 1,
@@ -429,7 +429,7 @@
         },
         "tokens": [
           {
-            "name": "measure_lightning_num",
+            "name": "value",
             "title": {
               "en": "Number of lightning strikes"
             },
@@ -451,11 +451,11 @@
           "en": "The number of lightning strikes becomes less than"
         },
         "titleFormatted": {
-          "en": "The number of lightning strikes becomes less than [[measure_lightning_num]]%"
+          "en": "The number of lightning strikes becomes less than [[value]]%"
         },
         "tokens": [
           {
-            "name": "measure_lightning_num",
+            "name": "value",
             "title": {
               "en": "Lightning Strikes"
             },
@@ -471,7 +471,7 @@
           },
           {
             "type": "number",
-            "name": "measure_lightning_num",
+            "name": "value",
             "min": 0,
             "max": 500,
             "step": 1,
@@ -490,11 +490,11 @@
           "en": "The number of lightning strikes becomes greater than"
         },
         "titleFormatted": {
-          "en": "The number of lightning strikes becomes greater than [[measure_lightning_num]]%"
+          "en": "The number of lightning strikes becomes greater than [[value]]%"
         },
         "tokens": [
           {
-            "name": "measure_lightning_num",
+            "name": "value",
             "title": {
               "en": "Lightning Strikes"
             },
@@ -511,7 +511,7 @@
           },
           {
             "type": "number",
-            "name": "measure_lightning_num",
+            "name": "value",
             "min": 0,
             "max": 500,
             "step": 1,
@@ -735,7 +735,7 @@
         },
         "tokens": [
           {
-            "name": "measure_moisture",
+            "name": "value",
             "title": {
               "en": "Soil Moisture"
             },
@@ -758,11 +758,11 @@
           "en": "The soil moisture becomes less than"
         },
         "titleFormatted": {
-          "en": "The soil moisture becomes less than [[measure_moisture]]%"
+          "en": "The soil moisture becomes less than [[value]]%"
         },
         "tokens": [
           {
-            "name": "measure_moisture",
+            "name": "value",
             "title": {
               "en": "Soil Moisture"
             },
@@ -779,7 +779,7 @@
           },
           {
             "type": "number",
-            "name": "measure_moisture",
+            "name": "value",
             "min": 0,
             "max": 100,
             "step": 1,
@@ -799,11 +799,11 @@
           "en": "The soil moisture becomes greater than"
         },
         "titleFormatted": {
-          "en": "The soil moisture becomes greater than [[measure_moisture]]%"
+          "en": "The soil moisture becomes greater than [[value]]%"
         },
         "tokens": [
           {
-            "name": "measure_moisture",
+            "name": "value",
             "title": {
               "en": "Soil Moisture"
             },
@@ -820,7 +820,7 @@
           },
           {
             "type": "number",
-            "name": "measure_moisture",
+            "name": "value",
             "min": 0,
             "max": 100,
             "step": 1,
@@ -1763,7 +1763,7 @@
           "en": "This Flow will continue if Lightning Distance is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The Lightning Distance is !{{less|greater}} than [[measure_lightning]]%"
+          "en": "The Lightning Distance is !{{less|greater}} than [[value]]%"
         },
         "args": [
           {
@@ -1773,7 +1773,7 @@
           },
           {
             "type": "number",
-            "name": "measure_lightning",
+            "name": "value",
             "min": 0,
             "max": 500,
             "step": 1,
@@ -1795,7 +1795,7 @@
           "en": "This Flow will continue if Lightning Distance is/is not equal to the set value."
         },
         "titleFormatted": {
-          "en": "The Lightning Distance is !{{equal|not equal}} to [[measure_lightning]]%"
+          "en": "The Lightning Distance is !{{equal|not equal}} to [[value]]%"
         },
         "args": [
           {
@@ -1805,7 +1805,7 @@
           },
           {
             "type": "number",
-            "name": "measure_lightning",
+            "name": "value",
             "min": 0,
             "max": 500,
             "step": 1,
@@ -1827,7 +1827,7 @@
           "en": "This Flow will continue if number of Lightning strikes is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The Lightning strikes is !{{less|greater}} than [[measure_lightning_num]]%"
+          "en": "The Lightning strikes is !{{less|greater}} than [[value]]%"
         },
         "args": [
           {
@@ -1837,7 +1837,7 @@
           },
           {
             "type": "number",
-            "name": "measure_lightning_num",
+            "name": "value",
             "min": 0,
             "max": 500,
             "step": 1,
@@ -1859,7 +1859,7 @@
           "en": "This Flow will continue if Lightning strikes is/is not equal to the set value."
         },
         "titleFormatted": {
-          "en": "The Lightning strikes is !{{equal|not equal}} to [[measure_lightning_num]]%"
+          "en": "The Lightning strikes is !{{equal|not equal}} to [[value]]%"
         },
         "args": [
           {
@@ -1869,7 +1869,7 @@
           },
           {
             "type": "number",
-            "name": "measure_lightning_num",
+            "name": "value",
             "min": 0,
             "max": 500,
             "step": 1,
@@ -2019,7 +2019,7 @@
           "en": "This Flow will continue if soil moisture is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The soil moisture is !{{less|greater}} than [[measure_moisture]]%"
+          "en": "The soil moisture is !{{less|greater}} than [[value]]%"
         },
         "args": [
           {
@@ -2029,7 +2029,7 @@
           },
           {
             "type": "number",
-            "name": "measure_moisture",
+            "name": "value",
             "min": 0,
             "max": 100,
             "step": 1,
@@ -2052,7 +2052,7 @@
           "en": "This Flow will continue if soil moisture is/is not equal to the set value."
         },
         "titleFormatted": {
-          "en": "The soil moisture is !{{equal|not equal}} to [[measure_moisture]]%"
+          "en": "The soil moisture is !{{equal|not equal}} to [[value]]%"
         },
         "args": [
           {
@@ -2062,7 +2062,7 @@
           },
           {
             "type": "number",
-            "name": "measure_moisture",
+            "name": "value",
             "min": 0,
             "max": 100,
             "step": 1,

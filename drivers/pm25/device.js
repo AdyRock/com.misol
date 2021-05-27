@@ -66,28 +66,28 @@ class PM25Device extends Device
         if ((gateway.PASSKEY === dd.PASSKEY) && gateway['pm25_ch' + dd.meterNumber])
         {
             const pm25 = parseInt(gateway['pm25_ch' + dd.meterNumber]);
-            this.setCapabilityValue('measure_pm25', pm25);
+            await this.setCapabilityValue('measure_pm25', pm25);
 
             const pm25Avg = parseInt(gateway['pm25_avg_24h_ch' + dd.meterNumber]);
-            this.setCapabilityValue('measure_pm25.avg', pm25Avg);
+            await this.setCapabilityValue('measure_pm25.avg', pm25Avg);
 
             // Calculate AQI
             let tableIdx = AQITable.findIndex( entry => entry.ConcHi > pm25);
             let AQI = ((AQITable[ tableIdx ].AQIhi - AQITable[ tableIdx ].AQIlo) / (AQITable[ tableIdx ].ConcHi - AQITable[ tableIdx ].ConcLo)) * (pm25 - AQITable[ tableIdx ].ConcLo)  + AQITable[ tableIdx ].AQIlo;
 
-            this.setCapabilityValue('measure_aqi', AQI);
-            this.setCapabilityValue('measure_aq', this.homey.__(AQITable[ tableIdx ].name));
+            await this.setCapabilityValue('measure_aqi', AQI);
+            await this.setCapabilityValue('measure_aq', this.homey.__(AQITable[ tableIdx ].name));
 
             // Calculate AQI Ag
             tableIdx = AQITable.findIndex( entry => entry.ConcHi > pm25Avg);
             AQI = ((AQITable[ tableIdx ].AQIhi - AQITable[ tableIdx ].AQIlo) / (AQITable[ tableIdx ].ConcHi - AQITable[ tableIdx ].ConcLo)) * (pm25Avg - AQITable[ tableIdx ].ConcLo)  + AQITable[ tableIdx ].AQIlo;
 
-            this.setCapabilityValue('measure_aqi.avg', AQI);
-            this.setCapabilityValue('measure_aq.avg', this.homey.__(AQITable[ tableIdx ].name));
+            await this.setCapabilityValue('measure_aqi.avg', AQI);
+            await this.setCapabilityValue('measure_aq.avg', this.homey.__(AQITable[ tableIdx ].name));
 
             // The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
             const bat = parseInt(gateway['pm25batt' + dd.meterNumber]) * 20;
-            this.setCapabilityValue('measure_battery', bat);
+            await this.setCapabilityValue('measure_battery', bat);
         }
     }
 }

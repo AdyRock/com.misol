@@ -57,19 +57,10 @@ class MyDevice extends Device
         if ((gateway.PASSKEY === dd.PASSKEY) && gateway['soilmoisture' + dd.meterNumber])
         {
             const moisture = parseInt(gateway['soilmoisture' + dd.meterNumber]);
-            const oldMoisture = this.getCapabilityValue('measure_moisture');
-            this.setCapabilityValue('measure_moisture', moisture);
-
-            if (moisture != oldMoisture)
+            if (moisture != this.getCapabilityValue('measure_moisture'))
             {
-                const tokens = {
-                    measure_moisture: moisture
-                };
-                const state = {
-                    measure_moisture: moisture
-                };
-
-                this.driver.trigger_measure_moisture_changed(this, tokens, state);
+                await this.setCapabilityValue('measure_moisture', moisture);
+                this.driver.trigger_measure_moisture_changed(this, moisture);
             }
 
             const batV = Number(gateway['soilbatt' + dd.meterNumber]);
@@ -78,7 +69,7 @@ class MyDevice extends Device
             {
                 batP = 100;
             }
-            this.setCapabilityValue('measure_battery', batP);
+            await this.setCapabilityValue('measure_battery', batP);
         }
     }
 }

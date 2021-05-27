@@ -7,7 +7,7 @@
             },
             "tokens": [
                 {
-                    "name": "measure_moisture",
+                    "name": "value",
                     "title": {
                         "en": "Soil Moisture"
                     },
@@ -23,11 +23,11 @@
                 "en": "The soil moisture becomes less than"
             },
             "titleFormatted": {
-                "en": "The soil moisture becomes less than [[measure_moisture]]%"
+                "en": "The soil moisture becomes less than [[value]]%"
             },
             "tokens": [
                 {
-                    "name": "measure_moisture",
+                    "name": "value",
                     "title": {
                         "en": "Soil Moisture"
                     },
@@ -39,7 +39,7 @@
             "args": [
                 {
                     "type": "number",
-                    "name": "measure_moisture",
+                    "name": "value",
                     "min": 0,
                     "max": 100,
                     "step": 1,
@@ -59,11 +59,11 @@
                 "en": "The soil moisture becomes greater than"
             },
             "titleFormatted": {
-                "en": "The soil moisture becomes greater than [[measure_moisture]]%"
+                "en": "The soil moisture becomes greater than [[value]]%"
             },
             "tokens": [
                 {
-                    "name": "measure_moisture",
+                    "name": "value",
                     "title": {
                         "en": "Soil Moisture"
                     },
@@ -75,7 +75,7 @@
             "args": [
                 {
                     "type": "number",
-                    "name": "measure_moisture",
+                    "name": "value",
                     "min": 0,
                     "max": 100,
                     "step": 1,
@@ -100,12 +100,12 @@
                 "en": "This Flow will continue if soil moisture is/is not less than the set value."
             },
             "titleFormatted": {
-                "en": "The soil moisture is !{{less|greater}} than [[measure_moisture]]%"
+                "en": "The soil moisture is !{{less|greater}} than [[value]]%"
             },
             "args": [
                 {
                     "type": "number",
-                    "name": "measure_moisture",
+                    "name": "value",
                     "min": 0,
                     "max": 100,
                     "step": 1,
@@ -128,12 +128,12 @@
                 "en": "This Flow will continue if soil moisture is/is not equal to the set value."
             },
             "titleFormatted": {
-                "en": "The soil moisture is !{{equal|not equal}} to [[measure_moisture]]%"
+                "en": "The soil moisture is !{{equal|not equal}} to [[value]]%"
             },
             "args": [
                 {
                     "type": "number",
-                    "name": "measure_moisture",
+                    "name": "value",
                     "min": 0,
                     "max": 100,
                     "step": 1,

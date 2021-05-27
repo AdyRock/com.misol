@@ -56,9 +56,9 @@ class MyDevice extends Device
         const dd = this.getData();
         if (gateway.PASSKEY === dd.id)
         {
-            this.setCapabilityValue('measure_humidity', parseInt(gateway.humidityin));
-            this.setCapabilityValue('measure_pressure', Number(gateway.baromrelin) * 33.8639);
-            this.setCapabilityValue('measure_temperature', (Number(gateway.tempinf) -32) * 5 / 9);
+            await this.setCapabilityValue('measure_humidity', parseInt(gateway.humidityin));
+            await this.setCapabilityValue('measure_pressure', Number(gateway.baromrelin) * 33.8639);
+            await this.setCapabilityValue('measure_temperature', (Number(gateway.tempinf) -32) * 5 / 9);
         }
     }
 }

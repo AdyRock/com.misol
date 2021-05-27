@@ -15,19 +15,30 @@ class MyDriver extends Driver
         this.measure_moisture_is_lessTrigger.registerRunListener(async (args, state) =>
         {
             // If true, this flow should run
-            return state.measure_moisture < args.measure_moisture;
+            return state.value < args.value;
         });
 
         this.measure_moisture_is_greaterTrigger = this.homey.flow.getDeviceTriggerCard('measure_moisture_is_greater');
         this.measure_moisture_is_greaterTrigger.registerRunListener(async (args, state) =>
         {
             // If true, this flow should run
-            return state.measure_moisture > args.measure_moisture;
+            return state.value > args.value;
         });
     }
 
-    trigger_measure_moisture_changed(device, tokens, state)
+    trigger_measure_moisture_changed(device, moisture)
     {
+        const tokens = {
+            value: moisture
+        };
+        const state = {
+            value: moisture
+        };
+
+        this.measure_moisture_changedTrigger.trigger(device, tokens)
+            .then(this.log)
+            .catch(this.error);
+            
         this.measure_moisture_is_lessTrigger.trigger(device, tokens, state)
             .then(this.log)
             .catch(this.error);
