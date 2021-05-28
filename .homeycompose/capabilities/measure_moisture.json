@@ -8,5 +8,6 @@
     },
     "getable": true,
     "setable": false,
+    "insights": true,
     "icon": "/assets/moisture.svg"
 }
