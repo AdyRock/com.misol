@@ -10,5 +10,8 @@
   },
   "0.1.3": {
     "en": "Added Insight option to custom capabilities."
+  },
+  "0.1.4": {
+    "en": "Added flow trigger for Air Quality changed."
   }
 }

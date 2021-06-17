@@ -76,8 +76,23 @@ class PM25Device extends Device
             let AQI = ((AQITable[ tableIdx ].AQIhi - AQITable[ tableIdx ].AQIlo) / (AQITable[ tableIdx ].ConcHi - AQITable[ tableIdx ].ConcLo)) * (pm25 - AQITable[ tableIdx ].ConcLo)  + AQITable[ tableIdx ].AQIlo;
 
             await this.setCapabilityValue('measure_aqi', AQI);
-            await this.setCapabilityValue('measure_aq', this.homey.__(AQITable[ tableIdx ].name));
+            let aqText = this.homey.__(AQITable[ tableIdx ].name);
+            if (aqText !== this.getCapabilityValue('measure_aq'))
+            {
+                await this.setCapabilityValue('measure_aq', aqText);
 
+                const tokens = {
+                    "measure_aq_name": aqText,
+                    "measure_aq_item": tableIdx
+                };
+
+                const state = {
+                    "value": tableIdx
+                };
+
+                this.driver.triggerAQChanged(this, tokens, state);
+            }
+            
             // Calculate AQI Ag
             tableIdx = AQITable.findIndex( entry => entry.ConcHi > pm25Avg);
             AQI = ((AQITable[ tableIdx ].AQIhi - AQITable[ tableIdx ].AQIlo) / (AQITable[ tableIdx ].ConcHi - AQITable[ tableIdx ].ConcLo)) * (pm25Avg - AQITable[ tableIdx ].ConcLo)  + AQITable[ tableIdx ].AQIlo;

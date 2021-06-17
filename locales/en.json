@@ -18,8 +18,8 @@
     },
     "good": "Good",
     "Moderate": "Moderate",
-    "UnhealthyLo": "UnhealthyLo",
+    "UnhealthyLo": "Slightly Unhealthy",
     "Unhealthy": "Unhealthy",
-    "UnhealthyHi": "UnhealthyHi",
+    "UnhealthyHi": "Very UnhealthyHi",
     "Hazardous": "Hazardous"
 }
