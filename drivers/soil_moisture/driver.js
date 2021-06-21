@@ -36,15 +36,12 @@ class MyDriver extends Driver
         };
 
         this.measure_moisture_changedTrigger.trigger(device, tokens)
-            .then(this.log)
             .catch(this.error);
             
         this.measure_moisture_is_lessTrigger.trigger(device, tokens, state)
-            .then(this.log)
             .catch(this.error);
             
         this.measure_moisture_is_greaterTrigger.trigger(device, tokens, state)
-            .then(this.log)
             .catch(this.error);
     }
 

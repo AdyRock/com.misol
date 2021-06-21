@@ -12,6 +12,6 @@
     "en": "Added Insight option to custom capabilities."
   },
   "0.1.4": {
-    "en": "Added flow trigger for Air Quality changed."
+    "en": "Added flow trigger for Air Quality changed. Fixed issue with settings not saving. Added logging to confirm server has started / show errors."
   }
 }

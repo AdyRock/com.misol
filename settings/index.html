@@ -135,7 +135,7 @@
 
             saveElement.addEventListener('click', function(e)
             {
-                Homey.set('port', UserNameElement.value, function(err)
+                Homey.set('port', portElement.value, function(err)
                 {
                     if (err) return Homey.alert(err);
                 });

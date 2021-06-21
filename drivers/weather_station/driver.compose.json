@@ -133,7 +133,7 @@
         }
     ],
     "images": {
-        "small": "/drivers/gateway/assets/images/small.png",
-        "large": "/drivers/gateway/assets/images/large.png"
+        "small": "/drivers/weather_station/assets/images/small.png",
+        "large": "/drivers/weather_station/assets/images/large.png"
     }
 }

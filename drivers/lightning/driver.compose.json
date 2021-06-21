@@ -28,7 +28,7 @@
         }
     ],
     "images": {
-        "small": "/drivers/pm25/assets/images/small.png",
-        "large": "/drivers/pm25/assets/images/large.png"
+        "small": "/drivers/lightning/assets/images/small.png",
+        "large": "/drivers/lightning/assets/images/large.png"
     }
 }

@@ -16,6 +16,8 @@ class MyApp extends Homey.App
     async onInit()
     {
         this.log('MyApp has been initialized');
+        this.diagLog = "";
+
         this.pushServerPort = this.homey.settings.get('port');
         if (!this.pushServerPort)
         {
@@ -31,6 +33,9 @@ class MyApp extends Homey.App
             if (key === 'port')
             {
                 this.pushServerPort = this.homey.settings.get('port');
+                this.updateLog("Closing server");
+                this.server.close();
+                this.runsListener();
             }
         });
 
@@ -48,7 +53,6 @@ class MyApp extends Homey.App
             let moisture = args.device.getCapabilityValue('measure_moisture');
             return moisture === args.value;
         });
-
 
         // Conditions for weather station
         let measure_temperature_feelsLike_is_lessCondition = this.homey.flow.getConditionCard('measure_temperature.feelsLike_is_less');
@@ -272,7 +276,7 @@ class MyApp extends Homey.App
                     }
                     else
                     {
-                        this.detectedGateways[ gatewatEntry ] =  data;
+                        this.detectedGateways[gatewatEntry] = data;
                     }
 
                     this.homey.api.realtime('com.misol.detectedDevicesUpdated', JSON.stringify(this.detectedGateways, null, 2));
@@ -281,7 +285,7 @@ class MyApp extends Homey.App
                     for (const driver in drivers)
                     {
                         let devices = this.homey.drivers.getDriver(driver).getDevices();
-    
+
                         for (let i = 0; i < devices.length; i++)
                         {
                             let device = devices[i];
@@ -291,19 +295,41 @@ class MyApp extends Homey.App
                             }
                         }
                     }
-    
+
                     this.log(data);
                 }
-                catch(err)
+                catch (err)
                 {
                     this.updateLog(this.varToString(err), 0);
                 }
             });
         };
 
-        const server = http.createServer(requestListener);
-        server.listen(this.pushServerPort);
+        this.server = http.createServer(requestListener);
+        this.server.listen(this.pushServerPort, () =>
+        {
+            this.updateLog("Server listening on port: " + this.pushServerPort);
+        });
+
+        this.server.on('error', (err) =>
+        {
+            if (err.code === 'EADDRINUSE')
+            {
+                this.updateLog('Address in use, retrying...');
+                setTimeout(() =>
+                {
+                    this.server.close();
+                    this.server.listen(this.pushServerPort);
+                }, 1000);
+            }
+            else
+            {
+                this.updateLog(err.message, 0);
+            }
+        });
+
     }
+
     varToString(source)
     {
         try
