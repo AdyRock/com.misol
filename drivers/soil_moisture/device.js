@@ -63,8 +63,19 @@ class MyDevice extends Device
                 this.driver.trigger_measure_moisture_changed(this, moisture);
             }
 
+            var batteryType = this.getSetting( 'batteryType' );
             const batV = Number(gateway['soilbatt' + dd.meterNumber]);
-            let batP = (batV - 1.2) / (1.7 - 1.2) * 100;
+            var batP = 0;
+            
+            if (batteryType === '0')
+            {
+                batP = (batV - 0.9) / (1.7 - 0.9) * 100;
+            }
+            else
+            {
+                batP = (batV - 0.9) / (1.3 - 0.9) * 100;
+            }
+
             if (batP > 100)
             {
                 batP = 100;

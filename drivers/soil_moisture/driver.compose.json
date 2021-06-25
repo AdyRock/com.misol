@@ -25,6 +25,33 @@
             "template": "add_devices"
         }
     ],
+    "settings": [
+        {
+            "id": "batteryType",
+            "type": "dropdown",
+            "label": {
+                "en": "Battery Type"
+            },
+            "value": "0",
+            "hint": {
+                "en": "Specify the battery type for the correct % estimation. The setting will take affect on the next status update."
+            },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Non-rechargeable"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Rechargeable"
+                    }
+                }
+            ]
+        }
+    ],
     "images": {
         "small": "/drivers/soil_moisture/assets/images/small.png",
         "large": "/drivers/soil_moisture/assets/images/large.png"

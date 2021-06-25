@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.misol",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#FF7D4B",
@@ -114,8 +114,8 @@
         }
       ],
       "images": {
-        "small": "/drivers/pm25/assets/images/small.png",
-        "large": "/drivers/pm25/assets/images/large.png"
+        "small": "/drivers/lightning/assets/images/small.png",
+        "large": "/drivers/lightning/assets/images/large.png"
       },
       "id": "lightning"
     },
@@ -194,6 +194,33 @@
         {
           "id": "add_my_devices",
           "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "id": "batteryType",
+          "type": "dropdown",
+          "label": {
+            "en": "Battery Type"
+          },
+          "value": "0",
+          "hint": {
+            "en": "Specify the battery type for the correct % estimation. The setting will take affect on the next status update."
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Non-rechargeable"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Rechargeable"
+              }
+            }
+          ]
         }
       ],
       "images": {
@@ -312,8 +339,8 @@
         }
       ],
       "images": {
-        "small": "/drivers/gateway/assets/images/small.png",
-        "large": "/drivers/gateway/assets/images/large.png"
+        "small": "/drivers/weather_station/assets/images/small.png",
+        "large": "/drivers/weather_station/assets/images/large.png"
       },
       "id": "weather_station"
     }
