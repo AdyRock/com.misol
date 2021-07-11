@@ -770,13 +770,13 @@
         {
             "id": "measure_temperature.feelsLike_is_less",
             "title": {
-                "en": "Feels like temperature is !{{less|greater}} than"
+                "en": "Feels like temperature is !{{is|is not}} less than"
             },
             "hint": {
                 "en": "This Flow will continue if feels like temperature is/is not less than the set value."
             },
             "titleFormatted": {
-                "en": "The feels like temperature is !{{less|greater}} than [[value]]°C"
+                "en": "The feels like temperature is !{{is|is not}} less than [[value]]°C"
             },
             "args": [
                 {
@@ -824,13 +824,13 @@
         {
             "id": "measure_temperature.dewPoint_is_less",
             "title": {
-                "en": "Lightning strikes is !{{less|greater}} than"
+                "en": "Lightning strikes is !{{is|is not}} less than"
             },
             "hint": {
                 "en": "This Flow will continue if number of Lightning strikes is/is not less than the set value."
             },
             "titleFormatted": {
-                "en": "The Lightning strikes is !{{less|greater}} than [[value]]°C"
+                "en": "The Lightning strikes is !{{is|is not}} less than [[value]]°C"
             },
             "args": [
                 {
@@ -878,13 +878,13 @@
         {
             "id": "measure_rain.event_is_less",
             "title": {
-                "en": "Event rainfall is !{{less|greater}} than"
+                "en": "Event rainfall is !{{is|is not}} less than"
             },
             "hint": {
                 "en": "This Flow will continue if event rainfall is/is not less than the set value."
             },
             "titleFormatted": {
-                "en": "The event rainfall is !{{less|greater}} than [[value]]mm"
+                "en": "The event rainfall is !{{is|is not}} less than [[value]]mm"
             },
             "args": [
                 {
@@ -932,13 +932,13 @@
         {
             "id": "measure_rain.hourly_is_less",
             "title": {
-                "en": "Hourly rainfall is !{{less|greater}} than"
+                "en": "Hourly rainfall is !{{is|is not}} less than"
             },
             "hint": {
                 "en": "This Flow will continue if hourly rainfall is/is not less than the set value."
             },
             "titleFormatted": {
-                "en": "The hourly rainfall is !{{less|greater}} than [[value]]mm"
+                "en": "The hourly rainfall is !{{is|is not}} less than [[value]]mm"
             },
             "args": [
                 {
@@ -986,13 +986,13 @@
         {
             "id": "measure_rain.daily_is_less",
             "title": {
-                "en": "Daily rainfall is !{{less|greater}} than"
+                "en": "Daily rainfall is !{{is|is not}} less than"
             },
             "hint": {
                 "en": "This Flow will continue if daily rainfall is/is not less than the set value."
             },
             "titleFormatted": {
-                "en": "The daily rainfall is !{{less|greater}} than [[value]]mm"
+                "en": "The daily rainfall is !{{is|is not}} less than [[value]]mm"
             },
             "args": [
                 {
@@ -1040,13 +1040,13 @@
         {
             "id": "measure_rain.weekly_is_less",
             "title": {
-                "en": "Weekly rainfall is !{{less|greater}} than"
+                "en": "Weekly rainfall is !{{is|is not}} less than"
             },
             "hint": {
                 "en": "This Flow will continue if weekly rainfall is/is not less than the set value."
             },
             "titleFormatted": {
-                "en": "The weekly rainfall is !{{less|greater}} than [[value]]mm"
+                "en": "The weekly rainfall is !{{is|is not}} less than [[value]]mm"
             },
             "args": [
                 {
@@ -1094,13 +1094,13 @@
         {
             "id": "measure_rain.monthly_is_less",
             "title": {
-                "en": "Monthly rainfall is !{{less|greater}} than"
+                "en": "Monthly rainfall is !{{is|is not}} less than"
             },
             "hint": {
                 "en": "This Flow will continue if monthly rainfall is/is not less than the set value."
             },
             "titleFormatted": {
-                "en": "The monthly rainfall is !{{less|greater}} than [[value]]mm"
+                "en": "The monthly rainfall is !{{is|is not}} less than [[value]]mm"
             },
             "args": [
                 {
@@ -1148,13 +1148,13 @@
         {
             "id": "measure_rain.yearly_is_less",
             "title": {
-                "en": "Yearly rainfall is !{{less|greater}} than"
+                "en": "Yearly rainfall is !{{is|is not}} less than"
             },
             "hint": {
                 "en": "This Flow will continue if yearly rainfall is/is not less than the set value."
             },
             "titleFormatted": {
-                "en": "The yearly rainfall is !{{less|greater}} than [[value]]mm"
+                "en": "The yearly rainfall is !{{is|is not}} less than [[value]]mm"
             },
             "args": [
                 {
@@ -1202,13 +1202,13 @@
         {
             "id": "measure_rain.total_is_less",
             "title": {
-                "en": "Total rainfall is !{{less|greater}} than"
+                "en": "Total rainfall is !{{is|is not}} less than"
             },
             "hint": {
                 "en": "This Flow will continue if total rainfall is/is not less than the set value."
             },
             "titleFormatted": {
-                "en": "The total rainfall is !{{less|greater}} than [[value]]mm"
+                "en": "The total rainfall is !{{is|is not}} less than [[value]]mm"
             },
             "args": [
                 {

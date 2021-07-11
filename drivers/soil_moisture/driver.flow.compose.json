@@ -94,13 +94,13 @@
         {
             "id": "measure_moisture_is_less",
             "title": {
-                "en": "Soil moisture is !{{less|greater}} than"
+                "en": "Soil moisture is !{{is|is not}} less than"
             },
             "hint": {
                 "en": "This Flow will continue if soil moisture is/is not less than the set value."
             },
             "titleFormatted": {
-                "en": "The soil moisture is !{{less|greater}} than [[value]]%"
+                "en": "The soil moisture is !{{is|is not}} less than [[value]]%"
             },
             "args": [
                 {

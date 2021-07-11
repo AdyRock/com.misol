@@ -16,5 +16,8 @@
   },
   "0.1.5": {
     "en": "Updated battery percentage calculation for the soil moisture sensor and added an option to specify if the battery is type rechargeable."
+  },
+  "0.1.6": {
+    "en": "Max. number of Soil Moisture meters is now 8. Time format of lightning strike can now be selected in the device Advanced settings. Lightning distance units fixed. Lightning flows fixed"
   }
 }

@@ -11,7 +11,8 @@
     ],
     "energy": {
         "batteries": [
-            "AA", "AA"
+            "AA",
+            "AA"
         ]
     },
     "pair": [
@@ -25,6 +26,57 @@
         {
             "id": "add_my_devices",
             "template": "add_devices"
+        }
+    ],
+    "settings": [
+        {
+            "id": "timeFormat",
+            "type": "dropdown",
+            "label": {
+                "en": "Time Format",
+                "de": "Zeitformat",
+                "nl": "Tijd format",
+                "it": "Formato del Tempo"
+            },
+            "value": "mm_dd",
+            "hint": {
+                "en": "The format to show the time capabilities.",
+                "de": "Zeitformat das zur Anzeige genutzt werden soll.",
+                "nl": "Tijd format notatie mogelijkheden",
+                "it": "Il formato mosta capabilities del Tempo."
+            },
+            "values": [
+                {
+                    "id": "raw",
+                    "label": {
+                        "en": "Device"
+                    }
+                },
+                {
+                    "id": "time_stamp",
+                    "label": {
+                        "en": "Time stamp"
+                    }
+                },
+                {
+                    "id": "system",
+                    "label": {
+                        "en": "Local",
+                        "de": "Lokal",
+                        "nl": "Intern",
+                        "it": "Locale"
+                    }
+                },
+                {
+                    "id": "mm_dd",
+                    "label": {
+                        "en": "Short HH:MM mmm DD",
+                        "de": "Kurz HH:MM mmm DD",
+                        "nl": "Kort HH:MM mmm DD",
+                        "it": "Corto HH:MM mmm DD"
+                    }
+                }
+            ]
         }
     ],
     "images": {

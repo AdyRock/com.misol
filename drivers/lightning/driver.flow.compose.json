@@ -7,81 +7,12 @@
             },
             "tokens": [
                 {
-                    "name": "value",
+                    "name": "measure_lightning",
                     "title": {
                         "en": "Lightning Distance"
                     },
                     "type": "number",
-                    "example": 3
-                }
-            ]
-        },
-        {
-            "id": "measure_lightning_is_less",
-            "title": {
-                "en": "The Lightning distance becomes less than"
-            },
-            "titleFormatted": {
-                "en": "The Lightning distance becomes less than [[value]]%"
-            },
-            "tokens": [
-                {
-                    "name": "value",
-                    "title": {
-                        "en": "Lightning Distance"
-                    },
-                    "type": "number",
-                    "example": 3
-                }
-            ],
-            "args": [
-                {
-                    "type": "number",
-                    "name": "value",
-                    "min": 0,
-                    "max": 500,
-                    "step": 1,
-                    "placeholder": {
-                        "en": "Set a value"
-                    },
-                    "title": {
-                        "en": "Lightning Distance"
-                    }
-                }
-            ]
-        },
-        {
-            "id": "measure_lightning_is_greater",
-            "title": {
-                "en": "The Lightning distance becomes greater than"
-            },
-            "titleFormatted": {
-                "en": "The Lightning distance becomes greater than [[value]]%"
-            },
-            "tokens": [
-                {
-                    "name": "value",
-                    "title": {
-                        "en": "Lightning Distance"
-                    },
-                    "type": "number",
-                    "units": "%",
-                    "example": 3
-                }
-            ],
-            "args": [
-                {
-                    "type": "number",
-                    "name": "value",
-                    "min": 0,
-                    "max": 500,
-                    "step": 1,
-                    "placeholder": {
-                        "en": "Set a value"
-                    },
-                    "title": {
-                        "en": "Lightning Distance"
-                    }
+                    "example": 1.4
                 }
             ]
         },
@@ -92,81 +23,12 @@
             },
             "tokens": [
                 {
-                    "name": "value",
+                    "name": "measure_lightning_num",
                     "title": {
-                        "en": "Number of lightning strikes"
+                        "en": "Lightning Count"
                     },
                     "type": "number",
                     "example": 3
-                }
-            ]
-        },
-        {
-            "id": "measure_lightning_num_is_less",
-            "title": {
-                "en": "The number of lightning strikes becomes less than"
-            },
-            "titleFormatted": {
-                "en": "The number of lightning strikes becomes less than [[value]]%"
-            },
-            "tokens": [
-                {
-                    "name": "value",
-                    "title": {
-                        "en": "Lightning Strikes"
-                    },
-                    "type": "number",
-                    "example": 3
-                }
-            ],
-            "args": [
-                {
-                    "type": "number",
-                    "name": "value",
-                    "min": 0,
-                    "max": 500,
-                    "step": 1,
-                    "placeholder": {
-                        "en": "Set a value"
-                    },
-                    "title": {
-                        "en": "Lightning Strikes"
-                    }
-                }
-            ]
-        },
-        {
-            "id": "measure_lightning_num_is_greater",
-            "title": {
-                "en": "The number of lightning strikes becomes greater than"
-            },
-            "titleFormatted": {
-                "en": "The number of lightning strikes becomes greater than [[value]]%"
-            },
-            "tokens": [
-                {
-                    "name": "value",
-                    "title": {
-                        "en": "Lightning Strikes"
-                    },
-                    "type": "number",
-                    "units": "%",
-                    "example": 3
-                }
-            ],
-            "args": [
-                {
-                    "type": "number",
-                    "name": "value",
-                    "min": 0,
-                    "max": 500,
-                    "step": 1,
-                    "placeholder": {
-                        "en": "Set a value"
-                    },
-                    "title": {
-                        "en": "Lightning strikes"
-                    }
                 }
             ]
         }
@@ -175,20 +37,20 @@
         {
             "id": "measure_lightning_is_less",
             "title": {
-                "en": "Lightning Distance is !{{less|greater}} than"
+                "en": "Lightning Distance is !{{is|is not}} less than"
             },
             "hint": {
                 "en": "This Flow will continue if Lightning Distance is/is not less than the set value."
             },
             "titleFormatted": {
-                "en": "The Lightning Distance is !{{less|greater}} than [[value]]%"
+                "en": "The Lightning Distance !{{is|is not}} less than [[value]]km"
             },
             "args": [
                 {
                     "type": "number",
                     "name": "value",
                     "min": 0,
-                    "max": 500,
+                    "max": 50,
                     "step": 1,
                     "placeholder": {
                         "en": "Set a value"
@@ -208,14 +70,14 @@
                 "en": "This Flow will continue if Lightning Distance is/is not equal to the set value."
             },
             "titleFormatted": {
-                "en": "The Lightning Distance is !{{equal|not equal}} to [[value]]%"
+                "en": "The Lightning Distance is !{{equal|not equal}} to [[value]]km"
             },
             "args": [
                 {
                     "type": "number",
                     "name": "value",
                     "min": 0,
-                    "max": 500,
+                    "max": 50,
                     "step": 1,
                     "placeholder": {
                         "en": "Set a value"
@@ -229,20 +91,20 @@
         {
             "id": "measure_lightning_num_is_less",
             "title": {
-                "en": "Lightning strikes is !{{less|greater}} than"
+                "en": "Lightning strikes is !{{is|is not}} less than"
             },
             "hint": {
                 "en": "This Flow will continue if number of Lightning strikes is/is not less than the set value."
             },
             "titleFormatted": {
-                "en": "The Lightning strikes is !{{less|greater}} than [[value]]%"
+                "en": "The Lightning strikes is !{{is|is not}} less than [[value]]"
             },
             "args": [
                 {
                     "type": "number",
                     "name": "value",
                     "min": 0,
-                    "max": 500,
+                    "max": 50,
                     "step": 1,
                     "placeholder": {
                         "en": "Set a value"
@@ -262,14 +124,14 @@
                 "en": "This Flow will continue if Lightning strikes is/is not equal to the set value."
             },
             "titleFormatted": {
-                "en": "The Lightning strikes is !{{equal|not equal}} to [[value]]%"
+                "en": "The Lightning strikes is !{{equal|not equal}} to [[value]]"
             },
             "args": [
                 {
                     "type": "number",
                     "name": "value",
                     "min": 0,
-                    "max": 500,
+                    "max": 50,
                     "step": 1,
                     "placeholder": {
                         "en": "Set a value"

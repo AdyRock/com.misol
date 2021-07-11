@@ -54,7 +54,7 @@ class MyDriver extends Driver
         var devices = [];
         for (const gateway of this.homey.app.detectedGateways)
         {
-            for (var i = 1; i < 8; i++)
+            for (var i = 1; i <= 8; i++)
             {
                 const soilMeter = "soilmoisture" + i;
                 if (gateway[soilMeter])

@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.misol",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#FF7D4B",
@@ -111,6 +111,57 @@
         {
           "id": "add_my_devices",
           "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "id": "timeFormat",
+          "type": "dropdown",
+          "label": {
+            "en": "Time Format",
+            "de": "Zeitformat",
+            "nl": "Tijd format",
+            "it": "Formato del Tempo"
+          },
+          "value": "mm_dd",
+          "hint": {
+            "en": "The format to show the time capabilities.",
+            "de": "Zeitformat das zur Anzeige genutzt werden soll.",
+            "nl": "Tijd format notatie mogelijkheden",
+            "it": "Il formato mosta capabilities del Tempo."
+          },
+          "values": [
+            {
+              "id": "raw",
+              "label": {
+                "en": "Device"
+              }
+            },
+            {
+              "id": "time_stamp",
+              "label": {
+                "en": "Time stamp"
+              }
+            },
+            {
+              "id": "system",
+              "label": {
+                "en": "Local",
+                "de": "Lokal",
+                "nl": "Intern",
+                "it": "Locale"
+              }
+            },
+            {
+              "id": "mm_dd",
+              "label": {
+                "en": "Short HH:MM mmm DD",
+                "de": "Kurz HH:MM mmm DD",
+                "nl": "Kort HH:MM mmm DD",
+                "it": "Corto HH:MM mmm DD"
+              }
+            }
+          ]
         }
       ],
       "images": {
@@ -354,114 +405,12 @@
         },
         "tokens": [
           {
-            "name": "value",
+            "name": "measure_lightning",
             "title": {
               "en": "Lightning Distance"
             },
             "type": "number",
-            "example": 3
-          }
-        ],
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=lightning"
-          }
-        ]
-      },
-      {
-        "id": "measure_lightning_is_less",
-        "title": {
-          "en": "The Lightning distance becomes less than"
-        },
-        "titleFormatted": {
-          "en": "The Lightning distance becomes less than [[value]]%"
-        },
-        "tokens": [
-          {
-            "name": "value",
-            "title": {
-              "en": "Lightning Distance"
-            },
-            "type": "number",
-            "example": 3
-          }
-        ],
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=lightning"
-          },
-          {
-            "type": "number",
-            "name": "value",
-            "min": 0,
-            "max": 500,
-            "step": 1,
-            "placeholder": {
-              "en": "Set a value"
-            },
-            "title": {
-              "en": "Lightning Distance"
-            }
-          }
-        ]
-      },
-      {
-        "id": "measure_lightning_is_greater",
-        "title": {
-          "en": "The Lightning distance becomes greater than"
-        },
-        "titleFormatted": {
-          "en": "The Lightning distance becomes greater than [[value]]%"
-        },
-        "tokens": [
-          {
-            "name": "value",
-            "title": {
-              "en": "Lightning Distance"
-            },
-            "type": "number",
-            "units": "%",
-            "example": 3
-          }
-        ],
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=lightning"
-          },
-          {
-            "type": "number",
-            "name": "value",
-            "min": 0,
-            "max": 500,
-            "step": 1,
-            "placeholder": {
-              "en": "Set a value"
-            },
-            "title": {
-              "en": "Lightning Distance"
-            }
-          }
-        ]
-      },
-      {
-        "id": "measure_lightning_num_changed",
-        "title": {
-          "en": "Number of lightning strikes Changed"
-        },
-        "tokens": [
-          {
-            "name": "value",
-            "title": {
-              "en": "Number of lightning strikes"
-            },
-            "type": "number",
-            "example": 3
+            "example": 1.4
           }
         ],
         "args": [
@@ -473,18 +422,15 @@
         ]
       },
       {
-        "id": "measure_lightning_num_is_less",
+        "id": "measure_lightning_num_changed",
         "title": {
-          "en": "The number of lightning strikes becomes less than"
-        },
-        "titleFormatted": {
-          "en": "The number of lightning strikes becomes less than [[value]]%"
+          "en": "Number of lightning strikes Changed"
         },
         "tokens": [
           {
-            "name": "value",
+            "name": "measure_lightning_num",
             "title": {
-              "en": "Lightning Strikes"
+              "en": "Lightning Count"
             },
             "type": "number",
             "example": 3
@@ -495,59 +441,6 @@
             "type": "device",
             "name": "device",
             "filter": "driver_id=lightning"
-          },
-          {
-            "type": "number",
-            "name": "value",
-            "min": 0,
-            "max": 500,
-            "step": 1,
-            "placeholder": {
-              "en": "Set a value"
-            },
-            "title": {
-              "en": "Lightning Strikes"
-            }
-          }
-        ]
-      },
-      {
-        "id": "measure_lightning_num_is_greater",
-        "title": {
-          "en": "The number of lightning strikes becomes greater than"
-        },
-        "titleFormatted": {
-          "en": "The number of lightning strikes becomes greater than [[value]]%"
-        },
-        "tokens": [
-          {
-            "name": "value",
-            "title": {
-              "en": "Lightning Strikes"
-            },
-            "type": "number",
-            "units": "%",
-            "example": 3
-          }
-        ],
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=lightning"
-          },
-          {
-            "type": "number",
-            "name": "value",
-            "min": 0,
-            "max": 500,
-            "step": 1,
-            "placeholder": {
-              "en": "Set a value"
-            },
-            "title": {
-              "en": "Lightning strikes"
-            }
           }
         ]
       },
@@ -1894,13 +1787,13 @@
       {
         "id": "measure_lightning_is_less",
         "title": {
-          "en": "Lightning Distance is !{{less|greater}} than"
+          "en": "Lightning Distance is !{{is|is not}} less than"
         },
         "hint": {
           "en": "This Flow will continue if Lightning Distance is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The Lightning Distance is !{{less|greater}} than [[value]]%"
+          "en": "The Lightning Distance !{{is|is not}} less than [[value]]km"
         },
         "args": [
           {
@@ -1912,7 +1805,7 @@
             "type": "number",
             "name": "value",
             "min": 0,
-            "max": 500,
+            "max": 50,
             "step": 1,
             "placeholder": {
               "en": "Set a value"
@@ -1932,7 +1825,7 @@
           "en": "This Flow will continue if Lightning Distance is/is not equal to the set value."
         },
         "titleFormatted": {
-          "en": "The Lightning Distance is !{{equal|not equal}} to [[value]]%"
+          "en": "The Lightning Distance is !{{equal|not equal}} to [[value]]km"
         },
         "args": [
           {
@@ -1944,7 +1837,7 @@
             "type": "number",
             "name": "value",
             "min": 0,
-            "max": 500,
+            "max": 50,
             "step": 1,
             "placeholder": {
               "en": "Set a value"
@@ -1958,13 +1851,13 @@
       {
         "id": "measure_lightning_num_is_less",
         "title": {
-          "en": "Lightning strikes is !{{less|greater}} than"
+          "en": "Lightning strikes is !{{is|is not}} less than"
         },
         "hint": {
           "en": "This Flow will continue if number of Lightning strikes is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The Lightning strikes is !{{less|greater}} than [[value]]%"
+          "en": "The Lightning strikes is !{{is|is not}} less than [[value]]"
         },
         "args": [
           {
@@ -1976,7 +1869,7 @@
             "type": "number",
             "name": "value",
             "min": 0,
-            "max": 500,
+            "max": 50,
             "step": 1,
             "placeholder": {
               "en": "Set a value"
@@ -1996,7 +1889,7 @@
           "en": "This Flow will continue if Lightning strikes is/is not equal to the set value."
         },
         "titleFormatted": {
-          "en": "The Lightning strikes is !{{equal|not equal}} to [[value]]%"
+          "en": "The Lightning strikes is !{{equal|not equal}} to [[value]]"
         },
         "args": [
           {
@@ -2008,7 +1901,7 @@
             "type": "number",
             "name": "value",
             "min": 0,
-            "max": 500,
+            "max": 50,
             "step": 1,
             "placeholder": {
               "en": "Set a value"
@@ -2150,13 +2043,13 @@
       {
         "id": "measure_moisture_is_less",
         "title": {
-          "en": "Soil moisture is !{{less|greater}} than"
+          "en": "Soil moisture is !{{is|is not}} less than"
         },
         "hint": {
           "en": "This Flow will continue if soil moisture is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The soil moisture is !{{less|greater}} than [[value]]%"
+          "en": "The soil moisture is !{{is|is not}} less than [[value]]%"
         },
         "args": [
           {
@@ -2216,13 +2109,13 @@
       {
         "id": "measure_temperature.feelsLike_is_less",
         "title": {
-          "en": "Feels like temperature is !{{less|greater}} than"
+          "en": "Feels like temperature is !{{is|is not}} less than"
         },
         "hint": {
           "en": "This Flow will continue if feels like temperature is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The feels like temperature is !{{less|greater}} than [[value]]°C"
+          "en": "The feels like temperature is !{{is|is not}} less than [[value]]°C"
         },
         "args": [
           {
@@ -2280,13 +2173,13 @@
       {
         "id": "measure_temperature.dewPoint_is_less",
         "title": {
-          "en": "Lightning strikes is !{{less|greater}} than"
+          "en": "Lightning strikes is !{{is|is not}} less than"
         },
         "hint": {
           "en": "This Flow will continue if number of Lightning strikes is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The Lightning strikes is !{{less|greater}} than [[value]]°C"
+          "en": "The Lightning strikes is !{{is|is not}} less than [[value]]°C"
         },
         "args": [
           {
@@ -2344,13 +2237,13 @@
       {
         "id": "measure_rain.event_is_less",
         "title": {
-          "en": "Event rainfall is !{{less|greater}} than"
+          "en": "Event rainfall is !{{is|is not}} less than"
         },
         "hint": {
           "en": "This Flow will continue if event rainfall is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The event rainfall is !{{less|greater}} than [[value]]mm"
+          "en": "The event rainfall is !{{is|is not}} less than [[value]]mm"
         },
         "args": [
           {
@@ -2408,13 +2301,13 @@
       {
         "id": "measure_rain.hourly_is_less",
         "title": {
-          "en": "Hourly rainfall is !{{less|greater}} than"
+          "en": "Hourly rainfall is !{{is|is not}} less than"
         },
         "hint": {
           "en": "This Flow will continue if hourly rainfall is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The hourly rainfall is !{{less|greater}} than [[value]]mm"
+          "en": "The hourly rainfall is !{{is|is not}} less than [[value]]mm"
         },
         "args": [
           {
@@ -2472,13 +2365,13 @@
       {
         "id": "measure_rain.daily_is_less",
         "title": {
-          "en": "Daily rainfall is !{{less|greater}} than"
+          "en": "Daily rainfall is !{{is|is not}} less than"
         },
         "hint": {
           "en": "This Flow will continue if daily rainfall is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The daily rainfall is !{{less|greater}} than [[value]]mm"
+          "en": "The daily rainfall is !{{is|is not}} less than [[value]]mm"
         },
         "args": [
           {
@@ -2536,13 +2429,13 @@
       {
         "id": "measure_rain.weekly_is_less",
         "title": {
-          "en": "Weekly rainfall is !{{less|greater}} than"
+          "en": "Weekly rainfall is !{{is|is not}} less than"
         },
         "hint": {
           "en": "This Flow will continue if weekly rainfall is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The weekly rainfall is !{{less|greater}} than [[value]]mm"
+          "en": "The weekly rainfall is !{{is|is not}} less than [[value]]mm"
         },
         "args": [
           {
@@ -2600,13 +2493,13 @@
       {
         "id": "measure_rain.monthly_is_less",
         "title": {
-          "en": "Monthly rainfall is !{{less|greater}} than"
+          "en": "Monthly rainfall is !{{is|is not}} less than"
         },
         "hint": {
           "en": "This Flow will continue if monthly rainfall is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The monthly rainfall is !{{less|greater}} than [[value]]mm"
+          "en": "The monthly rainfall is !{{is|is not}} less than [[value]]mm"
         },
         "args": [
           {
@@ -2664,13 +2557,13 @@
       {
         "id": "measure_rain.yearly_is_less",
         "title": {
-          "en": "Yearly rainfall is !{{less|greater}} than"
+          "en": "Yearly rainfall is !{{is|is not}} less than"
         },
         "hint": {
           "en": "This Flow will continue if yearly rainfall is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The yearly rainfall is !{{less|greater}} than [[value]]mm"
+          "en": "The yearly rainfall is !{{is|is not}} less than [[value]]mm"
         },
         "args": [
           {
@@ -2728,13 +2621,13 @@
       {
         "id": "measure_rain.total_is_less",
         "title": {
-          "en": "Total rainfall is !{{less|greater}} than"
+          "en": "Total rainfall is !{{is|is not}} less than"
         },
         "hint": {
           "en": "This Flow will continue if total rainfall is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The total rainfall is !{{less|greater}} than [[value]]mm"
+          "en": "The total rainfall is !{{is|is not}} less than [[value]]mm"
         },
         "args": [
           {
