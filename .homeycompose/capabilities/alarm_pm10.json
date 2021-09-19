@@ -1,0 +1,20 @@
+{
+    "type": "boolean",
+    "title": {
+      "en": "PM10 alarm"
+    },
+    "desc": {
+      "en": "PM10 alarm"
+    },
+    "insights": true,
+    "insightsTitleTrue": {
+      "en": "PM10 alarm tuned om"
+    },
+    "insightsTitleFalse": {
+      "en": "PM10 alarm turned off"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "icon": "/assets/dust.svg"
+  }

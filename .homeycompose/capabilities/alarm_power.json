@@ -1,0 +1,20 @@
+{
+    "type": "boolean",
+    "title": {
+      "en": "Power off alarm"
+    },
+    "desc": {
+      "en": "Power off alarm"
+    },
+    "insights": true,
+    "insightsTitleTrue": {
+      "en": "Power turned off"
+    },
+    "insightsTitleFalse": {
+      "en": "Power turned on"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "icon": "/assets/power_plug.svg"
+  }

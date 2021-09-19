@@ -1,0 +1,421 @@
+{
+    "triggers": [
+        {
+            "id": "measure_pm10_changed",
+            "title": {
+                "en": "The PM10 level changed"
+            },
+            "tokens": [
+                {
+                    "name": "measure_pm10",
+                    "title": {
+                        "en": "PM10 level"
+                    },
+                    "type": "number",
+                    "example": 3
+                }
+            ]
+        },
+        {
+            "id": "measure_pm10.avg_changed",
+            "title": {
+                "en": "The average PM10 level changed"
+            },
+            "tokens": [
+                {
+                    "name": "measure_pm10.avg",
+                    "title": {
+                        "en": "PM10 level"
+                    },
+                    "type": "number",
+                    "example": 3
+                }
+            ]
+        },
+        {
+            "id": "measure_aq.pm10_changed",
+            "title": {
+                "en": "The PM10 air quality has become"
+            },
+            "titleFormatted": {
+                "en": "The PM10 air quality has become [[compare_type]] [[measure_aq]]"
+            },
+            "args": [
+                {
+                    "type": "dropdown",
+                    "name": "compare_type",
+                    "title": {
+                        "en": "Comparison type"
+                    },
+                    "values": [
+                        {
+                            "id": "<=",
+                            "label": {
+                                "en": "better than or equal to"
+                            }
+                        },
+                        {
+                            "id": "==",
+                            "label": {
+                                "en": "equal to"
+                            }
+                        },
+                        {
+                            "id": ">=",
+                            "label": {
+                                "en": "worse than or equal to"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "dropdown",
+                    "name": "measure_aq",
+                    "title": {
+                        "en": "Minimum Air quality"
+                    },
+                    "values": [
+                        {
+                            "id": "0",
+                            "label": {
+                                "en": "Good"
+                            }
+                        },
+                        {
+                            "id": "1",
+                            "label": {
+                                "en": "Moderate"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "label": {
+                                "en": "Slightly Unhealthy"
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "label": {
+                                "en": "Unhealthy"
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "label": {
+                                "en": "Very Unhealthy"
+                            }
+                        },
+                        {
+                            "id": "5",
+                            "label": {
+                                "en": "Hazardous"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "tokens": [
+                {
+                    "name": "measure_aq.pm10_name",
+                    "type": "string",
+                    "title": {
+                        "en": "PM10 Air Quality"
+                    },
+                    "example": {
+                        "en": "Moderate"
+                    }
+                },
+                {
+                    "name": "measure_aq_item",
+                    "type": "number",
+                    "title": {
+                        "en": "Air Quality item number"
+                    },
+                    "example": {
+                        "en": "0 to 5 = Good to Hazardous"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi.pm10_changed",
+            "title": {
+                "en": "The PM10 air quality index has changed"
+            },
+            "tokens": [
+                {
+                    "name": "measure_aqi",
+                    "title": {
+                        "en": "Air quality index"
+                    },
+                    "type": "number",
+                    "example": 3
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi.pm10_is_less",
+            "title": {
+                "en": "The PM10 air quality index becomes less than"
+            },
+            "titleFormatted": {
+                "en": "The PM10 air quality index becomes less than [[measure_aqi]]%"
+            },
+            "tokens": [
+                {
+                    "name": "measure_aqi",
+                    "title": {
+                        "en": "Air quality index"
+                    },
+                    "type": "number",
+                    "example": 3
+                }
+            ],
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Air quality index"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi.pm10_is_greater",
+            "title": {
+                "en": "The PM10 air quality index becomes greater than"
+            },
+            "titleFormatted": {
+                "en": "The PM10 air quality index becomes greater than [[measure_aqi]]%"
+            },
+            "tokens": [
+                {
+                    "name": "measure_aqi",
+                    "title": {
+                        "en": "Air quality index"
+                    },
+                    "type": "number",
+                    "units": "%",
+                    "example": 3
+                }
+            ],
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Air quality index"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi.pm10.avg_changed",
+            "title": {
+                "en": "The PM10 average air quality index has changed"
+            },
+            "tokens": [
+                {
+                    "name": "measure_aqi.avg",
+                    "title": {
+                        "en": "Average Air quality index"
+                    },
+                    "type": "number",
+                    "example": 3
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi.pm10.avg_is_less",
+            "title": {
+                "en": "The PM10 average air quality index becomes less than"
+            },
+            "titleFormatted": {
+                "en": "The PM10 average air quality index becomes less than [[measure_aqi.avg]]%"
+            },
+            "tokens": [
+                {
+                    "name": "measure_aqi.avg",
+                    "title": {
+                        "en": "Average Air quality index"
+                    },
+                    "type": "number",
+                    "example": 3
+                }
+            ],
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi.avg",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Average Air quality index"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi.pm10.avg_is_greater",
+            "title": {
+                "en": "The PM10 air quality index becomes greater than"
+            },
+            "titleFormatted": {
+                "en": "The PM10 air quality index becomes greater than [[measure_aqi.avg]]%"
+            },
+            "tokens": [
+                {
+                    "name": "measure_aqi.avg",
+                    "title": {
+                        "en": "Average Air quality index"
+                    },
+                    "type": "number",
+                    "units": "%",
+                    "example": 3
+                }
+            ],
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi.avg",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Average Air quality index"
+                    }
+                }
+            ]
+        }
+    ],
+    "conditions": [
+        {
+            "id": "measure_aqi.pm10_is_less",
+            "title": {
+                "en": "Air PM10 quality index is !{{less|greater}} than"
+            },
+            "hint": {
+                "en": "This Flow will continue if PM10 air quality index is/is not less than the set value."
+            },
+            "titleFormatted": {
+                "en": "The PM10 air quality index is !{{less|greater}} than [[measure_aqi]]%"
+            },
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Air quality index"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi.pm10_equal",
+            "title": {
+                "en": "Air quality index is !{{equal|not equal}} to"
+            },
+            "hint": {
+                "en": "This Flow will continue if PM10 air quality index is/is not equal to the set value."
+            },
+            "titleFormatted": {
+                "en": "The PM10 air quality index is !{{equal|not equal}} to [[measure_aqi]]%"
+            },
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Air quality index"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi.pm10.avg_is_less",
+            "title": {
+                "en": "Average PM10 Air quality index is !{{less|greater}} than"
+            },
+            "hint": {
+                "en": "This Flow will continue if average PM10 air quality index is/is not less than the set value."
+            },
+            "titleFormatted": {
+                "en": "The average PM10 air quality index is !{{less|greater}} than [[measure_aqi.avg]]%"
+            },
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi.avg",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Average Air quality index"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_aqi.pm10.avg_equal",
+            "title": {
+                "en": "Average PM10 Air quality index is !{{equal|not equal}} to"
+            },
+            "hint": {
+                "en": "This Flow will continue if average PM10 air quality index is/is not equal to the set value."
+            },
+            "titleFormatted": {
+                "en": "The average PM10 air quality index is !{{equal|not equal}} to [[measure_aqi.avg]]%"
+            },
+            "args": [
+                {
+                    "type": "number",
+                    "name": "measure_aqi.avg",
+                    "min": 0,
+                    "max": 500,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value"
+                    },
+                    "title": {
+                        "en": "Average Air quality index"
+                    }
+                }
+            ]
+        }
+    ]
+}

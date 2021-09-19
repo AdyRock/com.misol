@@ -1,0 +1,39 @@
+{
+    "id": "measure_aqi.avg_is_less",
+    "title": {
+        "en": "The PM2.5 average air quality index becomes less than"
+    },
+    "titleFormatted": {
+        "en": "The PM2.5 average air quality index becomes less than [[measure_aqi.avg]]%"
+    },
+    "tokens": [
+        {
+            "name": "measure_aqi.avg",
+            "title": {
+                "en": "Average Air quality index"
+            },
+            "type": "number",
+            "example": 3
+        }
+    ],
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm25|pm10"
+        },
+        {
+            "type": "number",
+            "name": "measure_aqi.avg",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+                "en": "Set a value"
+            },
+            "title": {
+                "en": "Average Air quality index"
+            }
+        }
+    ]
+}

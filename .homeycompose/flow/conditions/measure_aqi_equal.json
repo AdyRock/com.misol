@@ -1,0 +1,31 @@
+{
+    "title": {
+        "en": "Air quality index is !{{equal|not equal}} to"
+    },
+    "hint": {
+        "en": "This Flow will continue if air quality index is/is not equal to the set value."
+    },
+    "titleFormatted": {
+        "en": "The air quality index is !{{equal|not equal}} to [[measure_aqi]]%"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm25|pm10"
+        },
+        {
+            "type": "number",
+            "name": "measure_aqi",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+                "en": "Set a value"
+            },
+            "title": {
+                "en": "Air quality index"
+            }
+        }
+    ]
+}

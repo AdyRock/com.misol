@@ -1,0 +1,9 @@
+{
+    "type": "string",
+    "title": {
+        "en": "CO2 Quality"
+    },
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/co2.svg"
+}

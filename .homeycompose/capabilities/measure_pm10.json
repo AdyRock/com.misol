@@ -1,0 +1,13 @@
+{
+    "type": "number",
+    "title": {
+        "en": "PM10"
+    },
+    "units": {
+        "en": "μg/m³"
+    },
+    "getable": true,
+    "setable": false,
+    "insights": true,
+    "icon": "/assets/dust.svg"
+}

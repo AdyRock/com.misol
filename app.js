@@ -247,6 +247,35 @@ class MyApp extends Homey.App
             let value = args.device.getCapabilityValue('measure_aqi.avg');
             return value === args.value;
         });
+
+        // PM10 conditions
+        let measure_aqi10_is_lessCondition = this.homey.flow.getConditionCard('measure_aqi.pm10_is_less');
+        measure_aqi10_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.device.getCapabilityValue('measure_aqi.pm10');
+            return value < args.value;
+        });
+
+        let measure_aqi10_equalCondition = this.homey.flow.getConditionCard('measure_aqi.pm10_equal');
+        measure_aqi10_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.device.getCapabilityValue('measure_aqi.pm10');
+            return value === args.value;
+        });
+
+        let measure_aqi10_avg_is_lessCondition = this.homey.flow.getConditionCard('measure_aqi.pm10.avg_is_less');
+        measure_aqi10_avg_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.device.getCapabilityValue('measure_aqi.pm10.avg');
+            return value < args.value;
+        });
+
+        let measure_aqi10_avg_equalCondition = this.homey.flow.getConditionCard('measure_aqi.pm10.avg_equal');
+        measure_aqi10_avg_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.device.getCapabilityValue('measure_aqi.pm10.avg');
+            return value === args.value;
+        });
     }
 
     async runsListener()

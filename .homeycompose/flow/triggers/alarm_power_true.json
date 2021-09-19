@@ -1,0 +1,12 @@
+{
+    "title": {
+        "en": "The power turned off"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm10"
+        }
+    ]
+}

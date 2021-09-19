@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.misol",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#FF7D4B",
@@ -53,410 +53,72 @@
       "path": "/sendLog/"
     }
   },
-  "drivers": [
-    {
-      "name": {
-        "en": "Gateway"
-      },
-      "class": "other",
-      "capabilities": [
-        "measure_humidity",
-        "measure_pressure",
-        "measure_temperature"
-      ],
-      "pair": [
-        {
-          "id": "list_my_devices",
-          "template": "list_devices",
-          "navigation": {
-            "next": "add_my_devices"
-          }
-        },
-        {
-          "id": "add_my_devices",
-          "template": "add_devices"
-        }
-      ],
-      "images": {
-        "small": "/drivers/gateway/assets/images/small.png",
-        "large": "/drivers/gateway/assets/images/large.png"
-      },
-      "id": "gateway"
-    },
-    {
-      "name": {
-        "en": "Lightning Detector"
-      },
-      "class": "sensor",
-      "capabilities": [
-        "measure_lightning",
-        "measure_lightning_num",
-        "measure_lightning_time",
-        "measure_battery"
-      ],
-      "energy": {
-        "batteries": [
-          "AA",
-          "AA"
-        ]
-      },
-      "pair": [
-        {
-          "id": "list_my_devices",
-          "template": "list_devices",
-          "navigation": {
-            "next": "add_my_devices"
-          }
-        },
-        {
-          "id": "add_my_devices",
-          "template": "add_devices"
-        }
-      ],
-      "settings": [
-        {
-          "id": "timeFormat",
-          "type": "dropdown",
-          "label": {
-            "en": "Time Format",
-            "de": "Zeitformat",
-            "nl": "Tijd format",
-            "it": "Formato del Tempo"
-          },
-          "value": "mm_dd",
-          "hint": {
-            "en": "The format to show the time capabilities.",
-            "de": "Zeitformat das zur Anzeige genutzt werden soll.",
-            "nl": "Tijd format notatie mogelijkheden",
-            "it": "Il formato mosta capabilities del Tempo."
-          },
-          "values": [
-            {
-              "id": "raw",
-              "label": {
-                "en": "Device"
-              }
-            },
-            {
-              "id": "time_stamp",
-              "label": {
-                "en": "Time stamp"
-              }
-            },
-            {
-              "id": "system",
-              "label": {
-                "en": "Local",
-                "de": "Lokal",
-                "nl": "Intern",
-                "it": "Locale"
-              }
-            },
-            {
-              "id": "mm_dd",
-              "label": {
-                "en": "Short HH:MM mmm DD",
-                "de": "Kurz HH:MM mmm DD",
-                "nl": "Kort HH:MM mmm DD",
-                "it": "Corto HH:MM mmm DD"
-              }
-            }
-          ]
-        }
-      ],
-      "images": {
-        "small": "/drivers/lightning/assets/images/small.png",
-        "large": "/drivers/lightning/assets/images/large.png"
-      },
-      "id": "lightning"
-    },
-    {
-      "name": {
-        "en": "PM25 Meter"
-      },
-      "class": "sensor",
-      "capabilities": [
-        "measure_pm25",
-        "measure_pm25.avg",
-        "measure_aqi",
-        "measure_aqi.avg",
-        "measure_aq",
-        "measure_aq.avg",
-        "measure_battery"
-      ],
-      "capabilitiesOptions": {
-        "measure_pm25.avg": {
-          "title": "PM2.5 Avg 24h"
-        },
-        "measure_aqi.avg": {
-          "title": "Air Quality Index Avg 24h"
-        },
-        "measure_aq.avg": {
-          "title": "Air Quality Avg 24h"
-        }
-      },
-      "energy": {
-        "batteries": [
-          "AA",
-          "AA"
-        ]
-      },
-      "pair": [
-        {
-          "id": "list_my_devices",
-          "template": "list_devices",
-          "navigation": {
-            "next": "add_my_devices"
-          }
-        },
-        {
-          "id": "add_my_devices",
-          "template": "add_devices"
-        }
-      ],
-      "images": {
-        "small": "/drivers/pm25/assets/images/small.png",
-        "large": "/drivers/pm25/assets/images/large.png"
-      },
-      "id": "pm25"
-    },
-    {
-      "name": {
-        "en": "Soil Moisture"
-      },
-      "class": "sensor",
-      "capabilities": [
-        "measure_battery",
-        "measure_moisture"
-      ],
-      "energy": {
-        "batteries": [
-          "AA"
-        ]
-      },
-      "pair": [
-        {
-          "id": "list_my_devices",
-          "template": "list_devices",
-          "navigation": {
-            "next": "add_my_devices"
-          }
-        },
-        {
-          "id": "add_my_devices",
-          "template": "add_devices"
-        }
-      ],
-      "settings": [
-        {
-          "id": "batteryType",
-          "type": "dropdown",
-          "label": {
-            "en": "Battery Type"
-          },
-          "value": "0",
-          "hint": {
-            "en": "Specify the battery type for the correct % estimation. The setting will take affect on the next status update."
-          },
-          "values": [
-            {
-              "id": "0",
-              "label": {
-                "en": "Non-rechargeable"
-              }
-            },
-            {
-              "id": "1",
-              "label": {
-                "en": "Rechargeable"
-              }
-            }
-          ]
-        }
-      ],
-      "images": {
-        "small": "/drivers/soil_moisture/assets/images/small.png",
-        "large": "/drivers/soil_moisture/assets/images/large.png"
-      },
-      "id": "soil_moisture"
-    },
-    {
-      "name": {
-        "en": "Weather Station"
-      },
-      "class": "other",
-      "capabilities": [
-        "measure_temperature",
-        "measure_humidity",
-        "measure_temperature.feelsLike",
-        "measure_temperature.dewPoint",
-        "measure_pressure",
-        "measure_wind_angle",
-        "measure_wind_strength",
-        "measure_gust_strength",
-        "measure_gust_strength.daily",
-        "measure_radiation",
-        "measure_ultraviolet",
-        "measure_rain",
-        "measure_rain.event",
-        "measure_rain.hourly",
-        "measure_rain.daily",
-        "measure_rain.weekly",
-        "measure_rain.monthly",
-        "measure_rain.yearly",
-        "measure_rain.total",
-        "alarm_battery"
-      ],
-      "capabilitiesOptions": {
-        "measure_gust_strength.daily": {
-          "title": {
-            "en": "Max Gust Strength"
-          }
-        },
-        "measure_temperature": {
-          "decimals": 1
-        },
-        "measure_temperature.feelsLike": {
-          "title": {
-            "en": "Feels Like",
-            "nl": "Voelt als",
-            "de": "Gefühlte Temperatur"
-          },
-          "decimals": 1
-        },
-        "measure_temperature.dewPoint": {
-          "title": {
-            "en": "Dew point",
-            "nl": "Dauwpunt",
-            "de": "Taupunkt"
-          },
-          "decimals": 1
-        },
-        "measure_rain": {
-          "title": {
-            "en": "Rain Rate"
-          },
-          "units": {
-            "en": "mm/hr"
-          }
-        },
-        "measure_rain.event": {
-          "title": {
-            "en": "Rain Event"
-          }
-        },
-        "measure_rain.hourly": {
-          "title": {
-            "en": "Rain Hourly"
-          }
-        },
-        "measure_rain.daily": {
-          "title": {
-            "en": "Rain daily"
-          }
-        },
-        "measure_rain.weekly": {
-          "title": {
-            "en": "Rain weekly"
-          }
-        },
-        "measure_rain.monthly": {
-          "title": {
-            "en": "Rain monthly"
-          }
-        },
-        "measure_rain.yearly": {
-          "title": {
-            "en": "Rain yearly"
-          }
-        },
-        "measure_rain.total": {
-          "title": {
-            "en": "Rain Total"
-          }
-        }
-      },
-      "pair": [
-        {
-          "id": "list_my_devices",
-          "template": "list_devices",
-          "navigation": {
-            "next": "add_my_devices"
-          }
-        },
-        {
-          "id": "add_my_devices",
-          "template": "add_devices"
-        }
-      ],
-      "images": {
-        "small": "/drivers/weather_station/assets/images/small.png",
-        "large": "/drivers/weather_station/assets/images/large.png"
-      },
-      "id": "weather_station"
-    }
-  ],
   "flow": {
     "triggers": [
       {
-        "id": "measure_lightning_changed",
         "title": {
-          "en": "Lightning Distance Changed"
+          "en": "The PM10 alarm turned off"
         },
-        "tokens": [
-          {
-            "name": "measure_lightning",
-            "title": {
-              "en": "Lightning Distance"
-            },
-            "type": "number",
-            "example": 1.4
-          }
-        ],
         "args": [
           {
-            "type": "device",
             "name": "device",
-            "filter": "driver_id=lightning"
-          }
-        ]
-      },
-      {
-        "id": "measure_lightning_num_changed",
-        "title": {
-          "en": "Number of lightning strikes Changed"
-        },
-        "tokens": [
-          {
-            "name": "measure_lightning_num",
-            "title": {
-              "en": "Lightning Count"
-            },
-            "type": "number",
-            "example": 3
+            "type": "device",
+            "filter": "driver_id=pm10"
           }
         ],
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=lightning"
-          }
-        ]
+        "id": "alarm_pm10_false"
       },
       {
-        "id": "measure_aq_changed",
         "title": {
-          "en": "The air quality has become"
+          "en": "The PM10 alarm turned on"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm10"
+          }
+        ],
+        "id": "alarm_pm10_true"
+      },
+      {
+        "title": {
+          "en": "The power turned on"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm10"
+          }
+        ],
+        "id": "alarm_power_false"
+      },
+      {
+        "title": {
+          "en": "The power turned off"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm10"
+          }
+        ],
+        "id": "alarm_power_true"
+      },
+      {
+        "title": {
+          "en": "The PM2.5 air quality has become"
         },
         "titleFormatted": {
-          "en": "The air quality has become [[compare_type]] [[measure_aq]]"
+          "en": "The PM2.5 air quality has become [[compare_type]] [[measure_aq]]"
         },
         "args": [
           {
-            "type": "device",
             "name": "device",
-            "filter": "driver_id=pm25"
+            "type": "device",
+            "filter": "driver_id=pm25|pm10"
           },
           {
             "type": "dropdown",
@@ -536,7 +198,524 @@
             "name": "measure_aq_name",
             "type": "string",
             "title": {
-              "en": "Air Quality"
+              "en": "PM2.5 Air Quality"
+            },
+            "example": {
+              "en": "Moderate"
+            }
+          },
+          {
+            "name": "measure_aq_item",
+            "type": "number",
+            "title": {
+              "en": "Air Quality item number"
+            },
+            "example": {
+              "en": "0 to 5 = Good to Hazardous"
+            }
+          }
+        ],
+        "id": "measure_aq_changed"
+      },
+      {
+        "title": {
+          "en": "The PM2.5 air quality index has changed"
+        },
+        "tokens": [
+          {
+            "name": "measure_aqi",
+            "title": {
+              "en": "Air quality index"
+            },
+            "type": "number",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm25|pm10"
+          }
+        ],
+        "id": "measure_aqi_changed"
+      },
+      {
+        "title": {
+          "en": "The PM2.5 air quality index becomes greater than"
+        },
+        "titleFormatted": {
+          "en": "The PM2.5 air quality index becomes greater than [[measure_aqi]]%"
+        },
+        "tokens": [
+          {
+            "name": "measure_aqi",
+            "title": {
+              "en": "Air quality index"
+            },
+            "type": "number",
+            "units": "%",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm25|pm10"
+          },
+          {
+            "type": "number",
+            "name": "measure_aqi",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Air quality index"
+            }
+          }
+        ],
+        "id": "measure_aqi_is_greater"
+      },
+      {
+        "title": {
+          "en": "The PM2.5 air quality index becomes less than"
+        },
+        "titleFormatted": {
+          "en": "The PM2.5 air quality index becomes less than [[measure_aqi]]%"
+        },
+        "tokens": [
+          {
+            "name": "measure_aqi",
+            "title": {
+              "en": "Air quality index"
+            },
+            "type": "number",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm25|pm10"
+          },
+          {
+            "type": "number",
+            "name": "measure_aqi",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Air quality index"
+            }
+          }
+        ],
+        "id": "measure_aqi_is_less"
+      },
+      {
+        "title": {
+          "en": "The PM2.5 average air quality index has changed"
+        },
+        "tokens": [
+          {
+            "name": "measure_aqi.avg",
+            "title": {
+              "en": "Average Air quality index"
+            },
+            "type": "number",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm25|pm10"
+          }
+        ],
+        "id": "measure_aqi.avg_changed"
+      },
+      {
+        "title": {
+          "en": "The PM2.5 air quality index becomes greater than"
+        },
+        "titleFormatted": {
+          "en": "The PM2.5 air quality index becomes greater than [[measure_aqi.avg]]%"
+        },
+        "tokens": [
+          {
+            "name": "measure_aqi.avg",
+            "title": {
+              "en": "Average Air quality index"
+            },
+            "type": "number",
+            "units": "%",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm25|pm10"
+          },
+          {
+            "type": "number",
+            "name": "measure_aqi.avg",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Average Air quality index"
+            }
+          }
+        ],
+        "id": "measure_aqi.avg_is_greater"
+      },
+      {
+        "id": "measure_aqi.avg_is_less",
+        "title": {
+          "en": "The PM2.5 average air quality index becomes less than"
+        },
+        "titleFormatted": {
+          "en": "The PM2.5 average air quality index becomes less than [[measure_aqi.avg]]%"
+        },
+        "tokens": [
+          {
+            "name": "measure_aqi.avg",
+            "title": {
+              "en": "Average Air quality index"
+            },
+            "type": "number",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm25|pm10"
+          },
+          {
+            "type": "number",
+            "name": "measure_aqi.avg",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Average Air quality index"
+            }
+          }
+        ]
+      },
+      {
+        "title": {
+          "en": "The CO2 quality has become"
+        },
+        "titleFormatted": {
+          "en": "The CO2 air quality has become [[compare_type]] [[measure_aq]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm10"
+          },
+          {
+            "type": "dropdown",
+            "name": "compare_type",
+            "title": {
+              "en": "Comparison type"
+            },
+            "values": [
+              {
+                "id": "<=",
+                "label": {
+                  "en": "better than or equal to"
+                }
+              },
+              {
+                "id": "==",
+                "label": {
+                  "en": "equal to"
+                }
+              },
+              {
+                "id": ">=",
+                "label": {
+                  "en": "worse than or equal to"
+                }
+              }
+            ]
+          },
+          {
+            "type": "dropdown",
+            "name": "measure_aq",
+            "title": {
+              "en": "Minimum CO2 quality"
+            },
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Good"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Moderate"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Slightly Unhealthy"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Unhealthy"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Very Unhealthy"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "Hazardous"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_aq_name",
+            "type": "string",
+            "title": {
+              "en": "CO2 Quality"
+            },
+            "example": {
+              "en": "Moderate"
+            }
+          },
+          {
+            "name": "measure_aq_item",
+            "type": "number",
+            "title": {
+              "en": "CO2 Quality item number"
+            },
+            "example": {
+              "en": "0 to 5 = Good to Hazardous"
+            }
+          }
+        ],
+        "id": "measure_co2q_changed"
+      },
+      {
+        "id": "measure_lightning_changed",
+        "title": {
+          "en": "Lightning Distance Changed"
+        },
+        "tokens": [
+          {
+            "name": "measure_lightning",
+            "title": {
+              "en": "Lightning Distance"
+            },
+            "type": "number",
+            "example": 1.4
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lightning"
+          }
+        ]
+      },
+      {
+        "id": "measure_lightning_num_changed",
+        "title": {
+          "en": "Number of lightning strikes Changed"
+        },
+        "tokens": [
+          {
+            "name": "measure_lightning_num",
+            "title": {
+              "en": "Lightning Count"
+            },
+            "type": "number",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lightning"
+          }
+        ]
+      },
+      {
+        "id": "measure_pm10_changed",
+        "title": {
+          "en": "The PM10 level changed"
+        },
+        "tokens": [
+          {
+            "name": "measure_pm10",
+            "title": {
+              "en": "PM10 level"
+            },
+            "type": "number",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=pm10"
+          }
+        ]
+      },
+      {
+        "id": "measure_pm10.avg_changed",
+        "title": {
+          "en": "The average PM10 level changed"
+        },
+        "tokens": [
+          {
+            "name": "measure_pm10.avg",
+            "title": {
+              "en": "PM10 level"
+            },
+            "type": "number",
+            "example": 3
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=pm10"
+          }
+        ]
+      },
+      {
+        "id": "measure_aq.pm10_changed",
+        "title": {
+          "en": "The PM10 air quality has become"
+        },
+        "titleFormatted": {
+          "en": "The PM10 air quality has become [[compare_type]] [[measure_aq]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=pm10"
+          },
+          {
+            "type": "dropdown",
+            "name": "compare_type",
+            "title": {
+              "en": "Comparison type"
+            },
+            "values": [
+              {
+                "id": "<=",
+                "label": {
+                  "en": "better than or equal to"
+                }
+              },
+              {
+                "id": "==",
+                "label": {
+                  "en": "equal to"
+                }
+              },
+              {
+                "id": ">=",
+                "label": {
+                  "en": "worse than or equal to"
+                }
+              }
+            ]
+          },
+          {
+            "type": "dropdown",
+            "name": "measure_aq",
+            "title": {
+              "en": "Minimum Air quality"
+            },
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Good"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Moderate"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Slightly Unhealthy"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Unhealthy"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Very Unhealthy"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "Hazardous"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_aq.pm10_name",
+            "type": "string",
+            "title": {
+              "en": "PM10 Air Quality"
             },
             "example": {
               "en": "Moderate"
@@ -555,9 +734,9 @@
         ]
       },
       {
-        "id": "measure_aqi_changed",
+        "id": "measure_aqi.pm10_changed",
         "title": {
-          "en": "The air quality index has changed"
+          "en": "The PM10 air quality index has changed"
         },
         "tokens": [
           {
@@ -573,17 +752,17 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=pm25"
+            "filter": "driver_id=pm10"
           }
         ]
       },
       {
-        "id": "measure_aqi_is_less",
+        "id": "measure_aqi.pm10_is_less",
         "title": {
-          "en": "The air quality index becomes less than"
+          "en": "The PM10 air quality index becomes less than"
         },
         "titleFormatted": {
-          "en": "The air quality index becomes less than [[measure_aqi]]%"
+          "en": "The PM10 air quality index becomes less than [[measure_aqi]]%"
         },
         "tokens": [
           {
@@ -599,7 +778,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=pm25"
+            "filter": "driver_id=pm10"
           },
           {
             "type": "number",
@@ -617,12 +796,12 @@
         ]
       },
       {
-        "id": "measure_aqi_is_greater",
+        "id": "measure_aqi.pm10_is_greater",
         "title": {
-          "en": "The air quality index becomes greater than"
+          "en": "The PM10 air quality index becomes greater than"
         },
         "titleFormatted": {
-          "en": "The air quality index becomes greater than [[measure_aqi]]%"
+          "en": "The PM10 air quality index becomes greater than [[measure_aqi]]%"
         },
         "tokens": [
           {
@@ -639,7 +818,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=pm25"
+            "filter": "driver_id=pm10"
           },
           {
             "type": "number",
@@ -657,9 +836,9 @@
         ]
       },
       {
-        "id": "measure_aqi.avg_changed",
+        "id": "measure_aqi.pm10.avg_changed",
         "title": {
-          "en": "The average air quality index has changed"
+          "en": "The PM10 average air quality index has changed"
         },
         "tokens": [
           {
@@ -675,17 +854,17 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=pm25"
+            "filter": "driver_id=pm10"
           }
         ]
       },
       {
-        "id": "measure_aqi.avg_is_less",
+        "id": "measure_aqi.pm10.avg_is_less",
         "title": {
-          "en": "The average air quality index becomes less than"
+          "en": "The PM10 average air quality index becomes less than"
         },
         "titleFormatted": {
-          "en": "The average air quality index becomes less than [[measure_aqi.avg]]%"
+          "en": "The PM10 average air quality index becomes less than [[measure_aqi.avg]]%"
         },
         "tokens": [
           {
@@ -701,7 +880,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=pm25"
+            "filter": "driver_id=pm10"
           },
           {
             "type": "number",
@@ -719,12 +898,12 @@
         ]
       },
       {
-        "id": "measure_aqi.avg_is_greater",
+        "id": "measure_aqi.pm10.avg_is_greater",
         "title": {
-          "en": "The air quality index becomes greater than"
+          "en": "The PM10 air quality index becomes greater than"
         },
         "titleFormatted": {
-          "en": "The air quality index becomes greater than [[measure_aqi.avg]]%"
+          "en": "The PM10 air quality index becomes greater than [[measure_aqi.avg]]%"
         },
         "tokens": [
           {
@@ -741,7 +920,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=pm25"
+            "filter": "driver_id=pm10"
           },
           {
             "type": "number",
@@ -1785,6 +1964,134 @@
     ],
     "conditions": [
       {
+        "title": {
+          "en": "Air quality index is !{{equal|not equal}} to"
+        },
+        "hint": {
+          "en": "This Flow will continue if air quality index is/is not equal to the set value."
+        },
+        "titleFormatted": {
+          "en": "The air quality index is !{{equal|not equal}} to [[measure_aqi]]%"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm25|pm10"
+          },
+          {
+            "type": "number",
+            "name": "measure_aqi",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Air quality index"
+            }
+          }
+        ],
+        "id": "measure_aqi_equal"
+      },
+      {
+        "title": {
+          "en": "Air quality index is !{{less|greater}} than"
+        },
+        "hint": {
+          "en": "This Flow will continue if air quality index is/is not less than the set value."
+        },
+        "titleFormatted": {
+          "en": "The air quality index is !{{less|greater}} than [[measure_aqi]]%"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm25|pm10"
+          },
+          {
+            "type": "number",
+            "name": "measure_aqi",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Air quality index"
+            }
+          }
+        ],
+        "id": "measure_aqi_is_less"
+      },
+      {
+        "title": {
+          "en": "Average Air quality index is !{{equal|not equal}} to"
+        },
+        "hint": {
+          "en": "This Flow will continue if average air quality index is/is not equal to the set value."
+        },
+        "titleFormatted": {
+          "en": "The average air quality index is !{{equal|not equal}} to [[measure_aqi.avg]]%"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm25|pm10"
+          },
+          {
+            "type": "number",
+            "name": "measure_aqi.avg",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Average Air quality index"
+            }
+          }
+        ],
+        "id": "measure_aqi.avg_equal"
+      },
+      {
+        "title": {
+          "en": "Average Air quality index is !{{less|greater}} than"
+        },
+        "hint": {
+          "en": "This Flow will continue if average air quality index is/is not less than the set value."
+        },
+        "titleFormatted": {
+          "en": "The average air quality index is !{{less|greater}} than [[measure_aqi.avg]]%"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm25|pm10"
+          },
+          {
+            "type": "number",
+            "name": "measure_aqi.avg",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value"
+            },
+            "title": {
+              "en": "Average Air quality index"
+            }
+          }
+        ],
+        "id": "measure_aqi.avg_is_less"
+      },
+      {
         "id": "measure_lightning_is_less",
         "title": {
           "en": "Lightning Distance is !{{is|is not}} less than"
@@ -1913,21 +2220,21 @@
         ]
       },
       {
-        "id": "measure_aqi_is_less",
+        "id": "measure_aqi.pm10_is_less",
         "title": {
-          "en": "Air quality index is !{{less|greater}} than"
+          "en": "Air PM10 quality index is !{{less|greater}} than"
         },
         "hint": {
-          "en": "This Flow will continue if air quality index is/is not less than the set value."
+          "en": "This Flow will continue if PM10 air quality index is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The air quality index is !{{less|greater}} than [[measure_aqi]]%"
+          "en": "The PM10 air quality index is !{{less|greater}} than [[measure_aqi]]%"
         },
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=pm25"
+            "filter": "driver_id=pm10"
           },
           {
             "type": "number",
@@ -1945,21 +2252,21 @@
         ]
       },
       {
-        "id": "measure_aqi_equal",
+        "id": "measure_aqi.pm10_equal",
         "title": {
           "en": "Air quality index is !{{equal|not equal}} to"
         },
         "hint": {
-          "en": "This Flow will continue if air quality index is/is not equal to the set value."
+          "en": "This Flow will continue if PM10 air quality index is/is not equal to the set value."
         },
         "titleFormatted": {
-          "en": "The air quality index is !{{equal|not equal}} to [[measure_aqi]]%"
+          "en": "The PM10 air quality index is !{{equal|not equal}} to [[measure_aqi]]%"
         },
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=pm25"
+            "filter": "driver_id=pm10"
           },
           {
             "type": "number",
@@ -1977,21 +2284,21 @@
         ]
       },
       {
-        "id": "measure_aqi.avg_is_less",
+        "id": "measure_aqi.pm10.avg_is_less",
         "title": {
-          "en": "Average Air quality index is !{{less|greater}} than"
+          "en": "Average PM10 Air quality index is !{{less|greater}} than"
         },
         "hint": {
-          "en": "This Flow will continue if average air quality index is/is not less than the set value."
+          "en": "This Flow will continue if average PM10 air quality index is/is not less than the set value."
         },
         "titleFormatted": {
-          "en": "The average air quality index is !{{less|greater}} than [[measure_aqi.avg]]%"
+          "en": "The average PM10 air quality index is !{{less|greater}} than [[measure_aqi.avg]]%"
         },
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=pm25"
+            "filter": "driver_id=pm10"
           },
           {
             "type": "number",
@@ -2009,21 +2316,21 @@
         ]
       },
       {
-        "id": "measure_aqi.avg_equal",
+        "id": "measure_aqi.pm10.avg_equal",
         "title": {
-          "en": "Average Air quality index is !{{equal|not equal}} to"
+          "en": "Average PM10 Air quality index is !{{equal|not equal}} to"
         },
         "hint": {
-          "en": "This Flow will continue if average air quality index is/is not equal to the set value."
+          "en": "This Flow will continue if average PM10 air quality index is/is not equal to the set value."
         },
         "titleFormatted": {
-          "en": "The average air quality index is !{{equal|not equal}} to [[measure_aqi.avg]]%"
+          "en": "The average PM10 air quality index is !{{equal|not equal}} to [[measure_aqi.avg]]%"
         },
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=pm25"
+            "filter": "driver_id=pm10"
           },
           {
             "type": "number",
@@ -2684,7 +2991,489 @@
       }
     ]
   },
+  "drivers": [
+    {
+      "name": {
+        "en": "Gateway"
+      },
+      "class": "other",
+      "capabilities": [
+        "measure_humidity",
+        "measure_pressure",
+        "measure_temperature"
+      ],
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "images": {
+        "small": "/drivers/gateway/assets/images/small.png",
+        "large": "/drivers/gateway/assets/images/large.png"
+      },
+      "id": "gateway"
+    },
+    {
+      "name": {
+        "en": "Lightning Detector"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_lightning",
+        "measure_lightning_num",
+        "measure_lightning_time",
+        "measure_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "AA",
+          "AA"
+        ]
+      },
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "id": "timeFormat",
+          "type": "dropdown",
+          "label": {
+            "en": "Time Format",
+            "de": "Zeitformat",
+            "nl": "Tijd format",
+            "it": "Formato del Tempo"
+          },
+          "value": "mm_dd",
+          "hint": {
+            "en": "The format to show the time capabilities.",
+            "de": "Zeitformat das zur Anzeige genutzt werden soll.",
+            "nl": "Tijd format notatie mogelijkheden",
+            "it": "Il formato mosta capabilities del Tempo."
+          },
+          "values": [
+            {
+              "id": "raw",
+              "label": {
+                "en": "Device"
+              }
+            },
+            {
+              "id": "time_stamp",
+              "label": {
+                "en": "Time stamp"
+              }
+            },
+            {
+              "id": "system",
+              "label": {
+                "en": "Local",
+                "de": "Lokal",
+                "nl": "Intern",
+                "it": "Locale"
+              }
+            },
+            {
+              "id": "mm_dd",
+              "label": {
+                "en": "Short HH:MM mmm DD",
+                "de": "Kurz HH:MM mmm DD",
+                "nl": "Kort HH:MM mmm DD",
+                "it": "Corto HH:MM mmm DD"
+              }
+            }
+          ]
+        }
+      ],
+      "images": {
+        "small": "/drivers/lightning/assets/images/small.png",
+        "large": "/drivers/lightning/assets/images/large.png"
+      },
+      "id": "lightning"
+    },
+    {
+      "name": {
+        "en": "PM10 and CO2 Meter"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_co2",
+        "measure_co2.avg",
+        "measure_co2_quality",
+        "measure_co2_quality.avg",
+        "measure_pm10",
+        "measure_pm10.avg",
+        "measure_aqi.pm10",
+        "measure_aqi.pm10.avg",
+        "measure_aq.pm10",
+        "measure_aq.pm10.avg",
+        "measure_pm25",
+        "measure_pm25.avg",
+        "measure_aqi",
+        "measure_aqi.avg",
+        "measure_aq",
+        "measure_aq.avg",
+        "measure_temperature",
+        "measure_humidity",
+        "measure_battery",
+        "alarm_co2",
+        "alarm_pm25",
+        "alarm_pm10",
+        "alarm_power"
+      ],
+      "capabilitiesOptions": {
+        "measure_co2.avg": {
+          "title": "CO2 Avg 24h"
+        },
+        "measure_co2_quality.avg": {
+          "title": "CO2 Avg quality 24h"
+        },
+        "measure_pm10": {
+          "title": "PM10 Air Quality"
+        },
+        "measure_pm10.avg": {
+          "title": "PM10 Air Quality Avg 24h"
+        },
+        "measure_aqi.pm10": {
+          "title": "PM10 Air Quality Index"
+        },
+        "measure_aqi.pm10.avg": {
+          "title": "PM10 Air Quality Index Avg 24h"
+        },
+        "measure_aq.pm10": {
+          "title": "PM10 Air Quality"
+        },
+        "measure_aq.pm10.avg": {
+          "title": "PM10 Air Quality Avg 24h"
+        },
+        "measure_pm25": {
+          "title": "PM2.5 Air Quality"
+        },
+        "measure_pm25.avg": {
+          "title": "PM2.5 Avg 24h"
+        },
+        "measure_aqi": {
+          "title": "PM2.5 Air Quality Index"
+        },
+        "measure_aqi.avg": {
+          "title": "PM2.5 Air Quality Index Avg 24h"
+        },
+        "measure_aq": {
+          "title": "PM2.5 Air Quality"
+        },
+        "measure_aq.avg": {
+          "title": "PM2.5 Air Quality Avg 24h"
+        }
+      },
+      "energy": {
+        "batteries": [
+          "AA",
+          "AA"
+        ]
+      },
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "images": {
+        "small": "/drivers/pm25/assets/images/small.png",
+        "large": "/drivers/pm25/assets/images/large.png"
+      },
+      "id": "pm10"
+    },
+    {
+      "name": {
+        "en": "PM25 Meter"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_pm25",
+        "measure_pm25.avg",
+        "measure_aqi",
+        "measure_aqi.avg",
+        "measure_aq",
+        "measure_aq.avg",
+        "measure_battery"
+      ],
+      "capabilitiesOptions": {
+        "measure_pm25.avg": {
+          "title": "PM2.5 Avg 24h"
+        },
+        "measure_aqi.avg": {
+          "title": "Air Quality Index Avg 24h"
+        },
+        "measure_aq.avg": {
+          "title": "Air Quality Avg 24h"
+        }
+      },
+      "energy": {
+        "batteries": [
+          "AA",
+          "AA"
+        ]
+      },
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "images": {
+        "small": "/drivers/pm25/assets/images/small.png",
+        "large": "/drivers/pm25/assets/images/large.png"
+      },
+      "id": "pm25"
+    },
+    {
+      "name": {
+        "en": "Soil Moisture"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "measure_moisture"
+      ],
+      "energy": {
+        "batteries": [
+          "AA"
+        ]
+      },
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "id": "batteryType",
+          "type": "dropdown",
+          "label": {
+            "en": "Battery Type"
+          },
+          "value": "0",
+          "hint": {
+            "en": "Specify the battery type for the correct % estimation. The setting will take affect on the next status update."
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Non-rechargeable"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Rechargeable"
+              }
+            }
+          ]
+        }
+      ],
+      "images": {
+        "small": "/drivers/soil_moisture/assets/images/small.png",
+        "large": "/drivers/soil_moisture/assets/images/large.png"
+      },
+      "id": "soil_moisture"
+    },
+    {
+      "name": {
+        "en": "Weather Station"
+      },
+      "class": "other",
+      "capabilities": [
+        "measure_temperature",
+        "measure_humidity",
+        "measure_temperature.feelsLike",
+        "measure_temperature.dewPoint",
+        "measure_pressure",
+        "measure_wind_angle",
+        "measure_wind_strength",
+        "measure_gust_strength",
+        "measure_gust_strength.daily",
+        "measure_radiation",
+        "measure_ultraviolet",
+        "measure_rain",
+        "measure_rain.event",
+        "measure_rain.hourly",
+        "measure_rain.daily",
+        "measure_rain.weekly",
+        "measure_rain.monthly",
+        "measure_rain.yearly",
+        "measure_rain.total",
+        "alarm_battery"
+      ],
+      "capabilitiesOptions": {
+        "measure_gust_strength.daily": {
+          "title": {
+            "en": "Max Gust Strength"
+          }
+        },
+        "measure_temperature": {
+          "decimals": 1
+        },
+        "measure_temperature.feelsLike": {
+          "title": {
+            "en": "Feels Like",
+            "nl": "Voelt als",
+            "de": "Gefühlte Temperatur"
+          },
+          "decimals": 1
+        },
+        "measure_temperature.dewPoint": {
+          "title": {
+            "en": "Dew point",
+            "nl": "Dauwpunt",
+            "de": "Taupunkt"
+          },
+          "decimals": 1
+        },
+        "measure_rain": {
+          "title": {
+            "en": "Rain Rate"
+          },
+          "units": {
+            "en": "mm/hr"
+          }
+        },
+        "measure_rain.event": {
+          "title": {
+            "en": "Rain Event"
+          }
+        },
+        "measure_rain.hourly": {
+          "title": {
+            "en": "Rain Hourly"
+          }
+        },
+        "measure_rain.daily": {
+          "title": {
+            "en": "Rain daily"
+          }
+        },
+        "measure_rain.weekly": {
+          "title": {
+            "en": "Rain weekly"
+          }
+        },
+        "measure_rain.monthly": {
+          "title": {
+            "en": "Rain monthly"
+          }
+        },
+        "measure_rain.yearly": {
+          "title": {
+            "en": "Rain yearly"
+          }
+        },
+        "measure_rain.total": {
+          "title": {
+            "en": "Rain Total"
+          }
+        }
+      },
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "images": {
+        "small": "/drivers/weather_station/assets/images/small.png",
+        "large": "/drivers/weather_station/assets/images/large.png"
+      },
+      "id": "weather_station"
+    }
+  ],
   "capabilities": {
+    "alarm_pm10": {
+      "type": "boolean",
+      "title": {
+        "en": "PM10 alarm"
+      },
+      "desc": {
+        "en": "PM10 alarm"
+      },
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "PM10 alarm tuned om"
+      },
+      "insightsTitleFalse": {
+        "en": "PM10 alarm turned off"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/dust.svg"
+    },
+    "alarm_power": {
+      "type": "boolean",
+      "title": {
+        "en": "Power off alarm"
+      },
+      "desc": {
+        "en": "Power off alarm"
+      },
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Power turned off"
+      },
+      "insightsTitleFalse": {
+        "en": "Power turned on"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/power_plug.svg"
+    },
     "measure_aq": {
       "type": "string",
       "title": {
@@ -2704,6 +3493,15 @@
       "getable": true,
       "setable": false,
       "icon": "/assets/aqi.svg"
+    },
+    "measure_co2_quality": {
+      "type": "string",
+      "title": {
+        "en": "CO2 Quality"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/co2.svg"
     },
     "measure_lightning": {
       "type": "number",
@@ -2749,6 +3547,19 @@
       "setable": false,
       "insights": true,
       "icon": "/assets/moisture.svg"
+    },
+    "measure_pm10": {
+      "type": "number",
+      "title": {
+        "en": "PM10"
+      },
+      "units": {
+        "en": "μg/m³"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "icon": "/assets/dust.svg"
     },
     "measure_radiation": {
       "type": "number",

@@ -19,5 +19,8 @@
   },
   "0.1.6": {
     "en": "Max. number of Soil Moisture meters is now 8. Time format of lightning strike can now be selected in the device Advanced settings. Lightning distance units fixed. Lightning flows fixed"
+  },
+  "0.1.7": {
+    "en": "Added PM10 and CO2, 5 in 1 meter"
   }
 }

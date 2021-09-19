@@ -1,0 +1,109 @@
+{
+    "title": {
+        "en": "The CO2 quality has become"
+    },
+    "titleFormatted": {
+        "en": "The CO2 air quality has become [[compare_type]] [[measure_aq]]"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm10"
+        },
+        {
+            "type": "dropdown",
+            "name": "compare_type",
+            "title": {
+                "en": "Comparison type"
+            },
+            "values": [
+                {
+                    "id": "<=",
+                    "label": {
+                        "en": "better than or equal to"
+                    }
+                },
+                {
+                    "id": "==",
+                    "label": {
+                        "en": "equal to"
+                    }
+                },
+                {
+                    "id": ">=",
+                    "label": {
+                        "en": "worse than or equal to"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "dropdown",
+            "name": "measure_aq",
+            "title": {
+                "en": "Minimum CO2 quality"
+            },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Good"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Moderate"
+                    }
+                },
+                {
+                    "id": "2",
+                    "label": {
+                        "en": "Slightly Unhealthy"
+                    }
+                },
+                {
+                    "id": "3",
+                    "label": {
+                        "en": "Unhealthy"
+                    }
+                },
+                {
+                    "id": "4",
+                    "label": {
+                        "en": "Very Unhealthy"
+                    }
+                },
+                {
+                    "id": "5",
+                    "label": {
+                        "en": "Hazardous"
+                    }
+                }
+            ]
+        }
+    ],
+    "tokens": [
+        {
+            "name": "measure_aq_name",
+            "type": "string",
+            "title": {
+                "en": "CO2 Quality"
+            },
+            "example": {
+                "en": "Moderate"
+            }
+        },
+        {
+            "name": "measure_aq_item",
+            "type": "number",
+            "title": {
+                "en": "CO2 Quality item number"
+            },
+            "example": {
+                "en": "0 to 5 = Good to Hazardous"
+            }
+        }
+    ]
+}

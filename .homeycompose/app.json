@@ -1,14 +1,14 @@
 {
     "id": "com.misol",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "compatibility": ">=5.0.0",
     "sdk": 3,
     "brandColor": "#FF7D4B",
     "name": {
-        "en": "Misol"
+        "en": "Misol and Ecowitt"
     },
     "description": {
-        "en": "Bring Misol product into Homey"
+        "en": "Bring Misol and Ecowitt products into Homey"
     },
     "category": [
         "climate"
