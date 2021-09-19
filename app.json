@@ -6,10 +6,10 @@
   "sdk": 3,
   "brandColor": "#FF7D4B",
   "name": {
-    "en": "Misol"
+    "en": "Misol and Ecowitt"
   },
   "description": {
-    "en": "Bring Misol product into Homey"
+    "en": "Bring Misol and Ecowitt products into Homey"
   },
   "category": [
     "climate"
@@ -3412,6 +3412,12 @@
             "en": "Rain Total"
           }
         }
+      },
+      "energy": {
+        "batteries": [
+          "AA",
+          "AA"
+        ]
       },
       "pair": [
         {

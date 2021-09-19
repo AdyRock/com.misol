@@ -25,99 +25,80 @@
         "measure_rain.total",
         "alarm_battery"
     ],
-    "capabilitiesOptions":
-    {
-        "measure_gust_strength.daily":
-        {
-            "title":
-            {
+    "capabilitiesOptions": {
+        "measure_gust_strength.daily": {
+            "title": {
                 "en": "Max Gust Strength"
             }
         },
-        "measure_temperature":
-        {
+        "measure_temperature": {
             "decimals": 1
         },
-        "measure_temperature.feelsLike":
-        {
-            "title":
-            {
+        "measure_temperature.feelsLike": {
+            "title": {
                 "en": "Feels Like",
                 "nl": "Voelt als",
                 "de": "Gefühlte Temperatur"
             },
             "decimals": 1
         },
-        "measure_temperature.dewPoint":
-        {
-            "title":
-            {
+        "measure_temperature.dewPoint": {
+            "title": {
                 "en": "Dew point",
                 "nl": "Dauwpunt",
                 "de": "Taupunkt"
             },
             "decimals": 1
         },
-        "measure_rain":
-        {
-            "title":
-            {
+        "measure_rain": {
+            "title": {
                 "en": "Rain Rate"
             },
-            "units":
-            {
+            "units": {
                 "en": "mm/hr"
             }
         },
-        "measure_rain.event":
-        {
-            "title":
-            {
+        "measure_rain.event": {
+            "title": {
                 "en": "Rain Event"
             }
         },
-        "measure_rain.hourly":
-        {
-            "title":
-            {
+        "measure_rain.hourly": {
+            "title": {
                 "en": "Rain Hourly"
             }
         },
-        "measure_rain.daily":
-        {
-            "title":
-            {
+        "measure_rain.daily": {
+            "title": {
                 "en": "Rain daily"
             }
         },
-        "measure_rain.weekly":
-        {
-            "title":
-            {
+        "measure_rain.weekly": {
+            "title": {
                 "en": "Rain weekly"
             }
         },
-        "measure_rain.monthly":
-        {
-            "title":
-            {
+        "measure_rain.monthly": {
+            "title": {
                 "en": "Rain monthly"
             }
         },
-        "measure_rain.yearly":
-        {
-            "title":
-            {
+        "measure_rain.yearly": {
+            "title": {
                 "en": "Rain yearly"
             }
         },
-        "measure_rain.total":
-        {
-            "title":
-            {
+        "measure_rain.total": {
+            "title": {
                 "en": "Rain Total"
             }
         }
+    },
+    "energy": {
+        "batteries": [
+            "AA",
+            "AA"
+        ]
     },
     "pair": [
         {
