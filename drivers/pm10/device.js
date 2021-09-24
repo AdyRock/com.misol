@@ -208,15 +208,16 @@ class PM10Device extends Device
             let bat = parseInt(gateway.co2_batt);
             if (bat > 5)
             {
-                bat = 5;
+                bat = null;
                 await this.setCapabilityValue('alarm_power', false);
+                await this.setCapabilityValue('measure_battery', null);
             }
             else
             {
                 await this.setCapabilityValue('alarm_power', true);
+                bat *= 20;
+                await this.setCapabilityValue('measure_battery', bat);
             }
-            bat *= 20;
-            await this.setCapabilityValue('measure_battery', bat);
         }
     }
 }
