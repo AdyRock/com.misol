@@ -9,7 +9,7 @@ const AQITablePM25 = [
     {"name": "Unhealthy",   "ConcLo": 55.5,   "ConcHi": 150.4,   "AQIlo": 151,    "AQIhi": 200},
     {"name": "UnhealthyHi", "ConcLo": 150.5,  "ConcHi": 250.4,   "AQIlo": 201,    "AQIhi": 300},
     {"name": "Hazardous",   "ConcLo": 250.5,  "ConcHi": 500.4,   "AQIlo": 301,    "AQIhi": 500},
-]
+];
 
 const AQITablePM10 = [
     {"name": "good",        "ConcLo": 0,      "ConcHi": 54,      "AQIlo": 0,     "AQIhi": 50},
@@ -18,7 +18,7 @@ const AQITablePM10 = [
     {"name": "Unhealthy",   "ConcLo": 255,    "ConcHi": 354,     "AQIlo": 151,    "AQIhi": 200},
     {"name": "UnhealthyHi", "ConcLo": 355,    "ConcHi": 424,     "AQIlo": 201,    "AQIhi": 300},
     {"name": "Hazardous",   "ConcLo": 425,    "ConcHi": 604,     "AQIlo": 301,    "AQIhi": 500},
-]
+];
 
 const Co2QTable = [
     {"name": "good",        "ConcLo": 0,      "ConcHi": 400},
@@ -27,7 +27,7 @@ const Co2QTable = [
     {"name": "Unhealthy",   "ConcLo": 2001,    "ConcHi": 5000},
     {"name": "UnhealthyHi", "ConcLo": 5001,    "ConcHi": 40000},
     {"name": "Hazardous",   "ConcLo": 40000,    "ConcHi": 1000000},
-]
+];
 
 class PM10Device extends Device
 {
