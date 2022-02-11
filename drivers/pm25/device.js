@@ -9,7 +9,7 @@ const AQITable = [
     {"name": "Unhealthy",   "ConcLo": 55.5,   "ConcHi": 150.4,   "AQIlo": 151,    "AQIhi": 200},
     {"name": "UnhealthyHi", "ConcLo": 150.5,  "ConcHi": 250.4,   "AQIlo": 201,    "AQIhi": 300},
     {"name": "Hazardous",   "ConcLo": 250.5,  "ConcHi": 500.4,   "AQIlo": 301,    "AQIhi": 500},
-]
+];
 
 class PM25Device extends Device
 {

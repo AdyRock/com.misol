@@ -506,7 +506,7 @@ class MyApp extends Homey.App
                 {
                     from: '"Homey User" <' + Homey.env.MAIL_USER + '>', // sender address
                     to: Homey.env.MAIL_RECIPIENT, // list of receivers
-                    subject: "LinkTap " + body.logType + " log", // Subject line
+                    subject: "Misol and Ecowitt " + body.logType + " log", // Subject line
                     text: logData // plain text body
                 });
 
