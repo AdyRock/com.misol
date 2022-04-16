@@ -1,6 +1,6 @@
 {
     "name": {
-        "en": "Gateway"
+        "en": "Temperature & Humidity Meter"
     },
     "platforms": [
         "local"
@@ -8,10 +8,9 @@
     "connectivity": [
         "lan"
     ],
-    "class": "other",
+    "class": "sensor",
     "capabilities": [
         "measure_humidity",
-        "measure_pressure",
         "measure_temperature"
     ],
     "pair": [
@@ -28,7 +27,7 @@
         }
     ],
     "images": {
-        "small": "/drivers/gateway/assets/images/small.png",
-        "large": "/drivers/gateway/assets/images/large.png"
+        "small": "/drivers/Temp_Hum/assets/images/small.png",
+        "large": "/drivers/Temp_Hum/assets/images/large.png"
     }
 }

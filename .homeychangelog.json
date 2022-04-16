@@ -22,5 +22,11 @@
   },
   "0.1.7": {
     "en": "Added PM10 and CO2, 5 in 1 meter"
+  },
+  "0.1.8": {
+    "en": "Added PM32, temperature and humidity meter"
+  },
+  "0.1.9": {
+    "en": "Fix links to store images for temperature and humidity monitor"
   }
 }

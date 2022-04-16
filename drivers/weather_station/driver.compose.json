@@ -2,6 +2,12 @@
     "name": {
         "en": "Weather Station"
     },
+    "platforms": [
+        "local"
+    ],
+    "connectivity": [
+        "lan"
+    ],
     "class": "other",
     "capabilities": [
         "measure_temperature",

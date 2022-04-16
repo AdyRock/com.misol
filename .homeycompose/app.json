@@ -1,19 +1,24 @@
 {
     "id": "com.misol",
-    "version": "0.1.7",
+    "version": "0.1.9",
     "compatibility": ">=5.0.0",
     "sdk": 3,
+    "platforms": [
+      "local",
+      "cloud"
+    ],
     "brandColor": "#FF7D4B",
     "name": {
         "en": "Misol and Ecowitt"
     },
     "description": {
-        "en": "Bring Misol and Ecowitt products into Homey"
+        "en": "Misol and Ecowitt, quality environmental monitoring instruments."
     },
     "category": [
         "climate"
     ],
     "permissions": [],
+    "support": "https://github.com/AdyRock/com.somfy.tahoma/issues",
     "contributing": {
         "donate": {
             "paypal": {

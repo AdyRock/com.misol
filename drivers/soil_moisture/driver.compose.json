@@ -2,6 +2,12 @@
     "name": {
         "en": "Soil Moisture"
     },
+    "platforms": [
+        "local"
+    ],
+    "connectivity": [
+        "lan"
+    ],
     "class": "sensor",
     "capabilities": [
         "measure_battery",
