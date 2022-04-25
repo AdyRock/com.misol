@@ -59,8 +59,8 @@ class MyDevice extends Device
             const moisture = parseInt(gateway['soilmoisture' + dd.meterNumber]);
             if (moisture != this.getCapabilityValue('measure_moisture'))
             {
-                await this.setCapabilityValue('measure_moisture', moisture);
-                this.driver.trigger_measure_moisture_changed(this, moisture);
+                this.setCapabilityValue('measure_moisture', moisture).catch(this.error);
+                this.driver.trigger_measure_moisture_changed(this, moisture).catch(this.error);
             }
 
             var batteryType = this.getSetting( 'batteryType' );
@@ -80,7 +80,7 @@ class MyDevice extends Device
             {
                 batP = 100;
             }
-            await this.setCapabilityValue('measure_battery', batP);
+            this.setCapabilityValue('measure_battery', batP).catch(this.error);
         }
     }
 }

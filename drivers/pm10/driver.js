@@ -162,7 +162,7 @@ class PM10Driver extends Driver
             const pm10Meter = "pm10_co2";
             if (gateway[pm10Meter])
             {
-                const meter = { name: pm10Meter, data: { id: gateway.PASSKEY, PASSKEY: gateway.PASSKEY } };
+                const meter = { name: 'PM 10 & CO2', data: { id: gateway.PASSKEY, PASSKEY: gateway.PASSKEY } };
                 devices.push(meter);
             }
         }

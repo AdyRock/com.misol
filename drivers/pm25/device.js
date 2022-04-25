@@ -66,20 +66,20 @@ class PM25Device extends Device
         if ((gateway.PASSKEY === dd.PASSKEY) && gateway['pm25_ch' + dd.meterNumber])
         {
             const pm25 = parseInt(gateway['pm25_ch' + dd.meterNumber]);
-            await this.setCapabilityValue('measure_pm25', pm25);
+            this.setCapabilityValue('measure_pm25', pm25).catch(this.error);
 
             const pm25Avg = parseInt(gateway['pm25_avg_24h_ch' + dd.meterNumber]);
-            await this.setCapabilityValue('measure_pm25.avg', pm25Avg);
+            this.setCapabilityValue('measure_pm25.avg', pm25Avg).catch(this.error);
 
             // Calculate AQI
             let tableIdx = AQITable.findIndex( entry => entry.ConcHi > pm25);
             let AQI = ((AQITable[ tableIdx ].AQIhi - AQITable[ tableIdx ].AQIlo) / (AQITable[ tableIdx ].ConcHi - AQITable[ tableIdx ].ConcLo)) * (pm25 - AQITable[ tableIdx ].ConcLo)  + AQITable[ tableIdx ].AQIlo;
 
-            await this.setCapabilityValue('measure_aqi', AQI);
+            this.setCapabilityValue('measure_aqi', AQI).catch(this.error);
             let aqText = this.homey.__(AQITable[ tableIdx ].name);
             if (aqText !== this.getCapabilityValue('measure_aq'))
             {
-                await this.setCapabilityValue('measure_aq', aqText);
+                this.setCapabilityValue('measure_aq', aqText).catch(this.error);
 
                 const tokens = {
                     "measure_aq_name": aqText,
@@ -97,12 +97,12 @@ class PM25Device extends Device
             tableIdx = AQITable.findIndex( entry => entry.ConcHi > pm25Avg);
             AQI = ((AQITable[ tableIdx ].AQIhi - AQITable[ tableIdx ].AQIlo) / (AQITable[ tableIdx ].ConcHi - AQITable[ tableIdx ].ConcLo)) * (pm25Avg - AQITable[ tableIdx ].ConcLo)  + AQITable[ tableIdx ].AQIlo;
 
-            await this.setCapabilityValue('measure_aqi.avg', AQI);
-            await this.setCapabilityValue('measure_aq.avg', this.homey.__(AQITable[ tableIdx ].name));
+            this.setCapabilityValue('measure_aqi.avg', AQI).catch(this.error);
+            this.setCapabilityValue('measure_aq.avg', this.homey.__(AQITable[ tableIdx ].name)).catch(this.error);
 
             // The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
             const bat = parseInt(gateway['pm25batt' + dd.meterNumber]) * 20;
-            await this.setCapabilityValue('measure_battery', bat);
+            this.setCapabilityValue('measure_battery', bat).catch(this.error);
         }
     }
 }

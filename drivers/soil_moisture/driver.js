@@ -59,7 +59,7 @@ class MyDriver extends Driver
                 const soilMeter = "soilmoisture" + i;
                 if (gateway[soilMeter])
                 {
-                    const meter = { name: soilMeter, data: { id: gateway.PASSKEY + "_" + i, PASSKEY: gateway.PASSKEY, meterNumber: i } };
+                    const meter = { name: `Soil Moisture: Channel ${i}`, data: { id: gateway.PASSKEY + "_" + i, PASSKEY: gateway.PASSKEY, meterNumber: i } };
                     devices.push(meter);
                 }
             }

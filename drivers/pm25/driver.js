@@ -62,7 +62,7 @@ class PM25Driver extends Driver
                 const pm25Meter = "pm25_ch" + i;
                 if (gateway[pm25Meter])
                 {
-                    const meter = { name: pm25Meter, data: { id: gateway.PASSKEY + "_" + i, PASSKEY: gateway.PASSKEY, meterNumber: i } };
+                    const meter = { name:  `PM 25: Channel ${i}`, data: { id: gateway.PASSKEY + "_" + i, PASSKEY: gateway.PASSKEY, meterNumber: i } };
                     devices.push(meter);
                 }
             }

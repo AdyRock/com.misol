@@ -27,6 +27,10 @@ class MyApp extends Homey.App
             this.homey.settings.set('debugMode', false);
         }
 
+        this.homeyID = await this.homey.cloud.getHomeyId();
+        this.homeyHash = this.homeyID;
+        this.homeyHash = this.hashCode(this.homeyHash).toString();
+
         this.pushServerPort = this.homey.settings.get('port');
         if (!this.pushServerPort)
         {
@@ -45,6 +49,27 @@ class MyApp extends Homey.App
                 this.updateLog("Closing server");
                 this.server.close();
                 this.runsListener();
+            }
+
+            if (key === 'simData')
+            {
+                let simData = this.homey.settings.get('simData');
+                if (simData)
+                {
+                    var gatewatEntry = this.detectedGateways.findIndex(x => x.PASSKEY === simData[0].PASSKEY);
+                    if (gatewatEntry === -1)
+                    {
+                        this.detectedGateways.push(simData[0]);
+                    }
+                    else
+                    {
+                        this.detectedGateways[gatewatEntry] = simData[0];
+                    }
+                }
+                else
+                {
+                    this.detectedGateways = [];
+                }
             }
         });
 
@@ -278,6 +303,13 @@ class MyApp extends Homey.App
         });
     }
 
+    hashCode(s)
+    {
+        let h = 0;
+        for (let i = 0; i < s.length; i++) h = Math.imul(31, h) + s.charCodeAt(i) | 0;
+        return h;
+    }
+
     async runsListener()
     {
         const requestListener = (request, response) =>
@@ -506,7 +538,7 @@ class MyApp extends Homey.App
                 {
                     from: '"Homey User" <' + Homey.env.MAIL_USER + '>', // sender address
                     to: Homey.env.MAIL_RECIPIENT, // list of receivers
-                    subject: "Misol and Ecowitt " + body.logType + " log", // Subject line
+                    subject: `Misol and Ecowitt (${this.homeyHash} : ${Homey.manifest.version})` + body.logType + " log", // Subject line
                     text: logData // plain text body
                 });
 

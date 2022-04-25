@@ -60,75 +60,75 @@ class WeatherStationDevice extends Device
             var windSpeed = Number(gateway.windspeedmph);
             var relativeHumidity = parseInt(gateway.humidity);
 
-            await this.setCapabilityValue('measure_humidity', relativeHumidity);
-            await this.setCapabilityValue('measure_pressure', Number(gateway.baromabsin) * 33.8639);
-            await this.setCapabilityValue('measure_temperature', (temperatureF - 32) * 5 / 9);
-            await this.setCapabilityValue('measure_wind_angle', parseInt(gateway.winddir));
-            await this.setCapabilityValue('measure_wind_strength', windSpeed * 1.609344);
-            await this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) * 1.609344);
-            await this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) * 1.609344);
-            await this.setCapabilityValue('measure_radiation', Number(gateway.solarradiation));
-            await this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv));
-            await this.setCapabilityValue('measure_rain', Number(gateway.rainratein) * 25.4);
+            this.setCapabilityValue('measure_humidity', relativeHumidity).catch(this.error);
+            this.setCapabilityValue('measure_pressure', Number(gateway.baromabsin) * 33.8639).catch(this.error);
+            this.setCapabilityValue('measure_temperature', (temperatureF - 32) * 5 / 9).catch(this.error);
+            this.setCapabilityValue('measure_wind_angle', parseInt(gateway.winddir)).catch(this.error);
+            this.setCapabilityValue('measure_wind_strength', windSpeed * 1.609344).catch(this.error);
+            this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) * 1.609344).catch(this.error);
+            this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) * 1.609344).catch(this.error);
+            this.setCapabilityValue('measure_radiation', Number(gateway.solarradiation)).catch(this.error);
+            this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.error);
+            this.setCapabilityValue('measure_rain', Number(gateway.rainratein) * 25.4).catch(this.error);
 
 
             let rain = Number(gateway.eventrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.event'))
             {
-                await this.setCapabilityValue('measure_rain.event', rain);
+                this.setCapabilityValue('measure_rain.event', rain).catch(this.error);
                 this.driver.trigger_measure_rain_event(this, rain);
             }
 
             rain = Number(gateway.hourlyrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.hourly'))
             {
-                await this.setCapabilityValue('measure_rain.hourly', rain);
+                this.setCapabilityValue('measure_rain.hourly', rain).catch(this.error);
                 this.driver.trigger_measure_rain_hourly(this, rain);
             }
 
             rain = Number(gateway.dailyrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.daily'))
             {
-                await this.setCapabilityValue('measure_rain.daily', rain);
+                this.setCapabilityValue('measure_rain.daily', rain).catch(this.error);
                 this.driver.trigger_measure_rain_daily(this, rain);
             }
 
             rain = Number(gateway.weeklyrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.weekly'))
             {
-                await this.setCapabilityValue('measure_rain.weekly', rain);
+                this.setCapabilityValue('measure_rain.weekly', rain).catch(this.error);
                 this.driver.trigger_measure_rain_weekly(this, rain);
             }
 
             rain = Number(gateway.monthlyrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.monthly'))
             {
-                await this.setCapabilityValue('measure_rain.monthly', rain);
+                this.setCapabilityValue('measure_rain.monthly', rain).catch(this.error);
                 this.driver.trigger_measure_rain_monthly(this, rain);
             }
 
             rain = Number(gateway.yearlyrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.yearly'))
             {
-                await this.setCapabilityValue('measure_rain.yearly', rain);
+                this.setCapabilityValue('measure_rain.yearly', rain).catch(this.error);
                 this.driver.trigger_measure_rain_yearly(this, rain);
             }
 
             rain = Number(gateway.totalrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.total'))
             {
-                await this.setCapabilityValue('measure_rain.total', rain);
+                this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
                 this.driver.trigger_measure_rain_total(this, rain);
             }
 
             rain = Number(gateway.dailyrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.daily'))
             {
-                await this.setCapabilityValue('measure_rain.daily', rain);
+                this.setCapabilityValue('measure_rain.daily', rain).catch(this.error);
                 this.driver.trigger_measure_rain_daily(this, rain);
             }
 
-            await this.setCapabilityValue('alarm_battery', gateway.wh65batt === '1');
+            this.setCapabilityValue('alarm_battery', gateway.wh65batt === '1').catch(this.error);
 
 
             var feelsLike = 0;
@@ -166,7 +166,7 @@ class WeatherStationDevice extends Device
             temperature = Math.round( temperature * 10 + Number.EPSILON ) / 10;
             if (temperature != this.getCapabilityValue('measure_temperature.feelsLike'))
             {
-                await this.setCapabilityValue('measure_temperature.feelsLike', temperature);
+                this.setCapabilityValue('measure_temperature.feelsLike', temperature).catch(this.error);
                 this.driver.trigger_measure_temperature_feelsLike(this, temperature);
             }
 
@@ -191,7 +191,7 @@ class WeatherStationDevice extends Device
 
             if (dewPoint != this.getCapabilityValue('measure_temperature.dewPoint'))
             {
-                await this.setCapabilityValue('measure_temperature.dewPoint', dewPoint);
+                this.setCapabilityValue('measure_temperature.dewPoint', dewPoint).catch(this.error);
                 this.driver.trigger_measure_temperature_dewPoint(this, dewPoint);
             }
         }

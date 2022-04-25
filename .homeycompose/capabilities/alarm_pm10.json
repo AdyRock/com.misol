@@ -4,7 +4,7 @@
       "en": "PM10 alarm"
     },
     "desc": {
-      "en": "PM10 alarm"
+      "en": "Active when the PM10 level is high"
     },
     "insights": true,
     "insightsTitleTrue": {

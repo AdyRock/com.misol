@@ -21,11 +21,24 @@ class TempHumDriver extends Driver
         var devices = [];
         for (const gateway of this.homey.app.detectedGateways)
         {
-            const pm10Meter = "tempf";
-            if (gateway[pm10Meter])
+            // look for either the weather station built in meter or a separate meter if no weather station.
+            const tempfMeter = "tempf";
+            if (gateway[tempfMeter])
             {
-                const meter = { name: pm10Meter, data: { id: gateway.PASSKEY, PASSKEY: gateway.PASSKEY } };
+                const meter = { name: 'T & H: Channel 0', data: { id: gateway.PASSKEY, PASSKEY: gateway.PASSKEY } };
                 devices.push(meter);
+            }
+
+
+            // Look for extra chanels
+            for (var i = 1; i <= 8; i++)
+            {
+                const tempXMeter = "temp" + i + "f";
+                if (gateway[tempXMeter])
+                {
+                    const meter = { name: `T & H: Channel ${i}`, data: { id: gateway.PASSKEY + "_" + i, PASSKEY: gateway.PASSKEY, meterNumber: i } };
+                    devices.push(meter);
+                }
             }
         }
 

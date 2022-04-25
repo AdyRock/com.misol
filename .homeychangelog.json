@@ -28,5 +28,11 @@
   },
   "0.1.9": {
     "en": "Fix links to store images for temperature and humidity monitor"
+  },
+  "0.1.10": {
+    "en": "Removed cloud tag that was accidentals added in lat submission"
+  },
+  "0.1.11": {
+    "en": "Added support for multiple temperature and humidity monitor (up to 8 channels)."
   }
 }

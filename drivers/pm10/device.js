@@ -84,17 +84,17 @@ class PM10Device extends Device
         if ((gateway.PASSKEY === dd.PASSKEY) && gateway.pm25_co2)
         {
             let co2 = parseInt(gateway.co2);
-            await this.setCapabilityValue('measure_co2', co2);
-            await this.setCapabilityValue('alarm_co2', (co2 > 1200));
+            this.setCapabilityValue('measure_co2', co2).catch(this.error);
+            this.setCapabilityValue('alarm_co2', (co2 > 1200)).catch(this.error);
 
             let co2avg = parseInt(gateway.co2_24h);
-            await this.setCapabilityValue('measure_co2.avg', co2avg);
+            this.setCapabilityValue('measure_co2.avg', co2avg).catch(this.error);
 
             let tableIdx = Co2QTable.findIndex( entry => entry.ConcHi > co2);
             let aqText = this.homey.__(Co2QTable[ tableIdx ].name);
             if (aqText !== this.getCapabilityValue('measure_co2_quality'))
             {
-                await this.setCapabilityValue('measure_co2_quality', aqText);
+                this.setCapabilityValue('measure_co2_quality', aqText).catch(this.error);
 
                 const tokens = {
                     "measure_aq_name": aqText,
@@ -112,7 +112,7 @@ class PM10Device extends Device
             aqText = this.homey.__(Co2QTable[ tableIdx ].name);
             if (aqText !== this.getCapabilityValue('measure_co2_quality.avg'))
             {
-                await this.setCapabilityValue('measure_co2_quality.avg', aqText);
+                this.setCapabilityValue('measure_co2_quality.avg', aqText).catch(this.error);
 
                 const tokens = {
                     "measure_aq_name": aqText,
@@ -128,21 +128,21 @@ class PM10Device extends Device
             
 
             const pm10 = parseInt(gateway.pm10_co2);
-            await this.setCapabilityValue('measure_pm10', pm10);
-            await this.setCapabilityValue('alarm_pm10', (pm10 > 255));
+            this.setCapabilityValue('measure_pm10', pm10).catch(this.error);
+            this.setCapabilityValue('alarm_pm10', (pm10 > 255)).catch(this.error);
 
             const pm10Avg = parseInt(gateway.pm10_24h_co2);
-            await this.setCapabilityValue('measure_pm10.avg', pm10Avg);
+            this.setCapabilityValue('measure_pm10.avg', pm10Avg).catch(this.error);
 
             // Calculate PM10 AQI
             tableIdx = AQITablePM10.findIndex( entry => entry.ConcHi > pm10);
             let AQI = ((AQITablePM10[ tableIdx ].AQIhi - AQITablePM10[ tableIdx ].AQIlo) / (AQITablePM10[ tableIdx ].ConcHi - AQITablePM10[ tableIdx ].ConcLo)) * (pm10 - AQITablePM10[ tableIdx ].ConcLo)  + AQITablePM10[ tableIdx ].AQIlo;
 
-            await this.setCapabilityValue('measure_aqi.pm10', AQI);
+            this.setCapabilityValue('measure_aqi.pm10', AQI).catch(this.error);
             aqText = this.homey.__(AQITablePM10[ tableIdx ].name);
             if (aqText !== this.getCapabilityValue('measure_aq.pm10'))
             {
-                await this.setCapabilityValue('measure_aq.pm10', aqText);
+                this.setCapabilityValue('measure_aq.pm10', aqText).catch(this.error);
 
                 const tokens = {
                     "measure_aq_name": aqText,
@@ -160,27 +160,27 @@ class PM10Device extends Device
             tableIdx = AQITablePM10.findIndex( entry => entry.ConcHi > pm10Avg);
             AQI = ((AQITablePM10[ tableIdx ].AQIhi - AQITablePM10[ tableIdx ].AQIlo) / (AQITablePM10[ tableIdx ].ConcHi - AQITablePM10[ tableIdx ].ConcLo)) * (pm10Avg - AQITablePM10[ tableIdx ].ConcLo)  + AQITablePM10[ tableIdx ].AQIlo;
 
-            await this.setCapabilityValue('measure_aqi.pm10.avg', AQI);
-            await this.setCapabilityValue('measure_aq.pm10.avg', this.homey.__(AQITablePM10[ tableIdx ].name));
+            this.setCapabilityValue('measure_aqi.pm10.avg', AQI).catch(this.error);
+            this.setCapabilityValue('measure_aq.pm10.avg', this.homey.__(AQITablePM10[ tableIdx ].name)).catch(this.error);
 
 
             // PM2.5
             const pm25 = parseInt(gateway.pm25_co2);
-            await this.setCapabilityValue('measure_pm25', pm25);
-            await this.setCapabilityValue('alarm_pm25', (pm25 > 56));
+            this.setCapabilityValue('measure_pm25', pm25).catch(this.error);
+            this.setCapabilityValue('alarm_pm25', (pm25 > 56)).catch(this.error);
 
             const pm25Avg = parseInt(gateway.pm25_24h_co2);
-            await this.setCapabilityValue('measure_pm25.avg', pm25Avg);
+            this.setCapabilityValue('measure_pm25.avg', pm25Avg).catch(this.error);
 
             // Calculate PM2.5 AQI
             tableIdx = AQITablePM25.findIndex( entry => entry.ConcHi > pm25);
             AQI = ((AQITablePM25[ tableIdx ].AQIhi - AQITablePM25[ tableIdx ].AQIlo) / (AQITablePM25[ tableIdx ].ConcHi - AQITablePM25[ tableIdx ].ConcLo)) * (pm25 - AQITablePM25[ tableIdx ].ConcLo)  + AQITablePM25[ tableIdx ].AQIlo;
 
-            await this.setCapabilityValue('measure_aqi', AQI);
+            this.setCapabilityValue('measure_aqi', AQI).catch(this.error);
             aqText = this.homey.__(AQITablePM25[ tableIdx ].name);
             if (aqText !== this.getCapabilityValue('measure_aq'))
             {
-                await this.setCapabilityValue('measure_aq', aqText);
+                this.setCapabilityValue('measure_aq', aqText).catch(this.error);
 
                 const tokens = {
                     "measure_aq_name": aqText,
@@ -198,25 +198,25 @@ class PM10Device extends Device
             tableIdx = AQITablePM25.findIndex( entry => entry.ConcHi > pm25Avg);
             AQI = ((AQITablePM25[ tableIdx ].AQIhi - AQITablePM25[ tableIdx ].AQIlo) / (AQITablePM25[ tableIdx ].ConcHi - AQITablePM25[ tableIdx ].ConcLo)) * (pm25Avg - AQITablePM25[ tableIdx ].ConcLo)  + AQITablePM25[ tableIdx ].AQIlo;
 
-            await this.setCapabilityValue('measure_aqi.avg', AQI);
-            await this.setCapabilityValue('measure_aq.avg', this.homey.__(AQITablePM25[ tableIdx ].name));
+            this.setCapabilityValue('measure_aqi.avg', AQI).catch(this.error);
+            this.setCapabilityValue('measure_aq.avg', this.homey.__(AQITablePM25[ tableIdx ].name)).catch(this.error);
 
-            await this.setCapabilityValue('measure_temperature', (Number(gateway.tf_co2) -32) * 5 / 9);
-            await this.setCapabilityValue('measure_humidity', parseInt(gateway.humi_co2));
+            this.setCapabilityValue('measure_temperature', (Number(gateway.tf_co2) -32) * 5 / 9).catch(this.error);
+            this.setCapabilityValue('measure_humidity', parseInt(gateway.humi_co2)).catch(this.error);
 
             // The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
             let bat = parseInt(gateway.co2_batt);
             if (bat > 5)
             {
                 bat = null;
-                await this.setCapabilityValue('alarm_power', false);
-                await this.setCapabilityValue('measure_battery', null);
+                this.setCapabilityValue('alarm_power', false).catch(this.error);
+                this.setCapabilityValue('measure_battery', null).catch(this.error);
             }
             else
             {
-                await this.setCapabilityValue('alarm_power', true);
+                this.setCapabilityValue('alarm_power', true).catch(this.error);
                 bat *= 20;
-                await this.setCapabilityValue('measure_battery', bat);
+                this.setCapabilityValue('measure_battery', bat).catch(this.error);
             }
         }
     }

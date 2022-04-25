@@ -38,7 +38,7 @@ class LightningDevice extends Device
         this.log('Lightning Device settings where changed');
         if (changedKeys.indexOf("timeFormat") >= 0)
         {
-            this.setCapabilityValue('measure_lightning_time', this.convertDate(this.lightning_time, newSettings));
+            this.setCapabilityValue('measure_lightning_time', this.convertDate(this.lightning_time, newSettings)).catch(this.error);
         }
     }
 
@@ -106,22 +106,22 @@ class LightningDevice extends Device
         {
             if (gateway.lightning !== '')
             {
-                await this.setCapabilityValue('measure_lightning', Number(gateway.lightning));
+                this.setCapabilityValue('measure_lightning', Number(gateway.lightning)).catch(this.error);
 
                 const settings = this.getSettings();
                 if (gateway.lightning_time !== '')
                 {
                     this.lightning_time = gateway.lightning_time;
                     this.setStoreValue('lightning_time', this.lightning_time);
-                    await this.setCapabilityValue('measure_lightning_time', this.convertDate(this.lightning_time, settings));
+                    this.setCapabilityValue('measure_lightning_time', this.convertDate(this.lightning_time, settings)).catch(this.error);
                 }
 
                 // The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
                 const bat = parseInt(gateway.wh57batt) * 20;
-                await this.setCapabilityValue('measure_battery', bat);
+                this.setCapabilityValue('measure_battery', bat).catch(this.error);
             }
 
-            await this.setCapabilityValue('measure_lightning_num', parseInt(gateway.lightning_num));
+            this.setCapabilityValue('measure_lightning_num', parseInt(gateway.lightning_num)).catch(this.error);
         }
     }
 }

@@ -54,10 +54,64 @@ class TempHumDevice extends Device
     async updateCapabilities(gateway)
     {
         const dd = this.getData();
-        if (gateway.PASSKEY === dd.id)
+        if (dd.meterNumber)
         {
-            await this.setCapabilityValue('measure_humidity', parseInt(gateway.humidity));
-            await this.setCapabilityValue('measure_temperature', (Number(gateway.tempf) -32) * 5 / 9);
+            if ((gateway.PASSKEY === dd.PASSKEY) && gateway['temp' + dd.meterNumber] + 'f')
+            {
+                this.setCapabilityValue('measure_humidity', parseInt(gateway['humidity' + dd.meterNumber])).catch(this.error);
+                this.setCapabilityValue('measure_temperature', (Number(gateway['temp' + dd.meterNumber + 'f']) -32) * 5 / 9).catch(this.error);
+
+                if (gateway['batt' + dd.meterNumber])
+                {
+                    const batV = Number(gateway['batt' + dd.meterNumber]);
+                    if (batV > 0)
+                    {
+                        if (!this.hasCapability('measure_battery'))
+                        {
+                            await this.addCapability('measure_battery').catch(this.error);
+                        }
+                        var batteryType = this.getSetting( 'batteryType' );
+                        var batP = 0;
+                        
+                        if (batteryType === '0')
+                        {
+                            batP = (batV - 0.9) / (1.7 - 0.9) * 100;
+                        }
+                        else
+                        {
+                            batP = (batV - 0.9) / (1.3 - 0.9) * 100;
+                        }
+        
+                        if (batP > 100)
+                        {
+                            batP = 100;
+                        }
+                        this.setCapabilityValue('measure_battery', batP).catch(this.error);
+                    }
+                    else
+                    {
+                        if (this.hasCapability('measure_battery'))
+                        {
+                            await this.removeCapability('measure_battery').catch(this.error);
+                        }
+                    }
+                }
+                else
+                {
+                    if (this.hasCapability('measure_battery'))
+                    {
+                        await this.removeCapability('measure_battery').catch(this.error);
+                    }
+                }
+            }
+        }
+        else
+        {
+            if ((gateway.PASSKEY === dd.id))
+            {
+                this.setCapabilityValue('measure_humidity', parseInt(gateway.humidity)).catch(this.error);
+                this.setCapabilityValue('measure_temperature', (Number(gateway.tempf) -32) * 5 / 9).catch(this.error);
+            }
         }
     }
 }
