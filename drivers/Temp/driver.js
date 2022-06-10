@@ -2,14 +2,14 @@
 
 const { Driver } = require('homey');
 
-class TempHumDriver extends Driver
+class TempDriver extends Driver
 {
     /**
      * onInit is called when the driver is initialized.
      */
     async onInit()
     {
-        this.log('TempHumDriver has been initialized');
+        this.log('TempDriver has been initialized');
     }
 
     /**
@@ -21,23 +21,14 @@ class TempHumDriver extends Driver
         var devices = [];
         for (const gateway of this.homey.app.detectedGateways)
         {
-            // look for either the weather station built in meter or a separate meter if no weather station.
-            const tempfMeter = "tempf";
-            if (gateway[tempfMeter])
-            {
-                const meter = { name: 'T & H: Channel 0', data: { id: gateway.PASSKEY, PASSKEY: gateway.PASSKEY } };
-                devices.push(meter);
-            }
-
-
             // Look for extra chanels
             for (var i = 1; i <= 8; i++)
             {
                 const tempXMeter = "temp" + i + "f";
                 const humXMeter = "humidity" + i;
-                if (gateway[tempXMeter] && gateway[humXMeter])
+                if (gateway[tempXMeter] && !gateway[humXMeter])
                 {
-                    const meter = { name: `T & H: Channel ${i}`, data: { id: gateway.PASSKEY + "_" + i, PASSKEY: gateway.PASSKEY, meterNumber: i } };
+                    const meter = { name: `Temperature : Channel ${i}`, data: { id: gateway.PASSKEY + "_" + i, PASSKEY: gateway.PASSKEY, meterNumber: i } };
                     devices.push(meter);
                 }
             }
@@ -47,4 +38,4 @@ class TempHumDriver extends Driver
     }
 }
 
-module.exports = TempHumDriver;
+module.exports = TempDriver;

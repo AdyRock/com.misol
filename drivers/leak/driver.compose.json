@@ -1,0 +1,66 @@
+{
+    "name": {
+        "en": "Water Leak Sensor"
+    },
+    "platforms": [
+        "local"
+    ],
+    "connectivity": [
+        "lan"
+    ],
+    "class": "sensor",
+    "capabilities": [
+        "measure_battery",
+        "alarm_water"
+    ],
+    "energy": {
+        "batteries": [
+            "AAA",
+            "AAA"
+        ]
+    },
+    "pair": [
+        {
+            "id": "list_my_devices",
+            "template": "list_devices",
+            "navigation": {
+                "next": "add_my_devices"
+            }
+        },
+        {
+            "id": "add_my_devices",
+            "template": "add_devices"
+        }
+    ],
+    "settings": [
+        {
+            "id": "batteryType",
+            "type": "dropdown",
+            "label": {
+                "en": "Battery Type"
+            },
+            "value": "0",
+            "hint": {
+                "en": "Specify the battery type for the correct % estimation. The setting will take affect on the next status update."
+            },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Non-rechargeable"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Rechargeable"
+                    }
+                }
+            ]
+        }
+    ],
+    "images": {
+        "small": "/drivers/leak/assets/images/small.png",
+        "large": "/drivers/leak/assets/images/large.png"
+    }
+}

@@ -2,14 +2,14 @@
 
 const { Device } = require('homey');
 
-class TempHumDevice extends Device
+class TempDevice extends Device
 {
     /**
      * onInit is called when the device is initialized.
      */
     async onInit()
     {
-        this.log('TempHumDevice has been initialized');
+        this.log('TempDevice has been initialized');
     }
 
     /**
@@ -17,7 +17,7 @@ class TempHumDevice extends Device
      */
     async onAdded()
     {
-        this.log('TempHumDevice has been added');
+        this.log('TempDevice has been added');
     }
 
     /**
@@ -30,7 +30,7 @@ class TempHumDevice extends Device
      */
     async onSettings({ oldSettings, newSettings, changedKeys })
     {
-        this.log('TempHumDevice settings where changed');
+        this.log('TempDevice settings where changed');
     }
 
     /**
@@ -40,7 +40,7 @@ class TempHumDevice extends Device
      */
     async onRenamed(name)
     {
-        this.log('TempHumDevice was renamed');
+        this.log('TempDevice was renamed');
     }
 
     /**
@@ -48,7 +48,7 @@ class TempHumDevice extends Device
      */
     async onDeleted()
     {
-        this.log('TempHumDevice has been deleted');
+        this.log('TempDevice has been deleted');
     }
 
     async updateCapabilities(gateway)
@@ -58,7 +58,6 @@ class TempHumDevice extends Device
         {
             if ((gateway.PASSKEY === dd.PASSKEY) && gateway['temp' + dd.meterNumber] + 'f')
             {
-                this.setCapabilityValue('measure_humidity', parseInt(gateway['humidity' + dd.meterNumber])).catch(this.error);
                 this.setCapabilityValue('measure_temperature', (Number(gateway['temp' + dd.meterNumber + 'f']) -32) * 5 / 9).catch(this.error);
 
                 if (gateway['batt' + dd.meterNumber])
@@ -109,15 +108,7 @@ class TempHumDevice extends Device
                 }
             }
         }
-        else
-        {
-            if ((gateway.PASSKEY === dd.id))
-            {
-                this.setCapabilityValue('measure_humidity', parseInt(gateway.humidity)).catch(this.error);
-                this.setCapabilityValue('measure_temperature', (Number(gateway.tempf) -32) * 5 / 9).catch(this.error);
-            }
-        }
     }
 }
 
-module.exports = TempHumDevice;
+module.exports = TempDevice;

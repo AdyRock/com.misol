@@ -41,7 +41,7 @@ class MyApp extends Homey.App
         this.runsListener();
         this.detectedGateways = [];
 
-        this.homey.settings.on('set', (key) =>
+        this.homey.settings.on('set', key =>
         {
             if (key === 'port')
             {

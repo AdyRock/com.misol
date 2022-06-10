@@ -34,5 +34,11 @@
   },
   "0.1.11": {
     "en": "Added support for multiple temperature and humidity monitor (up to 8 channels)."
+  },
+  "0.1.12": {
+    "en": "Added support for WH55 Wireless Water Leak Detection Sensor (up to 4 channels) and the WN30 temperature sensor (up to 8 channels)."
+  },
+  "0.1.13": {
+    "en": "Fixed images for WH55 and WN30."
   }
 }
