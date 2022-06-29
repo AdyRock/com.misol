@@ -159,14 +159,11 @@ class WeatherStationDriver extends Driver
             value: temperature
         };
 
-        this.measure_temperature_feelsLike_changed_trigger.trigger(device, tokens)
-            .catch(this.error);
+        this.measure_temperature_feelsLike_changed_trigger.trigger(device, tokens).catch(this.error);
             
-        this.measure_temperature_feelsLike_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_temperature_feelsLike_is_less_trigger.trigger(device, tokens, state).catch(this.error);
             
-        this.measure_temperature_feelsLike_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_temperature_feelsLike_is_less_trigger.trigger(device, tokens, state).catch(this.error);
     }
 
     trigger_measure_temperature_dewPoint(device, temperature)
@@ -179,14 +176,11 @@ class WeatherStationDriver extends Driver
             value: temperature
         };
 
-        this.measure_temperature_dewPoint_changed_trigger.trigger(device, tokens)
-            .catch(this.error);
+        this.measure_temperature_dewPoint_changed_trigger.trigger(device, tokens).catch(this.error);
             
-        this.measure_temperature_dewPoint_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_temperature_dewPoint_is_less_trigger.trigger(device, tokens, state).catch(this.error);
             
-        this.measure_temperature_dewPoint_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_temperature_dewPoint_is_less_trigger.trigger(device, tokens, state).catch(this.error);
     }
 
     trigger_measure_rain_event(device, rain)
@@ -199,14 +193,11 @@ class WeatherStationDriver extends Driver
             value: rain
         };
 
-        this.measure_rain_event_changed_trigger.trigger(device, tokens)
-            .catch(this.error);
+        this.measure_rain_event_changed_trigger.trigger(device, tokens).catch(this.error);
             
-        this.measure_rain_event_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_rain_event_is_less_trigger.trigger(device, tokens, state).catch(this.error);
             
-        this.measure_rain_event_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_rain_event_is_less_trigger.trigger(device, tokens, state).catch(this.error);
     }
 
     trigger_measure_rain_hourly(device, rain)
@@ -219,14 +210,11 @@ class WeatherStationDriver extends Driver
             value: rain
         };
 
-        this.measure_rain_hourly_changed_trigger.trigger(device, tokens)
-            .catch(this.error);
+        this.measure_rain_hourly_changed_trigger.trigger(device, tokens).catch(this.error);
             
-        this.measure_rain_hourly_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_rain_hourly_is_less_trigger.trigger(device, tokens, state).catch(this.error);
             
-        this.measure_rain_hourly_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_rain_hourly_is_less_trigger.trigger(device, tokens, state).catch(this.error);
     }
 
     trigger_measure_rain_daily(device, rain)
@@ -239,14 +227,11 @@ class WeatherStationDriver extends Driver
             value: rain
         };
 
-        this.measure_rain_daily_changed_trigger.trigger(device, tokens)
-            .catch(this.error);
+        this.measure_rain_daily_changed_trigger.trigger(device, tokens).catch(this.error);
             
-        this.measure_rain_daily_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_rain_daily_is_less_trigger.trigger(device, tokens, state).catch(this.error);
             
-        this.measure_rain_daily_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_rain_daily_is_less_trigger.trigger(device, tokens, state).catch(this.error);
     }
 
     trigger_measure_rain_weekly(device, rain)
@@ -259,14 +244,11 @@ class WeatherStationDriver extends Driver
             value: rain
         };
 
-        this.measure_rain_weekly_changed_trigger.trigger(device, tokens)
-            .catch(this.error);
+        this.measure_rain_weekly_changed_trigger.trigger(device, tokens).catch(this.error);
             
-        this.measure_rain_weekly_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_rain_weekly_is_less_trigger.trigger(device, tokens, state).catch(this.error);
             
-        this.measure_rain_weekly_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_rain_weekly_is_less_trigger.trigger(device, tokens, state).catch(this.error);
     }
 
     trigger_measure_rain_monthly(device, rain)
@@ -279,14 +261,11 @@ class WeatherStationDriver extends Driver
             value: rain
         };
 
-        this.measure_rain_monthly_changed_trigger.trigger(device, tokens)
-            .catch(this.error);
+        this.measure_rain_monthly_changed_trigger.trigger(device, tokens).catch(this.error);
             
-        this.measure_rain_monthly_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_rain_monthly_is_less_trigger.trigger(device, tokens, state).catch(this.error);
             
-        this.measure_rain_monthly_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_rain_monthly_is_less_trigger.trigger(device, tokens, state).catch(this.error);
     }
 
     trigger_measure_rain_yearly(device, rain)
@@ -299,14 +278,11 @@ class WeatherStationDriver extends Driver
             value: rain
         };
 
-        this.measure_rain_yearly_changed_trigger.trigger(device, tokens)
-            .catch(this.error);
+        this.measure_rain_yearly_changed_trigger.trigger(device, tokens).catch(this.error);
             
-        this.measure_rain_yearly_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_rain_yearly_is_less_trigger.trigger(device, tokens, state).catch(this.error);
             
-        this.measure_rain_yearly_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_rain_yearly_is_less_trigger.trigger(device, tokens, state).catch(this.error);
     }
 
     trigger_measure_rain_total(device, rain)
@@ -319,14 +295,11 @@ class WeatherStationDriver extends Driver
             value: rain
         };
 
-        this.measure_rain_total_changed_trigger.trigger(device, tokens)
-            .catch(this.error);
+        this.measure_rain_total_changed_trigger.trigger(device, tokens).catch(this.error);
             
-        this.measure_rain_total_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_rain_total_is_less_trigger.trigger(device, tokens, state).catch(this.error);
             
-        this.measure_rain_total_is_less_trigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_rain_total_is_less_trigger.trigger(device, tokens, state).catch(this.error);
     }
 
     /**

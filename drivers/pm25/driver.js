@@ -38,14 +38,7 @@ class PM25Driver extends Driver
 
     async triggerAQChanged(device, tokens, state)
     {
-        try
-        {
-            return this.measure_aq_changedTrigger.trigger(device, tokens, state);
-        }
-        catch(err)
-        {
-            
-        }
+        this.measure_aq_changedTrigger.trigger(device, tokens, state).catch(this.error);
     }
 
     /**

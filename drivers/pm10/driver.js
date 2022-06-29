@@ -116,38 +116,17 @@ class PM10Driver extends Driver
 
     async triggerCo2QChanged(device, tokens, state)
     {
-        try
-        {
-            return this.measure_co2q_changedTrigger.trigger(device, tokens, state);
-        }
-        catch(err)
-        {
-            
-        }
+        this.measure_co2q_changedTrigger.trigger(device, tokens, state).catch(this.error);
     }
 
     async triggerAQPM25Changed(device, tokens, state)
     {
-        try
-        {
-            return this.measure_aq25_changedTrigger.trigger(device, tokens, state);
-        }
-        catch(err)
-        {
-            
-        }
+        this.measure_aq25_changedTrigger.trigger(device, tokens, state).catch(this.error);
     }
 
     async triggerAQPM10Changed(device, tokens, state)
     {
-        try
-        {
-            return this.measure_aq10_changedTrigger.trigger(device, tokens, state);
-        }
-        catch(err)
-        {
-            
-        }
+        this.measure_aq10_changedTrigger.trigger(device, tokens, state).catch(this.error);
     }
 
     /**

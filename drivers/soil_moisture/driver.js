@@ -35,14 +35,11 @@ class MyDriver extends Driver
             value: moisture
         };
 
-        this.measure_moisture_changedTrigger.trigger(device, tokens)
-            .catch(this.error);
+        this.measure_moisture_changedTrigger.trigger(device, tokens).catch(this.error);
             
-        this.measure_moisture_is_lessTrigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_moisture_is_lessTrigger.trigger(device, tokens, state).catch(this.error);
             
-        this.measure_moisture_is_greaterTrigger.trigger(device, tokens, state)
-            .catch(this.error);
+        this.measure_moisture_is_greaterTrigger.trigger(device, tokens, state).catch(this.error);
     }
 
     /**
