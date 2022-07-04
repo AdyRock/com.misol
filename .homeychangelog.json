@@ -40,5 +40,8 @@
   },
   "0.1.13": {
     "en": "Fixed images for WH55 and WN30."
+  },
+  "0.1.14": {
+    "en": "Added extra value range checks."
   }
 }

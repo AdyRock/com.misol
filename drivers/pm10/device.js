@@ -247,21 +247,21 @@ class PM10Device extends Device
                 this.setCapabilityValue('measure_humidity', parseInt(gateway.humi_co2)).catch(this.error);
             }
 
-            // The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
-            let bat = parseInt(gateway.co2_batt);
-            if (!isNaN(bat))
+            // The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up, a value of 6 indicates it is plugged int to a PSU
+            const bat = parseInt(gateway.co2_batt);
+            if (!isNaN(bat) && (bat >= 0))
             {
                 if (bat > 5)
                 {
-                    bat = null;
+                    // On DC power
                     this.setCapabilityValue('alarm_power', false).catch(this.error);
                     this.setCapabilityValue('measure_battery', null).catch(this.error);
                 }
                 else
                 {
+                    // Running on battery
                     this.setCapabilityValue('alarm_power', true).catch(this.error);
-                    bat *= 20;
-                    this.setCapabilityValue('measure_battery', bat).catch(this.error);
+                    this.setCapabilityValue('measure_battery', bat * 20).catch(this.error);
                 }
             }
         }

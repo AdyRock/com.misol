@@ -115,9 +115,12 @@ class PM25Device extends Device
             }
         
             // The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
-            const bat = parseInt(gateway['pm25batt' + dd.meterNumber]) * 20;
-            this.setCapabilityValue('measure_battery', bat).catch(this.error);
-        }
+            const bat = parseInt(gateway['pm25batt' + dd.meterNumber]);
+            if (!isNaN(bat) && (bat >= 0))
+            {
+                this.setCapabilityValue('measure_battery', bat * 20).catch(this.error);
+            }
+}
     }
 }
 

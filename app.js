@@ -37,6 +37,10 @@ class MyApp extends Homey.App
             this.pushServerPort = 7777;
             this.homey.settings.set('port', this.pushServerPort);
         }
+        else if ((this.pushServerPort < 0) || (this.pushServerPort >= 65536))
+        {
+            this.pushServerPort = 7777;
+        }
 
         this.runsListener();
         this.detectedGateways = [];
@@ -46,6 +50,10 @@ class MyApp extends Homey.App
             if (key === 'port')
             {
                 this.pushServerPort = this.homey.settings.get('port');
+                if ((this.pushServerPort < 0) || (this.pushServerPort >= 65536))
+                {
+                    this.pushServerPort = 7777;
+                }
                 this.updateLog("Closing server");
                 this.server.close();
                 this.runsListener();
@@ -383,6 +391,11 @@ class MyApp extends Homey.App
         };
 
         this.server = http.createServer(requestListener);
+        if ((this.pushServerPort < 0) || (this.pushServerPort >= 65536))
+        {
+            this.pushServerPort = 7777;
+        }
+
         this.server.listen(this.pushServerPort, () =>
         {
             this.updateLog("Server listening on port: " + this.pushServerPort);
