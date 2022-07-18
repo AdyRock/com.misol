@@ -78,7 +78,7 @@
         }
     ],
     "images": {
-        "small": "/drivers/weather_station/assets/images/small.png",
-        "large": "/drivers/weather_station/assets/images/large.png"
+        "small": "/drivers/rain_sensor/assets/images/small.png",
+        "large": "/drivers/rain_sensor/assets/images/large.png"
     }
 }

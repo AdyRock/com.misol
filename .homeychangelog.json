@@ -46,5 +46,8 @@
   },
   "0.1.15": {
     "en": "Added rain sensor. Cleaned up Flow triggers."
+  },
+  "0.1.16": {
+    "en": "Fixed image for rain sensor"
   }
 }
