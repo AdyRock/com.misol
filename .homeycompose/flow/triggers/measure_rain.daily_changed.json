@@ -1,0 +1,22 @@
+{
+    "title": {
+        "en": "The daily rainfall Changed"
+    },
+    "tokens": [
+        {
+            "name": "measure_rain.daily",
+            "title": {
+                "en": "Daily rainfall"
+            },
+            "type": "number",
+            "example": 3
+        }
+    ],
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=rain_sensor|weather_station"
+        }
+    ]
+}

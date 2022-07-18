@@ -1,0 +1,84 @@
+{
+    "name": {
+        "en": "Rain sensor"
+    },
+    "platforms": [
+        "local"
+    ],
+    "connectivity": [
+        "lan"
+    ],
+    "class": "other",
+    "capabilities": [
+        "measure_rain",
+        "measure_rain.event",
+        "measure_rain.hourly",
+        "measure_rain.daily",
+        "measure_rain.weekly",
+        "measure_rain.monthly",
+        "measure_rain.yearly",
+        "measure_rain.total"
+    ],
+    "capabilitiesOptions": {
+        "measure_rain": {
+            "title": {
+                "en": "Rain Rate"
+            },
+            "units": {
+                "en": "mm/hr"
+            }
+        },
+        "measure_rain.event": {
+            "title": {
+                "en": "Rain Event"
+            }
+        },
+        "measure_rain.hourly": {
+            "title": {
+                "en": "Rain Hourly"
+            }
+        },
+        "measure_rain.daily": {
+            "title": {
+                "en": "Rain daily"
+            }
+        },
+        "measure_rain.weekly": {
+            "title": {
+                "en": "Rain weekly"
+            }
+        },
+        "measure_rain.monthly": {
+            "title": {
+                "en": "Rain monthly"
+            }
+        },
+        "measure_rain.yearly": {
+            "title": {
+                "en": "Rain yearly"
+            }
+        },
+        "measure_rain.total": {
+            "title": {
+                "en": "Rain Total"
+            }
+        }
+    },
+    "pair": [
+        {
+            "id": "list_my_devices",
+            "template": "list_devices",
+            "navigation": {
+                "next": "add_my_devices"
+            }
+        },
+        {
+            "id": "add_my_devices",
+            "template": "add_devices"
+        }
+    ],
+    "images": {
+        "small": "/drivers/weather_station/assets/images/small.png",
+        "large": "/drivers/weather_station/assets/images/large.png"
+    }
+}

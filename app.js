@@ -296,19 +296,70 @@ class MyApp extends Homey.App
             return value === args.value;
         });
 
-        let measure_aqi10_avg_is_lessCondition = this.homey.flow.getConditionCard('measure_aqi.pm10.avg_is_less');
+        let measure_aqi10_avg_is_lessCondition = this.homey.flow.getConditionCard('measure_aqi.pm10_avg_is_less');
         measure_aqi10_avg_is_lessCondition.registerRunListener(async (args, state) =>
         {
-            let value = args.device.getCapabilityValue('measure_aqi.pm10.avg');
+            let value = args.device.getCapabilityValue('measure_aqi.pm10_avg');
             return value < args.value;
         });
 
-        let measure_aqi10_avg_equalCondition = this.homey.flow.getConditionCard('measure_aqi.pm10.avg_equal');
+        let measure_aqi10_avg_equalCondition = this.homey.flow.getConditionCard('measure_aqi.pm10_avg_equal');
         measure_aqi10_avg_equalCondition.registerRunListener(async (args, state) =>
         {
-            let value = args.device.getCapabilityValue('measure_aqi.pm10.avg');
+            let value = args.device.getCapabilityValue('measure_aqi.pm10_avg');
             return value === args.value;
         });
+
+        let measure_aq25_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq_changed');
+        measure_aq25_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            // If true, this flow should run
+            const argValue = parseInt(args.measure_aq);
+
+            if (args.compare_type === '<=')
+            {
+                // Check <=
+                return state.value <= argValue;
+            }
+            else if (args.compare_type === '==')
+            {
+                // Check <=
+                return state.value == argValue;
+            }
+            else if (args.compare_type === '>=')
+            {
+                // Check <=
+                return state.value >= argValue;
+            }
+
+            return false;
+        });
+
+        let measure_aq25_avg_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq.avg_changed');
+        measure_aq25_avg_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            // If true, this flow should run
+            const argValue = parseInt(args.measure_aq);
+
+            if (args.compare_type === '<=')
+            {
+                // Check <=
+                return state.value <= argValue;
+            }
+            else if (args.compare_type === '==')
+            {
+                // Check <=
+                return state.value == argValue;
+            }
+            else if (args.compare_type === '>=')
+            {
+                // Check <=
+                return state.value >= argValue;
+            }
+
+            return false;
+        });
+        
     }
 
     hashCode(s)

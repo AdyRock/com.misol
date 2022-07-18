@@ -186,8 +186,23 @@ class PM10Device extends Device
 
                 AQI = ((AQITablePM10[ tableIdx ].AQIhi - AQITablePM10[ tableIdx ].AQIlo) / (AQITablePM10[ tableIdx ].ConcHi - AQITablePM10[ tableIdx ].ConcLo)) * (pm10Avg - AQITablePM10[ tableIdx ].ConcLo)  + AQITablePM10[ tableIdx ].AQIlo;
 
-                this.setCapabilityValue('measure_aqi.pm10.avg', AQI).catch(this.error);
-                this.setCapabilityValue('measure_aq.pm10.avg', this.homey.__(AQITablePM10[ tableIdx ].name)).catch(this.error);
+                this.setCapabilityValue('measure_aqi.pm10_avg', AQI).catch(this.error);
+                aqText = this.homey.__(AQITablePM10[ tableIdx ].name);
+                if (aqText !== this.getCapabilityValue('measure_aq.pm10_avg'))
+                {
+                    this.setCapabilityValue('measure_aq.pm10_avg', aqText).catch(this.error);
+
+                    const tokens = {
+                        "measure_aq_name": aqText,
+                        "measure_aq_item": tableIdx
+                    };
+
+                    const state = {
+                        "value": tableIdx
+                    };
+
+                    this.driver.triggerAQPM10AvgChanged(this, tokens, state);
+                }
             }
 
             // PM2.5
@@ -241,7 +256,22 @@ class PM10Device extends Device
                 let AQI = ((AQITablePM25[ tableIdx ].AQIhi - AQITablePM25[ tableIdx ].AQIlo) / (AQITablePM25[ tableIdx ].ConcHi - AQITablePM25[ tableIdx ].ConcLo)) * (pm25Avg - AQITablePM25[ tableIdx ].ConcLo)  + AQITablePM25[ tableIdx ].AQIlo;
 
                 this.setCapabilityValue('measure_aqi.avg', AQI).catch(this.error);
-                this.setCapabilityValue('measure_aq.avg', this.homey.__(AQITablePM25[ tableIdx ].name)).catch(this.error);
+                let aqText = this.homey.__(AQITablePM25[ tableIdx ].name);
+                if (aqText !== this.getCapabilityValue('measure_aq.avg'))
+                {
+                    this.setCapabilityValue('measure_aq.avg', aqText).catch(this.error);
+
+                    const tokens = {
+                        "measure_aq_name": aqText,
+                        "measure_aq_item": tableIdx
+                    };
+
+                    const state = {
+                        "value": tableIdx
+                    };
+
+                    this.driver.triggerAQPM25AvgChanged(this, tokens, state);
+                }
 
                 this.setCapabilityValue('measure_temperature', (Number(gateway.tf_co2) -32) * 5 / 9).catch(this.error);
                 this.setCapabilityValue('measure_humidity', parseInt(gateway.humi_co2)).catch(this.error);

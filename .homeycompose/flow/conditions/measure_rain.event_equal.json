@@ -1,0 +1,26 @@
+{
+    "title": {
+        "en": "Event rainfall is !{{equal|not equal}} to"
+    },
+    "hint": {
+        "en": "This Flow will continue if event rainfall is/is not equal to the set value."
+    },
+    "titleFormatted": {
+        "en": "The event rainfall is !{{equal|not equal}} to [[value]]mm"
+    },
+    "args": [
+        {
+            "type": "number",
+            "name": "value",
+            "min": 0,
+            "max": 70,
+            "step": 1,
+            "placeholder": {
+                "en": "Set a value"
+            },
+            "title": {
+                "en": "Event rainfall"
+            }
+        }
+    ]
+}

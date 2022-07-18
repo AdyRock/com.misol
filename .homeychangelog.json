@@ -43,5 +43,8 @@
   },
   "0.1.14": {
     "en": "Added extra value range checks."
+  },
+  "0.1.15": {
+    "en": "Added rain sensor. Cleaned up Flow triggers."
   }
 }

@@ -10,49 +10,22 @@ class PM10Driver extends Driver
     async onInit()
     {
         this.log('PM10Driver has been initialized');
+        if (this.hasCapability('measure_aqi.pm10.avg'))
+        {
+            this.removeCapability('measure_aqi.pm10.avg');
+            this.addCapability('measure_aqi.pm10_avg');
+        }
+        if (this.hasCapability('measure_aq.pm10.avg'))
+        {
+            this.removeCapability('measure_aq.pm10.avg');
+            this.addCapability('measure_aq.pm10_avg');
+        }
+
+        this.measure_aq25_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq_changed');
+        this.measure_aq25_avg_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq.avg_changed');
 
         this.measure_co2q_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_co2q_changed');
         this.measure_co2q_changedTrigger.registerRunListener(async (args, state) =>
-        {
-            // If true, this flow should run
-            const argValue = parseInt(args.measure_aq);
-
-            if (args.compare_type === '<=')
-            {
-                // Check <=
-                return state.value <= argValue;
-            }
-            else if (args.compare_type === '==')
-            {
-                // Check <=
-                return state.value == argValue;
-            }
-            else if (args.compare_type === '>=')
-            {
-                // Check <=
-                return state.value >= argValue;
-            }
-
-            return false;
-        });
-
-
-        this.measure_pm10_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_pm10_changed');
-        this.measure_pm10_changedTrigger.registerRunListener(async (args, state) =>
-        {
-            // If true, this flow should run
-            return (args.measure_pm10 != state.measure_pm10);
-        });
-
-        this.measure_pm10avg_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_pm10.avg_changed');
-        this.measure_pm10avg_changedTrigger.registerRunListener(async (args, state) =>
-        {
-            // If true, this flow should run
-            return (args.measure_pm10.avg != state.measure_pm10.avg);
-        });
-
-        this.measure_aq25_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq_changed');
-        this.measure_aq25_changedTrigger.registerRunListener(async (args, state) =>
         {
             // If true, this flow should run
             const argValue = parseInt(args.measure_aq);
@@ -101,6 +74,31 @@ class PM10Driver extends Driver
             return false;
         });
 
+        this.measure_aq10_avg_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq.pm10_avg_changed');
+        this.measure_aq10_avg_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            // If true, this flow should run
+            const argValue = parseInt(args.measure_aq);
+
+            if (args.compare_type === '<=')
+            {
+                // Check <=
+                return state.value <= argValue;
+            }
+            else if (args.compare_type === '==')
+            {
+                // Check <=
+                return state.value == argValue;
+            }
+            else if (args.compare_type === '>=')
+            {
+                // Check <=
+                return state.value >= argValue;
+            }
+
+            return false;
+        });
+
         this.alarmPowerTrueTrigger = this.homey.flow.getDeviceTriggerCard('alarm_power_true');
         this.alarmPowerTrueTrigger.registerRunListener(async (args, state) =>
         {
@@ -124,7 +122,17 @@ class PM10Driver extends Driver
         this.measure_aq25_changedTrigger.trigger(device, tokens, state).catch(this.error);
     }
 
+    async triggerAQPM25avgChanged(device, tokens, state)
+    {
+        this.measure_aq25_avg_changedTrigger.trigger(device, tokens, state).catch(this.error);
+    }
+
     async triggerAQPM10Changed(device, tokens, state)
+    {
+        this.measure_aq10_changedTrigger.trigger(device, tokens, state).catch(this.error);
+    }
+
+    async triggerAQPM10AvgChanged(device, tokens, state)
     {
         this.measure_aq10_changedTrigger.trigger(device, tokens, state).catch(this.error);
     }

@@ -11,34 +11,17 @@ class PM25Driver extends Driver
     {
         this.log('PM25Driver has been initialized');
         this.measure_aq_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq_changed');
-        this.measure_aq_changedTrigger.registerRunListener(async (args, state) =>
-        {
-            // If true, this flow should run
-            const argValue = parseInt(args.measure_aq);
-
-            if (args.compare_type === '<=')
-            {
-                // Check <=
-                return state.value <= argValue;
-            }
-            else if (args.compare_type === '==')
-            {
-                // Check <=
-                return state.value == argValue;
-            }
-            else if (args.compare_type === '>=')
-            {
-                // Check <=
-                return state.value >= argValue;
-            }
-
-            return false;
-        });
+        this.measure_aq_avg_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq.avg_changed');
     }
 
     async triggerAQChanged(device, tokens, state)
     {
         this.measure_aq_changedTrigger.trigger(device, tokens, state).catch(this.error);
+    }
+
+    async triggerAQAvgChanged(device, tokens, state)
+    {
+        this.measure_aq_avg_changedTrigger.trigger(device, tokens, state).catch(this.error);
     }
 
     /**

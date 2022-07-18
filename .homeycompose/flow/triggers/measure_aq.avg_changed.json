@@ -1,0 +1,109 @@
+{
+    "title": {
+        "en": "The average PM2.5 air quality has become"
+    },
+    "titleFormatted": {
+        "en": "The average PM2.5 air quality has become [[compare_type]] [[measure_aq]]"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm25|pm10"
+        },
+        {
+            "type": "dropdown",
+            "name": "compare_type",
+            "title": {
+                "en": "Comparison type"
+            },
+            "values": [
+                {
+                    "id": "<=",
+                    "label": {
+                        "en": "better than or equal to"
+                    }
+                },
+                {
+                    "id": "==",
+                    "label": {
+                        "en": "equal to"
+                    }
+                },
+                {
+                    "id": ">=",
+                    "label": {
+                        "en": "worse than or equal to"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "dropdown",
+            "name": "measure_aq",
+            "title": {
+                "en": "Minimum Air quality"
+            },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Good"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Moderate"
+                    }
+                },
+                {
+                    "id": "2",
+                    "label": {
+                        "en": "Slightly Unhealthy"
+                    }
+                },
+                {
+                    "id": "3",
+                    "label": {
+                        "en": "Unhealthy"
+                    }
+                },
+                {
+                    "id": "4",
+                    "label": {
+                        "en": "Very Unhealthy"
+                    }
+                },
+                {
+                    "id": "5",
+                    "label": {
+                        "en": "Hazardous"
+                    }
+                }
+            ]
+        }
+    ],
+    "tokens": [
+        {
+            "name": "measure_aq_name",
+            "type": "string",
+            "title": {
+                "en": "PM2.5 Air Quality"
+            },
+            "example": {
+                "en": "Moderate"
+            }
+        },
+        {
+            "name": "measure_aq_item",
+            "type": "number",
+            "title": {
+                "en": "Air Quality item number"
+            },
+            "example": {
+                "en": "0 to 5 = Good to Hazardous"
+            }
+        }
+    ]
+}

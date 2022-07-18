@@ -111,7 +111,22 @@ class PM25Device extends Device
                 let AQI = ((AQITable[ tableIdx ].AQIhi - AQITable[ tableIdx ].AQIlo) / (AQITable[ tableIdx ].ConcHi - AQITable[ tableIdx ].ConcLo)) * (pm25Avg - AQITable[ tableIdx ].ConcLo)  + AQITable[ tableIdx ].AQIlo;
 
                 this.setCapabilityValue('measure_aqi.avg', AQI).catch(this.error);
-                this.setCapabilityValue('measure_aq.avg', this.homey.__(AQITable[ tableIdx ].name)).catch(this.error);
+                let aqText = this.homey.__(AQITable[ tableIdx ].name);
+                if (aqText !== this.getCapabilityValue('measure_aq.avg'))
+                {
+                    this.setCapabilityValue('measure_aq.avg', aqText).catch(this.error);
+
+                    const tokens = {
+                        "measure_aq_name": aqText,
+                        "measure_aq_item": tableIdx
+                    };
+
+                    const state = {
+                        "value": tableIdx
+                    };
+
+                    this.driver.triggerAQPM25AvgChanged(this, tokens, state);
+                }
             }
         
             // The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up

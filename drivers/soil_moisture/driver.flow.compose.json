@@ -7,85 +7,13 @@
             },
             "tokens": [
                 {
-                    "name": "value",
+                    "name": "measure_moisture",
                     "title": {
                         "en": "Soil Moisture"
                     },
                     "type": "number",
                     "units": "%",
                     "example": 3
-                }
-            ]
-        },
-        {
-            "id": "measure_moisture_is_less",
-            "title": {
-                "en": "The soil moisture becomes less than"
-            },
-            "titleFormatted": {
-                "en": "The soil moisture becomes less than [[value]]%"
-            },
-            "tokens": [
-                {
-                    "name": "value",
-                    "title": {
-                        "en": "Soil Moisture"
-                    },
-                    "type": "number",
-                    "units": "%",
-                    "example": 3
-                }
-            ],
-            "args": [
-                {
-                    "type": "number",
-                    "name": "value",
-                    "min": 0,
-                    "max": 100,
-                    "step": 1,
-                    "units": "%",
-                    "placeholder": {
-                        "en": "Set a value"
-                    },
-                    "title": {
-                        "en": "Soil Moisture"
-                    }
-                }
-            ]
-        },
-        {
-            "id": "measure_moisture_is_greater",
-            "title": {
-                "en": "The soil moisture becomes greater than"
-            },
-            "titleFormatted": {
-                "en": "The soil moisture becomes greater than [[value]]%"
-            },
-            "tokens": [
-                {
-                    "name": "value",
-                    "title": {
-                        "en": "Soil Moisture"
-                    },
-                    "type": "number",
-                    "units": "%",
-                    "example": 3
-                }
-            ],
-            "args": [
-                {
-                    "type": "number",
-                    "name": "value",
-                    "min": 0,
-                    "max": 100,
-                    "step": 1,
-                    "units": "%",
-                    "placeholder": {
-                        "en": "Set a value"
-                    },
-                    "title": {
-                        "en": "Soil Moisture"
-                    }
                 }
             ]
         }

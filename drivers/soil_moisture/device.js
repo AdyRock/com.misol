@@ -60,7 +60,6 @@ class MyDevice extends Device
             if (moisture != this.getCapabilityValue('measure_moisture'))
             {
                 this.setCapabilityValue('measure_moisture', moisture).catch(this.error);
-                this.driver.trigger_measure_moisture_changed(this, moisture);
             }
 
             var batteryType = this.getSetting( 'batteryType' );
