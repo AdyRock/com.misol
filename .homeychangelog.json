@@ -49,5 +49,8 @@
   },
   "0.1.16": {
     "en": "Fixed image for rain sensor"
+  },
+  "0.1.17": {
+    "en": "Fixed incorrect trigger call for PM25 device"
   }
 }

@@ -125,7 +125,7 @@ class PM25Device extends Device
                         "value": tableIdx
                     };
 
-                    this.driver.triggerAQPM25AvgChanged(this, tokens, state);
+                    this.driver.triggerAQAvgChanged(this, tokens, state);
                 }
             }
         
