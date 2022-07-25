@@ -52,5 +52,8 @@
   },
   "0.1.17": {
     "en": "Fixed incorrect trigger call for PM25 device"
+  },
+  "0.1.18": {
+    "en": "Fixed issue with PM10 device"
   }
 }

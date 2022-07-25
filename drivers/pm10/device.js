@@ -36,6 +36,17 @@ class PM10Device extends Device
      */
     async onInit()
     {
+        if (this.hasCapability('measure_aqi.pm10.avg'))
+        {
+            this.removeCapability('measure_aqi.pm10.avg');
+            this.addCapability('measure_aqi.pm10_avg');
+        }
+        if (this.hasCapability('measure_aq.pm10.avg'))
+        {
+            this.removeCapability('measure_aq.pm10.avg');
+            this.addCapability('measure_aq.pm10_avg');
+        }
+
         this.log('PM10 has been initialized');
     }
 
@@ -167,7 +178,7 @@ class PM10Device extends Device
                     this.setCapabilityValue('measure_aq.pm10', aqText).catch(this.error);
 
                     const tokens = {
-                        "measure_aq_name": aqText,
+                        "measure_aq.pm10_name": aqText,
                         "measure_aq_item": tableIdx
                     };
 
@@ -193,7 +204,7 @@ class PM10Device extends Device
                     this.setCapabilityValue('measure_aq.pm10_avg', aqText).catch(this.error);
 
                     const tokens = {
-                        "measure_aq_name": aqText,
+                        "measure_aq.pm10_name": aqText,
                         "measure_aq_item": tableIdx
                     };
 

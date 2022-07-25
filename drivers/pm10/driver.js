@@ -10,16 +10,6 @@ class PM10Driver extends Driver
     async onInit()
     {
         this.log('PM10Driver has been initialized');
-        if (this.hasCapability('measure_aqi.pm10.avg'))
-        {
-            this.removeCapability('measure_aqi.pm10.avg');
-            this.addCapability('measure_aqi.pm10_avg');
-        }
-        if (this.hasCapability('measure_aq.pm10.avg'))
-        {
-            this.removeCapability('measure_aq.pm10.avg');
-            this.addCapability('measure_aq.pm10_avg');
-        }
 
         this.measure_aq25_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq_changed');
         this.measure_aq25_avg_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq.avg_changed');
