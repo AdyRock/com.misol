@@ -8,7 +8,7 @@
     "connectivity": [
         "lan"
     ],
-    "class": "other",
+    "class": "sensor",
     "capabilities": [
         "measure_rain",
         "measure_rain.event",

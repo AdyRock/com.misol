@@ -2,14 +2,14 @@
 
 const { Driver } = require('homey');
 
-class WeatherStationDriver extends Driver
+class WindWS80Driver extends Driver
 {
     /**
      * onInit is called when the driver is initialized.
      */
     async onInit()
     {
-        this.log('WeatherStationDriver has been initialized');
+        this.log('WindWS80Driver has been initialized');
     }
 
     /**
@@ -21,7 +21,7 @@ class WeatherStationDriver extends Driver
         var devices = [];
         for (const gateway of this.homey.app.detectedGateways)
         {
-            if ((gateway.winddir !== undefined) && (gateway.wh80batt === undefined))
+            if ((gateway.winddir !== undefined) && (gateway.wh80batt !== undefined))
             {
                 const meter = { name: "Weather Station", data: { id: gateway.PASSKEY, PASSKEY: gateway.PASSKEY, meterNumber: 0 } };
                 devices.push(meter);
@@ -32,4 +32,4 @@ class WeatherStationDriver extends Driver
     }
 }
 
-module.exports = WeatherStationDriver;
+module.exports = WindWS80Driver;

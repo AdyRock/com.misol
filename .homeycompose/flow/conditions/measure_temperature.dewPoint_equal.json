@@ -1,0 +1,31 @@
+{
+    "title": {
+        "en": "Lightning strikes is !{{equal|not equal}} to"
+    },
+    "hint": {
+        "en": "This Flow will continue if Lightning strikes is/is not equal to the set value."
+    },
+    "titleFormatted": {
+        "en": "The Lightning strikes is !{{equal|not equal}} to [[value]]°C"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=wind_ws80|weather_station"
+        },
+        {
+            "type": "number",
+            "name": "value",
+            "min": -40,
+            "max": 70,
+            "step": 1,
+            "placeholder": {
+                "en": "Set a value"
+            },
+            "title": {
+                "en": "Dew point"
+            }
+        }
+    ]
+}

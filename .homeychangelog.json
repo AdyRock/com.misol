@@ -55,5 +55,8 @@
   },
   "0.1.18": {
     "en": "Fixed issue with PM10 device"
+  },
+  "0.1.19": {
+    "en": "Added WS80 support. Changed weather stations to sensor class so a capability can be shown on the tile."
   }
 }

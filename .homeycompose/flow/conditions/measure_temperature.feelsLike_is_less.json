@@ -1,0 +1,31 @@
+{
+    "title": {
+        "en": "Feels like temperature is !{{is|is not}} less than"
+    },
+    "hint": {
+        "en": "This Flow will continue if feels like temperature is/is not less than the set value."
+    },
+    "titleFormatted": {
+        "en": "The feels like temperature is !{{is|is not}} less than [[value]]°C"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=wind_ws80|weather_station"
+        },
+        {
+            "type": "number",
+            "name": "value",
+            "min": -40,
+            "max": 70,
+            "step": 1,
+            "placeholder": {
+                "en": "Set a value"
+            },
+            "title": {
+                "en": "Feels like temperature"
+            }
+        }
+    ]
+}

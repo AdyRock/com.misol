@@ -1,6 +1,6 @@
 {
     "name": {
-        "en": "Weather Station"
+        "en": "Weather Station (WS80)"
     },
     "platforms": [
         "local"
@@ -21,15 +21,7 @@
         "measure_gust_strength.daily",
         "measure_radiation",
         "measure_ultraviolet",
-        "measure_rain",
-        "measure_rain.event",
-        "measure_rain.hourly",
-        "measure_rain.daily",
-        "measure_rain.weekly",
-        "measure_rain.monthly",
-        "measure_rain.yearly",
-        "measure_rain.total",
-        "alarm_battery"
+        "measure_battery"
     ],
     "capabilitiesOptions": {
         "measure_gust_strength.daily": {
@@ -55,49 +47,6 @@
                 "de": "Taupunkt"
             },
             "decimals": 1
-        },
-        "measure_rain": {
-            "title": {
-                "en": "Rain Rate"
-            },
-            "units": {
-                "en": "mm/hr"
-            }
-        },
-        "measure_rain.event": {
-            "title": {
-                "en": "Rain Event"
-            }
-        },
-        "measure_rain.hourly": {
-            "title": {
-                "en": "Rain Hourly"
-            }
-        },
-        "measure_rain.daily": {
-            "title": {
-                "en": "Rain daily"
-            }
-        },
-        "measure_rain.weekly": {
-            "title": {
-                "en": "Rain weekly"
-            }
-        },
-        "measure_rain.monthly": {
-            "title": {
-                "en": "Rain monthly"
-            }
-        },
-        "measure_rain.yearly": {
-            "title": {
-                "en": "Rain yearly"
-            }
-        },
-        "measure_rain.total": {
-            "title": {
-                "en": "Rain Total"
-            }
         }
     },
     "energy": {
