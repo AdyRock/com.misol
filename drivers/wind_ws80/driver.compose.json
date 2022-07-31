@@ -69,7 +69,7 @@
         }
     ],
     "images": {
-        "small": "/drivers/weather_station/assets/images/small.png",
-        "large": "/drivers/weather_station/assets/images/large.png"
+        "small": "/drivers/wind_ws80/assets/images/small.png",
+        "large": "/drivers/wind_ws80/assets/images/large.png"
     }
 }
