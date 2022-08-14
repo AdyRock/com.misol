@@ -61,5 +61,8 @@
   },
   "0.1.20": {
     "en": "Fixed path to store image for WS80."
+  },
+  "0.1.21": {
+    "en": "Change the weather station and WS80 to use baromrelin (corrected) instead of baromabsin (absolute)."
   }
 }

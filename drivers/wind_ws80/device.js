@@ -61,7 +61,7 @@ class WindWS80Device extends Device
             var relativeHumidity = parseInt(gateway.humidity);
 
             this.setCapabilityValue('measure_humidity', relativeHumidity).catch(this.error);
-            this.setCapabilityValue('measure_pressure', Number(gateway.baromabsin) * 33.8639).catch(this.error);
+            this.setCapabilityValue('measure_pressure', Number(gateway.baromablin) * 33.8639).catch(this.error);
             this.setCapabilityValue('measure_temperature', (temperatureF - 32) * 5 / 9).catch(this.error);
             this.setCapabilityValue('measure_wind_angle', parseInt(gateway.winddir)).catch(this.error);
             this.setCapabilityValue('measure_wind_strength', windSpeed * 1.609344).catch(this.error);
