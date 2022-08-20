@@ -14,11 +14,12 @@ class WeatherStationDevice extends Device
             this.addCapability('measure_hours_since_rained');
         }
 
-        this.lastRained = this.homey.settings.get('lastRained');
-        if (this.lastRained === undefined)
+        this.lastRained = this.homey.settings.get('lastRainedTime');
+        if (this.lastRained === null)
         {
-            this.lastRained = new Date(Date.now());
-            this.homey.settings.set('lastRained', this.lastRained);
+            const now = new Date(Date.now());
+            this.lastRained = now.getTime();
+            this.homey.settings.set('lastRainedTime', this.lastRained);
         }
         this.log('WeatherStationDevice has been initialized');
     }
@@ -91,13 +92,15 @@ class WeatherStationDevice extends Device
 
             if (rain > 0)
             {
-                this.lastRained = new Date(Date.now());
-                this.homey.settings.set('lastRained', this.lastRained);
+                const now = new Date(Date.now());
+                this.lastRained = now.getTime();
+                this.homey.settings.set('lastRainedTime', this.lastRained);
                 this.setCapabilityValue('measure_hours_since_rained', 0).catch(this.error);
             }
             else
             {
-                const diff = (Date.now().getTime() - this.lastRained.getTime());
+                const now = new Date(Date.now());
+                const diff = now.getTime() - this.lastRained;
                 const noRainHours = Math.floor(diff / 1000 / 60 / 60);
                 this.setCapabilityValue('measure_hours_since_rained', noRainHours).catch(this.error);
             }
