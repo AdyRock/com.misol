@@ -17,7 +17,8 @@
         "measure_rain.weekly",
         "measure_rain.monthly",
         "measure_rain.yearly",
-        "measure_rain.total"
+        "measure_rain.total",
+        "measure_hours_since_rained"
     ],
     "capabilitiesOptions": {
         "measure_rain": {

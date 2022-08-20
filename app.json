@@ -2775,7 +2775,8 @@
         "measure_rain.weekly",
         "measure_rain.monthly",
         "measure_rain.yearly",
-        "measure_rain.total"
+        "measure_rain.total",
+        "measure_hours_since_rained"
       ],
       "capabilitiesOptions": {
         "measure_rain": {
@@ -2938,6 +2939,7 @@
         "measure_rain.monthly",
         "measure_rain.yearly",
         "measure_rain.total",
+        "measure_hours_since_rained",
         "alarm_battery"
       ],
       "capabilitiesOptions": {
@@ -3180,6 +3182,19 @@
       "getable": true,
       "setable": false,
       "icon": "/assets/co2.svg"
+    },
+    "measure_hours_since_rained": {
+      "type": "number",
+      "title": {
+        "en": "Hours Since Last Rained"
+      },
+      "units": {
+        "en": "Hours"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "icon": "/assets/rain_time.svg"
     },
     "measure_lightning": {
       "type": "number",

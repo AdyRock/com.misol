@@ -9,6 +9,12 @@ class WeatherStationDevice extends Device
      */
     async onInit()
     {
+        if (!this.hasCapability('measure_hours_since_rained'))
+        {
+            this.addCapability('measure_hours_since_rained');
+        }
+
+        this.lastRained = this.homey.settings.get('lastRained');
         this.log('WeatherStationDevice has been initialized');
     }
 
@@ -78,6 +84,19 @@ class WeatherStationDevice extends Device
                 this.setCapabilityValue('measure_rain.event', rain).catch(this.error);
             }
 
+            if (rain > 0)
+            {
+                this.lastRained = new Date(Date.now());
+                this.homey.settings.set('lastRained', this.lastRained);
+                this.setCapabilityValue('measure_hours_since_rained', 0).catch(this.error);
+            }
+            else if (this.lastRained)
+            {
+                const diff = (Date.now().getTime() - this.lastRained.getTime());
+                const noRainHours = Math.floor(diff / 1000 / 60 / 60);
+                this.setCapabilityValue('measure_hours_since_rained', noRainHours).catch(this.error);
+            }
+
             rain = Number(gateway.hourlyrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.hourly'))
             {
@@ -108,7 +127,7 @@ class WeatherStationDevice extends Device
                 this.setCapabilityValue('measure_rain.yearly', rain).catch(this.error);
             }
 
-            rain = Number(gateway.totalrainin) * 25.4;
+            rain = Number(gateway.totalainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.total'))
             {
                 this.setCapabilityValue('measure_rain.total', rain).catch(this.error);

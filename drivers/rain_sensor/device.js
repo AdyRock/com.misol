@@ -9,6 +9,12 @@ class RainSensorDevice extends Device
      */
     async onInit()
     {
+        if (!this.hasCapability('measure_hours_since_rained'))
+        {
+            this.addCapability('measure_hours_since_rained');
+        }
+
+        this.lastRained = this.homey.settings.get('lastRained');
         this.log('RainSensorDevice has been initialized');
     }
 
@@ -63,6 +69,19 @@ class RainSensorDevice extends Device
             {
                 this.setCapabilityValue('measure_rain.event', rain).catch(this.error);
                 //this.driver.trigger_measure_rain_event(this, rain);
+            }
+
+            if (rain > 0)
+            {
+                this.lastRained = new Date(Date.now());
+                this.homey.settings.set('lastRained', this.lastRained);
+                this.setCapabilityValue('measure_hours_since_rained', 0).catch(this.error);
+            }
+            else if (this.lastRained)
+            {
+                const diff = (Date.now().getTime() - this.lastRained.getTime());
+                const noRainHours = Math.floor(diff / 1000 / 60 / 60);
+                this.setCapabilityValue('measure_hours_since_rained', noRainHours).catch(this.error);
             }
 
             rain = Number(gateway.hourlyrainin) * 25.4;

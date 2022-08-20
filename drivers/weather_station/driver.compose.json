@@ -29,6 +29,7 @@
         "measure_rain.monthly",
         "measure_rain.yearly",
         "measure_rain.total",
+        "measure_hours_since_rained",
         "alarm_battery"
     ],
     "capabilitiesOptions": {
