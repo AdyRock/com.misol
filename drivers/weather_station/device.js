@@ -84,7 +84,7 @@ class WeatherStationDevice extends Device
                 this.setCapabilityValue('measure_rain.event', rain).catch(this.error);
             }
 
-            if (rain > 0)
+            if ((rain > 0) || (!this.lastRained))
             {
                 this.lastRained = new Date(Date.now());
                 this.homey.settings.set('lastRained', this.lastRained);

@@ -67,5 +67,8 @@
   },
   "0.1.22": {
     "en": "Change the weather station and WS80 to use baromrelin (corrected) instead of baromabsin (absolute)."
+  },
+  "0.1.23": {
+    "en": "Added number of hours since last rained with associated flows"
   }
 }
