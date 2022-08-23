@@ -81,14 +81,9 @@ class WeatherStationDevice extends Device
             this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) * 1.609344).catch(this.error);
             this.setCapabilityValue('measure_radiation', Number(gateway.solarradiation)).catch(this.error);
             this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.error);
-            this.setCapabilityValue('measure_rain', Number(gateway.rainratein) * 25.4).catch(this.error);
 
-
-            let rain = Number(gateway.eventrainin) * 25.4;
-            if (rain != this.getCapabilityValue('measure_rain.event'))
-            {
-                this.setCapabilityValue('measure_rain.event', rain).catch(this.error);
-            }
+            let rain = Number(gateway.rainratein) * 25.4;
+            this.setCapabilityValue('measure_rain', rain).catch(this.error);
 
             if (rain > 0)
             {
@@ -103,6 +98,12 @@ class WeatherStationDevice extends Device
                 const diff = now.getTime() - this.lastRained;
                 const noRainHours = Math.floor(diff / 1000 / 60 / 60);
                 this.setCapabilityValue('measure_hours_since_rained', noRainHours).catch(this.error);
+            }
+
+            rain = Number(gateway.eventrainin) * 25.4;
+            if (rain != this.getCapabilityValue('measure_rain.event'))
+            {
+                this.setCapabilityValue('measure_rain.event', rain).catch(this.error);
             }
 
             rain = Number(gateway.hourlyrainin) * 25.4;

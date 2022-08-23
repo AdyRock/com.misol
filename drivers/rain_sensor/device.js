@@ -68,14 +68,8 @@ class RainSensorDevice extends Device
         const dd = this.getData();
         if (gateway.PASSKEY === dd.id)
         {
-            this.setCapabilityValue('measure_rain', Number(gateway.rainratein) * 25.4).catch(this.error);
-
-            let rain = Number(gateway.eventrainin) * 25.4;
-            if (rain != this.getCapabilityValue('measure_rain.event'))
-            {
-                this.setCapabilityValue('measure_rain.event', rain).catch(this.error);
-                //this.driver.trigger_measure_rain_event(this, rain);
-            }
+            let rain = Number(gateway.rainratein) * 25.4;
+            this.setCapabilityValue('measure_rain', rain).catch(this.error);
 
             if (rain > 0)
             {
@@ -90,6 +84,13 @@ class RainSensorDevice extends Device
                 const diff = now.getTime() - this.lastRained;
                 const noRainHours = Math.floor(diff / 1000 / 60 / 60);
                 this.setCapabilityValue('measure_hours_since_rained', noRainHours).catch(this.error);
+            }
+
+            rain = Number(gateway.eventrainin) * 25.4;
+            if (rain != this.getCapabilityValue('measure_rain.event'))
+            {
+                this.setCapabilityValue('measure_rain.event', rain).catch(this.error);
+                //this.driver.trigger_measure_rain_event(this, rain);
             }
 
             rain = Number(gateway.hourlyrainin) * 25.4;
