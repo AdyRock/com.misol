@@ -230,13 +230,6 @@ class MyApp extends Homey.App
             return value < args.value;
         });
 
-        let measure_hours_since_rained_is_equalCondition = this.homey.flow.getConditionCard('measure_hours_since_rained_is_equal');
-        measure_hours_since_rained_is_equalCondition.registerRunListener(async (args, state) =>
-        {
-            let value = args.device.getCapabilityValue('measure_hours_since_rained');
-            return value === args.value;
-        });
-
         // Lightening conditions
         let measure_lightning_is_lessCondition = this.homey.flow.getConditionCard('measure_lightning_is_less');
         measure_lightning_is_lessCondition.registerRunListener(async (args, state) =>
