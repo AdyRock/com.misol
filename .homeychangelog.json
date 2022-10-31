@@ -70,5 +70,8 @@
   },
   "0.1.23": {
     "en": "Added number of hours since last rained with associated flow cards"
+  },
+  "0.1.24": {
+    "en": "Removed redundant Air Quality Index Flow trigger cards."
   }
 }
