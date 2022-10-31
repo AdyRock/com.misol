@@ -2,16 +2,6 @@
     "title": {
         "en": "The PM2.5 average air quality index has changed"
     },
-    "tokens": [
-        {
-            "name": "measure_aqi.avg",
-            "title": {
-                "en": "Average Air quality index"
-            },
-            "type": "number",
-            "example": 3
-        }
-    ],
     "args": [
         {
             "name": "device",
