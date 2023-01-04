@@ -64,7 +64,16 @@ class MyApp extends Homey.App
                 let simData = this.homey.settings.get('simData');
                 if (simData)
                 {
-                    var gatewatEntry = this.detectedGateways.findIndex(x => x.PASSKEY === simData[0].PASSKEY);
+                    var gatewatEntry = -1;
+                    try
+                    {
+                        gatewatEntry = this.detectedGateways.findIndex(x => x.PASSKEY === simData[0].PASSKEY);
+                    }
+                    catch( err )
+                    {
+                        gatewatEntry = -1;
+                    }
+
                     if (gatewatEntry === -1)
                     {
                         this.detectedGateways.push(simData[0]);
@@ -417,13 +426,6 @@ class MyApp extends Homey.App
 
                     this.homey.api.realtime('com.misol.detectedDevicesUpdated', JSON.stringify(this.detectedGateways, null, 2));
 
-                    // Use sim data if available
-                    let simData = this.homey.settings.get('simData');
-                    if (simData)
-                    {
-                        data = simData[0];
-                    }
-
                     const drivers = this.homey.drivers.getDrivers();
                     for (const driver in drivers)
                     {
@@ -440,6 +442,39 @@ class MyApp extends Homey.App
                     }
 
                     this.log(data);
+
+                    // Use sim data if available
+                    let simData = this.homey.settings.get('simData');
+                    if (simData)
+                    {
+                        data = simData[0];
+                        gatewatEntry = this.detectedGateways.findIndex(x => x.PASSKEY === data.PASSKEY);
+                        if (gatewatEntry === -1)
+                        {
+                            this.detectedGateways.push(data);
+                        }
+                        else
+                        {
+                            this.detectedGateways[gatewatEntry] = data;
+                        }
+
+                        this.homey.api.realtime('com.misol.detectedDevicesUpdated', JSON.stringify(this.detectedGateways, null, 2));
+
+                        const drivers = this.homey.drivers.getDrivers();
+                        for (const driver in drivers)
+                        {
+                            let devices = this.homey.drivers.getDriver(driver).getDevices();
+    
+                            for (let i = 0; i < devices.length; i++)
+                            {
+                                let device = devices[i];
+                                if (device.updateCapabilities)
+                                {
+                                    device.updateCapabilities(data);
+                                }
+                            }
+                        }
+                    }
                 }
                 catch (err)
                 {

@@ -73,5 +73,8 @@
   },
   "0.1.24": {
     "en": "Removed redundant Air Quality Index Flow trigger cards."
+  },
+  "0.1.25": {
+    "en": "Added Water Tempeature device (WN34)."
   }
 }
