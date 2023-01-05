@@ -74,7 +74,7 @@ class TempWaterDevice extends Device
                         
                         if (batteryType === '0')
                         {
-                            batP = (batV - 0.9) / (1.7 - 0.9) * 100;
+                            batP = (batV - 0.9) / (1.6 - 0.9) * 100;
                         }
                         else
                         {

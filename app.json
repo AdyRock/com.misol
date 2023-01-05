@@ -2358,8 +2358,8 @@
         }
       ],
       "images": {
-        "small": "/drivers/Temp/assets/images/small.png",
-        "large": "/drivers/Temp/assets/images/large.png"
+        "small": "/drivers/Temp_Water/assets/images/small.png",
+        "large": "/drivers/Temp_Water/assets/images/large.png"
       },
       "id": "Temp_Water"
     },
