@@ -79,5 +79,8 @@
   },
   "0.1.26": {
     "en": "Updated Water Temperature icon."
+  },
+  "0.1.27": {
+    "en": "Fix typo in function name for triggerAQPM25AvgChanged."
   }
 }
