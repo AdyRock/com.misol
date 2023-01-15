@@ -82,7 +82,49 @@ class WeatherStationDevice extends Device
             this.setCapabilityValue('measure_radiation', Number(gateway.solarradiation)).catch(this.error);
             this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.error);
 
-            let rain = Number(gateway.rainratein) * 25.4;
+            let rainratein = 0;
+            let eventrainin = 0;
+            let hourlyrainin = 0;
+            let dailyrainin = 0;
+            let weeklyrainin = 0;
+            let monthlyrainin = 0;
+            let yearlyrainin = 0;
+            let totalrainin = 0;
+
+            if (gateway.rainratein)
+            {
+                rainratein = 	gateway.rainratein;
+                eventrainin = 	gateway.eventrainin;
+                hourlyrainin = 	gateway.hourlyrainin;
+                dailyrainin = 	gateway.dailyrainin;
+                weeklyrainin = 	gateway.weeklyrainin;
+                monthlyrainin = gateway.monthlyrainin;
+                yearlyrainin = 	gateway.yearlyrainin;
+                totalrainin = 	gateway.totalrainin; 
+
+                let rain = Number(totalrainin) * 25.4;
+                if (rain != this.getCapabilityValue('measure_rain.total'))
+                {
+                    this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
+                }
+            }
+            else if (gateway.rrain_piezo)
+            {
+                rainratein = 	gateway.rrain_piezo;
+                eventrainin = 	gateway.erain_piezo;
+                hourlyrainin = 	gateway.hrain_piezo;
+                dailyrainin = 	gateway.drain_piezo;
+                weeklyrainin = 	gateway.wrain_piezo;
+                monthlyrainin = gateway.mrain_piezo;
+                yearlyrainin = 	gateway.yrain_piezo;
+
+                if (this.hasCapability('measure_rain.total'))
+                {
+                    this.removeCapability('measure_rain.total');
+                }
+            }
+
+            let rain = Number(rainratein) * 25.4;
             this.setCapabilityValue('measure_rain', rain).catch(this.error);
 
             if (rain > 0)
@@ -100,56 +142,57 @@ class WeatherStationDevice extends Device
                 this.setCapabilityValue('measure_hours_since_rained', noRainHours).catch(this.error);
             }
 
-            rain = Number(gateway.eventrainin) * 25.4;
+            rain = Number(eventrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.event'))
             {
                 this.setCapabilityValue('measure_rain.event', rain).catch(this.error);
             }
 
-            rain = Number(gateway.hourlyrainin) * 25.4;
+            rain = Number(hourlyrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.hourly'))
             {
                 this.setCapabilityValue('measure_rain.hourly', rain).catch(this.error);
             }
 
-            rain = Number(gateway.dailyrainin) * 25.4;
+            rain = Number(dailyrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.daily'))
             {
                 this.setCapabilityValue('measure_rain.daily', rain).catch(this.error);
             }
 
-            rain = Number(gateway.weeklyrainin) * 25.4;
+            rain = Number(weeklyrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.weekly'))
             {
                 this.setCapabilityValue('measure_rain.weekly', rain).catch(this.error);
             }
 
-            rain = Number(gateway.monthlyrainin) * 25.4;
+            rain = Number(monthlyrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.monthly'))
             {
                 this.setCapabilityValue('measure_rain.monthly', rain).catch(this.error);
             }
 
-            rain = Number(gateway.yearlyrainin) * 25.4;
+            rain = Number(yearlyrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.yearly'))
             {
                 this.setCapabilityValue('measure_rain.yearly', rain).catch(this.error);
             }
 
-            rain = Number(gateway.totalainin) * 25.4;
-            if (rain != this.getCapabilityValue('measure_rain.total'))
-            {
-                this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
-            }
-
-            rain = Number(gateway.dailyrainin) * 25.4;
+            rain = Number(dailyrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.daily'))
             {
                 this.setCapabilityValue('measure_rain.daily', rain).catch(this.error);
             }
 
-            this.setCapabilityValue('alarm_battery', gateway.wh65batt === '1').catch(this.error);
-
+            if (gateway.wh65batt)
+            {
+                this.setCapabilityValue('alarm_battery', gateway.wh65batt === '1').catch(this.error);
+            }
+            else if (gateway.wh90batt)
+            {
+                var bat = Number(gateway.wh90batt);
+                this.setCapabilityValue('alarm_battery', bat > 2).catch(this.error);
+            }
 
             var feelsLike = 0;
 

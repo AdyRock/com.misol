@@ -82,5 +82,8 @@
   },
   "0.1.27": {
     "en": "Fix typo in function name for triggerAQPM25AvgChanged."
+  },
+  "0.1.28": {
+    "en": "Fix rain data for WS90."
   }
 }
