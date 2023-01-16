@@ -186,13 +186,49 @@ class WeatherStationDevice extends Device
 
             if (gateway.wh65batt)
             {
+                if (this.hasCapability('measure_battery'))
+                {
+                    this.removeCapability('measure_battery');
+                }
                 this.setCapabilityValue('alarm_battery', gateway.wh65batt === '1').catch(this.error);
             }
             else if (gateway.wh90batt)
             {
-                var bat = Number(gateway.wh90batt);
-                this.setCapabilityValue('alarm_battery', bat > 2).catch(this.error);
-            }
+                if (this.hasCapability('alarm_battery'))
+                {
+                    this.removeCapability('alarm_battery');
+                }
+                var batV = Number(gateway.wh90batt);
+                if (batV > 0)
+                {
+                    if (!this.hasCapability('measure_battery'))
+                    {
+                        await this.addCapability('measure_battery').catch(this.error);
+                    }
+                    
+                    var batteryType = this.getSetting( 'batteryType' );
+                    var batP = 0;
+                    
+                    if (batteryType === '0')
+                    {
+                        batP = (batV - 0.9) / (1.6 - 0.9) * 100;
+                    }
+                    else
+                    {
+                        batP = (batV - 0.9) / (1.3 - 0.9) * 100;
+                    }
+    
+                    if (batP > 100)
+                    {
+                        batP = 100;
+                    }
+                    if (batP < 0)
+                    {
+                        batP = 0;
+                    }
+                    this.setCapabilityValue('measure_battery', batP).catch(this.error);
+                }
+        }
 
             var feelsLike = 0;
 

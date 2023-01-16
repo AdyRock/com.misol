@@ -85,5 +85,8 @@
   },
   "0.1.28": {
     "en": "Fix rain data for WS90."
+  },
+  "0.1.29": {
+    "en": "Fix battery information for WS90."
   }
 }
