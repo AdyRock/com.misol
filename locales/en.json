@@ -14,7 +14,9 @@
         "saved": "The settings have been saved",
         "confirmSend": "Send the log contents to the developer?\n** All identifiers will be removed **",
         "logSent": "The log has been sent.",
-        "logSendFailed": "Failed to send after 5 attempts.\nThe error messages are at the end of the log."
+        "logSendFailed": "Failed to send after 5 attempts.\nThe error messages are at the end of the log.",
+        "Units": "Units",
+        "SpeedUnits": "Wind Speed"
     },
     "good": "Good",
     "Moderate": "Moderate",

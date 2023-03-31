@@ -1,6 +1,7 @@
 'use strict';
 
 const { Device } = require('homey');
+const Sector = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW','N'];
 
 class WeatherStationDevice extends Device
 {
@@ -9,9 +10,14 @@ class WeatherStationDevice extends Device
      */
     async onInit()
     {
-        if (!this.hasCapability('measure_hours_since_rained'))
+        // if (!this.hasCapability('measure_hours_since_rained'))
+        // {
+        //     this.addCapability('measure_hours_since_rained');
+        // }
+
+        if (!this.hasCapability('measure_wind_direction'))
         {
-            this.addCapability('measure_hours_since_rained');
+            this.addCapability('measure_wind_direction');
         }
 
         this.lastRained = this.homey.settings.get('lastRainedTime');
@@ -22,6 +28,7 @@ class WeatherStationDevice extends Device
             this.homey.settings.set('lastRainedTime', this.lastRained);
         }
         this.log('WeatherStationDevice has been initialized');
+        this.unitsChanged('SpeedUnits');
     }
 
     /**
@@ -63,6 +70,20 @@ class WeatherStationDevice extends Device
         this.log('WeatherStationDevice has been deleted');
     }
 
+    async unitsChanged(Units)
+    {
+        if (Units === 'SpeedUnits')
+        {
+            let unitsText = this.homey.app.SpeedUnits === '0' ? "Km/H" : "m/s";
+            this.setCapabilityOptions('measure_wind_strength', { "units": unitsText }).catch(this.error);
+            this.setCapabilityOptions('measure_gust_strength', { "units": unitsText }).catch(this.error);
+            this.setCapabilityOptions('measure_gust_strength.daily', { "units": unitsText }).catch(this.error);
+            this.setCapabilityValue('measure_wind_strength', null).catch(this.error);
+            this.setCapabilityValue('measure_gust_strength', null).catch(this.error);
+            this.setCapabilityValue('measure_gust_strength.daily', null).catch(this.error);
+        }
+    }
+
     async updateCapabilities(gateway)
     {
         const dd = this.getData();
@@ -75,14 +96,29 @@ class WeatherStationDevice extends Device
             this.setCapabilityValue('measure_humidity', relativeHumidity).catch(this.error);
             this.setCapabilityValue('measure_pressure', Number(gateway.baromrelin) * 33.8639).catch(this.error);
             this.setCapabilityValue('measure_temperature', (temperatureF - 32) * 5 / 9).catch(this.error);
+
+            if (this.homey.app.SpeedUnits === '0')
+            {
+                this.setCapabilityValue('measure_wind_strength', windSpeed * 1.609344).catch(this.error);
+                this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) * 1.609344).catch(this.error);
+                this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) * 1.609344).catch(this.error);
+            }
+            else
+            {
+                this.setCapabilityValue('measure_wind_strength', (windSpeed * 1.609344) * 1000 / 3600).catch(this.error);
+                this.setCapabilityValue('measure_gust_strength', (Number(gateway.windgustmph) * 1.609344) * 1000 / 3600).catch(this.error);
+                this.setCapabilityValue('measure_gust_strength.daily', (Number(gateway.maxdailygust) * 1.609344) * 1000 / 3600).catch(this.error);
+            }
+
             this.setCapabilityValue('measure_wind_angle', parseInt(gateway.winddir)).catch(this.error);
-            this.setCapabilityValue('measure_wind_strength', windSpeed * 1.609344).catch(this.error);
-            this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) * 1.609344).catch(this.error);
-            this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) * 1.609344).catch(this.error);
+
+            var index = parseInt(gateway.winddir / 22.5);
+            this.setCapabilityValue('measure_wind_direction', Sector[index]).catch(this.error);
+
             this.setCapabilityValue('measure_radiation', Number(gateway.solarradiation)).catch(this.error);
             this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.error);
 
-            let rainratein = 0;
+            let rainratein = null;
             let eventrainin = 0;
             let hourlyrainin = 0;
             let dailyrainin = 0;
@@ -93,14 +129,18 @@ class WeatherStationDevice extends Device
 
             if (gateway.rainratein)
             {
-                rainratein = 	gateway.rainratein;
-                eventrainin = 	gateway.eventrainin;
-                hourlyrainin = 	gateway.hourlyrainin;
-                dailyrainin = 	gateway.dailyrainin;
-                weeklyrainin = 	gateway.weeklyrainin;
+                rainratein = gateway.rainratein;
+            }
+
+            if (gateway.eventrainin)
+            {
+                eventrainin = gateway.eventrainin;
+                hourlyrainin = gateway.hourlyrainin;
+                dailyrainin = gateway.dailyrainin;
+                weeklyrainin = gateway.weeklyrainin;
                 monthlyrainin = gateway.monthlyrainin;
-                yearlyrainin = 	gateway.yearlyrainin;
-                totalrainin = 	gateway.totalrainin; 
+                yearlyrainin = gateway.yearlyrainin;
+                totalrainin = gateway.totalrainin;
 
                 let rain = Number(totalrainin) * 25.4;
                 if (rain != this.getCapabilityValue('measure_rain.total'))
@@ -110,13 +150,13 @@ class WeatherStationDevice extends Device
             }
             else if (gateway.rrain_piezo)
             {
-                rainratein = 	gateway.rrain_piezo;
-                eventrainin = 	gateway.erain_piezo;
-                hourlyrainin = 	gateway.hrain_piezo;
-                dailyrainin = 	gateway.drain_piezo;
-                weeklyrainin = 	gateway.wrain_piezo;
+                rainratein = gateway.rrain_piezo;
+                eventrainin = gateway.erain_piezo;
+                hourlyrainin = gateway.hrain_piezo;
+                dailyrainin = gateway.drain_piezo;
+                weeklyrainin = gateway.wrain_piezo;
                 monthlyrainin = gateway.mrain_piezo;
-                yearlyrainin = 	gateway.yrain_piezo;
+                yearlyrainin = gateway.yrain_piezo;
 
                 if (this.hasCapability('measure_rain.total'))
                 {
@@ -124,22 +164,48 @@ class WeatherStationDevice extends Device
                 }
             }
 
-            let rain = Number(rainratein) * 25.4;
-            this.setCapabilityValue('measure_rain', rain).catch(this.error);
-
-            if (rain > 0)
+            let rain = 0;
+            if (rainratein !== null)
             {
-                const now = new Date(Date.now());
-                this.lastRained = now.getTime();
-                this.homey.settings.set('lastRainedTime', this.lastRained);
-                this.setCapabilityValue('measure_hours_since_rained', 0).catch(this.error);
+                if (!this.hasCapability('measure_rain'))
+                {
+                    await this.addCapability('measure_rain');
+
+                }
+                if (!this.hasCapability('measure_hours_since_rained'))
+                {
+                    await this.addCapability('measure_hours_since_rained');
+
+                }
+
+                rain = Number(rainratein) * 25.4;
+                this.setCapabilityValue('measure_rain', rain).catch(this.error);
+
+                if (rain > 0)
+                {
+                    const now = new Date(Date.now());
+                    this.lastRained = now.getTime();
+                    this.homey.settings.set('lastRainedTime', this.lastRained);
+                    this.setCapabilityValue('measure_hours_since_rained', 0).catch(this.error);
+                }
+                else
+                {
+                    const now = new Date(Date.now());
+                    const diff = now.getTime() - this.lastRained;
+                    const noRainHours = Math.floor(diff / 1000 / 60 / 60);
+                    this.setCapabilityValue('measure_hours_since_rained', noRainHours).catch(this.error);
+                }
             }
             else
             {
-                const now = new Date(Date.now());
-                const diff = now.getTime() - this.lastRained;
-                const noRainHours = Math.floor(diff / 1000 / 60 / 60);
-                this.setCapabilityValue('measure_hours_since_rained', noRainHours).catch(this.error);
+                if (this.hasCapability('measure_rain'))
+                {
+                    this.removeCapability('measure_rain');
+                }
+                if (this.hasCapability('measure_hours_since_rained'))
+                {
+                    this.removeCapability('measure_hours_since_rained');
+                }
             }
 
             rain = Number(eventrainin) * 25.4;
@@ -205,10 +271,10 @@ class WeatherStationDevice extends Device
                     {
                         await this.addCapability('measure_battery').catch(this.error);
                     }
-                    
-                    var batteryType = this.getSetting( 'batteryType' );
+
+                    var batteryType = this.getSetting('batteryType');
                     var batP = 0;
-                    
+
                     if (batteryType === '0')
                     {
                         batP = (batV - 0.9) / (1.6 - 0.9) * 100;
@@ -217,7 +283,7 @@ class WeatherStationDevice extends Device
                     {
                         batP = (batV - 0.9) / (1.3 - 0.9) * 100;
                     }
-    
+
                     if (batP > 100)
                     {
                         batP = 100;
@@ -228,41 +294,41 @@ class WeatherStationDevice extends Device
                     }
                     this.setCapabilityValue('measure_battery', batP).catch(this.error);
                 }
-        }
+            }
 
             var feelsLike = 0;
 
             // Try Wind Chill first
             if ((temperatureF <= 50) && (windSpeed >= 3))
             {
-                feelsLike = 35.74 + (0.6215*temperatureF) - 35.75*(windSpeed**0.16) + ((0.4275*temperatureF)*(windSpeed**0.16));
+                feelsLike = 35.74 + (0.6215 * temperatureF) - 35.75 * (windSpeed ** 0.16) + ((0.4275 * temperatureF) * (windSpeed ** 0.16));
             }
             else
             {
                 feelsLike = temperatureF;
             }
-            
+
             // Replace it with the Heat Index, if necessary
             if ((feelsLike == temperatureF) && (temperatureF >= 80))
             {
                 feelsLike = 0.5 * (temperatureF + 61.0 + ((temperatureF - 68.0) * 1.2) + (relativeHumidity * 0.094));
-            
+
                 if (feelsLike >= 80)
                 {
-                    feelsLike = -42.379 + 2.04901523 * temperatureF + 10.14333127 * relativeHumidity - 0.22475541 * temperatureF*relativeHumidity - 0.00683783 * temperatureF * temperatureF - 0.05481717 * relativeHumidity*relativeHumidity + 0.00122874 * temperatureF*temperatureF * relativeHumidity + 0.00085282 * temperatureF*relativeHumidity*relativeHumidity - 0.00000199 * temperatureF * temperatureF * relativeHumidity * relativeHumidity;
+                    feelsLike = -42.379 + 2.04901523 * temperatureF + 10.14333127 * relativeHumidity - 0.22475541 * temperatureF * relativeHumidity - 0.00683783 * temperatureF * temperatureF - 0.05481717 * relativeHumidity * relativeHumidity + 0.00122874 * temperatureF * temperatureF * relativeHumidity + 0.00085282 * temperatureF * relativeHumidity * relativeHumidity - 0.00000199 * temperatureF * temperatureF * relativeHumidity * relativeHumidity;
                     if ((relativeHumidity < 13) && (temperatureF >= 80) && (temperatureF <= 112))
                     {
-                        feelsLike = feelsLike - ((13 - relativeHumidity) /4) * Math.sqrt((17 - Math.fabs(temperatureF - 95)) / 17);
+                        feelsLike = feelsLike - ((13 - relativeHumidity) / 4) * Math.sqrt((17 - Math.fabs(temperatureF - 95)) / 17);
                         if ((relativeHumidity > 85) && (temperatureF >= 80) && (temperatureF <= 87))
                         {
-                            feelsLike = feelsLike + ((relativeHumidity -85 ) / 10) * ((87 - temperatureF) / 5);
+                            feelsLike = feelsLike + ((relativeHumidity - 85) / 10) * ((87 - temperatureF) / 5);
                         }
                     }
                 }
             }
 
             let temperature = (feelsLike - 32) * 5 / 9;
-            temperature = Math.round( temperature * 10 + Number.EPSILON ) / 10;
+            temperature = Math.round(temperature * 10 + Number.EPSILON) / 10;
             if (temperature != this.getCapabilityValue('measure_temperature.feelsLike'))
             {
                 this.setCapabilityValue('measure_temperature.feelsLike', temperature).catch(this.error);
@@ -285,7 +351,7 @@ class WeatherStationDevice extends Device
                 }
             }
 
-            dewPoint = Math.round( dewPoint * 10 + Number.EPSILON ) / 10;
+            dewPoint = Math.round(dewPoint * 10 + Number.EPSILON) / 10;
 
             if (dewPoint != this.getCapabilityValue('measure_temperature.dewPoint'))
             {

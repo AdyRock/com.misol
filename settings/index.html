@@ -32,6 +32,16 @@
             </fieldset>
         </fieldset>
         <fieldset>
+            <legend><span data-i18n="settings.Units"></span></legend>
+            <div class="field row">
+                <label for="SpeedUnits"><span data-i18n="settings.SpeedUnits"></span></label>
+                <select id="SpeedUnits" style="width:80px;">
+                    <option value='0'>Km/H</option>
+                    <option value='1'>m/s</option>
+                </select>
+            </div>
+        </fieldset>
+        <fieldset>
             <p><button id="save" class="right"><span data-i18n="settings.saveChanges"></span></button></p>
         </fieldset>
     </div>
@@ -79,6 +89,8 @@
 
     <script type="text/javascript">
         var portElement = document.getElementById('port');
+        var SpeedUnitsElement = document.getElementById( 'SpeedUnits' );
+
         var detectedDevicesElement = document.getElementById('detectedDevices');
         var diagLogElement = document.getElementById('diagLog');
         var logEnabledElement = document.getElementById('logEnabled');
@@ -113,6 +125,12 @@
                 if (err) return Homey.alert(err);
                portElement.value = port;
             });
+
+            Homey.get( 'SpeedUnits', function( err, SpeedUnits )
+            {
+                if ( err ) return Homey.alert( err );
+                SpeedUnitsElement.value = SpeedUnits;
+            } );
 
             Homey.get('logEnabled', function(err, logEnabled)
             {
@@ -156,6 +174,10 @@
                 {
                     if (err) return Homey.alert(err);
                 });
+                Homey.set( 'SpeedUnits', SpeedUnitsElement.value, function( err )
+                {
+                    if ( err ) return Homey.alert( err );
+                } );
 
                 return Homey.alert(Homey.__('settings.saved'));
             });

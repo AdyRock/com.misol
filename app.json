@@ -18,7 +18,7 @@
     "climate"
   ],
   "permissions": [],
-  "support": "https://github.com/AdyRock/com.somfy.tahoma/issues",
+  "support": "https://github.com/AdyRock/com.misol/issues",
   "contributing": {
     "donate": {
       "paypal": {
@@ -2889,6 +2889,7 @@
         "measure_temperature.dewPoint",
         "measure_pressure",
         "measure_wind_angle",
+        "measure_wind_direction",
         "measure_wind_strength",
         "measure_gust_strength",
         "measure_gust_strength.daily",
@@ -3045,6 +3046,7 @@
         "measure_temperature.dewPoint",
         "measure_pressure",
         "measure_wind_angle",
+        "measure_wind_direction",
         "measure_wind_strength",
         "measure_gust_strength",
         "measure_gust_strength.daily",
@@ -3260,6 +3262,15 @@
       "insights": true,
       "decimals": 1,
       "icon": "/assets/radiation.svg"
+    },
+    "measure_wind_direction": {
+      "type": "string",
+      "title": {
+        "en": "Wind Direction"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/wind-rose.svg"
     }
   }
 }

@@ -88,5 +88,8 @@
   },
   "0.1.29": {
     "en": "Fix battery information for WS90."
+  },
+  "0.1.30": {
+    "en": "Added option to change App wind units. Added Wind Direction (N, NW, etc). Added support for Ambient Weather format data."
   }
 }

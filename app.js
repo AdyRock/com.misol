@@ -1,7 +1,7 @@
 'use strict';
 if (process.env.DEBUG === '1')
 {
-    require('inspector').open(9222, '0.0.0.0', true);
+    require('inspector').open(9222, '0.0.0.0', false);
 }
 
 const Homey = require('homey');
@@ -42,6 +42,13 @@ class MyApp extends Homey.App
             this.pushServerPort = 7777;
         }
 
+        this.SpeedUnits = this.homey.settings.get( 'SpeedUnits' );
+        if ( this.SpeedUnits === null )
+        {
+            this.SpeedUnits = 0;
+            this.homey.settings.set( 'SpeedUnits', this.SpeedUnits );
+        }
+
         this.runsListener();
         this.detectedGateways = [];
 
@@ -57,6 +64,12 @@ class MyApp extends Homey.App
                 this.updateLog("Closing server");
                 this.server.close();
                 this.runsListener();
+            }
+
+            if ( key === 'SpeedUnits' )
+            {
+                this.SpeedUnits = this.homey.settings.get( 'SpeedUnits' );
+                this.changeUnits( 'SpeedUnits' );
             }
 
             if (key === 'simData')
@@ -377,6 +390,29 @@ class MyApp extends Homey.App
         });
         
     }
+    
+    async changeUnits( Units )
+    {
+        let promises = [];
+
+        const drivers = this.homey.drivers.getDrivers();
+        for ( const driver in drivers )
+        {
+            let devices = this.homey.drivers.getDriver( driver ).getDevices();
+            let numDevices = devices.length;
+            for ( var i = 0; i < numDevices; i++ )
+            {
+                let device = devices[ i ];
+                if ( device.unitsChanged )
+                {
+                    promises.push( device.unitsChanged( Units ) );
+                }
+            }
+        }
+
+        // Wait for all the checks to complete
+        await Promise.allSettled( promises );
+    }
 
     hashCode(s)
     {
@@ -404,13 +440,32 @@ class MyApp extends Homey.App
             });
             request.on('end', () =>
             {
-                let bodyMsg = body;
-                body = '';
-                response.writeHead(200);
-                response.end('ok');
                 try
                 {
-                    let data = JSON.parse('{"' + bodyMsg.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function(key, value) { return key === "" ? value : decodeURIComponent(value); });
+                    let bodyMsg = body;
+                    body = '';
+                    response.writeHead(200);
+                    response.end('ok');
+
+                    let data = '';
+                    if (bodyMsg.length === 0)
+                    {
+                        // Support for Ambient Weather format
+                        var fullUrl = request.url.replace('/data/report/', '');
+                        if (fullUrl.length === 0)
+                        {
+                            return;
+                        }
+                        var url = require('url');
+                        var url_parts = url.parse(`?${fullUrl}`, true);
+                        data = url_parts.query;
+                    }
+                    else
+                    {
+                        // Misol and Ecowitt format
+                        data = JSON.parse('{"' + bodyMsg.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function(key, value) { return key === "" ? value : decodeURIComponent(value); });
+                    }
+
                     this.updateLog(this.varToString(data), 1);
 
                     // Update discovery array used to add devices

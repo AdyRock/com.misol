@@ -1,4 +1,5 @@
 'use strict';
+const Sector = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW','N'];
 
 const { Device } = require('homey');
 
@@ -9,6 +10,11 @@ class WindWS80Device extends Device
      */
     async onInit()
     {
+        if (!this.hasCapability('measure_wind_direction'))
+        {
+            this.addCapability('measure_wind_direction');
+        }
+
         this.log('WindWS80Device has been initialized');
     }
 
@@ -51,6 +57,20 @@ class WindWS80Device extends Device
         this.log('WindWS80Device has been deleted');
     }
 
+    async unitsChanged( Units )
+    {
+        if ( Units === 'SpeedUnits' )
+        {
+            let unitsText = this.homey.app.SpeedUnits === '0' ? "Km/H" : "m/s";
+            this.setCapabilityOptions( 'measure_wind_strength', { "units": unitsText } ).catch(this.error);
+            this.setCapabilityOptions( 'measure_gust_strength', { "units": unitsText } ).catch(this.error);
+            this.setCapabilityOptions( 'measure_gust_strength.daily', { "units": unitsText } ).catch(this.error);
+            this.setCapabilityValue('measure_wind_strength', null).catch(this.error);
+            this.setCapabilityValue('measure_gust_strength', null).catch(this.error);
+            this.setCapabilityValue('measure_gust_strength.daily', null).catch(this.error);
+        }
+    }
+
     async updateCapabilities(gateway)
     {
         const dd = this.getData();
@@ -63,10 +83,25 @@ class WindWS80Device extends Device
             this.setCapabilityValue('measure_humidity', relativeHumidity).catch(this.error);
             this.setCapabilityValue('measure_pressure', Number(gateway.baromrelin) * 33.8639).catch(this.error);
             this.setCapabilityValue('measure_temperature', (temperatureF - 32) * 5 / 9).catch(this.error);
+
+            if ( this.homey.app.SpeedUnits === '0' )
+            {
+                this.setCapabilityValue('measure_wind_strength', windSpeed * 1.609344).catch(this.error);
+                this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) * 1.609344).catch(this.error);
+                this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) * 1.609344).catch(this.error);
+            }
+            else
+            {
+                this.setCapabilityValue('measure_wind_strength', (windSpeed * 1.609344) * 1000 / 3600).catch(this.error);
+                this.setCapabilityValue('measure_gust_strength', (Number(gateway.windgustmph) * 1.609344) * 1000 / 3600).catch(this.error);
+                this.setCapabilityValue('measure_gust_strength.daily', (Number(gateway.maxdailygust) * 1.609344) * 1000 / 3600).catch(this.error);
+            }
+
             this.setCapabilityValue('measure_wind_angle', parseInt(gateway.winddir)).catch(this.error);
-            this.setCapabilityValue('measure_wind_strength', windSpeed * 1.609344).catch(this.error);
-            this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) * 1.609344).catch(this.error);
-            this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) * 1.609344).catch(this.error);
+
+            var index = parseInt(gateway.winddir / 22.5);
+            this.setCapabilityValue('measure_wind_direction', Sector[index]).catch(this.error);
+
             this.setCapabilityValue('measure_radiation', Number(gateway.solarradiation)).catch(this.error);
             this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.error);
             this.setCapabilityValue('measure_rain', Number(gateway.rainratein) * 25.4).catch(this.error);
