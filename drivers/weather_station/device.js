@@ -77,7 +77,11 @@ class WeatherStationDevice extends Device
             let unitsText = this.homey.app.SpeedUnits === '0' ? "Km/H" : "m/s";
             this.setCapabilityOptions('measure_wind_strength', { "units": unitsText }).catch(this.error);
             this.setCapabilityOptions('measure_gust_strength', { "units": unitsText }).catch(this.error);
-            this.setCapabilityOptions('measure_gust_strength.daily', { "units": unitsText }).catch(this.error);
+
+            var opts = this.getCapabilityOptions('measure_gust_strength.daily');
+            opts.units = unitsText;
+            this.setCapabilityOptions('measure_gust_strength.daily', opts).catch(this.error);
+
             this.setCapabilityValue('measure_wind_strength', null).catch(this.error);
             this.setCapabilityValue('measure_gust_strength', null).catch(this.error);
             this.setCapabilityValue('measure_gust_strength.daily', null).catch(this.error);

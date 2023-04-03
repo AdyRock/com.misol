@@ -91,5 +91,8 @@
   },
   "0.1.30": {
     "en": "Added option to change App wind units. Added Wind Direction (N, NW, etc). Added support for Ambient Weather format data."
+  },
+  "0.1.31": {
+    "en": "Fix 'Max. Gust Strength' name being changed to 'Gust Strength' when units are changed."
   }
 }
