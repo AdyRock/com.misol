@@ -1,0 +1,31 @@
+{
+    "settings": {
+        "settings": "Instellingen",
+        "port": "Poort",
+        "connection": "Selecteer de poort die overeenkomt met de instelling die je hebt gemaakt in de WS View app",
+        "detected": "Gedetecteerd",
+        "diagnosticsLog": "Diagnostisch logboek",
+        "subtitle": "Toepassingsinstellingen",
+        "saveChanges": "Wijzigingen opslaan",
+        "clearLog": "Logboek wissen",
+        "sendLog": "Logboek verzenden",
+        "detectedDescription": "",
+        "logEnabled": "Logboek bijhouden ingeschakeld",
+        "saved": "De instellingen zijn opgeslagen",
+        "confirmSend": "De inhoud van het logboek naar de ontwikkelaar verzenden?\n** Alle identificatiegegevens worden verwijderd **",
+        "logSent": "Het logboek is verzonden.",
+        "logSendFailed": "Verzenden mislukt na 5 pogingen.\nDe foutmeldingen staan ​​aan het einde van het logboek.",
+        "Units": "Eenheden",
+        "SpeedUnits": "Windsnelheid"
+    },
+    "good": "Goed",
+    "Moderate": "Gemiddeld",
+    "UnhealthyLo": "Licht ongezond",
+    "Unhealthy": "Ongezond",
+    "UnhealthyHi": "Zeer ongezond",
+    "Hazardous": "Gevaarlijk",
+    "speedUnits": {
+        "km": "km/u",
+        "m": "m/s"
+    }
+}

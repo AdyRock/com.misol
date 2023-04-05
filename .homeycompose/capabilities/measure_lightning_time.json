@@ -1,7 +1,8 @@
 {
     "type": "string",
     "title": {
-        "en": "Lightning Time"
+        "en": "Lightning Time",
+        "nl": "Bliksem Tijd"
     },
     "getable": true,
     "setable": false,

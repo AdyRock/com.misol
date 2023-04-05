@@ -1,7 +1,8 @@
 {
     "type": "string",
     "title": {
-        "en": "CO2 Quality"
+        "en": "CO2 Quality",
+        "nl": "CO2-kwaliteit"
     },
     "getable": true,
     "setable": false,

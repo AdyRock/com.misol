@@ -1,7 +1,8 @@
 {
     "type": "number",
     "title": {
-        "en": "Lightning Distance"
+        "en": "Lightning Distance",
+        "nl": "Bliksem afstand"
     },
     "units": {
         "en": "km"

@@ -1,7 +1,8 @@
 {
     "type": "string",
     "title": {
-        "en": "Air Quality"
+        "en": "Air Quality",
+        "nl": "Luchtkwaliteit"
     },
     "getable": true,
     "setable": false,

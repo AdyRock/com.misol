@@ -1,7 +1,8 @@
 {
     "type": "number",
     "title": {
-        "en": "Soil Moisture"
+        "en": "Soil Moisture",
+        "nl": "Bodemvocht"
     },
     "units": {
         "en": "%"

@@ -1,7 +1,7 @@
 'use strict';
 if (process.env.DEBUG === '1')
 {
-    require('inspector').open(9222, '0.0.0.0', false);
+    require('inspector').open(9222, '0.0.0.0', true);
 }
 
 const Homey = require('homey');
@@ -252,6 +252,13 @@ class MyApp extends Homey.App
             return value < args.value;
         });
 
+        let measure_hours_since_rained_equalCondition = this.homey.flow.getConditionCard('measure_hours_since_rained_equal');
+        measure_hours_since_rained_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.device.getCapabilityValue('measure_hours_since_rained');
+            return value === args.value;
+        });
+
         // Lightening conditions
         let measure_lightning_is_lessCondition = this.homey.flow.getConditionCard('measure_lightning_is_less');
         measure_lightning_is_lessCondition.registerRunListener(async (args, state) =>
@@ -339,6 +346,8 @@ class MyApp extends Homey.App
             return value === args.value;
         });
 
+
+        // Triggers
         let measure_aq25_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq_changed');
         measure_aq25_changedTrigger.registerRunListener(async (args, state) =>
         {
@@ -389,6 +398,93 @@ class MyApp extends Homey.App
             return false;
         });
         
+        let measure_rain_daily_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_rain.daily_changed');
+        measure_rain_daily_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            return true;
+        });
+
+
+
+        
+        let measure_aq_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq_changed');
+        measure_aq_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            return true;
+        });
+        
+        let measure_aq_avg_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq.avg_changed');
+        measure_aq_avg_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            return true;
+        });
+        
+        let measure_aqi_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aqi_changed');
+        measure_aqi_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            return true;
+        });
+        
+        let measure_aqi_avg_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aqi.avg_changed');
+        measure_aqi_avg_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            return true;
+        });
+        
+        let measure_co2g_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_co2q_changed');
+        measure_co2g_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            return true;
+        });
+        
+        let measure_rain_event_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_rain.event_changed');
+        measure_rain_event_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            return true;
+        });
+        
+        let measure_rain_hourly_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_rain.hourly_changed');
+        measure_rain_hourly_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            return true;
+        });
+        
+        let measure_rain_monthly_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_rain.monthly_changed');
+        measure_rain_monthly_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            return true;
+        });
+        
+        let measure_rain_totalchangedTrigger = this.homey.flow.getDeviceTriggerCard('measure_rain.total_changed');
+        measure_rain_totalchangedTrigger.registerRunListener(async (args, state) =>
+        {
+            return true;
+        });
+        
+        let measure_rain_weekly_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_rain.weekly_changed');
+        measure_rain_weekly_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            return true;
+        });
+        
+        let measure_rain_yearly_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_rain.yearly_changed');
+        measure_rain_yearly_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            return true;
+        });
+        
+        let measure_temperature_dewPoint_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_temperature.dewPoint_changed');
+        measure_temperature_dewPoint_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            return true;
+        });
+        
+        let measure_temperature_feelsLike_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_temperature.feelsLike_changed');
+        measure_temperature_feelsLike_changedTrigger.registerRunListener(async (args, state) =>
+        {
+            return true;
+        });
+
     }
     
     async changeUnits( Units )

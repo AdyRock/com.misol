@@ -23,5 +23,9 @@
     "UnhealthyLo": "Slightly Unhealthy",
     "Unhealthy": "Unhealthy",
     "UnhealthyHi": "Very Unhealthy",
-    "Hazardous": "Hazardous"
+    "Hazardous": "Hazardous",
+    "speedUnits": {
+        "km": "km/H",
+        "m": "m/s"
+    }
 }

@@ -27,7 +27,8 @@
     "capabilitiesOptions": {
         "measure_gust_strength.daily": {
             "title": {
-                "en": "Max Gust Strength"
+                "en": "Max Gust Strength",
+                "nl": "Max windstoot kracht"
             }
         },
         "measure_temperature": {

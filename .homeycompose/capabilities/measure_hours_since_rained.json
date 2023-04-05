@@ -1,7 +1,8 @@
 {
     "type": "number",
     "title": {
-        "en": "Hours Since Last Rained"
+        "en": "Hours Since Last Rained",
+        "nl": "Uren sinds laatste regen"
     },
     "units": {
         "en": "Hours"

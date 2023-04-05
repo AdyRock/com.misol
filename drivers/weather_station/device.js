@@ -1,7 +1,10 @@
 'use strict';
 
 const { Device } = require('homey');
-const Sector = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW','N'];
+const Sector = {
+    'en': ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW','N'],
+    'nl': ['N','NNO','NO','ONO','O','OZO','ZO','ZZO','Z','ZZW','ZW','WZW','W','WNW','NW','NNW','N']
+};
 
 class WeatherStationDevice extends Device
 {
@@ -74,7 +77,7 @@ class WeatherStationDevice extends Device
     {
         if (Units === 'SpeedUnits')
         {
-            let unitsText = this.homey.app.SpeedUnits === '0' ? "Km/H" : "m/s";
+            let unitsText = this.homey.app.SpeedUnits === '0' ? this.homey.__('speedUnits.km') : this.homey.__('speedUnits.m');
             this.setCapabilityOptions('measure_wind_strength', { "units": unitsText }).catch(this.error);
             this.setCapabilityOptions('measure_gust_strength', { "units": unitsText }).catch(this.error);
 
@@ -117,7 +120,13 @@ class WeatherStationDevice extends Device
             this.setCapabilityValue('measure_wind_angle', parseInt(gateway.winddir)).catch(this.error);
 
             var index = parseInt(gateway.winddir / 22.5);
-            this.setCapabilityValue('measure_wind_direction', Sector[index]).catch(this.error);
+            let langCode = this.homey.i18n.getLanguage();
+            if ((langCode !== 'en') && (langCode !== 'nl'))
+            {
+                langCode = 'en';
+            }
+            let windDir = Sector[langCode][index];
+            this.setCapabilityValue('measure_wind_direction', windDir).catch(this.error);
 
             this.setCapabilityValue('measure_radiation', Number(gateway.solarradiation)).catch(this.error);
             this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.error);
@@ -298,6 +307,14 @@ class WeatherStationDevice extends Device
                     }
                     this.setCapabilityValue('measure_battery', batP).catch(this.error);
                 }
+            }
+            else if (gateway.battout)
+            {
+                if (this.hasCapability('measure_battery'))
+                {
+                    this.removeCapability('measure_battery');
+                }
+                this.setCapabilityValue('alarm_battery', gateway.battout === '0').catch(this.error);
             }
 
             var feelsLike = 0;

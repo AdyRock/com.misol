@@ -1,7 +1,8 @@
 {
     "type": "string",
     "title": {
-        "en": "Wind Direction"
+        "en": "Wind Direction",
+        "nl": "Windrichting"
     },
     "getable": true,
     "setable": false,
