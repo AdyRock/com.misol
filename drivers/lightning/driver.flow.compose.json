@@ -3,13 +3,15 @@
         {
             "id": "measure_lightning_changed",
             "title": {
-                "en": "Lightning Distance Changed"
+                "en": "Lightning Distance Changed",
+                "nl": "Bliksemafstand gewijzigd"
             },
             "tokens": [
                 {
                     "name": "measure_lightning",
                     "title": {
-                        "en": "Lightning Distance"
+                        "en": "Lightning Distance",
+                        "nl": "Bliksem afstand"
                     },
                     "type": "number",
                     "example": 1.4
@@ -19,13 +21,15 @@
         {
             "id": "measure_lightning_num_changed",
             "title": {
-                "en": "Number of lightning strikes Changed"
+                "en": "Number of lightning strikes Changed",
+                "nl": "Aantal blikseminslagen Gewijzigd"
             },
             "tokens": [
                 {
                     "name": "measure_lightning_num",
                     "title": {
-                        "en": "Lightning Count"
+                        "en": "Lightning Count",
+                        "nl": "Bliksem tellen"
                     },
                     "type": "number",
                     "example": 3
@@ -37,13 +41,16 @@
         {
             "id": "measure_lightning_is_less",
             "title": {
-                "en": "Lightning Distance is !{{is|is not}} less than"
+                "en": "Lightning Distance is !{{is|is not}} less than",
+                "nl": "Bliksemafstand is !{{is|is niet}} kleiner dan"
             },
             "hint": {
-                "en": "This Flow will continue if Lightning Distance is/is not less than the set value."
+                "en": "This Flow will continue if Lightning Distance is/is not less than the set value.",
+                "nl": "Deze stroom gaat door als de bliksemafstand wel/niet kleiner is dan de ingestelde waarde."
             },
             "titleFormatted": {
-                "en": "The Lightning Distance !{{is|is not}} less than [[value]]km"
+                "en": "The Lightning Distance !{{is|is not}} less than [[value]]km",
+                "nl": "De bliksemafstand !{{is|is niet}} kleiner dan [[value]]km"
             },
             "args": [
                 {
@@ -53,10 +60,12 @@
                     "max": 50,
                     "step": 1,
                     "placeholder": {
-                        "en": "Set a value"
+                        "en": "Set a value",
+                        "nl": "Stel een waarde in"
                     },
                     "title": {
-                        "en": "Lightning Distance"
+                        "en": "Lightning Distance",
+                        "nl": "Bliksem afstand"
                     }
                 }
             ]
@@ -64,13 +73,16 @@
         {
             "id": "measure_lightning_equal",
             "title": {
-                "en": "Lightning Distance is !{{equal|not equal}} to"
+                "en": "Lightning Distance is !{{equal|not equal}} to",
+                "nl": "Bliksemafstand is !{{gelijk aan |niet gelijk aan}}"
             },
             "hint": {
-                "en": "This Flow will continue if Lightning Distance is/is not equal to the set value."
+                "en": "This Flow will continue if Lightning Distance is/is not equal to the set value.",
+                "nl": "Deze Flow gaat door als Lightning Distance wel/niet gelijk is aan de ingestelde waarde."
             },
             "titleFormatted": {
-                "en": "The Lightning Distance is !{{equal|not equal}} to [[value]]km"
+                "en": "The Lightning Distance is !{{equal|not equal}} to [[value]]km",
+                "nl": "De bliksemafstand is !{{equal|not equal}} tot [[value]]km"
             },
             "args": [
                 {
@@ -80,10 +92,12 @@
                     "max": 50,
                     "step": 1,
                     "placeholder": {
-                        "en": "Set a value"
+                        "en": "Set a value",
+                        "nl": "Stel een waarde in"
                     },
                     "title": {
-                        "en": "Lightning Distance"
+                        "en": "Lightning Distance",
+                        "nl": "Bliksem afstand"
                     }
                 }
             ]
@@ -91,13 +105,16 @@
         {
             "id": "measure_lightning_num_is_less",
             "title": {
-                "en": "Lightning strikes is !{{is|is not}} less than"
+                "en": "Lightning strikes is !{{is|is not}} less than",
+                "nl": "Blikseminslag is !{{is|is niet}} minder dan"
             },
             "hint": {
-                "en": "This Flow will continue if number of Lightning strikes is/is not less than the set value."
+                "en": "This Flow will continue if number of Lightning strikes is/is not less than the set value.",
+                "nl": "Deze stroom gaat door als het aantal blikseminslagen kleiner is/is dan de ingestelde waarde."
             },
             "titleFormatted": {
-                "en": "The Lightning strikes is !{{is|is not}} less than [[value]]"
+                "en": "The Lightning strikes is !{{is|is not}} less than [[value]]",
+                "nl": "De blikseminslag is !{{is|is niet}} minder dan [[value]]"
             },
             "args": [
                 {
@@ -107,10 +124,12 @@
                     "max": 50,
                     "step": 1,
                     "placeholder": {
-                        "en": "Set a value"
+                        "en": "Set a value",
+                        "nl": "Stel een waarde in"
                     },
                     "title": {
-                        "en": "Lightning Strikes"
+                        "en": "Lightning Strikes",
+                        "nl": "Blikseminslagen"
                     }
                 }
             ]
@@ -118,13 +137,16 @@
         {
             "id": "measure_lightning_num_equal",
             "title": {
-                "en": "Lightning strikes is !{{equal|not equal}} to"
+                "en": "Lightning strikes is !{{equal|not equal}} to",
+                "nl": "Blikseminslag is !{{equal|not equal}} aan"
             },
             "hint": {
-                "en": "This Flow will continue if Lightning strikes is/is not equal to the set value."
+                "en": "This Flow will continue if Lightning strikes is/is not equal to the set value.",
+                "nl": "Deze Flow gaat door als Blikseminslag wel/niet gelijk is aan de ingestelde waarde."
             },
             "titleFormatted": {
-                "en": "The Lightning strikes is !{{equal|not equal}} to [[value]]"
+                "en": "The Lightning strikes is !{{equal|not equal}} to [[value]]",
+                "nl": "De blikseminslag is !{{equal|not equal}} tot [[value]]"
             },
             "args": [
                 {
@@ -134,10 +156,12 @@
                     "max": 50,
                     "step": 1,
                     "placeholder": {
-                        "en": "Set a value"
+                        "en": "Set a value",
+                        "nl": "Stel een waarde in"
                     },
                     "title": {
-                        "en": "Lightning Strikes"
+                        "en": "Lightning Strikes",
+                        "nl": "Blikseminslagen"
                     }
                 }
             ]

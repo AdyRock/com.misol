@@ -1,12 +1,14 @@
 {
     "title": {
-        "en": "The weekly rainfall Changed"
+        "en": "The weekly rainfall Changed",
+        "nl": "De wekelijkse neerslag Veranderd"
     },
     "tokens": [
         {
             "name": "measure_rain.weekly",
             "title": {
-                "en": "Weekly rainfall"
+                "en": "Weekly rainfall",
+                "nl": "Wekelijkse regenval"
             },
             "type": "number",
             "example": 3

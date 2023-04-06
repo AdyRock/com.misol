@@ -1,12 +1,15 @@
 {
     "title": {
-        "en": "Daily rainfall is !{{equal|not equal}} to"
+        "en": "Daily rainfall is !{{equal|not equal}} to",
+        "nl": "Dagelijkse regenval is !{{gelijk aan |niet gelijk aan}}"
     },
     "hint": {
-        "en": "This Flow will continue if daily rainfall is/is not equal to the set value."
+        "en": "This Flow will continue if daily rainfall is/is not equal to the set value.",
+        "nl": "zijn Flow gaat door als de dagelijkse neerslag wel/niet gelijk is aan de ingestelde waarde."
     },
     "titleFormatted": {
-        "en": "The daily rainfall is !{{equal|not equal}} to [[value]]mm"
+        "en": "The daily rainfall is !{{equal|not equal}} to [[value]]mm",
+        "nl": "De dagelijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
     },
     "args": [
         {
@@ -21,10 +24,12 @@
             "max": 70,
             "step": 1,
             "placeholder": {
-                "en": "Set a value"
+                "en": "Set a value",
+                "nl": "Stel een waarde in"
             },
             "title": {
-                "en": "Daily rainfall"
+                "en": "Daily rainfall",
+                "nl": "Dagelijkse regenval"
             }
         }
     ]

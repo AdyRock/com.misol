@@ -19,9 +19,24 @@
         "measure_battery"
     ],
     "capabilitiesOptions": {
-        "measure_pm25.avg": {"title": "PM2.5 Avg 24h"},
-        "measure_aqi.avg": {"title": "Air Quality Index Avg 24h"},
-        "measure_aq.avg": {"title": "Air Quality Avg 24h"}
+        "measure_pm25.avg": {
+            "title": {
+                "en": "PM2.5 Avg 24h",
+                "nl": "PM2.5 gem. 24u"
+            }
+        },
+        "measure_aqi.avg": {
+            "title": {
+                "en": "Air Quality Index Avg 24h",
+                "nl": "Luchtkwaliteitsindex Gem. 24u"
+            }
+        },
+        "measure_aq.avg": {
+            "title": {
+                "en": "Air Quality Avg 24h",
+                "nl": "Luchtkwaliteit Gem. 24u"
+            }
+        }
     }
     ,
     "energy": {

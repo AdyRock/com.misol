@@ -1,12 +1,15 @@
 {
     "title": {
-        "en": "Feels like temperature is !{{equal|not equal}} to"
+        "en": "Feels like temperature is !{{equal|not equal}} to",
+        "nl": "Het voelt alsof de temperatuur !{{equal|not equal}} is"
     },
     "hint": {
-        "en": "This Flow will continue if feels like temperature is/is not equal to the set value."
+        "en": "This Flow will continue if feels like temperature is/is not equal to the set value.",
+        "nl": "Deze stroom gaat door als het voelt alsof de temperatuur wel/niet gelijk is aan de ingestelde waarde."
     },
     "titleFormatted": {
-        "en": "The feels like temperature is !{{equal|not equal}} to [[value]]°C"
+        "en": "The feels like temperature is !{{equal|not equal}} to [[value]]°C",
+        "nl": "De gevoelstemperatuur is !{{gelijk aan|niet gelijk aan}} tot [[value]]°C"
     },
     "args": [
         {
@@ -21,10 +24,12 @@
             "max": 70,
             "step": 1,
             "placeholder": {
-                "en": "Set a value"
+                "en": "Set a value",
+                "nl": "Stel een waarde in"
             },
             "title": {
-                "en": "Feels like temperature"
+                "en": "Feels like temperature",
+                "nl": "Voelt als temperatuur"
             }
         }
     ]

@@ -1,12 +1,15 @@
 {
     "title": {
-        "en": "Hours since last rained is !{{equal|not equal}} to"
+        "en": "Hours since last rained is !{{equal|not equal}} to",
+        "nl": "Uren sinds de laatste regenbui is !{{gelijk aan | niet gelijk aan}}"
     },
     "hint": {
-        "en": "This Flow will continue if hours since it last rained is/is not equal to the set value."
+        "en": "This Flow will continue if hours since it last rained is/is not equal to the set value.",
+        "nl": "Deze Flow gaat door als het aantal uren sinds de laatste regen wel/niet gelijk is aan de ingestelde waarde."
     },
     "titleFormatted": {
-        "en": "The hours since it last rained is !{{equal|not equal}} to [[value]]Hours"
+        "en": "The hours since it last rained is !{{equal|not equal}} to [[value]]Hours",
+        "nl": "Het aantal uren sinds het voor het laatst heeft geregend is !{{equal|not equal}} tot [[value]]Uren"
     },
     "args": [
         {
@@ -21,10 +24,12 @@
             "max": 70,
             "step": 1,
             "placeholder": {
-                "en": "Set a value"
+                "en": "Set a value",
+                "nl": "Stel een waarde in"
             },
             "title": {
-                "en": "Hours since it last rained"
+                "en": "Hours since it last rained",
+                "nl": "Uren geleden dat het voor het laatst geregend heeft"
             }
         }
     ]

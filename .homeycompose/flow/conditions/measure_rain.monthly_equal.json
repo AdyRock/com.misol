@@ -1,12 +1,15 @@
 {
     "title": {
-        "en": "Monthly rainfall is !{{equal|not equal}} to"
+        "en": "Monthly rainfall is !{{equal|not equal}} to",
+        "nl": "Maandelijkse regenval is !{{gelijk aan | niet gelijk aan}}"
     },
     "hint": {
-        "en": "This Flow will continue if monthly rainfall is/is not equal to the set value."
+        "en": "This Flow will continue if monthly rainfall is/is not equal to the set value.",
+        "nl": "Deze Flow gaat door als de maandelijkse regenval wel/niet gelijk is aan de ingestelde waarde."
     },
     "titleFormatted": {
-        "en": "The monthly rainfall is !{{equal|not equal}} to [[value]]mm"
+        "en": "The monthly rainfall is !{{equal|not equal}} to [[value]]mm",
+        "nl": "De maandelijkse regenval is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
     },
     "args": [
         {
@@ -21,10 +24,12 @@
             "max": 70,
             "step": 1,
             "placeholder": {
-                "en": "Set a value"
+                "en": "Set a value",
+                "nl": "Stel een waarde in"
             },
             "title": {
-                "en": "Monthly rainfall"
+                "en": "Monthly rainfall",
+                "nl": "Maandelijkse regenval"
             }
         }
     ]

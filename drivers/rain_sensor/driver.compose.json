@@ -1,6 +1,7 @@
 {
     "name": {
-        "en": "Rain sensor"
+        "en": "Rain sensor",
+        "nl": "Regen sensor"
     },
     "platforms": [
         "local"

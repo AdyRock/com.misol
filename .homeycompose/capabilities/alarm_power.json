@@ -1,17 +1,21 @@
 {
     "type": "boolean",
     "title": {
-      "en": "Power off alarm"
+      "en": "Power off alarm",
+      "nl": "Alarm uitschakelen"
     },
     "desc": {
-      "en": "Power off alarm"
+      "en": "Power off alarm",
+      "nl": "Alarm uitschakelen"
     },
     "insights": true,
     "insightsTitleTrue": {
-      "en": "Power turned off"
+      "en": "Power turned off",
+      "nl": "Stroom uitgeschakeld"
     },
     "insightsTitleFalse": {
-      "en": "Power turned on"
+      "en": "Power turned on",
+      "nl": "Stroom ingeschakeld"
     },
     "getable": true,
     "setable": false,

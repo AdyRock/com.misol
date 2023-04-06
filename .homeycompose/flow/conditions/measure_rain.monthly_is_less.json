@@ -1,12 +1,15 @@
 {
     "title": {
-        "en": "Monthly rainfall is !{{is|is not}} less than"
+        "en": "Monthly rainfall is !{{is|is not}} less than",
+        "nl": "Maandelijkse regenval is !{{is|is niet}} minder dan"
     },
     "hint": {
-        "en": "This Flow will continue if monthly rainfall is/is not less than the set value."
+        "en": "This Flow will continue if monthly rainfall is/is not less than the set value.",
+        "nl": "Deze stroom gaat door als de maandelijkse regenval wel/niet minder is dan de ingestelde waarde."
     },
     "titleFormatted": {
-        "en": "The monthly rainfall is !{{is|is not}} less than [[value]]mm"
+        "en": "The monthly rainfall is !{{is|is not}} less than [[value]]mm",
+        "nl": "De maandelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm"
     },
     "args": [
         {
@@ -21,10 +24,12 @@
             "max": 70,
             "step": 1,
             "placeholder": {
-                "en": "Set a value"
+                "en": "Set a value",
+                "nl": "Stel een waarde in"
             },
             "title": {
-                "en": "Monthly rainfall"
+                "en": "Monthly rainfall",
+                "nl": "Maandelijkse regenval"
             }
         }
     ]

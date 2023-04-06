@@ -1,12 +1,15 @@
 {
     "title": {
-        "en": "Air quality index is !{{less|greater}} than"
+        "en": "Air quality index is !{{less|greater}} than",
+        "nl": "Luchtkwaliteitsindex is !{{minder|groter}} dan"
     },
     "hint": {
-        "en": "This Flow will continue if air quality index is/is not less than the set value."
+        "en": "This Flow will continue if air quality index is/is not less than the set value.",
+        "nl": "Deze stroom gaat door als de luchtkwaliteitsindex wel/niet lager is dan de ingestelde waarde"
     },
     "titleFormatted": {
-        "en": "The air quality index is !{{less|greater}} than [[measure_aqi]]%"
+        "en": "The air quality index is !{{less|greater}} than [[measure_aqi]]%",
+        "nl": "De luchtkwaliteitsindex is !{{minder|groter}} dan [[measure_aqi]]%"
     },
     "args": [
         {
@@ -21,10 +24,12 @@
             "max": 500,
             "step": 1,
             "placeholder": {
-                "en": "Set a value"
+                "en": "Set a value",
+                "nl": "Stel een waarde in"
             },
             "title": {
-                "en": "Air quality index"
+                "en": "Air quality index",
+                "nl": "Luchtkwaliteitsindex"
             }
         }
     ]

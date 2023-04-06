@@ -1,12 +1,15 @@
 {
     "title": {
-        "en": "Lightning strikes is !{{equal|not equal}} to"
+        "en": "Dew point is !{{equal|not equal}} to",
+        "nl": "Dauwpunt is !{{gelijk aan |niet gelijk aan}}"
     },
     "hint": {
-        "en": "This Flow will continue if Lightning strikes is/is not equal to the set value."
+        "en": "This Flow will continue if dew point is/is not equal to the set value.",
+        "nl": "Deze Flow gaat door als het dauwpunt wel/niet gelijk is aan de ingestelde waarde."
     },
     "titleFormatted": {
-        "en": "The Lightning strikes is !{{equal|not equal}} to [[value]]°C"
+        "en": "The dew point is !{{equal|not equal}} to [[value]]°C",
+        "nl": "Het dauwpunt is !{{gelijk aan|niet gelijk aan}} tot [[value]]°C"
     },
     "args": [
         {
@@ -21,10 +24,12 @@
             "max": 70,
             "step": 1,
             "placeholder": {
-                "en": "Set a value"
+                "en": "Set a value",
+                "nl": "Stel een waarde in"
             },
             "title": {
-                "en": "Dew point"
+                "en": "Dew point",
+                "nl": "dauwpunt"
             }
         }
     ]

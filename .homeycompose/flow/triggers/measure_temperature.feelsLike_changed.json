@@ -1,12 +1,14 @@
 {
     "title": {
-        "en": "The feels like temperature Changed"
+        "en": "The feels like temperature Changed",
+        "nl": "Het voelt alsof de temperatuur is veranderd"
     },
     "tokens": [
         {
             "name": "measure_temperature.feelsLike",
             "title": {
-                "en": "Feels like temperature"
+                "en": "Feels like temperature",
+                "nl": "Voelt als temperatuur"
             },
             "type": "number",
             "example": 3

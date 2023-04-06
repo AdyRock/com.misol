@@ -1,12 +1,14 @@
 {
     "title": {
-        "en": "The total rainfall Changed"
+        "en": "The total rainfall Changed",
+        "nl": "De totale regenval is veranderd"
     },
     "tokens": [
         {
             "name": "measure_rain.total",
             "title": {
-                "en": "value"
+                "en": "Total rainfall",
+                "nl": "Totale regenval"
             },
             "type": "number",
             "example": 3

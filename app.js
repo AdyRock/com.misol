@@ -346,7 +346,7 @@ class MyApp extends Homey.App
             return value === args.value;
         });
 
-
+        
         // Triggers
         let measure_aq25_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq_changed');
         measure_aq25_changedTrigger.registerRunListener(async (args, state) =>

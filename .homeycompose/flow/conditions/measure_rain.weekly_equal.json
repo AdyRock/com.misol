@@ -1,12 +1,15 @@
 {
     "title": {
-        "en": "Weekly rainfall is !{{equal|not equal}} to"
+        "en": "Weekly rainfall is !{{equal|not equal}} to",
+        "nl": "Wekelijkse regenval is !{{gelijk aan | niet gelijk aan}}"
     },
     "hint": {
-        "en": "This Flow will continue if weekly rainfall is/is not equal to the set value."
+        "en": "This Flow will continue if weekly rainfall is/is not equal to the set value.",
+        "nl": "Deze Flow gaat door als de wekelijkse regenval wel/niet gelijk is aan de ingestelde waarde."
     },
     "titleFormatted": {
-        "en": "The weekly rainfall is !{{equal|not equal}} to [[value]]mm"
+        "en": "The weekly rainfall is !{{equal|not equal}} to [[value]]mm",
+        "nl": "De wekelijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
     },
     "args": [
         {
@@ -21,10 +24,12 @@
             "max": 70,
             "step": 1,
             "placeholder": {
-                "en": "Set a value"
+                "en": "Set a value",
+                "nl": "Stel een waarde in"
             },
             "title": {
-                "en": "Weekly rainfall"
+                "en": "Weekly rainfall",
+                "nl": "Wekelijkse regenval"
             }
         }
     ]

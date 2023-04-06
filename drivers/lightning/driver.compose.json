@@ -1,6 +1,7 @@
 {
     "name": {
-        "en": "Lightning Detector"
+        "en": "Lightning Detector",
+        "nl": "Bliksemdetector"
     },
     "platforms": [
         "local"

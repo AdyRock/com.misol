@@ -1,12 +1,15 @@
 {
     "title": {
-        "en": "Average Air quality index is !{{equal|not equal}} to"
+        "en": "Average Air quality index is !{{equal|not equal}} to",
+        "nl": "De gemiddelde luchtkwaliteitsindex is !{{gelijk aan | niet gelijk aan}}"
     },
     "hint": {
-        "en": "This Flow will continue if average air quality index is/is not equal to the set value."
+        "en": "This Flow will continue if average air quality index is/is not equal to the set value.",
+        "nl": "Deze Flow gaat door als de gemiddelde luchtkwaliteitsindex wel/niet gelijk is aan de ingestelde waarde."
     },
     "titleFormatted": {
-        "en": "The average air quality index is !{{equal|not equal}} to [[measure_aqi.avg]]%"
+        "en": "The average air quality index is !{{equal|not equal}} to [[measure_aqi.avg]]%",
+        "nl": "De gemiddelde luchtkwaliteitsindex is !{{equal|not equal}} tot [[measure_aqi.avg]]%"
     },
     "args": [
         {
@@ -21,10 +24,12 @@
             "max": 500,
             "step": 1,
             "placeholder": {
-                "en": "Set a value"
+                "en": "Set a value",
+                "nl": "Stel een waarde in"
             },
             "title": {
-                "en": "Average Air quality index"
+                "en": "Average Air quality index",
+                "nl": "Gemiddelde luchtkwaliteitsindex"
             }
         }
     ]

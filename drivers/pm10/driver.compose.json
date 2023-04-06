@@ -1,6 +1,7 @@
 {
     "name": {
-        "en": "PM10 and CO2 Meter"
+        "en": "PM10 and CO2 Meter",
+        "nl": "PM10 en CO2-meter"
     },
     "platforms": [
         "local"
@@ -35,25 +36,95 @@
         "alarm_power"
     ],
     "capabilitiesOptions": {
-        "measure_co2.avg": {"title": "CO2 Avg 24h"},
-        "measure_co2_quality.avg": {"title": "CO2 Avg quality 24h"},
-        "measure_pm10": {"title": "PM10 Air Quality"},
-        "measure_pm10.avg": {"title": "PM10 Air Quality Avg 24h"},
-        "measure_aqi.pm10": {"title": "PM10 Air Quality Index"},
-        "measure_aqi.pm10_avg": {"title": "PM10 Air Quality Index Avg 24h"},
-        "measure_aq.pm10": {"title": "PM10 Air Quality"},
-        "measure_aq.pm10_avg": {"title": "PM10 Air Quality Avg 24h"},
-        "measure_pm25": {"title": "PM2.5 Air Quality"},
-        "measure_pm25.avg": {"title": "PM2.5 Avg 24h"},
-        "measure_aqi": {"title": "PM2.5 Air Quality Index"},
-        "measure_aqi.avg": {"title": "PM2.5 Air Quality Index Avg 24h"},
-        "measure_aq": {"title": "PM2.5 Air Quality"},
-        "measure_aq.avg": {"title": "PM2.5 Air Quality Avg 24h"}
-    }
-    ,
+        "measure_co2.avg": {
+            "title": {
+                "en": "CO2 Avg 24h",
+                "nl": "CO2 gem. 24u"
+            }
+        },
+        "measure_co2_quality.avg": {
+            "title": {
+                "en": "CO2 Avg quality 24h",
+                "nl": "CO2 gem. kwaliteit 24u"
+            }
+        },
+        "measure_pm10": {
+            "title": {
+                "en": "PM10 Air Quality",
+                "nl": "PM10 Luchtkwaliteit"
+            }
+        },
+        "measure_pm10.avg": {
+            "title": {
+                "en": "PM10 Air Quality Avg 24h",
+                "nl": "PM10 Luchtkwaliteit Gem. 24u"
+            }
+        },
+        "measure_aqi.pm10": {
+            "title": {
+                "en": "PM10 Air Quality Index",
+                "nl": "PM10 luchtkwaliteitsindex"
+            }
+        },
+        "measure_aqi.pm10_avg": {
+            "title": {
+                "en": "PM10 Air Quality Index Avg 24h",
+                "nl": "PM10 Luchtkwaliteitsindex Gem. 24u"
+            }
+        },
+        "measure_aq.pm10": {
+            "title": {
+                "en": "PM10 Air Quality",
+                "nl": "PM10 Luchtkwaliteit"
+            }
+        },
+        "measure_aq.pm10_avg": {
+            "title": {
+                "en": "PM10 Air Quality Avg 24h",
+                "nl": "PM10 Luchtkwaliteit Gem. 24u"
+            }
+        },
+        "measure_pm25": {
+            "title": {
+                "en": "PM2.5 Air Quality",
+                "nl": "PM2.5 Luchtkwaliteit"
+            }
+        },
+        "measure_pm25.avg": {
+            "title": {
+                "en": "PM2.5 Avg 24h",
+                "nl": "PM2.5 gem. 24u"
+            }
+        },
+        "measure_aqi": {
+            "title": {
+                "en": "PM2.5 Air Quality Index",
+                "nl": "PM2.5 luchtkwaliteitsindex"
+            }
+        },
+        "measure_aqi.avg": {
+            "title": {
+                "en": "PM2.5 Air Quality Index Avg 24h",
+                "nl": "PM2.5 Luchtkwaliteitsindex Gem. 24u"
+            }
+        },
+        "measure_aq": {
+            "title": {
+                "en": "PM2.5 Air Quality",
+                "nl": "PM2.5 Luchtkwaliteit"
+            }
+        },
+        "measure_aq.avg": {
+            "title": {
+                "en": "PM2.5 Air Quality Avg 24h",
+                "nl": "PM2.5 Luchtkwaliteit Gem. 24u"
+            }
+        }
+    },
     "energy": {
         "batteries": [
-            "AA", "AA"
+            "AA",
+            "AA"
         ]
     },
     "pair": [
