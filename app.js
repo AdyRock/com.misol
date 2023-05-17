@@ -346,6 +346,39 @@ class MyApp extends Homey.App
             return value === args.value;
         });
 
+        this.motionReadyCondition = this.homey.flow.getConditionCard('motionReadyCondition');
+        this.motionReadyCondition.registerRunListener(async (args, state) =>
+        {
+            await args.device.nowImage.update();
+            let remainingTime = args.waitTime * 10;
+            while ((remainingTime > 0) && args.device.updatingEventImage)
+            {
+                // Wait for image to update
+                await this.homey.app.asyncDelay(100);
+                remainingTime--;
+            }
+            return !args.device.updatingEventImage;
+        });
+
+        // Actions
+        this.updateImage = this.homey.flow.getActionCard('updateImage');
+        this.updateImage.registerRunListener(async (args, state) =>
+        {
+            let err = await args.device.nowImage.update();
+            if (!err)
+            {
+                let tokens = {
+                    'image': args.device.nowImage
+                };
+
+                args.device.driver.snapshotReadyTrigger
+                    .trigger(args.device, tokens)
+                    .catch(args.device.error)
+                    .then(args.device.log('Now Snapshot ready (' + args.device.id + ')'));
+            }
+            return err;
+        });
+
         
         // Triggers
         let measure_aq25_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq_changed');
@@ -592,7 +625,7 @@ class MyApp extends Homey.App
                         }
                     }
 
-                    this.log(data);
+//                    this.log(data);
 
                     // Use sim data if available
                     let simData = this.homey.settings.get('simData');

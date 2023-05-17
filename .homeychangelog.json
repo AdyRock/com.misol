@@ -96,6 +96,9 @@
     "en": "Fix 'Max. Gust Strength' name being changed to 'Gust Strength' when units are changed."
   },
   "0.1.32": {
-    "en": "Dutch translations"
+    "en": "Dutch translations."
+  },
+  "0.1.33": {
+    "en": "Added support for HP10 camera."
   }
 }

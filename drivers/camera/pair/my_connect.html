@@ -1,0 +1,51 @@
+</br>
+<header class="homey-header">
+    <h1 class="homey-title" data-i18n="pair.title">
+        <!-- This will be filled with the translated string with key 'settings.title'. -->
+    </h1>
+</header>
+
+<fieldset class="homey-form-fieldset">
+    <legend class="homey-form-legend"><span data-i18n="pair.intro"></span></legend>
+
+    <div class="homey-form-group">
+        <label class="homey-form-label" for="ip_address"><span data-i18n="pair.ip_address"></span></label>
+        <input class="homey-form-input" id="ip_address" type="text" value="" />
+    </div>
+    <p><button class="homey-button-primary-full" id="save"><span data-i18n="pair.save"></span></button></p>
+</fieldset>
+
+<script type="text/javascript">
+    var saveButton = document.getElementById('save');
+    var ipInput = document.getElementById('ip_address');
+
+    saveButton.addEventListener('click', function(e)
+    {
+        // Mark as authenticating
+        saveButton.classList.add('is-loading');
+
+        Homey.emit('manual_connection', { ip: ipInput.value }, function(err, result)
+        {
+            if (err)
+            {
+                Homey.alert( err.message, 'error' )
+                saveButton.classList.remove('is-loading');
+            }
+            else
+            {
+                Homey.addDevice(result, function(addErr, addResult)
+                {
+                    if (addErr)
+                    {
+                        Homey.alert( addErr.message, 'error' )
+                        saveButton.classList.remove('is-loading');
+                    }
+                    else
+                    {
+                        Homey.done();
+                    }
+                });
+            }
+        });
+    });
+</script>

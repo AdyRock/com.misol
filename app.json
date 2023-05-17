@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.misol",
-  "version": "0.1.32",
+  "version": "0.1.33",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "platforms": [
@@ -758,6 +758,40 @@
           }
         ],
         "id": "measure_temperature.feelsLike_changed"
+      },
+      {
+        "title": {
+          "en": "Snapshot ready",
+          "de": "Schnappschuss ist fertig",
+          "nl": "Snapshot beschikbaar",
+          "it": "Immagine Istantanea pronta"
+        },
+        "titleFormatted": {
+          "en": "Snapshot ready",
+          "de": "Schnappschuss ist fertig",
+          "nl": "Snapshot beschikbaar",
+          "it": "Immagine Istantanea pronta"
+        },
+        "tokens": [
+          {
+            "name": "image",
+            "type": "image",
+            "title": {
+              "en": "Snapshot",
+              "de": "Schnappschuss",
+              "nl": "Snapshot",
+              "it": "Immagine Istantanea"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=camera"
+          }
+        ],
+        "id": "snapshotReadyTrigger"
       },
       {
         "id": "measure_lightning_changed",
@@ -2080,6 +2114,39 @@
         "id": "measure_temperature.feelsLike_is_less"
       },
       {
+        "title": {
+          "en": "Motion snapshot is ready within...",
+          "de": "Bewegungsschnappschuss ist innerhalb von ...",
+          "nl": "Bewegings snapshot is klaar binnen ...",
+          "it": "L'istantanea in movimento è pronta entro ..."
+        },
+        "titleFormatted": {
+          "en": "Motion snapshot is !{{ready|not ready}} within [[waitTime]] seconds",
+          "de": "Der Bewegungsschnappschuss ist !{{innerhalb|nicht innerhalb}} von [[waitTime]] Sekunden fertig",
+          "nl": "Bewegingssnapshot is !{{binnen|niet binnen}} [[waitTime]] seconden !((klaar|gereed}}",
+          "it": "L'istantanea in movimento !{{è pronta|non è pronta}} entro [[waitTime]] secondi"
+        },
+        "args": [
+          {
+            "type": "number",
+            "title": "Wait Time",
+            "name": "waitTime",
+            "value": 0,
+            "units": "seconds",
+            "min": 0,
+            "max": 30,
+            "step": 1,
+            "placeholder": "Seconds to wait"
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=camera"
+          }
+        ],
+        "id": "motionReadyCondition"
+      },
+      {
         "id": "measure_lightning_is_less",
         "title": {
           "en": "Lightning Distance is !{{is|is not}} less than",
@@ -2450,6 +2517,30 @@
           }
         ]
       }
+    ],
+    "actions": [
+      {
+        "title": {
+          "en": "Update image",
+          "de": "Standbild jetzt erneuern",
+          "nl": "Ververs snapshot",
+          "it": "Aggiorna Immagine Istantanea"
+        },
+        "titleFormatted": {
+          "en": "Update snapshot",
+          "de": "Standbild jetzt erneuern",
+          "nl": "Ververs snapshot",
+          "it": "Aggiorna Immagine Istantanea"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=camera"
+          }
+        ],
+        "id": "updateImage"
+      }
     ]
   },
   "drivers": [
@@ -2669,6 +2760,30 @@
         "large": "/drivers/Temp_Water/assets/images/large.png"
       },
       "id": "Temp_Water"
+    },
+    {
+      "name": {
+        "en": "camera"
+      },
+      "class": "camera",
+      "capabilities": [],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "pair": [
+        {
+          "id": "my_connect"
+        }
+      ],
+      "images": {
+        "small": "/drivers/camera/assets/images/small.png",
+        "large": "/drivers/camera/assets/images/large.png",
+        "xlarge": "/drivers/camera/assets/images/xlarge.png"
+      },
+      "id": "camera"
     },
     {
       "name": {

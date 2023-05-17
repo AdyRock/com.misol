@@ -27,5 +27,15 @@
     "speedUnits": {
         "km": "km/H",
         "m": "m/s"
+    },
+    "pair": {
+        "intro": "Enter Connection Details",
+        "title": "Add Camera",
+        "ip_address": "IP Address",
+        "save": "Save",
+        "checking": "Checking connection",
+        "try_again": "Try again",
+        "correct": "Successful",
+        "adding": "Adding device"
     }
 }
