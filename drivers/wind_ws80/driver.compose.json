@@ -21,6 +21,7 @@
         "measure_gust_strength",
         "measure_gust_strength.daily",
         "measure_radiation",
+        "measure_luminance",
         "measure_ultraviolet",
         "measure_battery"
     ],

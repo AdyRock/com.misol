@@ -2,8 +2,8 @@
 
 const { Device } = require('homey');
 const Sector = {
-    'en': ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW','N'],
-    'nl': ['N','NNO','NO','ONO','O','OZO','ZO','ZZO','Z','ZZW','ZW','WZW','W','WNW','NW','NNW','N']
+    'en': ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW', 'N'],
+    'nl': ['N', 'NNO', 'NO', 'ONO', 'O', 'OZO', 'ZO', 'ZZO', 'Z', 'ZZW', 'ZW', 'WZW', 'W', 'WNW', 'NW', 'NNW', 'N']
 };
 
 class WeatherStationDevice extends Device
@@ -21,6 +21,11 @@ class WeatherStationDevice extends Device
         if (!this.hasCapability('measure_wind_direction'))
         {
             this.addCapability('measure_wind_direction');
+        }
+
+        if (!this.hasCapability('measure_luminance'))
+        {
+            this.addCapability('measure_luminance');
         }
 
         this.lastRained = this.homey.settings.get('lastRainedTime');
@@ -129,6 +134,7 @@ class WeatherStationDevice extends Device
             this.setCapabilityValue('measure_wind_direction', windDir).catch(this.error);
 
             this.setCapabilityValue('measure_radiation', Number(gateway.solarradiation)).catch(this.error);
+            this.setCapabilityValue('measure_luminance', Number(gateway.solarradiation) * 126.7).catch(this.error);
             this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.error);
 
             let rainratein = null;
@@ -330,7 +336,7 @@ class WeatherStationDevice extends Device
             }
 
             // Replace it with the Heat Index, if necessary
-            if ((feelsLike == temperatureF) && (temperatureF >= 80))
+            if ((feelsLike === temperatureF) && (temperatureF >= 80))
             {
                 feelsLike = 0.5 * (temperatureF + 61.0 + ((temperatureF - 68.0) * 1.2) + (relativeHumidity * 0.094));
 
@@ -365,10 +371,7 @@ class WeatherStationDevice extends Device
                     var b = 237.7;
                     var alphaTR = ((a * dewPoint) / (b + dewPoint)) + Math.log(relativeHumidity);
                     var Tr = (b * alphaTR) / (a - alphaTR);
-                    if (Tr >= 0 && Tr <= 50)
-                    {
-                        dewPoint = Tr;
-                    }
+                    dewPoint = Tr;
                 }
             }
 

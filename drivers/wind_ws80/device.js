@@ -15,6 +15,11 @@ class WindWS80Device extends Device
             this.addCapability('measure_wind_direction');
         }
 
+        if (!this.hasCapability('measure_luminance'))
+        {
+            this.addCapability('measure_luminance');
+        }
+
         this.log('WindWS80Device has been initialized');
     }
 
@@ -178,10 +183,7 @@ class WindWS80Device extends Device
                     var b = 237.7;
                     var alphaTR = ((a * dewPoint) / (b + dewPoint)) + Math.log(relativeHumidity);
                     var Tr = (b * alphaTR) / (a - alphaTR);
-                    if (Tr >= 0 && Tr <= 50)
-                    {
-                        dewPoint = Tr;
-                    }
+                    dewPoint = Tr;
                 }
             }
 
