@@ -36,6 +36,14 @@ class PM10Device extends Device
      */
     async onInit()
     {
+        let id = this.getSetting('gatewayID');
+        if (!id)
+        {
+            const dd = this.getData();
+            this.setSettings({gatewayID: dd.id});
+        }
+        this.stationType = this.getSetting('stationType');
+
         if (this.hasCapability('measure_aqi.pm10.avg'))
         {
             this.removeCapability('measure_aqi.pm10.avg');
@@ -94,6 +102,12 @@ class PM10Device extends Device
         const dd = this.getData();
         if ((gateway.PASSKEY === dd.PASSKEY) && gateway.pm25_co2)
         {
+            if (!this.stationType)
+            {
+                this.stationType = gateway.stationtype;
+                this.setSettings({stationType: this.stationType}).catch(this.error);;
+            }
+
             let co2 = parseInt(gateway.co2);
             if (!isNaN(co2))
             {

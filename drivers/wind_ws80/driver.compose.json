@@ -58,6 +58,30 @@
             "AA"
         ]
     },
+    "settings": [
+        {
+            "id": "gatewayID",
+            "type": "label",
+            "label": {
+                "en": "Gateway ID"
+            },
+            "value": "",
+            "hint": {
+                "en": "Shows the ID of the gateway."
+            }
+        },
+        {
+            "id": "stationType",
+            "type": "label",
+            "label": {
+                "en": "Station Type"
+            },
+            "value": "",
+            "hint": {
+                "en": "Shows the type of gateway."
+            }
+        }
+    ],
     "pair": [
         {
             "id": "list_my_devices",

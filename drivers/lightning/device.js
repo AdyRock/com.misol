@@ -9,12 +9,21 @@ class LightningDevice extends Device
      */
     async onInit()
     {
-        this.log('Lightning Device has been initialized');
+        let id = this.getSetting('gatewayID');
+        if (!id)
+        {
+            const dd = this.getData();
+            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+        }
+        this.stationType = this.getSetting('stationType');
+
         this.lightning_time = this.getStoreValue('lightning_time');
         if (this.lightning_time === null)
         {
             this.lightning_time = this.getCapabilityValue('measure_lightning_time');
         }
+
+        this.log('Lightning Device has been initialized');
     }
 
     /**
@@ -104,6 +113,12 @@ class LightningDevice extends Device
         const dd = this.getData();
         if ((gateway.PASSKEY === dd.PASSKEY) && (gateway.lightning != undefined))
         {
+            if (!this.stationType)
+            {
+                this.stationType = gateway.stationtype;
+                this.setSettings({stationType: this.stationType}).catch(this.error);;
+            }
+
             if (gateway.lightning !== '')
             {
                 this.setCapabilityValue('measure_lightning', Number(gateway.lightning)).catch(this.error);

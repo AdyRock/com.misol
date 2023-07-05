@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.misol",
-  "version": "0.1.34",
+  "version": "0.1.36",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "platforms": [
@@ -2581,6 +2581,28 @@
       ],
       "settings": [
         {
+          "id": "gatewayID",
+          "type": "label",
+          "label": {
+            "en": "Gateway ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the ID of the gateway."
+          }
+        },
+        {
+          "id": "stationType",
+          "type": "label",
+          "label": {
+            "en": "Station Type"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the type of gateway."
+          }
+        },
+        {
           "id": "batteryType",
           "type": "dropdown",
           "label": {
@@ -2654,6 +2676,28 @@
       ],
       "settings": [
         {
+          "id": "gatewayID",
+          "type": "label",
+          "label": {
+            "en": "Gateway ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the ID of the gateway."
+          }
+        },
+        {
+          "id": "stationType",
+          "type": "label",
+          "label": {
+            "en": "Station Type"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the type of gateway."
+          }
+        },
+        {
           "id": "batteryType",
           "type": "dropdown",
           "label": {
@@ -2726,6 +2770,28 @@
       ],
       "settings": [
         {
+          "id": "gatewayID",
+          "type": "label",
+          "label": {
+            "en": "Gateway ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the ID of the gateway."
+          }
+        },
+        {
+          "id": "stationType",
+          "type": "label",
+          "label": {
+            "en": "Station Type"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the type of gateway."
+          }
+        },
+        {
           "id": "batteryType",
           "type": "dropdown",
           "label": {
@@ -2778,6 +2844,19 @@
           "id": "my_connect"
         }
       ],
+      "settings": [
+        {
+          "id": "ip",
+          "type": "text",
+          "label": {
+            "en": "IP Address"
+          },
+          "value": "",
+          "hint": {
+            "en": "Set the IP address of the camera."
+          }
+        }
+      ],
       "images": {
         "small": "/drivers/camera/assets/images/small.png",
         "large": "/drivers/camera/assets/images/large.png",
@@ -2800,6 +2879,30 @@
         "measure_humidity",
         "measure_pressure",
         "measure_temperature"
+      ],
+      "settings": [
+        {
+          "id": "gatewayID",
+          "type": "label",
+          "label": {
+            "en": "Gateway ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the ID of the gateway."
+          }
+        },
+        {
+          "id": "stationType",
+          "type": "label",
+          "label": {
+            "en": "Station Type"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the type of gateway."
+          }
+        }
       ],
       "pair": [
         {
@@ -2856,6 +2959,28 @@
         }
       ],
       "settings": [
+        {
+          "id": "gatewayID",
+          "type": "label",
+          "label": {
+            "en": "Gateway ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the ID of the gateway."
+          }
+        },
+        {
+          "id": "stationType",
+          "type": "label",
+          "label": {
+            "en": "Station Type"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the type of gateway."
+          }
+        },
         {
           "id": "batteryType",
           "type": "dropdown",
@@ -2930,6 +3055,28 @@
         }
       ],
       "settings": [
+        {
+          "id": "gatewayID",
+          "type": "label",
+          "label": {
+            "en": "Gateway ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the ID of the gateway."
+          }
+        },
+        {
+          "id": "stationType",
+          "type": "label",
+          "label": {
+            "en": "Station Type"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the type of gateway."
+          }
+        },
         {
           "id": "timeFormat",
           "type": "dropdown",
@@ -3115,6 +3262,30 @@
           "AA"
         ]
       },
+      "settings": [
+        {
+          "id": "gatewayID",
+          "type": "label",
+          "label": {
+            "en": "Gateway ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the ID of the gateway."
+          }
+        },
+        {
+          "id": "stationType",
+          "type": "label",
+          "label": {
+            "en": "Station Type"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the type of gateway."
+          }
+        }
+      ],
       "pair": [
         {
           "id": "list_my_devices",
@@ -3180,6 +3351,30 @@
           "AA"
         ]
       },
+      "settings": [
+        {
+          "id": "gatewayID",
+          "type": "label",
+          "label": {
+            "en": "Gateway ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the ID of the gateway."
+          }
+        },
+        {
+          "id": "stationType",
+          "type": "label",
+          "label": {
+            "en": "Station Type"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the type of gateway."
+          }
+        }
+      ],
       "pair": [
         {
           "id": "list_my_devices",
@@ -3289,6 +3484,30 @@
           "template": "add_devices"
         }
       ],
+      "settings": [
+        {
+          "id": "gatewayID",
+          "type": "label",
+          "label": {
+            "en": "Gateway ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the ID of the gateway."
+          }
+        },
+        {
+          "id": "stationType",
+          "type": "label",
+          "label": {
+            "en": "Station Type"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the type of gateway."
+          }
+        }
+      ],
       "images": {
         "small": "/drivers/rain_sensor/assets/images/small.png",
         "large": "/drivers/rain_sensor/assets/images/large.png"
@@ -3330,6 +3549,28 @@
         }
       ],
       "settings": [
+        {
+          "id": "gatewayID",
+          "type": "label",
+          "label": {
+            "en": "Gateway ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the ID of the gateway."
+          }
+        },
+        {
+          "id": "stationType",
+          "type": "label",
+          "label": {
+            "en": "Station Type"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the type of gateway."
+          }
+        },
         {
           "id": "batteryType",
           "type": "dropdown",
@@ -3504,6 +3745,28 @@
       ],
       "settings": [
         {
+          "id": "gatewayID",
+          "type": "label",
+          "label": {
+            "en": "Gateway ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the ID of the gateway."
+          }
+        },
+        {
+          "id": "stationType",
+          "type": "label",
+          "label": {
+            "en": "Station Type"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the type of gateway."
+          }
+        },
+        {
           "id": "batteryType",
           "type": "dropdown",
           "label": {
@@ -3599,6 +3862,30 @@
           "AA"
         ]
       },
+      "settings": [
+        {
+          "id": "gatewayID",
+          "type": "label",
+          "label": {
+            "en": "Gateway ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the ID of the gateway."
+          }
+        },
+        {
+          "id": "stationType",
+          "type": "label",
+          "label": {
+            "en": "Station Type"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the type of gateway."
+          }
+        }
+      ],
       "pair": [
         {
           "id": "list_my_devices",

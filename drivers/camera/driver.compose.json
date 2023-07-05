@@ -15,6 +15,19 @@
             "id": "my_connect"
         }
     ],
+    "settings": [
+        {
+            "id": "ip",
+            "type": "text",
+            "label": {
+                "en": "IP Address"
+            },
+            "value": "",
+            "hint": {
+                "en": "Set the IP address of the camera."
+            }
+        }
+    ],
     "images": {
         "small": "{{driverAssetsPath}}/images/small.png",
         "large": "{{driverAssetsPath}}/images/large.png",

@@ -9,6 +9,14 @@ class LeakDevice extends Device
      */
     async onInit()
     {
+        let id = this.getSetting('gatewayID');
+        if (!id)
+        {
+            const dd = this.getData();
+            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+        }
+        this.stationType = this.getSetting('stationType');
+
         this.log('LeakDevice has been initialized');
     }
 
@@ -58,6 +66,12 @@ class LeakDevice extends Device
         {
             if ((gateway.PASSKEY === dd.PASSKEY) && gateway['leak_ch' + dd.meterNumber])
             {
+                if (!this.stationType)
+                {
+                    this.stationType = gateway.stationtype;
+                    this.setSettings({stationType: this.stationType}).catch(this.error);;
+                }
+
                 this.setCapabilityValue('alarm_water', (gateway['leak_ch' + dd.meterNumber] !== '0')).catch(this.error);
 
                 if (gateway['leakbatt' + dd.meterNumber])

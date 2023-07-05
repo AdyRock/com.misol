@@ -9,6 +9,14 @@ class MyDevice extends Device
      */
     async onInit()
     {
+        let id = this.getSetting('gatewayID');
+        if (!id)
+        {
+            const dd = this.getData();
+            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+        }
+        this.stationType = this.getSetting('stationType');
+
         this.log('MyDevice has been initialized');
     }
 
@@ -56,6 +64,12 @@ class MyDevice extends Device
         const dd = this.getData();
         if ((gateway.PASSKEY === dd.PASSKEY) && gateway['soilmoisture' + dd.meterNumber])
         {
+            if (!this.stationType)
+            {
+                this.stationType = gateway.stationtype;
+                this.setSettings({stationType: this.stationType}).catch(this.error);;
+            }
+
             const moisture = parseInt(gateway['soilmoisture' + dd.meterNumber]);
             if (moisture != this.getCapabilityValue('measure_moisture'))
             {

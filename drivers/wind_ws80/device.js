@@ -10,6 +10,14 @@ class WindWS80Device extends Device
      */
     async onInit()
     {
+        let id = this.getSetting('gatewayID');
+        if (!id)
+        {
+            const dd = this.getData();
+            this.setSettings({gatewayID: dd.id}).catch(this.error);
+        }
+        this.stationType = this.getSetting('stationType');
+
         if (!this.hasCapability('measure_wind_direction'))
         {
             this.addCapability('measure_wind_direction');
@@ -28,7 +36,16 @@ class WindWS80Device extends Device
      */
     async onAdded()
     {
-        this.log('WindWS80Device has been added');
+            let unitsText = this.homey.app.SpeedUnits === '0' ? this.homey.__('speedUnits.km') : this.homey.__('speedUnits.m');
+
+            this.setCapabilityOptions('measure_wind_strength', { "units": unitsText }).catch(this.error);
+            this.setCapabilityOptions('measure_gust_strength', { "units": unitsText }).catch(this.error);
+
+            var opts = this.getCapabilityOptions('measure_gust_strength.daily');
+            opts.units = unitsText;
+            this.setCapabilityOptions('measure_gust_strength.daily', opts).catch(this.error);
+
+            this.log('WindWS80Device has been added');
     }
 
     /**
@@ -41,6 +58,13 @@ class WindWS80Device extends Device
      */
     async onSettings({ oldSettings, newSettings, changedKeys })
     {
+        let id = this.getSetting('gatewayID');
+        if (!id)
+        {
+            const dd = this.getData();
+            this.setSetting('gatewayID', dd.id);
+        }
+
         this.log('WindWS80Device settings where changed');
     }
 
@@ -67,9 +91,14 @@ class WindWS80Device extends Device
         if ( Units === 'SpeedUnits' )
         {
             let unitsText = this.homey.app.SpeedUnits === '0' ? "Km/H" : "m/s";
+            
             this.setCapabilityOptions( 'measure_wind_strength', { "units": unitsText } ).catch(this.error);
             this.setCapabilityOptions( 'measure_gust_strength', { "units": unitsText } ).catch(this.error);
-            this.setCapabilityOptions( 'measure_gust_strength.daily', { "units": unitsText } ).catch(this.error);
+
+            let options = this.getCapabilityOptions('measure_gust_strength.daily');
+            options.units = unitsText;
+            this.setCapabilityOptions( 'measure_gust_strength.daily', options ).catch(this.error);
+
             this.setCapabilityValue('measure_wind_strength', null).catch(this.error);
             this.setCapabilityValue('measure_gust_strength', null).catch(this.error);
             this.setCapabilityValue('measure_gust_strength.daily', null).catch(this.error);
@@ -81,6 +110,12 @@ class WindWS80Device extends Device
         const dd = this.getData();
         if (gateway.PASSKEY === dd.id)
         {
+            if (!this.stationType)
+            {
+                this.stationType = gateway.stationtype;
+                this.setSettings({stationType: this.stationType}).catch(this.error);;
+            }
+
             var temperatureF = Number(gateway.tempf);
             var windSpeed = Number(gateway.windspeedmph);
             var relativeHumidity = parseInt(gateway.humidity);

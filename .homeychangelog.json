@@ -103,5 +103,11 @@
   },
   "0.1.34": {
     "en": "Fix Dew Point calculation. Added Luminance to weather station."
+  },
+  "0.1.35": {
+    "en": "Fix for custom wind speed units text when a device is added after the units are changed."
+  },
+  "0.1.36": {
+    "en": "Added Station ID and Station type to device settings so it is easier to identify."
   }
 }

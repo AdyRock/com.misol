@@ -9,6 +9,14 @@ class TempHumDevice extends Device
      */
     async onInit()
     {
+        let id = this.getSetting('gatewayID');
+        if (!id)
+        {
+            const dd = this.getData();
+            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+        }
+        this.stationType = this.getSetting('stationType');
+
         this.log('TempHumDevice has been initialized');
     }
 
@@ -58,6 +66,12 @@ class TempHumDevice extends Device
         {
             if ((gateway.PASSKEY === dd.PASSKEY) && gateway['temp' + dd.meterNumber] + 'f')
             {
+                if (!this.stationType)
+                {
+                    this.stationType = gateway.stationtype;
+                    this.setSettings({stationType: this.stationType}).catch(this.error);;
+                }
+
                 this.setCapabilityValue('measure_humidity', parseInt(gateway['humidity' + dd.meterNumber])).catch(this.error);
                 this.setCapabilityValue('measure_temperature', (Number(gateway['temp' + dd.meterNumber + 'f']) -32) * 5 / 9).catch(this.error);
 

@@ -9,6 +9,14 @@ class RainSensorDevice extends Device
      */
     async onInit()
     {
+        let id = this.getSetting('gatewayID');
+        if (!id)
+        {
+            const dd = this.getData();
+            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+        }
+        this.setSettings({gatewayID: dd.id}).catch(this.error);;
+
         if (!this.hasCapability('measure_hours_since_rained'))
         {
             this.addCapability('measure_hours_since_rained');
@@ -68,6 +76,12 @@ class RainSensorDevice extends Device
         const dd = this.getData();
         if (gateway.PASSKEY === dd.id)
         {
+            if (!this.stationType)
+            {
+                this.stationType = gateway.stationtype;
+                this.setSettings({stationType: this.stationType}).catch(this.error);;
+            }
+
             let rain = Number(gateway.rainratein) * 25.4;
             this.setCapabilityValue('measure_rain', rain).catch(this.error);
 

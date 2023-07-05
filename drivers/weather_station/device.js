@@ -13,6 +13,14 @@ class WeatherStationDevice extends Device
      */
     async onInit()
     {
+        let id = this.getSetting('gatewayID');
+        if (!id)
+        {
+            const dd = this.getData();
+            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+        }
+        this.stationType = this.getSetting('stationType');
+
         // if (!this.hasCapability('measure_hours_since_rained'))
         // {
         //     this.addCapability('measure_hours_since_rained');
@@ -44,6 +52,15 @@ class WeatherStationDevice extends Device
      */
     async onAdded()
     {
+        let unitsText = this.homey.app.SpeedUnits === '0' ? this.homey.__('speedUnits.km') : this.homey.__('speedUnits.m');
+
+        this.setCapabilityOptions('measure_wind_strength', { "units": unitsText }).catch(this.error);
+        this.setCapabilityOptions('measure_gust_strength', { "units": unitsText }).catch(this.error);
+
+        var opts = this.getCapabilityOptions('measure_gust_strength.daily');
+        opts.units = unitsText;
+        this.setCapabilityOptions('measure_gust_strength.daily', opts).catch(this.error);
+
         this.log('WeatherStationDevice has been added');
     }
 
@@ -83,6 +100,7 @@ class WeatherStationDevice extends Device
         if (Units === 'SpeedUnits')
         {
             let unitsText = this.homey.app.SpeedUnits === '0' ? this.homey.__('speedUnits.km') : this.homey.__('speedUnits.m');
+
             this.setCapabilityOptions('measure_wind_strength', { "units": unitsText }).catch(this.error);
             this.setCapabilityOptions('measure_gust_strength', { "units": unitsText }).catch(this.error);
 
@@ -101,6 +119,12 @@ class WeatherStationDevice extends Device
         const dd = this.getData();
         if (gateway.PASSKEY === dd.id)
         {
+            if (!this.stationType)
+            {
+                this.stationType = gateway.stationtype;
+                this.setSettings({stationType: this.stationType}).catch(this.error);;
+            }
+
             var temperatureF = Number(gateway.tempf);
             var windSpeed = Number(gateway.windspeedmph);
             var relativeHumidity = parseInt(gateway.humidity);

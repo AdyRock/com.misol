@@ -9,6 +9,14 @@ class TempWaterDevice extends Device
      */
     async onInit()
     {
+        let id = this.getSetting('gatewayID');
+        if (!id)
+        {
+            const dd = this.getData();
+            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+        }
+        this.stationType = this.getSetting('stationType');
+
         this.log('TempWaterDevice has been initialized');
     }
 
@@ -58,6 +66,12 @@ class TempWaterDevice extends Device
         {
             if ((gateway.PASSKEY === dd.PASSKEY) && gateway['tf_ch' + dd.meterNumber])
             {
+                if (!this.stationType)
+                {
+                    this.stationType = gateway.stationtype;
+                    this.setSettings({stationType: this.stationType}).catch(this.error);;
+                }
+
                 this.setCapabilityValue('measure_temperature', (Number(gateway['tf_ch' + dd.meterNumber]) -32) * 5 / 9).catch(this.error);
 
                 if (gateway['tf_batt' + dd.meterNumber])

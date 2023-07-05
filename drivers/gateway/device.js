@@ -10,6 +10,13 @@ class MyDevice extends Device
     async onInit()
     {
         this.log('MyDevice has been initialized');
+        let id = this.getSetting('gatewayID');
+        if (!id)
+        {
+            const dd = this.getData();
+            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+        }
+        this.stationType = this.getSetting('stationType');
     }
 
     /**
@@ -56,6 +63,11 @@ class MyDevice extends Device
         const dd = this.getData();
         if (gateway.PASSKEY === dd.id)
         {
+            if (!this.stationType)
+            {
+                this.stationType = gateway.stationtype;
+                this.setSettings({stationType: this.stationType}).catch(this.error);;
+            }
             this.setCapabilityValue('measure_humidity', parseInt(gateway.humidityin)).catch(this.error);
             this.setCapabilityValue('measure_pressure', Number(gateway.baromrelin) * 33.8639).catch(this.error);
             this.setCapabilityValue('measure_temperature', (Number(gateway.tempinf) -32) * 5 / 9).catch(this.error);
