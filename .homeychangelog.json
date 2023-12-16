@@ -109,5 +109,8 @@
   },
   "0.1.36": {
     "en": "Added Station ID and Station type to device settings so it is easier to identify."
+  },
+  "0.1.37": {
+    "en": "Fix Math.fabs issue."
   }
 }
