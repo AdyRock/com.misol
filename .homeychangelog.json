@@ -112,5 +112,8 @@
   },
   "0.1.37": {
     "en": "Fix Math.fabs issue."
+  },
+  "0.1.38": {
+    "en": "Fix dd not defined issue."
   }
 }
