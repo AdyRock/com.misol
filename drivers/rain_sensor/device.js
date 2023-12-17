@@ -13,9 +13,8 @@ class RainSensorDevice extends Device
         if (!id)
         {
             const dd = this.getData();
-            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+            this.setSettings({gatewayID: dd.id}).catch(this.error);
         }
-        this.setSettings({gatewayID: dd.id}).catch(this.error);;
 
         if (!this.hasCapability('measure_hours_since_rained'))
         {
