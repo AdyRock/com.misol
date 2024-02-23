@@ -2,7 +2,7 @@
     "settings": {
         "settings": "Settings",
         "port": "Port",
-        "connection": "Select the Port to match the setting you made in the WS View app",
+        "connection": "The Port must match the setting in the WS View app",
         "detected": "Detected",
         "diagnosticsLog": "Diagnostics Log",
         "subtitle": "Application Settings",

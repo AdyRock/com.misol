@@ -115,5 +115,8 @@
   },
   "0.1.38": {
     "en": "Fix dd not defined issue."
-  }
+  },
+    "0.1.39": {
+        "en": "Added mph option for window speed."
+    }
 }
