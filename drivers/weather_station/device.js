@@ -99,7 +99,23 @@ class WeatherStationDevice extends Device
     {
         if (Units === 'SpeedUnits')
         {
-            let unitsText = this.homey.app.SpeedUnits === '0' ? this.homey.__('speedUnits.km') : this.homey.__('speedUnits.m');
+            let unitsText = '';
+            
+            switch (this.homey.app.SpeedUnits)
+            {
+                case '0':
+                    unitsText = this.homey.__('speedUnits.km');
+                    break;
+                case '1':
+                    unitsText = this.homey.__('speedUnits.m');
+                    break;
+                case '2':
+                    unitsText = this.homey.__('speedUnits.mph');
+                    break;
+                default:
+                    unitsText = this.homey.__('speedUnits.km');
+                    break;
+            }
 
             this.setCapabilityOptions('measure_wind_strength', { "units": unitsText }).catch(this.error);
             this.setCapabilityOptions('measure_gust_strength', { "units": unitsText }).catch(this.error);
@@ -139,11 +155,17 @@ class WeatherStationDevice extends Device
                 this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) * 1.609344).catch(this.error);
                 this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) * 1.609344).catch(this.error);
             }
-            else
+            else if (this.homey.app.SpeedUnits === '1')
             {
                 this.setCapabilityValue('measure_wind_strength', (windSpeed * 1.609344) * 1000 / 3600).catch(this.error);
                 this.setCapabilityValue('measure_gust_strength', (Number(gateway.windgustmph) * 1.609344) * 1000 / 3600).catch(this.error);
                 this.setCapabilityValue('measure_gust_strength.daily', (Number(gateway.maxdailygust) * 1.609344) * 1000 / 3600).catch(this.error);
+            }
+            else
+            {
+                this.setCapabilityValue('measure_wind_strength', windSpeed).catch(this.error);
+                this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph)).catch(this.error);
+                this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust)).catch(this.error);
             }
 
             this.setCapabilityValue('measure_wind_angle', parseInt(gateway.winddir)).catch(this.error);

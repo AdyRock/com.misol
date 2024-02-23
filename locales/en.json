@@ -26,7 +26,8 @@
     "Hazardous": "Hazardous",
     "speedUnits": {
         "km": "km/H",
-        "m": "m/s"
+        "m": "m/s",
+        "mph": "mph"
     },
     "pair": {
         "intro": "Enter Connection Details",

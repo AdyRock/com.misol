@@ -20,69 +20,73 @@
     <!-- SETTINGS PAGE -->
     <div id="settings" class="tabcontent">
 
-        <p data-i18n="settings.subtitle"></p>
+        <h1 data-i18n="settings.subtitle"></h1>
 
-        <fieldset>
-            <legend><span data-i18n="settings.connection"></span></legend>
+        <fieldset class="homey-form-fieldset">
+            <legend class="homey-form-legend"><span data-i18n="settings.connection"></span></legend>
             <fieldset>
                 <div class="field row">
-                    <label for="port"><span data-i18n="settings.port"></span></label>
-                    <input id="port" type="text" value="" />
+                    <label class="homey-form-label" for="port"><span data-i18n="settings.port"></span></label>
+                    <input class="homey-form-input" id="port" type="text" value="" />
                 </div>
             </fieldset>
         </fieldset>
-        <fieldset>
-            <legend><span data-i18n="settings.Units"></span></legend>
+        <fieldset class="homey-form-fieldset">
+            <legend class="homey-form-legend"><span data-i18n="settings.Units"></span></legend>
             <div class="field row">
-                <label for="SpeedUnits"><span data-i18n="settings.SpeedUnits"></span></label>
-                <select id="SpeedUnits" style="width:80px;">
+                <label class="homey-form-label" for="SpeedUnits"><span data-i18n="settings.SpeedUnits"></span></label>
+                <select class="homey-form-select" id="SpeedUnits" style="width:80px;">
                     <option value='0'>Km/H</option>
                     <option value='1'>m/s</option>
+                    <option value='2'>mph</option>
                 </select>
             </div>
         </fieldset>
-        <fieldset>
-            <p><button id="save" class="right"><span data-i18n="settings.saveChanges"></span></button></p>
+        <fieldset class="homey-form-fieldset">
+            <p><button class="homey-button-primary-full" id="save" class="right"><span data-i18n="settings.saveChanges"></span></button></p>
         </fieldset>
     </div>
 
     <!-- detected-->
     <div id="detected" class="tabcontent">
-        <fieldset>
-            <p><button id="sendDetectedLog"><span data-i18n="settings.sendLog"></span></button></p>
+        <fieldset class="homey-form-fieldset">
+            <p><button class="homey-button-secondary-shadow" id="sendDetectedLog"><span data-i18n="settings.sendLog"></span></button></p>
             <p data-i18n="settings.detectedDescription">
             </p>
             <div class="field row">
-                <textarea id="detectedDevices"></textarea>
+                <textarea id="detectedDevices" style="white-space: nowrap;"></textarea>
             </div>
         </fieldset>
     </div>
 
     <!-- LOG PAGE -->
     <div id="log" class="tabcontent">
-        <fieldset>
+        <fieldset class="homey-form-fieldset">
             <p data-i18n="settings.diagnosticsLog">
             </p>
             <div class="field row">
-                <label for="logEnabled"><span data-i18n="settings.logEnabled"></span></label>
-                <input id="logEnabled" type="checkbox" value="logEnabled" />
+				<label class="homey-form-checkbox">
+					<input class="homey-form-checkbox-input" id="logEnabled" type="checkbox" value="logEnabled" />
+					<span class="homey-form-checkbox-checkmark"></span>
+					<span class="homey-form-checkbox-text"><span data-i18n="settings.logEnabled"></span></span>
+				</label>
             </div>
         </fieldset>
-        <fieldset>
-            <p><button id="clearDiagLog"><span data-i18n="settings.clearLog"></span></button> <button id="sendDiagLog"><span data-i18n="settings.sendLog"></span></button></p>
+        <fieldset class="homey-form-fieldset">
+            <p><button class="homey-button-secondary-shadow" id="clearDiagLog"><span data-i18n="settings.clearLog"></span></button> <button class="homey-button-secondary-shadow" id="sendDiagLog"><span data-i18n="settings.sendLog"></span></button></p>
             <div class="field row">
-                <textarea id="diagLog"></textarea>
+                <textarea id="diagLog" style="white-space: nowrap;"></textarea>
             </div>
         </fieldset>
     </div>
 
     <!--SIMULATION PAGE -->
     <div id="simulator" class="tabcontent">
-        <fieldset>
+        <fieldset class="homey-form-fieldset">
             <h1>For debug use only</h1>
             <p><button id="useSim" style="background-color:#0f9e16;color:white;margin:5px 20px 5px 5px;">Activate</button><button id="clearSim" style="background-color:#a5510d;color:white;margin:5px 20px 5px 5px;">Clear Sim</button></p>
             <div class="field row">
-                <textarea id="simData"></textarea>
+                <textarea id="simData" style="white-space: nowrap;"></textarea>
             </div>
         </fieldset>
     </div>
