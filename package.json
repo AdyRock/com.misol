@@ -1,6 +1,6 @@
 {
   "name": "com.misol",
-  "version": "0.1.39",
+  "version": "0.1.40",
   "main": "app.js",
   "scripts": {
     "build": "tsc"

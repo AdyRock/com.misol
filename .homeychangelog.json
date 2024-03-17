@@ -1,122 +1,125 @@
 {
-  "0.1.0": {
-    "en": "First version"
-  },
-  "0.1.1": {
-    "en": "Added PM2.5 meter"
-  },
-  "0.1.2": {
-    "en": "Added Lightning detector and weather station."
-  },
-  "0.1.3": {
-    "en": "Added Insight option to custom capabilities."
-  },
-  "0.1.4": {
-    "en": "Added flow trigger for Air Quality changed. Fixed issue with settings not saving. Added logging to confirm server has started / show errors."
-  },
-  "0.1.5": {
-    "en": "Updated battery percentage calculation for the soil moisture sensor and added an option to specify if the battery is type rechargeable."
-  },
-  "0.1.6": {
-    "en": "Max. number of Soil Moisture meters is now 8. Time format of lightning strike can now be selected in the device Advanced settings. Lightning distance units fixed. Lightning flows fixed"
-  },
-  "0.1.7": {
-    "en": "Added PM10 and CO2, 5 in 1 meter"
-  },
-  "0.1.8": {
-    "en": "Added PM32, temperature and humidity meter"
-  },
-  "0.1.9": {
-    "en": "Fix links to store images for temperature and humidity monitor"
-  },
-  "0.1.10": {
-    "en": "Removed cloud tag that was accidentals added in lat submission"
-  },
-  "0.1.11": {
-    "en": "Added support for multiple temperature and humidity monitor (up to 8 channels)."
-  },
-  "0.1.12": {
-    "en": "Added support for WH55 Wireless Water Leak Detection Sensor (up to 4 channels) and the WN30 temperature sensor (up to 8 channels)."
-  },
-  "0.1.13": {
-    "en": "Fixed images for WH55 and WN30."
-  },
-  "0.1.14": {
-    "en": "Added extra value range checks."
-  },
-  "0.1.15": {
-    "en": "Added rain sensor. Cleaned up Flow triggers."
-  },
-  "0.1.16": {
-    "en": "Fixed image for rain sensor"
-  },
-  "0.1.17": {
-    "en": "Fixed incorrect trigger call for PM25 device"
-  },
-  "0.1.18": {
-    "en": "Fixed issue with PM10 device"
-  },
-  "0.1.19": {
-    "en": "Added WS80 support. Changed weather stations to sensor class so a capability can be shown on the tile."
-  },
-  "0.1.20": {
-    "en": "Fixed path to store image for WS80."
-  },
-  "0.1.21": {
-    "en": "Change the weather station and WS80 to use baromrelin (corrected) instead of baromabsin (absolute)."
-  },
-  "0.1.22": {
-    "en": "Change the weather station and WS80 to use baromrelin (corrected) instead of baromabsin (absolute)."
-  },
-  "0.1.23": {
-    "en": "Added number of hours since last rained with associated flow cards"
-  },
-  "0.1.24": {
-    "en": "Removed redundant Air Quality Index Flow trigger cards."
-  },
-  "0.1.25": {
-    "en": "Added Water Temperature device (WN34)."
-  },
-  "0.1.26": {
-    "en": "Updated Water Temperature icon."
-  },
-  "0.1.27": {
-    "en": "Fix typo in function name for triggerAQPM25AvgChanged."
-  },
-  "0.1.28": {
-    "en": "Fix rain data for WS90."
-  },
-  "0.1.29": {
-    "en": "Fix battery information for WS90."
-  },
-  "0.1.30": {
-    "en": "Added option to change App wind units. Added Wind Direction (N, NW, etc). Added support for Ambient Weather format data."
-  },
-  "0.1.31": {
-    "en": "Fix 'Max. Gust Strength' name being changed to 'Gust Strength' when units are changed."
-  },
-  "0.1.32": {
-    "en": "Dutch translations."
-  },
-  "0.1.33": {
-    "en": "Added support for HP10 camera."
-  },
-  "0.1.34": {
-    "en": "Fix Dew Point calculation. Added Luminance to weather station."
-  },
-  "0.1.35": {
-    "en": "Fix for custom wind speed units text when a device is added after the units are changed."
-  },
-  "0.1.36": {
-    "en": "Added Station ID and Station type to device settings so it is easier to identify."
-  },
-  "0.1.37": {
-    "en": "Fix Math.fabs issue."
-  },
-  "0.1.38": {
-    "en": "Fix dd not defined issue."
-  },
-    "0.1.39": {
-        "en": "Added mph option for window speed."
-    }
+	"0.1.0": {
+		"en": "First version"
+	},
+	"0.1.1": {
+		"en": "Added PM2.5 meter"
+	},
+	"0.1.2": {
+		"en": "Added Lightning detector and weather station."
+	},
+	"0.1.3": {
+		"en": "Added Insight option to custom capabilities."
+	},
+	"0.1.4": {
+		"en": "Added flow trigger for Air Quality changed. Fixed issue with settings not saving. Added logging to confirm server has started / show errors."
+	},
+	"0.1.5": {
+		"en": "Updated battery percentage calculation for the soil moisture sensor and added an option to specify if the battery is type rechargeable."
+	},
+	"0.1.6": {
+		"en": "Max. number of Soil Moisture meters is now 8. Time format of lightning strike can now be selected in the device Advanced settings. Lightning distance units fixed. Lightning flows fixed"
+	},
+	"0.1.7": {
+		"en": "Added PM10 and CO2, 5 in 1 meter"
+	},
+	"0.1.8": {
+		"en": "Added PM32, temperature and humidity meter"
+	},
+	"0.1.9": {
+		"en": "Fix links to store images for temperature and humidity monitor"
+	},
+	"0.1.10": {
+		"en": "Removed cloud tag that was accidentals added in lat submission"
+	},
+	"0.1.11": {
+		"en": "Added support for multiple temperature and humidity monitor (up to 8 channels)."
+	},
+	"0.1.12": {
+		"en": "Added support for WH55 Wireless Water Leak Detection Sensor (up to 4 channels) and the WN30 temperature sensor (up to 8 channels)."
+	},
+	"0.1.13": {
+		"en": "Fixed images for WH55 and WN30."
+	},
+	"0.1.14": {
+		"en": "Added extra value range checks."
+	},
+	"0.1.15": {
+		"en": "Added rain sensor. Cleaned up Flow triggers."
+	},
+	"0.1.16": {
+		"en": "Fixed image for rain sensor"
+	},
+	"0.1.17": {
+		"en": "Fixed incorrect trigger call for PM25 device"
+	},
+	"0.1.18": {
+		"en": "Fixed issue with PM10 device"
+	},
+	"0.1.19": {
+		"en": "Added WS80 support. Changed weather stations to sensor class so a capability can be shown on the tile."
+	},
+	"0.1.20": {
+		"en": "Fixed path to store image for WS80."
+	},
+	"0.1.21": {
+		"en": "Change the weather station and WS80 to use baromrelin (corrected) instead of baromabsin (absolute)."
+	},
+	"0.1.22": {
+		"en": "Change the weather station and WS80 to use baromrelin (corrected) instead of baromabsin (absolute)."
+	},
+	"0.1.23": {
+		"en": "Added number of hours since last rained with associated flow cards"
+	},
+	"0.1.24": {
+		"en": "Removed redundant Air Quality Index Flow trigger cards."
+	},
+	"0.1.25": {
+		"en": "Added Water Temperature device (WN34)."
+	},
+	"0.1.26": {
+		"en": "Updated Water Temperature icon."
+	},
+	"0.1.27": {
+		"en": "Fix typo in function name for triggerAQPM25AvgChanged."
+	},
+	"0.1.28": {
+		"en": "Fix rain data for WS90."
+	},
+	"0.1.29": {
+		"en": "Fix battery information for WS90."
+	},
+	"0.1.30": {
+		"en": "Added option to change App wind units. Added Wind Direction (N, NW, etc). Added support for Ambient Weather format data."
+	},
+	"0.1.31": {
+		"en": "Fix 'Max. Gust Strength' name being changed to 'Gust Strength' when units are changed."
+	},
+	"0.1.32": {
+		"en": "Dutch translations."
+	},
+	"0.1.33": {
+		"en": "Added support for HP10 camera."
+	},
+	"0.1.34": {
+		"en": "Fix Dew Point calculation. Added Luminance to weather station."
+	},
+	"0.1.35": {
+		"en": "Fix for custom wind speed units text when a device is added after the units are changed."
+	},
+	"0.1.36": {
+		"en": "Added Station ID and Station type to device settings so it is easier to identify."
+	},
+	"0.1.37": {
+		"en": "Fix Math.fabs issue."
+	},
+	"0.1.38": {
+		"en": "Fix dd not defined issue."
+	},
+	"0.1.39": {
+		"en": "Added mph option for window speed."
+	},
+	"0.1.40": {
+		"en": "Changed gateway class to sensor to it appears in the Climate section of Homey."
+	}
 }

@@ -17,6 +17,7 @@ class MyDevice extends Device
             this.setSettings({gatewayID: dd.id}).catch(this.error);;
         }
         this.stationType = this.getSetting('stationType');
+		this.setClass('sensor');
     }
 
     /**
