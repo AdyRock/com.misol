@@ -45,6 +45,7 @@ class WeatherStationDevice extends Device
         }
         this.log('WeatherStationDevice has been initialized');
         this.unitsChanged('SpeedUnits');
+		this.unitsChanged('RainfallUnits');
     }
 
     /**
@@ -128,6 +129,72 @@ class WeatherStationDevice extends Device
             this.setCapabilityValue('measure_gust_strength', null).catch(this.error);
             this.setCapabilityValue('measure_gust_strength.daily', null).catch(this.error);
         }
+
+		if (Units === 'RainfallUnits')
+		{
+			let unitsText = '';
+			let decimals = 0;
+			switch (this.homey.app.RainfallUnits)
+			{
+				case '0':
+					unitsText = this.homey.__('rainfallUnits.mm');
+					break;
+				case '1':
+					unitsText = this.homey.__('rainfallUnits.in');
+					decimals = 1;
+					break;
+				default:
+					unitsText = this.homey.__('rainfallUnits.mm');
+					break;
+
+			}
+
+			this.setCapabilityOptions('measure_rain', { "units": unitsText }).catch(this.error);
+
+            var opts = this.getCapabilityOptions('measure_rain.event');
+            opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.event', opts).catch(this.error);
+
+            var opts = this.getCapabilityOptions('measure_rain.hourly');
+            opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.hourly', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.daily');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.daily', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.weekly');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.weekly', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.monthly');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.monthly', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.yearly');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.yearly', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.total');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.total', opts).catch(this.error);
+
+			this.setCapabilityValue('measure_rain', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.event', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.hourly', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.daily', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.weekly', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.monthly', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.yearly', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.total', null).catch(this.error);
+		}
     }
 
     async updateCapabilities(gateway)
@@ -183,7 +250,15 @@ class WeatherStationDevice extends Device
             this.setCapabilityValue('measure_luminance', Number(gateway.solarradiation) * 126.7).catch(this.error);
             this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.error);
 
-            let rainratein = null;
+            let rainConversion = 25.4;
+			let decimals = 0;
+			if (this.homey.app.RainfallUnits === '1')
+			{
+				rainConversion = 1;
+				decimals = 1;
+			}
+
+			let rainratein = null;
             let eventrainin = 0;
             let hourlyrainin = 0;
             let dailyrainin = 0;
@@ -207,7 +282,7 @@ class WeatherStationDevice extends Device
                 yearlyrainin = gateway.yearlyrainin;
                 totalrainin = gateway.totalrainin;
 
-                let rain = Number(totalrainin) * 25.4;
+                let rain = Number(totalrainin) * rainConversion;
                 if (rain != this.getCapabilityValue('measure_rain.total'))
                 {
                     this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
@@ -243,7 +318,7 @@ class WeatherStationDevice extends Device
 
                 }
 
-                rain = Number(rainratein) * 25.4;
+                rain = Number(rainratein) * rainConversion;
                 this.setCapabilityValue('measure_rain', rain).catch(this.error);
 
                 if (rain > 0)
@@ -273,43 +348,43 @@ class WeatherStationDevice extends Device
                 }
             }
 
-            rain = Number(eventrainin) * 25.4;
+            rain = Number(eventrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.event'))
             {
                 this.setCapabilityValue('measure_rain.event', rain).catch(this.error);
             }
 
-            rain = Number(hourlyrainin) * 25.4;
+            rain = Number(hourlyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.hourly'))
             {
                 this.setCapabilityValue('measure_rain.hourly', rain).catch(this.error);
             }
 
-            rain = Number(dailyrainin) * 25.4;
+            rain = Number(dailyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.daily'))
             {
                 this.setCapabilityValue('measure_rain.daily', rain).catch(this.error);
             }
 
-            rain = Number(weeklyrainin) * 25.4;
+            rain = Number(weeklyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.weekly'))
             {
                 this.setCapabilityValue('measure_rain.weekly', rain).catch(this.error);
             }
 
-            rain = Number(monthlyrainin) * 25.4;
+            rain = Number(monthlyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.monthly'))
             {
                 this.setCapabilityValue('measure_rain.monthly', rain).catch(this.error);
             }
 
-            rain = Number(yearlyrainin) * 25.4;
+            rain = Number(yearlyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.yearly'))
             {
                 this.setCapabilityValue('measure_rain.yearly', rain).catch(this.error);
             }
 
-            rain = Number(dailyrainin) * 25.4;
+            rain = Number(dailyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.daily'))
             {
                 this.setCapabilityValue('measure_rain.daily', rain).catch(this.error);

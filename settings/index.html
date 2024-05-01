@@ -27,10 +27,17 @@
             <h2 data-i18n="settings.connection"></h2>
             <div class="field row">
                 <label class="homey-form-label" for="SpeedUnits"><span data-i18n="settings.SpeedUnits"></span></label>
-                <select class="homey-form-select" id="SpeedUnits" style="width:80px;">
+                <select class="homey-form-select" id="SpeedUnits" style="width:110px;">
                     <option value='0'>Km/H</option>
                     <option value='1'>m/s</option>
                     <option value='2'>mph</option>
+                </select>
+            </div>
+            <div class="field row">
+                <label class="homey-form-label" for="RainfallUnits"><span data-i18n="settings.RainfallUnits"></span></label>
+                <select class="homey-form-select" id="RainfallUnits" style="width:110px;">
+                    <option value='0'>mm</option>
+                    <option value='1'>inch</option>
                 </select>
             </div>
         </fieldset>
@@ -86,6 +93,7 @@
     <script type="text/javascript">
         var portElement = document.getElementById('port');
         var SpeedUnitsElement = document.getElementById( 'SpeedUnits' );
+        var RainfallUnitsElement = document.getElementById( 'RainfallUnits' );
 
         var detectedDevicesElement = document.getElementById('detectedDevices');
         var diagLogElement = document.getElementById('diagLog');
@@ -126,6 +134,12 @@
             {
                 if ( err ) return Homey.alert( err );
                 SpeedUnitsElement.value = SpeedUnits;
+            } );
+
+            Homey.get( 'RainfallUnits', function( err, RainfallUnits )
+            {
+                if ( err ) return Homey.alert( err );
+                RainfallUnitsElement.value = RainfallUnits;
             } );
 
             Homey.get('logEnabled', function(err, logEnabled)
@@ -171,6 +185,10 @@
                     if (err) return Homey.alert(err);
                 });
                 Homey.set( 'SpeedUnits', SpeedUnitsElement.value, function( err )
+                {
+                    if ( err ) return Homey.alert( err );
+                } );
+                Homey.set( 'RainfallUnits', RainfallUnitsElement.value, function( err )
                 {
                     if ( err ) return Homey.alert( err );
                 } );

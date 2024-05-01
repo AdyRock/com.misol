@@ -16,7 +16,8 @@
         "logSent": "The log has been sent.",
         "logSendFailed": "Failed to send after 5 attempts.\nThe error messages are at the end of the log.",
         "Units": "Units",
-        "SpeedUnits": "Wind Speed"
+        "SpeedUnits": "Wind Speed",
+		"RainfallUnits": "Rainfall Units"
     },
     "good": "Good",
     "Moderate": "Moderate",
@@ -28,6 +29,10 @@
         "km": "km/H",
         "m": "m/s",
         "mph": "mph"
+    },
+    "rainfallUnits": {
+        "mm": "mm",
+        "in": "inch"
     },
     "pair": {
         "intro": "Enter Connection Details",

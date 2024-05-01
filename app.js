@@ -49,6 +49,13 @@ class MyApp extends Homey.App
             this.homey.settings.set( 'SpeedUnits', this.SpeedUnits );
         }
 
+        this.RainfallUnits = this.homey.settings.get( 'RainfallUnits' );
+        if ( this.RainfallUnits === null )
+        {
+            this.RainfallUnits = 0;
+            this.homey.settings.set( 'RainfallUnits', this.RainfallUnits );
+        }
+
         this.runsListener();
         this.detectedGateways = [];
 
@@ -70,6 +77,12 @@ class MyApp extends Homey.App
             {
                 this.SpeedUnits = this.homey.settings.get( 'SpeedUnits' );
                 this.changeUnits( 'SpeedUnits' );
+            }
+
+            if ( key === 'RainfallUnits' )
+            {
+                this.RainfallUnits = this.homey.settings.get( 'RainfallUnits' );
+                this.changeUnits( 'RainfallUnits' );
             }
 
             if (key === 'simData')
