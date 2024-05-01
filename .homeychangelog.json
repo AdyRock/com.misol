@@ -121,5 +121,8 @@
 	},
 	"0.1.40": {
 		"en": "Changed gateway class to sensor to it appears in the Climate section of Homey."
+	},
+	"0.1.41": {
+		"en": "Added an app setting to show rain in mm or inches."
 	}
 }
