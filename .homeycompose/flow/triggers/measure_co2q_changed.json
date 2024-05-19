@@ -1,11 +1,13 @@
 {
     "title": {
         "en": "The CO2 quality has become",
-        "nl": "De CO2-kwaliteit is geworden"
+        "nl": "De CO2-kwaliteit is geworden",
+        "de": "Die CO2-Qualität wurde"
     },
     "titleFormatted": {
         "en": "The CO2 air quality has become [[compare_type]] [[measure_aq]]",
-        "nl": "De CO2-luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden"
+        "nl": "De CO2-luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden",
+        "de": "Die CO2-Luftqualität wurde [[compare_type]] [[measure_aq]]"
     },
     "args": [
         {
@@ -18,28 +20,32 @@
             "name": "compare_type",
             "title": {
                 "en": "Comparison type",
-                "nl": "Soort vergelijking"
+                "nl": "Soort vergelijking",
+                "de": "Vergleichstyp"
             },
             "values": [
                 {
                     "id": "<=",
                     "label": {
                         "en": "better than or equal to",
-                        "nl": "beter dan of gelijk aan"
+                        "nl": "beter dan of gelijk aan",
+                        "de": "besser oder gleich"
                     }
                 },
                 {
                     "id": "==",
                     "label": {
                         "en": "equal to",
-                        "nl": "gelijk aan"
+                        "nl": "gelijk aan",
+                        "de": "gleich"
                     }
                 },
                 {
                     "id": ">=",
                     "label": {
                         "en": "worse than or equal to",
-                        "nl": "slechter dan of gelijk aan"
+                        "nl": "slechter dan of gelijk aan",
+                        "de": "schlechter oder gleich"
                     }
                 }
             ]
@@ -49,49 +55,56 @@
             "name": "measure_aq",
             "title": {
                 "en": "Minimum CO2 quality",
-                "nl": "Minimale CO2-kwaliteit"
+                "nl": "Minimale CO2-kwaliteit",
+                "de": "Minimale CO2-Qualität"
             },
             "values": [
                 {
                     "id": "0",
                     "label": {
                         "en": "Good",
-                        "nl": "Goed"
+                        "nl": "Goed",
+                        "de": "Gut"
                     }
                 },
                 {
                     "id": "1",
                     "label": {
                         "en": "Moderate",
-                        "nl": "Gematigd"
+                        "nl": "Gematigd",
+                        "de": "Durchschnittlich"
                     }
                 },
                 {
                     "id": "2",
                     "label": {
                         "en": "Slightly Unhealthy",
-                        "nl": "Enigszins ongezond"
+                        "nl": "Enigszins ongezond",
+                        "de": "Etwas ungesund"
                     }
                 },
                 {
                     "id": "3",
                     "label": {
                         "en": "Unhealthy",
-                        "nl": "Ongezond"
+                        "nl": "Ongezond",
+                        "de": "Ungesund"
                     }
                 },
                 {
                     "id": "4",
                     "label": {
                         "en": "Very Unhealthy",
-                        "nl": "Heel ongezond"
+                        "nl": "Heel ongezond",
+                        "de": "Sehr ungesund"
                     }
                 },
                 {
                     "id": "5",
                     "label": {
                         "en": "Hazardous",
-                        "nl": "Gevaarlijk"
+                        "nl": "Gevaarlijk",
+                        "de": "Gefährlich"
                     }
                 }
             ]
@@ -103,11 +116,13 @@
             "type": "string",
             "title": {
                 "en": "CO2 Quality",
-                "nl": "CO2-kwaliteit"
+                "nl": "CO2-kwaliteit",
+                "de": "CO2-Qualität"
             },
             "example": {
                 "en": "Moderate",
-                "nl": "Gematigd"
+                "nl": "Gematigd",
+                "de": "Durchschnittlich"
             }
         },
         {
@@ -115,11 +130,13 @@
             "type": "number",
             "title": {
                 "en": "CO2 Quality item number",
-                "nl": "CO2 Kwaliteit artikelnummer"
+                "nl": "CO2 Kwaliteit artikelnummer",
+                "de": "CO2-Qualität Positionsnummer"
             },
             "example": {
                 "en": "0 to 5 = Good to Hazardous",
-                "nl": "Gematigd"
+                "nl": "0 tot 5 = goed tot gevaarlijk",
+                "de": "0 bis 5 = Gut bis Gefährlich"
             }
         }
     ]

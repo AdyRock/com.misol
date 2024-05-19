@@ -1,7 +1,8 @@
 {
     "title": {
         "en": "The PM2.5 average air quality index has changed",
-        "nl": "De PM2.5 gemiddelde luchtkwaliteitsindex is veranderd"
+        "nl": "De PM2.5 gemiddelde luchtkwaliteitsindex is veranderd",
+        "de": "Der durchschnittliche PM2.5 Luftqualitätsindex hat sich verändert"
     },
     "args": [
         {

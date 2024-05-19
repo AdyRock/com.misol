@@ -62,7 +62,8 @@
       {
         "title": {
           "en": "The PM10 alarm turned off",
-          "nl": "Het PM10-alarm is uitgeschakeld"
+          "nl": "Het PM10-alarm is uitgeschakeld",
+          "de": "Der PM10-Alarm ist ausgegangen"
         },
         "args": [
           {
@@ -75,7 +76,9 @@
       },
       {
         "title": {
-          "en": "Het PM10-alarm ging aan"
+          "en": "The PM10 alarm turned on",
+          "nl": "Het PM10-alarm ging aan",
+          "de": "Der PM10-Alarm ging an"
         },
         "args": [
           {
@@ -89,7 +92,8 @@
       {
         "title": {
           "en": "The power turned on",
-          "nl": "De stroom is ingeschakeld"
+          "nl": "De stroom is ingeschakeld",
+          "de": "Der Strom wurde angeschaltet"
         },
         "args": [
           {
@@ -103,7 +107,8 @@
       {
         "title": {
           "en": "The power turned off",
-          "nl": "De stroom is uitgeschakeld"
+          "nl": "De stroom is uitgeschakeld",
+          "de": "Der Strom wurde ausgeschaltet"
         },
         "args": [
           {
@@ -117,11 +122,13 @@
       {
         "title": {
           "en": "The PM2.5 air quality has become",
-          "nl": "De PM2.5 luchtkwaliteit is geworden"
+          "nl": "De PM2.5 luchtkwaliteit is geworden",
+          "de": "Die PM2.5 Luftqualität wurde"
         },
         "titleFormatted": {
           "en": "The PM2.5 air quality has become [[compare_type]] [[measure_aq]]",
-          "nl": "De PM2.5 luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden"
+          "nl": "De PM2.5 luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden",
+          "de": "Die PM2.5 Luftqualität wurde [[compare_type]] [[measure_aq]]"
         },
         "args": [
           {
@@ -134,28 +141,32 @@
             "name": "compare_type",
             "title": {
               "en": "Comparison type",
-              "nl": "Soort vergelijking"
+              "nl": "Soort vergelijking",
+              "de": "Vergleichstyp"
             },
             "values": [
               {
                 "id": "<=",
                 "label": {
                   "en": "better than or equal to",
-                  "nl": "beter dan of gelijk aan"
+                  "nl": "beter dan of gelijk aan",
+                  "de": "besser oder gleich"
                 }
               },
               {
                 "id": "==",
                 "label": {
                   "en": "equal to",
-                  "nl": "gelijk aan"
+                  "nl": "gelijk aan",
+                  "de": "gleich"
                 }
               },
               {
                 "id": ">=",
                 "label": {
                   "en": "worse than or equal to",
-                  "nl": "slechter dan of gelijk aan"
+                  "nl": "slechter dan of gelijk aan",
+                  "de": "schlechter oder gleich"
                 }
               }
             ]
@@ -165,49 +176,56 @@
             "name": "measure_aq",
             "title": {
               "en": "Minimum Air quality",
-              "nl": "Minimale luchtkwaliteit"
+              "nl": "Minimale luchtkwaliteit",
+              "de": "Minimale Luftqualität"
             },
             "values": [
               {
                 "id": "0",
                 "label": {
                   "en": "Good",
-                  "nl": "Goed"
+                  "nl": "Goed",
+                  "de": "Gut"
                 }
               },
               {
                 "id": "1",
                 "label": {
                   "en": "Moderate",
-                  "nl": "Gematigd"
+                  "nl": "Gematigd",
+                  "de": "Durchschnittlich"
                 }
               },
               {
                 "id": "2",
                 "label": {
                   "en": "Slightly Unhealthy",
-                  "nl": "Enigszins ongezond"
+                  "nl": "Enigszins ongezond",
+                  "de": "Etwas ungesund"
                 }
               },
               {
                 "id": "3",
                 "label": {
                   "en": "Unhealthy",
-                  "nl": "Ongezond"
+                  "nl": "Ongezond",
+                  "de": "Ungesund"
                 }
               },
               {
                 "id": "4",
                 "label": {
                   "en": "Very Unhealthy",
-                  "nl": "Heel ongezond"
+                  "nl": "Heel ongezond",
+                  "de": "Sehr ungesund"
                 }
               },
               {
                 "id": "5",
                 "label": {
                   "en": "Hazardous",
-                  "nl": "Gevaarlijk"
+                  "nl": "Gevaarlijk",
+                  "de": "Gefährlich"
                 }
               }
             ]
@@ -219,11 +237,13 @@
             "type": "string",
             "title": {
               "en": "PM2.5 Air Quality",
-              "nl": "PM2.5 Luchtkwaliteit"
+              "nl": "PM2.5 Luchtkwaliteit",
+              "de": "PM2.5 Luftqualität"
             },
             "example": {
               "en": "Moderate",
-              "nl": "Gematigd"
+              "nl": "Gematigd",
+              "de": "Durchschnittlich"
             }
           },
           {
@@ -231,11 +251,13 @@
             "type": "number",
             "title": {
               "en": "Air Quality item number",
-              "nl": "Luchtkwaliteit artikelnummer"
+              "nl": "Luchtkwaliteit artikelnummer",
+              "de": "Luftqualität Positionsnummer"
             },
             "example": {
               "en": "0 to 5 = Good to Hazardous",
-              "nl": "Gematigd"
+              "nl": "0 tot 5 = goed tot gevaarlijk",
+              "de": "0 bis 5 = Gut bis Gefährlich"
             }
           }
         ],
@@ -244,11 +266,13 @@
       {
         "title": {
           "en": "The average PM2.5 air quality has become",
-          "nl": "De gemiddelde luchtkwaliteit PM2,5 is geworden"
+          "nl": "De gemiddelde luchtkwaliteit PM2,5 is geworden",
+          "de": "Die durchschnittliche PM2.5 Luftqualität wurde"
         },
         "titleFormatted": {
           "en": "The average PM2.5 air quality has become [[compare_type]] [[measure_aq]]",
-          "nl": "e gemiddelde PM2.5 luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden"
+          "nl": "e gemiddelde PM2.5 luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden",
+          "de": "Die durchschnittliche PM2.5 Luftqualität wurde [[compare_type]] [[measure_aq]]"
         },
         "args": [
           {
@@ -261,28 +285,32 @@
             "name": "compare_type",
             "title": {
               "en": "Comparison type",
-              "nl": "Soort vergelijking"
+              "nl": "Soort vergelijking",
+              "de": "Vergleichstyp"
             },
             "values": [
               {
                 "id": "<=",
                 "label": {
                   "en": "better than or equal to",
-                  "nl": "beter dan of gelijk aan"
+                  "nl": "beter dan of gelijk aan",
+                  "de": "besser oder gleich"
                 }
               },
               {
                 "id": "==",
                 "label": {
                   "en": "equal to",
-                  "nl": "gelijk aan"
+                  "nl": "gelijk aan",
+                  "de": "gleich"
                 }
               },
               {
                 "id": ">=",
                 "label": {
                   "en": "worse than or equal to",
-                  "nl": "slechter dan of gelijk aan"
+                  "nl": "slechter dan of gelijk aan",
+                  "de": "schlechter oder gleich"
                 }
               }
             ]
@@ -292,49 +320,56 @@
             "name": "measure_aq",
             "title": {
               "en": "Minimum Air quality",
-              "nl": "Minimale luchtkwaliteit"
+              "nl": "Minimale luchtkwaliteit",
+              "de": "Minimale Luftqualität"
             },
             "values": [
               {
                 "id": "0",
                 "label": {
                   "en": "Good",
-                  "nl": "Goed"
+                  "nl": "Goed",
+                  "de": "Gut"
                 }
               },
               {
                 "id": "1",
                 "label": {
                   "en": "Moderate",
-                  "nl": "Gematigd"
+                  "nl": "Gematigd",
+                  "de": "Durchschnittlich"
                 }
               },
               {
                 "id": "2",
                 "label": {
                   "en": "Slightly Unhealthy",
-                  "nl": "Enigszins ongezond"
+                  "nl": "Enigszins ongezond",
+                  "de": "Etwas ungesund"
                 }
               },
               {
                 "id": "3",
                 "label": {
                   "en": "Unhealthy",
-                  "nl": "Ongezond"
+                  "nl": "Ongezond",
+                  "de": "Ungesund"
                 }
               },
               {
                 "id": "4",
                 "label": {
                   "en": "Very Unhealthy",
-                  "nl": "Heel ongezond"
+                  "nl": "Heel ongezond",
+                  "de": "Sehr ungesund"
                 }
               },
               {
                 "id": "5",
                 "label": {
                   "en": "Hazardous",
-                  "nl": "Gevaarlijk"
+                  "nl": "Gevaarlijk",
+                  "de": "Gefährlich"
                 }
               }
             ]
@@ -346,11 +381,13 @@
             "type": "string",
             "title": {
               "en": "Average PM2.5 Air Quality",
-              "nl": "Gemiddelde PM2.5 luchtkwaliteit"
+              "nl": "Gemiddelde PM2.5 luchtkwaliteit",
+              "de": "Durchschnittliche PM2.5 Luftqualität"
             },
             "example": {
               "en": "Moderate",
-              "nl": "Gematigd"
+              "nl": "Gematigd",
+              "de": "Durchschnittlich"
             }
           },
           {
@@ -358,11 +395,13 @@
             "type": "number",
             "title": {
               "en": "Average Air Quality item number",
-              "nl": "Itemnummer gemiddelde luchtkwaliteit"
+              "nl": "Itemnummer gemiddelde luchtkwaliteit",
+              "de": "Durchschnittliche Luftqualität Positionsnummer"
             },
             "example": {
               "en": "0 to 5 = Good to Hazardous",
-              "nl": "0 tot 5 = goed tot gevaarlijk"
+              "nl": "0 tot 5 = goed tot gevaarlijk",
+              "de": "0 bis 5 = Gut bis Gefährlich"
             }
           }
         ],
@@ -371,14 +410,16 @@
       {
         "title": {
           "en": "The PM2.5 air quality index has changed",
-          "nl": "De PM2.5 luchtkwaliteitsindex is gewijzigd"
+          "nl": "De PM2.5 luchtkwaliteitsindex is gewijzigd",
+          "de": "Der PM2.5 Luftqualitätsindex hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_aqi",
             "title": {
               "en": "Air quality index",
-              "nl": "Luchtkwaliteitsindex"
+              "nl": "Luchtkwaliteitsindex",
+              "de": "Luftqualitätsindex"
             },
             "type": "number",
             "example": 3
@@ -396,7 +437,8 @@
       {
         "title": {
           "en": "The PM2.5 average air quality index has changed",
-          "nl": "De PM2.5 gemiddelde luchtkwaliteitsindex is veranderd"
+          "nl": "De PM2.5 gemiddelde luchtkwaliteitsindex is veranderd",
+          "de": "Der durchschnittliche PM2.5 Luftqualitätsindex hat sich verändert"
         },
         "args": [
           {
@@ -410,11 +452,13 @@
       {
         "title": {
           "en": "The CO2 quality has become",
-          "nl": "De CO2-kwaliteit is geworden"
+          "nl": "De CO2-kwaliteit is geworden",
+          "de": "Die CO2-Qualität wurde"
         },
         "titleFormatted": {
           "en": "The CO2 air quality has become [[compare_type]] [[measure_aq]]",
-          "nl": "De CO2-luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden"
+          "nl": "De CO2-luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden",
+          "de": "Die CO2-Luftqualität wurde [[compare_type]] [[measure_aq]]"
         },
         "args": [
           {
@@ -427,28 +471,32 @@
             "name": "compare_type",
             "title": {
               "en": "Comparison type",
-              "nl": "Soort vergelijking"
+              "nl": "Soort vergelijking",
+              "de": "Vergleichstyp"
             },
             "values": [
               {
                 "id": "<=",
                 "label": {
                   "en": "better than or equal to",
-                  "nl": "beter dan of gelijk aan"
+                  "nl": "beter dan of gelijk aan",
+                  "de": "besser oder gleich"
                 }
               },
               {
                 "id": "==",
                 "label": {
                   "en": "equal to",
-                  "nl": "gelijk aan"
+                  "nl": "gelijk aan",
+                  "de": "gleich"
                 }
               },
               {
                 "id": ">=",
                 "label": {
                   "en": "worse than or equal to",
-                  "nl": "slechter dan of gelijk aan"
+                  "nl": "slechter dan of gelijk aan",
+                  "de": "schlechter oder gleich"
                 }
               }
             ]
@@ -458,49 +506,56 @@
             "name": "measure_aq",
             "title": {
               "en": "Minimum CO2 quality",
-              "nl": "Minimale CO2-kwaliteit"
+              "nl": "Minimale CO2-kwaliteit",
+              "de": "Minimale CO2-Qualität"
             },
             "values": [
               {
                 "id": "0",
                 "label": {
                   "en": "Good",
-                  "nl": "Goed"
+                  "nl": "Goed",
+                  "de": "Gut"
                 }
               },
               {
                 "id": "1",
                 "label": {
                   "en": "Moderate",
-                  "nl": "Gematigd"
+                  "nl": "Gematigd",
+                  "de": "Durchschnittlich"
                 }
               },
               {
                 "id": "2",
                 "label": {
                   "en": "Slightly Unhealthy",
-                  "nl": "Enigszins ongezond"
+                  "nl": "Enigszins ongezond",
+                  "de": "Etwas ungesund"
                 }
               },
               {
                 "id": "3",
                 "label": {
                   "en": "Unhealthy",
-                  "nl": "Ongezond"
+                  "nl": "Ongezond",
+                  "de": "Ungesund"
                 }
               },
               {
                 "id": "4",
                 "label": {
                   "en": "Very Unhealthy",
-                  "nl": "Heel ongezond"
+                  "nl": "Heel ongezond",
+                  "de": "Sehr ungesund"
                 }
               },
               {
                 "id": "5",
                 "label": {
                   "en": "Hazardous",
-                  "nl": "Gevaarlijk"
+                  "nl": "Gevaarlijk",
+                  "de": "Gefährlich"
                 }
               }
             ]
@@ -512,11 +567,13 @@
             "type": "string",
             "title": {
               "en": "CO2 Quality",
-              "nl": "CO2-kwaliteit"
+              "nl": "CO2-kwaliteit",
+              "de": "CO2-Qualität"
             },
             "example": {
               "en": "Moderate",
-              "nl": "Gematigd"
+              "nl": "Gematigd",
+              "de": "Durchschnittlich"
             }
           },
           {
@@ -524,11 +581,13 @@
             "type": "number",
             "title": {
               "en": "CO2 Quality item number",
-              "nl": "CO2 Kwaliteit artikelnummer"
+              "nl": "CO2 Kwaliteit artikelnummer",
+              "de": "CO2-Qualität Positionsnummer"
             },
             "example": {
               "en": "0 to 5 = Good to Hazardous",
-              "nl": "Gematigd"
+              "nl": "0 tot 5 = goed tot gevaarlijk",
+              "de": "0 bis 5 = Gut bis Gefährlich"
             }
           }
         ],
@@ -537,14 +596,16 @@
       {
         "title": {
           "en": "The daily rainfall Changed",
-          "nl": "De dagelijkse neerslag veranderd"
+          "nl": "De dagelijkse neerslag veranderd",
+          "de": "Der tägliche Niederschlag hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_rain.daily",
             "title": {
               "en": "Daily rainfall",
-              "nl": "Dagelijkse regenval"
+              "nl": "Dagelijkse regenval",
+              "de": "Täglicher Niederschlag"
             },
             "type": "number",
             "example": 3
@@ -562,14 +623,16 @@
       {
         "title": {
           "en": "The event rainfall Changed",
-          "nl": "De gebeurtenis regenval gewijzigd"
+          "nl": "De gebeurtenis regenval gewijzigd",
+          "de": "Der Regenereignis Niederschlag hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_rain.event",
             "title": {
               "en": "Event rainfall",
-              "nl": "Gebeurtenis regenval"
+              "nl": "Gebeurtenis regenval",
+              "de": "Regenereignis Niederschlag"
             },
             "type": "number",
             "example": 3
@@ -587,14 +650,16 @@
       {
         "title": {
           "en": "The hourly rainfall Changed",
-          "nl": "De neerslag per uur is veranderd"
+          "nl": "De neerslag per uur is veranderd",
+          "de": "Der stündliche Niederschlag hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_rain.hourly",
             "title": {
               "en": "Hourly rainfall",
-              "nl": "Regenval per uur"
+              "nl": "Regenval per uur",
+              "de": "Stündlicher Niederschlag"
             },
             "type": "number",
             "example": 3
@@ -612,14 +677,16 @@
       {
         "title": {
           "en": "The monthly rainfall Changed",
-          "nl": "De maandelijkse neerslag veranderd"
+          "nl": "De maandelijkse neerslag veranderd",
+          "de": "Der monatliche Niederschlag hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_rain.month",
             "title": {
               "en": "Monthly rainfall",
-              "nl": "Maandelijkse regenval"
+              "nl": "Maandelijkse regenval",
+              "de": "Monatlicher Niederschlag"
             },
             "type": "number",
             "example": 3
@@ -637,14 +704,16 @@
       {
         "title": {
           "en": "The total rainfall Changed",
-          "nl": "De totale regenval is veranderd"
+          "nl": "De totale regenval is veranderd",
+          "de": "Der gesamte Niederschlag hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_rain.total",
             "title": {
               "en": "Total rainfall",
-              "nl": "Totale regenval"
+              "nl": "Totale regenval",
+              "de": "Gesamter Niederschlag"
             },
             "type": "number",
             "example": 3
@@ -662,14 +731,16 @@
       {
         "title": {
           "en": "The weekly rainfall Changed",
-          "nl": "De wekelijkse neerslag Veranderd"
+          "nl": "De wekelijkse neerslag Veranderd",
+          "de": "Der wöchentliche Niederschlag hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_rain.weekly",
             "title": {
               "en": "Weekly rainfall",
-              "nl": "Wekelijkse regenval"
+              "nl": "Wekelijkse regenval",
+              "de": "Wöchentlicher Niederschlag"
             },
             "type": "number",
             "example": 3
@@ -687,14 +758,16 @@
       {
         "title": {
           "en": "The yearly rainfall Changed",
-          "nl": "De jaarlijkse neerslag veranderd"
+          "nl": "De jaarlijkse neerslag veranderd",
+          "de": "Der jährliche Niederschlag hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_rain.yearly",
             "title": {
               "en": "Yearly rainfall",
-              "nl": "Jaarlijkse regenval"
+              "nl": "Jaarlijkse regenval",
+              "de": "Jährlicher Niederschlag"
             },
             "type": "number",
             "example": 3
@@ -712,14 +785,16 @@
       {
         "title": {
           "en": "Dew point Changed",
-          "nl": "Dauwpunt gewijzigd"
+          "nl": "Dauwpunt gewijzigd",
+          "de": "Der Taupunkt hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_temperature.dewPoint",
             "title": {
               "en": "Dew point",
-              "nl": "dauwpunt"
+              "nl": "dauwpunt",
+              "de": "Taupunkt"
             },
             "type": "number",
             "example": 3
@@ -737,14 +812,16 @@
       {
         "title": {
           "en": "The feels like temperature Changed",
-          "nl": "Het voelt alsof de temperatuur is veranderd"
+          "nl": "Het voelt alsof de temperatuur is veranderd",
+          "de": "Die gefühlte Temperatur hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_temperature.feelsLike",
             "title": {
               "en": "Feels like temperature",
-              "nl": "Voelt als temperatuur"
+              "nl": "Voelt als temperatuur",
+              "de": "Gefühlte Temperatur"
             },
             "type": "number",
             "example": 3

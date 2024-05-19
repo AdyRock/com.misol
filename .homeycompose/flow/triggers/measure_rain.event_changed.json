@@ -1,14 +1,16 @@
 {
     "title": {
         "en": "The event rainfall Changed",
-        "nl": "De gebeurtenis regenval gewijzigd"
+        "nl": "De gebeurtenis regenval gewijzigd",
+        "de": "Der Regenereignis Niederschlag hat sich verändert"
     },
     "tokens": [
         {
             "name": "measure_rain.event",
             "title": {
                 "en": "Event rainfall",
-                "nl": "Gebeurtenis regenval"
+                "nl": "Gebeurtenis regenval",
+                "de": "Regenereignis Niederschlag"
             },
             "type": "number",
             "example": 3

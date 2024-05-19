@@ -1,14 +1,16 @@
 {
     "title": {
         "en": "Dew point Changed",
-        "nl": "Dauwpunt gewijzigd"
+        "nl": "Dauwpunt gewijzigd",
+        "de": "Der Taupunkt hat sich verändert"
     },
     "tokens": [
         {
             "name": "measure_temperature.dewPoint",
             "title": {
                 "en": "Dew point",
-                "nl": "dauwpunt"
+                "nl": "dauwpunt",
+                "de": "Taupunkt"
             },
             "type": "number",
             "example": 3
