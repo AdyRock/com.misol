@@ -1,7 +1,8 @@
 {
     "title": {
         "en": "The PM10 alarm turned off",
-        "nl": "Het PM10-alarm is uitgeschakeld"
+        "nl": "Het PM10-alarm is uitgeschakeld",
+        "de": "Der PM10-Alarm ist ausgegangen"
     },
     "args": [
         {
