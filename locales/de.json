@@ -2,7 +2,7 @@
     "settings": {
         "settings": "Einstellungen",
         "port": "Port",
-        "connection": "Der Port muss den Einstellungen in der WS View app entsprechen",
+        "connection": "Der Port muss den Einstellungen in der WS View App entsprechen",
         "detected": "Erkannt",
         "diagnosticsLog": "Diagnoseprotokoll",
         "subtitle": "Anwendungseinstellungen",
@@ -17,7 +17,7 @@
         "logSendFailed": "Senden nach 5 Versuchen fehlgeschlagen.\nDie Fehlermeldungen sind am Ende des Protokolls.",
         "Units": "Einheiten",
         "SpeedUnits": "Windgeschwindigkeit",
-		"RainfallUnits": "Regenfall Einheiten"
+		"RainfallUnits": "Niederschlag Einheiten"
     },
     "good": "Gut",
     "Moderate": "Durchschnittlich",
