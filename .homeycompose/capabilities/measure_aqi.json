@@ -2,7 +2,8 @@
     "type": "number",
     "title": {
         "en": "Air Quality Index",
-        "nl": "Luchtkwaliteitsindex"
+        "nl": "Luchtkwaliteitsindex",
+        "de": "Luftqualitätsindex"
     },
     "decimals": 0,
     "insights": true,

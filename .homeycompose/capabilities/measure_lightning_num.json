@@ -2,7 +2,8 @@
     "type": "number",
     "title": {
         "en": "Daily Count",
-        "nl": "Dagelijkse telling"
+        "nl": "Dagelijkse telling",
+        "de": "Anzahl täglich"
     },
     "getable": true,
     "setable": false,
