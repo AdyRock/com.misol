@@ -1,15 +1,18 @@
 {
     "title": {
         "en": "Yearly rainfall is !{{equal|not equal}} to",
-        "nl": "Jaarlijkse regenval is !{{gelijk aan | niet gelijk aan}}"
+        "nl": "Jaarlijkse regenval is !{{gelijk aan | niet gelijk aan}}",
+        "de": "Jährlicher Niederschlag ist !{{gleich|nicht gleich}}"
     },
     "hint": {
         "en": "This Flow will continue if yearly rainfall is/is not equal to the set value.",
-        "nl": "Deze Flow gaat door als de jaarlijkse neerslag wel/niet gelijk is aan de ingestelde waarde."
+        "nl": "Deze Flow gaat door als de jaarlijkse neerslag wel/niet gelijk is aan de ingestelde waarde.",
+        "de": "Dieser Flow wird weiterlaufen, wenn der jährliche Niederschlag (nicht) gleich dem gesetzten Wert ist."
     },
     "titleFormatted": {
         "en": "The yearly rainfall is !{{equal|not equal}} to [[value]]mm",
-        "nl": "De jaarlijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+        "nl": "De jaarlijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+        "de": "Der jährliche Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
     },
     "args": [
         {
@@ -25,11 +28,13 @@
             "step": 1,
             "placeholder": {
                 "en": "Set a value",
-                "nl": "Stel een waarde in"
+                "nl": "Stel een waarde in",
+                "de": "Wert setzen"
             },
             "title": {
                 "en": "Yearly rainfall",
-                "nl": "Jaarlijkse regenval"
+                "nl": "Jaarlijkse regenval",
+                "de": "Jährlicher Niederschlag"
             }
         }
     ]

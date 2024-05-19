@@ -1,15 +1,18 @@
 {
     "title": {
         "en": "Weekly rainfall is !{{is|is not}} less than",
-        "nl": "Wekelijkse regenval is !{{is|is niet}} minder dan"
+        "nl": "Wekelijkse regenval is !{{is|is niet}} minder dan",
+        "de": "Wöchentlicher Niederschlag !{{ist|ist nicht}} kleiner als"
     },
     "hint": {
         "en": "This Flow will continue if weekly rainfall is/is not less than the set value.",
-        "nl": "Deze stroom gaat door als de wekelijkse regenval wel/niet minder is dan de ingestelde waarde."
+        "nl": "Deze stroom gaat door als de wekelijkse regenval wel/niet minder is dan de ingestelde waarde.",
+        "de": "Dieser Flow wird weiterlaufen, wenn der wöchentliche Niederschlag (nicht) kleiner als der gesetzte Wert ist."
     },
     "titleFormatted": {
         "en": "The weekly rainfall is !{{is|is not}} less than [[value]]mm",
-        "nl": "De wekelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm"
+        "nl": "De wekelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm",
+        "de": "Der wöchentliche Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
     },
     "args": [
         {
@@ -25,11 +28,13 @@
             "step": 1,
             "placeholder": {
                 "en": "Set a value",
-                "nl": "Stel een waarde in"
+                "nl": "Stel een waarde in",
+                "de": "Wert setzen"
             },
             "title": {
                 "en": "Weekly rainfall",
-                "nl": "Wekelijkse regenval"
+                "nl": "Wekelijkse regenval",
+                "de": "Wöchentlicher Niederschlag"
             }
         }
     ]

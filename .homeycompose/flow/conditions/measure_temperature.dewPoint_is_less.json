@@ -1,15 +1,18 @@
 {
     "title": {
         "en": "Dew point is !{{is|is not}} less than",
-        "nl": "Dauwpunt is !{{is|is niet}} lager dan"
+        "nl": "Dauwpunt is !{{is|is niet}} lager dan",
+        "de": "Taupunkt !{{ist|ist nicht}} kleiner als"
     },
     "hint": {
         "en": "This Flow will continue if the dew point is/is not less than the set value.",
-        "nl": "Deze Flow gaat door als het dauwpunt wel/niet lager is dan de ingestelde waarde."
+        "nl": "Deze Flow gaat door als het dauwpunt wel/niet lager is dan de ingestelde waarde.",
+        "de": "Dieser Flow wird weiterlaufen, wenn der Taupunkt (nicht) kleiner als der gesetzte Wert ist."
     },
     "titleFormatted": {
         "en": "The dew point is !{{is|is not}} less than [[value]]°C",
-        "nl": "Het dauwpunt is !{{is|is niet}} lager dan [[value]]°C"
+        "nl": "Het dauwpunt is !{{is|is niet}} lager dan [[value]]°C",
+        "de": "Der Taupunkt !{{ist|ist nicht}} kleiner als [[value]]°C"
     },
     "args": [
         {
@@ -25,11 +28,13 @@
             "step": 1,
             "placeholder": {
                 "en": "Set a value",
-                "nl": "Stel een waarde in"
+                "nl": "Stel een waarde in",
+                "de": "Wert setzen"
             },
             "title": {
                 "en": "Dew point",
-                "nl": "dauwpunt"
+                "nl": "dauwpunt",
+                "de": "Taupunkt"
             }
         }
     ]

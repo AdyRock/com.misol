@@ -1444,15 +1444,18 @@
       {
         "title": {
           "en": "Hours since last rained is !{{equal|not equal}} to",
-          "nl": "Uren sinds de laatste regenbui is !{{gelijk aan | niet gelijk aan}}"
+          "nl": "Uren sinds de laatste regenbui is !{{gelijk aan | niet gelijk aan}}",
+          "de": "Stundenanzahl seit dem letzen Regen ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if hours since it last rained is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als het aantal uren sinds de laatste regen wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als het aantal uren sinds de laatste regen wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die Stundenanzahl seit dem letzten Regen (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The hours since it last rained is !{{equal|not equal}} to [[value]]Hours",
-          "nl": "Het aantal uren sinds het voor het laatst heeft geregend is !{{equal|not equal}} tot [[value]]Uren"
+          "nl": "Het aantal uren sinds het voor het laatst heeft geregend is !{{equal|not equal}} tot [[value]]Uren",
+          "de": "Die Stundenanzahl seit letztem Regen ist !{{gleich|nicht gleich}} [[value]] Stunden"
         },
         "args": [
           {
@@ -1468,11 +1471,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Hours since it last rained",
-              "nl": "Uren geleden dat het voor het laatst geregend heeft"
+              "nl": "Uren geleden dat het voor het laatst geregend heeft",
+              "de": "Stundenanzahl seit dem letzten Regen"
             }
           }
         ],
@@ -1481,15 +1486,18 @@
       {
         "title": {
           "en": "Hours since last rained is !{{less|greater}} than",
-          "nl": "Uren sinds de laatste regenbui is !{{minder|groter}} dan"
+          "nl": "Uren sinds de laatste regenbui is !{{minder|groter}} dan",
+          "de": "Stundenanzahl seit dem letzen Regen ist !{{kleiner|größer}} als"
         },
         "hint": {
           "en": "This Flow will continue if hours since it last rained is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als het aantal uren sinds de laatste regen niet minder is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als het aantal uren sinds de laatste regen niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die Stundenanzahl seit dem letzten Regen kleiner/größer dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The hours since it last rained is !{{less|greater}} less than [[value]]Hours",
-          "nl": "Het aantal uren sinds de laatste regenbui is !{{minder|groter}} minder dan [[value]]uren"
+          "nl": "Het aantal uren sinds de laatste regenbui is !{{minder|groter}} minder dan [[value]]uren",
+          "de": "Die Stundenanzahl seit letztem Regen ist !{{kleiner|größer}} [[value]] Stunden"
         },
         "args": [
           {
@@ -1505,11 +1513,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Hours since it last rained",
-              "nl": "Uren geleden dat het voor het laatst geregend heeft"
+              "nl": "Uren geleden dat het voor het laatst geregend heeft",
+              "de": "Stundenanzahl seit dem letzten Regen"
             }
           }
         ],
@@ -1518,15 +1528,18 @@
       {
         "title": {
           "en": "Daily rainfall is !{{equal|not equal}} to",
-          "nl": "Dagelijkse regenval is !{{gelijk aan |niet gelijk aan}}"
+          "nl": "Dagelijkse regenval is !{{gelijk aan |niet gelijk aan}}",
+          "de": "Täglicher Niederschlag ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if daily rainfall is/is not equal to the set value.",
-          "nl": "zijn Flow gaat door als de dagelijkse neerslag wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "zijn Flow gaat door als de dagelijkse neerslag wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der tägliche Niederschlag (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The daily rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De dagelijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+          "nl": "De dagelijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+          "de": "Der tägliche Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1542,11 +1555,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Daily rainfall",
-              "nl": "Dagelijkse regenval"
+              "nl": "Dagelijkse regenval",
+              "de": "Täglicher Niederschlag"
             }
           }
         ],
@@ -1555,15 +1570,18 @@
       {
         "title": {
           "en": "Daily rainfall is !{{is|is not}} less than",
-          "nl": "Dagelijkse regenval is !{{is|is niet}} minder dan"
+          "nl": "Dagelijkse regenval is !{{is|is niet}} minder dan",
+          "de": "Täglicher Niederschlag !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if daily rainfall is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de dagelijkse regenval wel/niet minder is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de dagelijkse regenval wel/niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der tägliche Niederschlag (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The daily rainfall is !{{is|is not}} less than [[value]]mm",
-          "nl": "De dagelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm"
+          "nl": "De dagelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm",
+          "de": "Der tägliche Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -1579,11 +1597,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Daily rainfall",
-              "nl": "Dagelijkse regenval"
+              "nl": "Dagelijkse regenval",
+              "de": "Täglicher Niederschlag"
             }
           }
         ],
@@ -1592,15 +1612,18 @@
       {
         "title": {
           "en": "Event rainfall is !{{equal|not equal}} to",
-          "nl": "Evenement regenval is !{{gelijk aan | niet gelijk aan}}"
+          "nl": "Evenement regenval is !{{gelijk aan | niet gelijk aan}}",
+          "de": "Regenereignis Niederschlag ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if event rainfall is/is not equal to the set value.",
-          "nl": "Deze stroom gaat door als de regenval wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de regenval wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der Regenereignis Niederschlag (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The event rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De gebeurtenisregenval is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+          "nl": "De gebeurtenisregenval is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+          "de": "Der Regenereignis Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1616,11 +1639,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Event rainfall",
-              "nl": "Gebeurtenis regenval"
+              "nl": "Gebeurtenis regenval",
+              "de": "Regenereignis Niederschlag"
             }
           }
         ],
@@ -1629,15 +1654,18 @@
       {
         "title": {
           "en": "Event rainfall is !{{is|is not}} less than",
-          "nl": "Evenement regenval is !{{is|is niet}} minder dan"
+          "nl": "Evenement regenval is !{{is|is niet}} minder dan",
+          "de": "Regenereignis Niederschlag !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if event rainfall is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de regenval wel/niet minder is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de regenval wel/niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der Regenereignis Niederschlag (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The event rainfall is !{{is|is not}} less than [[value]]mm",
-          "nl": "De regenval is !{{is|is niet}} minder dan [[value]]mm"
+          "nl": "De regenval is !{{is|is niet}} minder dan [[value]]mm",
+          "de": "Der Regenereignis Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -1653,11 +1681,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Event rainfall",
-              "nl": "Gebeurtenis regenval"
+              "nl": "Gebeurtenis regenval",
+              "de": "Regenereignis Niederschlag"
             }
           }
         ],
@@ -1666,15 +1696,18 @@
       {
         "title": {
           "en": "Hourly rainfall is !{{equal|not equal}} to",
-          "nl": "De neerslag per uur is !{{gelijk aan |niet gelijk aan}}"
+          "nl": "De neerslag per uur is !{{gelijk aan |niet gelijk aan}}",
+          "de": "Stündliche Niederschlag ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if hourly rainfall is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de neerslag per uur wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de neerslag per uur wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der stündliche Niederschlag (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The hourly rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De neerslag per uur is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+          "nl": "De neerslag per uur is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+          "de": "Der stündliche Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1690,11 +1723,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Hourly rainfall",
-              "nl": "Regenval per uur"
+              "nl": "Regenval per uur",
+              "de": "Stündlicher Niederschlag"
             }
           }
         ],
@@ -1703,15 +1738,18 @@
       {
         "title": {
           "en": "Hourly rainfall is !{{is|is not}} less than",
-          "nl": "De regenval per uur is !{{is|is niet}} minder dan"
+          "nl": "De regenval per uur is !{{is|is niet}} minder dan",
+          "de": "Stündlicher Niederschlag !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if hourly rainfall is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de regenval per uur minder is/is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de regenval per uur minder is/is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der stündliche Niederschlag (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The hourly rainfall is !{{is|is not}} less than [[value]]mm",
-          "nl": "De neerslag per uur is !{{is|is niet}} minder dan [[value]]mm"
+          "nl": "De neerslag per uur is !{{is|is niet}} minder dan [[value]]mm",
+          "de": "Der stündliche Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -1727,11 +1765,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Hourly rainfall",
-              "nl": "Regenval per uur"
+              "nl": "Regenval per uur",
+              "de": "Stündlicher Niederschlag"
             }
           }
         ],
@@ -1740,15 +1780,18 @@
       {
         "title": {
           "en": "Monthly rainfall is !{{equal|not equal}} to",
-          "nl": "Maandelijkse regenval is !{{gelijk aan | niet gelijk aan}}"
+          "nl": "Maandelijkse regenval is !{{gelijk aan | niet gelijk aan}}",
+          "de": "Monatliche Niederschlag ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if monthly rainfall is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de maandelijkse regenval wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de maandelijkse regenval wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der monatliche Niederschlag (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The monthly rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De maandelijkse regenval is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+          "nl": "De maandelijkse regenval is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+          "de": "Der monatliche Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1764,11 +1807,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Monthly rainfall",
-              "nl": "Maandelijkse regenval"
+              "nl": "Maandelijkse regenval",
+              "de": "Monatlicher Niederschlag"
             }
           }
         ],
@@ -1777,15 +1822,18 @@
       {
         "title": {
           "en": "Monthly rainfall is !{{is|is not}} less than",
-          "nl": "Maandelijkse regenval is !{{is|is niet}} minder dan"
+          "nl": "Maandelijkse regenval is !{{is|is niet}} minder dan",
+          "de": "Monatlicher Niederschlag !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if monthly rainfall is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de maandelijkse regenval wel/niet minder is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de maandelijkse regenval wel/niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der monatliche Niederschlag (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The monthly rainfall is !{{is|is not}} less than [[value]]mm",
-          "nl": "De maandelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm"
+          "nl": "De maandelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm",
+          "de": "Der monatliche Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -1801,11 +1849,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Monthly rainfall",
-              "nl": "Maandelijkse regenval"
+              "nl": "Maandelijkse regenval",
+              "de": "Monatlicher Niederschlag"
             }
           }
         ],
@@ -1814,15 +1864,18 @@
       {
         "title": {
           "en": "Total rainfall is !{{equal|not equal}} to",
-          "nl": "De totale regenval is !{{gelijk aan | niet gelijk aan}}"
+          "nl": "De totale regenval is !{{gelijk aan | niet gelijk aan}}",
+          "de": "Gesamter Niederschlag ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if total rainfall is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de totale neerslag wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de totale neerslag wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der gesamte Niederschlag (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The total rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De totale neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+          "nl": "De totale neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+          "de": "Der gesamte Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1838,11 +1891,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Total rainfall",
-              "nl": "Totale regenval"
+              "nl": "Totale regenval",
+              "de": "Gesamter Niederschlag"
             }
           }
         ],
@@ -1851,15 +1906,18 @@
       {
         "title": {
           "en": "Total rainfall is !{{is|is not}} less than",
-          "nl": "De totale regenval is !{{is|is niet}} minder dan"
+          "nl": "De totale regenval is !{{is|is niet}} minder dan",
+          "de": "Gesamter Niederschlag !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if total rainfall is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de totale regenval wel/niet minder is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de totale regenval wel/niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der gesamte Niederschlag (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The total rainfall is !{{is|is not}} less than [[value]]mm",
-          "nl": "De totale regenval is !{{is|is niet}} minder dan [[value]]mm"
+          "nl": "De totale regenval is !{{is|is niet}} minder dan [[value]]mm",
+          "de": "Der gesamte Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -1875,11 +1933,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Total rainfall",
-              "nl": "Totale regenval"
+              "nl": "Totale regenval",
+              "de": "Gesamter Niederschlag"
             }
           }
         ],
@@ -1888,15 +1948,18 @@
       {
         "title": {
           "en": "Weekly rainfall is !{{equal|not equal}} to",
-          "nl": "Wekelijkse regenval is !{{gelijk aan | niet gelijk aan}}"
+          "nl": "Wekelijkse regenval is !{{gelijk aan | niet gelijk aan}}",
+          "de": "Wöchentlicher Niederschlag ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if weekly rainfall is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de wekelijkse regenval wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de wekelijkse regenval wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der wöchentlicher Niederschlag (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The weekly rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De wekelijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+          "nl": "De wekelijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+          "de": "Der wöchentlicher Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1912,11 +1975,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Weekly rainfall",
-              "nl": "Wekelijkse regenval"
+              "nl": "Wekelijkse regenval",
+              "de": "Wöchentlicher Niederschlag"
             }
           }
         ],
@@ -1925,15 +1990,18 @@
       {
         "title": {
           "en": "Weekly rainfall is !{{is|is not}} less than",
-          "nl": "Wekelijkse regenval is !{{is|is niet}} minder dan"
+          "nl": "Wekelijkse regenval is !{{is|is niet}} minder dan",
+          "de": "Wöchentlicher Niederschlag !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if weekly rainfall is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de wekelijkse regenval wel/niet minder is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de wekelijkse regenval wel/niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der wöchentliche Niederschlag (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The weekly rainfall is !{{is|is not}} less than [[value]]mm",
-          "nl": "De wekelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm"
+          "nl": "De wekelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm",
+          "de": "Der wöchentliche Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -1949,11 +2017,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Weekly rainfall",
-              "nl": "Wekelijkse regenval"
+              "nl": "Wekelijkse regenval",
+              "de": "Wöchentlicher Niederschlag"
             }
           }
         ],
@@ -1962,15 +2032,18 @@
       {
         "title": {
           "en": "Yearly rainfall is !{{equal|not equal}} to",
-          "nl": "Jaarlijkse regenval is !{{gelijk aan | niet gelijk aan}}"
+          "nl": "Jaarlijkse regenval is !{{gelijk aan | niet gelijk aan}}",
+          "de": "Jährlicher Niederschlag ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if yearly rainfall is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de jaarlijkse neerslag wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de jaarlijkse neerslag wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der jährliche Niederschlag (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The yearly rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De jaarlijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+          "nl": "De jaarlijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+          "de": "Der jährliche Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1986,11 +2059,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Yearly rainfall",
-              "nl": "Jaarlijkse regenval"
+              "nl": "Jaarlijkse regenval",
+              "de": "Jährlicher Niederschlag"
             }
           }
         ],
@@ -1999,15 +2074,18 @@
       {
         "title": {
           "en": "Yearly rainfall is !{{is|is not}} less than",
-          "nl": "Jaarlijkse regenval is !{{is|is niet}} minder dan"
+          "nl": "Jaarlijkse regenval is !{{is|is niet}} minder dan",
+          "de": "Jährlicher Niederschlag !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if yearly rainfall is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de jaarlijkse regenval wel/niet minder is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de jaarlijkse regenval wel/niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der jährliche Niederschlag (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The yearly rainfall is !{{is|is not}} less than [[value]]mm",
-          "nl": "De jaarlijkse regenval is !{{is|is niet}} minder dan [[value]]mm"
+          "nl": "De jaarlijkse regenval is !{{is|is niet}} minder dan [[value]]mm",
+          "de": "Der jährliche Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -2023,11 +2101,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Yearly rainfall",
-              "nl": "Jaarlijkse regenval"
+              "nl": "Jaarlijkse regenval",
+              "de": "Jährlicher Niederschlag"
             }
           }
         ],
@@ -2036,15 +2116,18 @@
       {
         "title": {
           "en": "Dew point is !{{equal|not equal}} to",
-          "nl": "Dauwpunt is !{{gelijk aan |niet gelijk aan}}"
+          "nl": "Dauwpunt is !{{gelijk aan |niet gelijk aan}}",
+          "de": "Taupunkt ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if dew point is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als het dauwpunt wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als het dauwpunt wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der Taupunkt (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The dew point is !{{equal|not equal}} to [[value]]°C",
-          "nl": "Het dauwpunt is !{{gelijk aan|niet gelijk aan}} tot [[value]]°C"
+          "nl": "Het dauwpunt is !{{gelijk aan|niet gelijk aan}} tot [[value]]°C",
+          "de": "Der Taupunkt ist !{{gleich|nicht gleich}} [[value]]°C"
         },
         "args": [
           {
@@ -2060,11 +2143,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Dew point",
-              "nl": "dauwpunt"
+              "nl": "dauwpunt",
+              "de": "Taupunkt"
             }
           }
         ],
@@ -2073,15 +2158,18 @@
       {
         "title": {
           "en": "Dew point is !{{is|is not}} less than",
-          "nl": "Dauwpunt is !{{is|is niet}} lager dan"
+          "nl": "Dauwpunt is !{{is|is niet}} lager dan",
+          "de": "Taupunkt !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if the dew point is/is not less than the set value.",
-          "nl": "Deze Flow gaat door als het dauwpunt wel/niet lager is dan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als het dauwpunt wel/niet lager is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der Taupunkt (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The dew point is !{{is|is not}} less than [[value]]°C",
-          "nl": "Het dauwpunt is !{{is|is niet}} lager dan [[value]]°C"
+          "nl": "Het dauwpunt is !{{is|is niet}} lager dan [[value]]°C",
+          "de": "Der Taupunkt !{{ist|ist nicht}} kleiner als [[value]]°C"
         },
         "args": [
           {
@@ -2097,11 +2185,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Dew point",
-              "nl": "dauwpunt"
+              "nl": "dauwpunt",
+              "de": "Taupunkt"
             }
           }
         ],
@@ -2110,15 +2200,18 @@
       {
         "title": {
           "en": "Feels like temperature is !{{equal|not equal}} to",
-          "nl": "Het voelt alsof de temperatuur !{{equal|not equal}} is"
+          "nl": "Het voelt alsof de temperatuur !{{equal|not equal}} is",
+          "de": "Gefühlte Temperatur ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if feels like temperature is/is not equal to the set value.",
-          "nl": "Deze stroom gaat door als het voelt alsof de temperatuur wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als het voelt alsof de temperatuur wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die gefühlte Temperatur (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The feels like temperature is !{{equal|not equal}} to [[value]]°C",
-          "nl": "De gevoelstemperatuur is !{{gelijk aan|niet gelijk aan}} tot [[value]]°C"
+          "nl": "De gevoelstemperatuur is !{{gelijk aan|niet gelijk aan}} tot [[value]]°C",
+          "de": "Die gefühlte Temperatur ist !{{gleich|nicht gleich}} [[value]]°C"
         },
         "args": [
           {
@@ -2134,11 +2227,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Feels like temperature",
-              "nl": "Voelt als temperatuur"
+              "nl": "Voelt als temperatuur",
+              "de": "Gefühlte Temperatur"
             }
           }
         ],
@@ -2147,15 +2242,18 @@
       {
         "title": {
           "en": "Feels like temperature is !{{is|is not}} less than",
-          "nl": "Het voelt alsof de temperatuur !{{is|is niet}} lager is dan"
+          "nl": "Het voelt alsof de temperatuur !{{is|is niet}} lager is dan",
+          "de": "Die gefühlte Temperatur !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if feels like temperature is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als het voelt alsof de temperatuur wel/niet lager is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als het voelt alsof de temperatuur wel/niet lager is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die gefühlte Temperatur (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The feels like temperature is !{{is|is not}} less than [[value]]°C",
-          "nl": "Het voelt alsof de temperatuur !{{is|is niet}} lager is dan [[value]]°C"
+          "nl": "Het voelt alsof de temperatuur !{{is|is niet}} lager is dan [[value]]°C",
+          "de": "Die gefühlte Temperatur !{{ist|ist nicht}} kleiner als [[value]]°C"
         },
         "args": [
           {
@@ -2171,11 +2269,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Feels like temperature",
-              "nl": "Voelt als temperatuur"
+              "nl": "Voelt als temperatuur",
+              "de": "Gefühlte Temperatur"
             }
           }
         ],
@@ -2184,7 +2284,7 @@
       {
         "title": {
           "en": "Motion snapshot is ready within...",
-          "de": "Bewegungsschnappschuss ist innerhalb von ...",
+          "de": "Bewegungsschnappschuss ist fertig innerhalb von ...",
           "nl": "Bewegings snapshot is klaar binnen ...",
           "it": "L'istantanea in movimento è pronta entro ..."
         },

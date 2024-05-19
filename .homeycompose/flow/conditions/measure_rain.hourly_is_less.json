@@ -1,15 +1,18 @@
 {
     "title": {
         "en": "Hourly rainfall is !{{is|is not}} less than",
-        "nl": "De regenval per uur is !{{is|is niet}} minder dan"
+        "nl": "De regenval per uur is !{{is|is niet}} minder dan",
+        "de": "Stündlicher Niederschlag !{{ist|ist nicht}} kleiner als"
     },
     "hint": {
         "en": "This Flow will continue if hourly rainfall is/is not less than the set value.",
-        "nl": "Deze stroom gaat door als de regenval per uur minder is/is dan de ingestelde waarde."
+        "nl": "Deze stroom gaat door als de regenval per uur minder is/is dan de ingestelde waarde.",
+        "de": "Dieser Flow wird weiterlaufen, wenn der stündliche Niederschlag (nicht) kleiner als der gesetzte Wert ist."
     },
     "titleFormatted": {
         "en": "The hourly rainfall is !{{is|is not}} less than [[value]]mm",
-        "nl": "De neerslag per uur is !{{is|is niet}} minder dan [[value]]mm"
+        "nl": "De neerslag per uur is !{{is|is niet}} minder dan [[value]]mm",
+        "de": "Der stündliche Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
     },
     "args": [
         {
@@ -25,11 +28,13 @@
             "step": 1,
             "placeholder": {
                 "en": "Set a value",
-                "nl": "Stel een waarde in"
+                "nl": "Stel een waarde in",
+                "de": "Wert setzen"
             },
             "title": {
                 "en": "Hourly rainfall",
-                "nl": "Regenval per uur"
+                "nl": "Regenval per uur",
+                "de": "Stündlicher Niederschlag"
             }
         }
     ]

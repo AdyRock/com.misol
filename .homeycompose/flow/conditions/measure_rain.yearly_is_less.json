@@ -1,15 +1,18 @@
 {
     "title": {
         "en": "Yearly rainfall is !{{is|is not}} less than",
-        "nl": "Jaarlijkse regenval is !{{is|is niet}} minder dan"
+        "nl": "Jaarlijkse regenval is !{{is|is niet}} minder dan",
+        "de": "Jährlicher Niederschlag !{{ist|ist nicht}} kleiner als"
     },
     "hint": {
         "en": "This Flow will continue if yearly rainfall is/is not less than the set value.",
-        "nl": "Deze stroom gaat door als de jaarlijkse regenval wel/niet minder is dan de ingestelde waarde."
+        "nl": "Deze stroom gaat door als de jaarlijkse regenval wel/niet minder is dan de ingestelde waarde.",
+        "de": "Dieser Flow wird weiterlaufen, wenn der jährliche Niederschlag (nicht) kleiner als der gesetzte Wert ist."
     },
     "titleFormatted": {
         "en": "The yearly rainfall is !{{is|is not}} less than [[value]]mm",
-        "nl": "De jaarlijkse regenval is !{{is|is niet}} minder dan [[value]]mm"
+        "nl": "De jaarlijkse regenval is !{{is|is niet}} minder dan [[value]]mm",
+        "de": "Der jährliche Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
     },
     "args": [
         {
@@ -25,11 +28,13 @@
             "step": 1,
             "placeholder": {
                 "en": "Set a value",
-                "nl": "Stel een waarde in"
+                "nl": "Stel een waarde in",
+                "de": "Wert setzen"
             },
             "title": {
                 "en": "Yearly rainfall",
-                "nl": "Jaarlijkse regenval"
+                "nl": "Jaarlijkse regenval",
+                "de": "Jährlicher Niederschlag"
             }
         }
     ]
