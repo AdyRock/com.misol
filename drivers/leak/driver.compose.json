@@ -2,7 +2,7 @@
     "name": {
         "en": "Water Leak Sensor",
         "nl": "Waterlekkagesensor",
-        "de": "Wasserlecksensor"
+        "de": "Wasserleck-Sensor"
     },
     "platforms": [
         "local"

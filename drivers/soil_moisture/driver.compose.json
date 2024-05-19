@@ -2,7 +2,7 @@
     "name": {
         "en": "Soil Moisture",
         "nl": "Bodemvocht",
-        "de": "Bodenfeuchtemesser"
+        "de": "Bodenfeuchte-Messer"
     },
     "platforms": [
         "local"

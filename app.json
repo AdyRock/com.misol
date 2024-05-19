@@ -2872,7 +2872,7 @@
       "name": {
         "en": "Water Temperature Meter",
         "nl": "Watertemperatuurmeter",
-        "de": "Wasserthermometer"
+        "de": "Wasser-Thermometer"
       },
       "platforms": [
         "local"
@@ -2972,7 +2972,8 @@
     },
     {
       "name": {
-        "en": "camera"
+        "en": "camera",
+        "de": "Kamera"
       },
       "class": "camera",
       "capabilities": [],
@@ -3075,7 +3076,7 @@
       "name": {
         "en": "Water Leak Sensor",
         "nl": "Waterlekkagesensor",
-        "de": "Wasserlecksensor"
+        "de": "Wasserleck-Sensor"
       },
       "platforms": [
         "local"
@@ -3299,7 +3300,7 @@
       "name": {
         "en": "PM10 and CO2 Meter",
         "nl": "PM10 en CO2-meter",
-        "de": "PM10- und CO2-Luftqualitätssensor"
+        "de": "PM10- & CO2-Messer"
       },
       "platforms": [
         "local"
@@ -3488,7 +3489,7 @@
     {
       "name": {
         "en": "PM25 Meter",
-        "de": "PM25-Luftqualitätssensor"
+        "de": "PM25-Messer"
       },
       "platforms": [
         "local"
@@ -3718,7 +3719,7 @@
       "name": {
         "en": "Soil Moisture",
         "nl": "Bodemvocht",
-        "de": "Bodenfeuchtemesser"
+        "de": "Bodenfeuchte-Messer"
       },
       "platforms": [
         "local"

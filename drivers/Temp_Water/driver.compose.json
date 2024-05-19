@@ -2,7 +2,7 @@
     "name": {
         "en": "Water Temperature Meter",
         "nl": "Watertemperatuurmeter",
-        "de": "Wasserthermometer"
+        "de": "Wasser-Thermometer"
     },
     "platforms": [
         "local"

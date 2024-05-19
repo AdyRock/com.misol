@@ -1,7 +1,7 @@
 {
     "name": {
         "en": "PM25 Meter",
-        "de": "PM25-Luftqualitätssensor"
+        "de": "PM25-Messer"
     },
     "platforms": [
         "local"

@@ -1,6 +1,7 @@
 {
     "name": {
-        "en": "camera"
+        "en": "camera",
+        "de": "Kamera"
     },
     "class": "camera",
     "capabilities": [],

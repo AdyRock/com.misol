@@ -2,7 +2,7 @@
     "name": {
         "en": "PM10 and CO2 Meter",
         "nl": "PM10 en CO2-meter",
-        "de": "PM10- und CO2-Luftqualitätssensor"
+        "de": "PM10- & CO2-Messer"
     },
     "platforms": [
         "local"
