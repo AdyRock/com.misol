@@ -1,0 +1,47 @@
+{
+    "settings": {
+        "settings": "Einstellungen",
+        "port": "Port",
+        "connection": "Der Port muss den Einstellungen in der WS View app entsprechen",
+        "detected": "Erkannt",
+        "diagnosticsLog": "Diagnoseprotokoll",
+        "subtitle": "Anwendungseinstellungen",
+        "saveChanges": "Änderungen speichern",
+        "clearLog": "Protokoll leeren",
+        "sendLog": "Protokoll senden",
+        "detectedDescription": "",
+        "logEnabled": "Protokoll aktiviert",
+        "saved": "Die Einstellungen wurden gespeichert",
+        "confirmSend": "Protokoll an den Entwickler senden?\n** Alle Identifikatoren werden entfernt **",
+        "logSent": "Der Protokoll wurde versendet.",
+        "logSendFailed": "Senden nach 5 Versuchen fehlgeschlagen.\nDie Fehlermeldungen sind am Ende des Protokolls.",
+        "Units": "Einheiten",
+        "SpeedUnits": "Windgeschwindigkeit",
+		"RainfallUnits": "Regenfall Einheiten"
+    },
+    "good": "Gut",
+    "Moderate": "Durchschnittlich",
+    "UnhealthyLo": "Etwas ungesund",
+    "Unhealthy": "Ungesund",
+    "UnhealthyHi": "Sehr ungesund",
+    "Hazardous": "Gefährlich",
+    "speedUnits": {
+        "km": "km/h",
+        "m": "m/s",
+        "mph": "mph"
+    },
+    "rainfallUnits": {
+        "mm": "mm",
+        "in": "inch"
+    },
+    "pair": {
+        "intro": "Verbindungsdetails eingeben",
+        "title": "Kamera hinzufügen",
+        "ip_address": "IP Adresse",
+        "save": "Speichern",
+        "checking": "Prüfe Verbindung",
+        "try_again": "Erneut versuchen",
+        "correct": "Erfolgreich",
+        "adding": "Füge Gerät hinzu"
+    }
+}
