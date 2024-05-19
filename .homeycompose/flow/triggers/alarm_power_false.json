@@ -1,7 +1,8 @@
 {
     "title": {
         "en": "The power turned on",
-        "nl": "De stroom is ingeschakeld"
+        "nl": "De stroom is ingeschakeld",
+        "de": "Der Strom wurde angeschaltet"
     },
     "args": [
         {
