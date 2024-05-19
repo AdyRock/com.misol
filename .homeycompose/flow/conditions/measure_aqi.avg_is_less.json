@@ -1,15 +1,18 @@
 {
     "title": {
         "en": "Average Air quality index is !{{less|greater}} than",
-        "nl": "De gemiddelde luchtkwaliteitsindex is !{{minder|groter}} dan"
+        "nl": "De gemiddelde luchtkwaliteitsindex is !{{minder|groter}} dan",
+        "de": "Der durchschnittliche Luftqualitätsindex ist !{{kleiner|größer}} als"
     },
     "hint": {
         "en": "This Flow will continue if average air quality index is/is not less than the set value.",
-        "nl": "Deze stroom gaat door als de gemiddelde luchtkwaliteitsindex wel/niet lager is dan de ingestelde waarde."
+        "nl": "Deze stroom gaat door als de gemiddelde luchtkwaliteitsindex wel/niet lager is dan de ingestelde waarde.",
+        "de": "Dieser Flow wird weiterlaufen, wenn der durchschnittliche Luftqualitätsindex kleiner/größer dem gesetzten Wert ist."
     },
     "titleFormatted": {
         "en": "The average air quality index is !{{less|greater}} than [[measure_aqi.avg]]%",
-        "nl": "De gemiddelde luchtkwaliteitsindex is !{{minder|groter}} dan [[measure_aqi.avg]]%"
+        "nl": "De gemiddelde luchtkwaliteitsindex is !{{minder|groter}} dan [[measure_aqi.avg]]%",
+        "de": "Der Luftqualitätsindex ist !{{kleiner|größer}}als [[measure_aqi.avg]]%"
     },
     "args": [
         {
@@ -25,11 +28,13 @@
             "step": 1,
             "placeholder": {
                 "en": "Set a value",
-                "nl": "Stel een waarde in"
+                "nl": "Stel een waarde in",
+                "de": "Wert setzen"
             },
             "title": {
                 "en": "Average Air quality index",
-                "nl": "Gemiddelde luchtkwaliteitsindex"
+                "nl": "Gemiddelde luchtkwaliteitsindex",
+                "de": "Durchschnittlicher Luftqualitätsindex"
             }
         }
     ]

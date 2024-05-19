@@ -1,15 +1,18 @@
 {
     "title": {
         "en": "Air quality index is !{{equal|not equal}} to",
-        "nl": "De luchtkwaliteitsindex is !{{gelijk aan |niet gelijk}} aan"
+        "nl": "De luchtkwaliteitsindex is !{{gelijk aan |niet gelijk}} aan",
+        "de": "Der Luftqualitätsindex ist !{{gleich|nicht gleich}}"
     },
     "hint": {
         "en": "This Flow will continue if air quality index is/is not equal to the set value.",
-        "nl": "Deze Flow gaat door als de luchtkwaliteitsindex wel/niet gelijk is aan de ingestelde waarde."
+        "nl": "Deze Flow gaat door als de luchtkwaliteitsindex wel/niet gelijk is aan de ingestelde waarde.",
+        "de": "Dieser Flow wird weiterlaufen, wenn der Luftqualitätsindex (nicht) gleich dem gesetzten Wert ist."
     },
     "titleFormatted": {
         "en": "The air quality index is !{{equal|not equal}} to [[measure_aqi]]%",
-        "nl": "De luchtkwaliteitsindex is !{{equal|not equal}} tot [[measure_aqi]]%"
+        "nl": "De luchtkwaliteitsindex is !{{equal|not equal}} tot [[measure_aqi]]%",
+        "de": "Der Luftqualitätsindex ist !{{gleich|nicht gleich}} [[measure_aqi]]%"
     },
     "args": [
         {
@@ -25,11 +28,13 @@
             "step": 1,
             "placeholder": {
                 "en": "Set a value",
-                "nl": "Stel een waarde in"
+                "nl": "Stel een waarde in",
+                "de": "Wert setzen"
             },
             "title": {
                 "en": "Air quality index",
-                "nl": "Luchtkwaliteitsindex"
+                "nl": "Luchtkwaliteitsindex",
+                "de": "Luftqualitätsindex"
             }
         }
     ]

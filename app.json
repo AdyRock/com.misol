@@ -1276,15 +1276,18 @@
       {
         "title": {
           "en": "Air quality index is !{{equal|not equal}} to",
-          "nl": "De luchtkwaliteitsindex is !{{gelijk aan |niet gelijk}} aan"
+          "nl": "De luchtkwaliteitsindex is !{{gelijk aan |niet gelijk}} aan",
+          "de": "Der Luftqualitätsindex ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if air quality index is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de luchtkwaliteitsindex wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de luchtkwaliteitsindex wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der Luftqualitätsindex (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The air quality index is !{{equal|not equal}} to [[measure_aqi]]%",
-          "nl": "De luchtkwaliteitsindex is !{{equal|not equal}} tot [[measure_aqi]]%"
+          "nl": "De luchtkwaliteitsindex is !{{equal|not equal}} tot [[measure_aqi]]%",
+          "de": "Der Luftqualitätsindex ist !{{gleich|nicht gleich}} [[measure_aqi]]%"
         },
         "args": [
           {
@@ -1300,11 +1303,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Air quality index",
-              "nl": "Luchtkwaliteitsindex"
+              "nl": "Luchtkwaliteitsindex",
+              "de": "Luftqualitätsindex"
             }
           }
         ],
@@ -1313,15 +1318,18 @@
       {
         "title": {
           "en": "Air quality index is !{{less|greater}} than",
-          "nl": "Luchtkwaliteitsindex is !{{minder|groter}} dan"
+          "nl": "Luchtkwaliteitsindex is !{{minder|groter}} dan",
+          "de": "Der Luftqualitätsindex ist !{{kleiner|größer}} als"
         },
         "hint": {
           "en": "This Flow will continue if air quality index is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de luchtkwaliteitsindex wel/niet lager is dan de ingestelde waarde"
+          "nl": "Deze stroom gaat door als de luchtkwaliteitsindex wel/niet lager is dan de ingestelde waarde",
+          "de": "Dieser Flow wird weiterlaufen, wenn der Luftqualitätsindex kleiner/größer dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The air quality index is !{{less|greater}} than [[measure_aqi]]%",
-          "nl": "De luchtkwaliteitsindex is !{{minder|groter}} dan [[measure_aqi]]%"
+          "nl": "De luchtkwaliteitsindex is !{{minder|groter}} dan [[measure_aqi]]%",
+          "de": "Der Luftqualitätsindex ist !{{kleiner|größer}}als [[measure_aqi]]%"
         },
         "args": [
           {
@@ -1337,11 +1345,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Air quality index",
-              "nl": "Luchtkwaliteitsindex"
+              "nl": "Luchtkwaliteitsindex",
+              "de": "Luftqualitätsindex"
             }
           }
         ],
@@ -1350,15 +1360,18 @@
       {
         "title": {
           "en": "Average Air quality index is !{{equal|not equal}} to",
-          "nl": "De gemiddelde luchtkwaliteitsindex is !{{gelijk aan | niet gelijk aan}}"
+          "nl": "De gemiddelde luchtkwaliteitsindex is !{{gelijk aan | niet gelijk aan}}",
+          "de": "Der durchschnittliche Luftqualitätsindex ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if average air quality index is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de gemiddelde luchtkwaliteitsindex wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de gemiddelde luchtkwaliteitsindex wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der durchschnittliche Luftqualitätsindex (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The average air quality index is !{{equal|not equal}} to [[measure_aqi.avg]]%",
-          "nl": "De gemiddelde luchtkwaliteitsindex is !{{equal|not equal}} tot [[measure_aqi.avg]]%"
+          "nl": "De gemiddelde luchtkwaliteitsindex is !{{equal|not equal}} tot [[measure_aqi.avg]]%",
+          "de": "Der Luftqualitätsindex ist !{{gleich|nicht gleich}} [[measure_aqi.avg]]%"
         },
         "args": [
           {
@@ -1374,11 +1387,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Average Air quality index",
-              "nl": "Gemiddelde luchtkwaliteitsindex"
+              "nl": "Gemiddelde luchtkwaliteitsindex",
+              "de": "Durchschnittlicher Luftqualitätsindex"
             }
           }
         ],
@@ -1387,15 +1402,18 @@
       {
         "title": {
           "en": "Average Air quality index is !{{less|greater}} than",
-          "nl": "De gemiddelde luchtkwaliteitsindex is !{{minder|groter}} dan"
+          "nl": "De gemiddelde luchtkwaliteitsindex is !{{minder|groter}} dan",
+          "de": "Der durchschnittliche Luftqualitätsindex ist !{{kleiner|größer}} als"
         },
         "hint": {
           "en": "This Flow will continue if average air quality index is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de gemiddelde luchtkwaliteitsindex wel/niet lager is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de gemiddelde luchtkwaliteitsindex wel/niet lager is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der durchschnittliche Luftqualitätsindex kleiner/größer dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The average air quality index is !{{less|greater}} than [[measure_aqi.avg]]%",
-          "nl": "De gemiddelde luchtkwaliteitsindex is !{{minder|groter}} dan [[measure_aqi.avg]]%"
+          "nl": "De gemiddelde luchtkwaliteitsindex is !{{minder|groter}} dan [[measure_aqi.avg]]%",
+          "de": "Der Luftqualitätsindex ist !{{kleiner|größer}}als [[measure_aqi.avg]]%"
         },
         "args": [
           {
@@ -1411,11 +1429,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Average Air quality index",
-              "nl": "Gemiddelde luchtkwaliteitsindex"
+              "nl": "Gemiddelde luchtkwaliteitsindex",
+              "de": "Durchschnittlicher Luftqualitätsindex"
             }
           }
         ],
@@ -4122,20 +4142,24 @@
       "type": "boolean",
       "title": {
         "en": "PM10 alarm",
-        "nl": "PM10-alarm"
+        "nl": "PM10-alarm",
+        "de": "PM10-Alarm"
       },
       "desc": {
         "en": "Active when the PM10 level is high",
-        "nl": "Actief wanneer het PM10-niveau hoog is"
+        "nl": "Actief wanneer het PM10-niveau hoog is",
+        "de": "Aktiv, wenn das PM10-Niveau hoch ist"
       },
       "insights": true,
       "insightsTitleTrue": {
-        "en": "PM10 alarm tuned om",
-        "nl": "PM10 alarm afgesteld om"
+        "en": "PM10 alarm turned on",
+        "nl": "PM10 alarm afgesteld om",
+        "de": "PM10 alarm angegangen"
       },
       "insightsTitleFalse": {
         "en": "PM10 alarm turned off",
-        "nl": "PM10-alarm uitgeschakeld"
+        "nl": "PM10-alarm uitgeschakeld",
+        "de": "PM10-Alarm ausgegangen"
       },
       "getable": true,
       "setable": false,
@@ -4146,20 +4170,24 @@
       "type": "boolean",
       "title": {
         "en": "Power off alarm",
-        "nl": "Alarm uitschakelen"
+        "nl": "Alarm uitschakelen",
+        "de": "Alarm ausschalten"
       },
       "desc": {
         "en": "Power off alarm",
-        "nl": "Alarm uitschakelen"
+        "nl": "Alarm uitschakelen",
+        "de": "Alarm ausschalten"
       },
       "insights": true,
       "insightsTitleTrue": {
         "en": "Power turned off",
-        "nl": "Stroom uitgeschakeld"
+        "nl": "Stroom uitgeschakeld",
+        "de": "Strom ausgeschaltet"
       },
       "insightsTitleFalse": {
         "en": "Power turned on",
-        "nl": "Stroom ingeschakeld"
+        "nl": "Stroom ingeschakeld",
+        "de": "Strom angeschaltet"
       },
       "getable": true,
       "setable": false,
@@ -4170,7 +4198,8 @@
       "type": "string",
       "title": {
         "en": "Air Quality",
-        "nl": "Luchtkwaliteit"
+        "nl": "Luchtkwaliteit",
+        "de": "Luftqualität"
       },
       "getable": true,
       "setable": false,
@@ -4180,7 +4209,8 @@
       "type": "number",
       "title": {
         "en": "Air Quality Index",
-        "nl": "Luchtkwaliteitsindex"
+        "nl": "Luchtkwaliteitsindex",
+        "de": "Luftqualitätsindex"
       },
       "decimals": 0,
       "insights": true,
@@ -4192,7 +4222,8 @@
       "type": "string",
       "title": {
         "en": "CO2 Quality",
-        "nl": "CO2-kwaliteit"
+        "nl": "CO2-kwaliteit",
+        "de": "CO2-Qualität"
       },
       "getable": true,
       "setable": false,
@@ -4202,10 +4233,12 @@
       "type": "number",
       "title": {
         "en": "Hours Since Last Rained",
-        "nl": "Uren sinds laatste regen"
+        "nl": "Uren sinds laatste regen",
+        "de": "Stunden seit letztem Regen"
       },
       "units": {
-        "en": "Hours"
+        "en": "Hours",
+        "de": "Stunden"
       },
       "getable": true,
       "setable": false,
@@ -4216,7 +4249,8 @@
       "type": "number",
       "title": {
         "en": "Lightning Distance",
-        "nl": "Bliksem afstand"
+        "nl": "Bliksem afstand",
+        "de": "Blitzentfernung"
       },
       "units": {
         "en": "km"
@@ -4230,7 +4264,8 @@
       "type": "number",
       "title": {
         "en": "Daily Count",
-        "nl": "Dagelijkse telling"
+        "nl": "Dagelijkse telling",
+        "de": "Anzahl täglich"
       },
       "getable": true,
       "setable": false,
@@ -4241,7 +4276,8 @@
       "type": "string",
       "title": {
         "en": "Lightning Time",
-        "nl": "Bliksem Tijd"
+        "nl": "Bliksem Tijd",
+        "de": "Blitzschlag-Zeit"
       },
       "getable": true,
       "setable": false,
@@ -4251,7 +4287,8 @@
       "type": "number",
       "title": {
         "en": "Soil Moisture",
-        "nl": "Bodemvocht"
+        "nl": "Bodemvocht",
+        "de": "Bodenfeuchte"
       },
       "units": {
         "en": "%"
@@ -4294,7 +4331,8 @@
       "type": "string",
       "title": {
         "en": "Wind Direction",
-        "nl": "Windrichting"
+        "nl": "Windrichting",
+        "de": "Windrichtung"
       },
       "getable": true,
       "setable": false,
