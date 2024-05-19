@@ -1,7 +1,8 @@
 {
     "name": {
         "en": "PM10 and CO2 Meter",
-        "nl": "PM10 en CO2-meter"
+        "nl": "PM10 en CO2-meter",
+        "de": "PM10- und CO2-Luftqualitätssensor"
     },
     "platforms": [
         "local"
@@ -39,85 +40,99 @@
         "measure_co2.avg": {
             "title": {
                 "en": "CO2 Avg 24h",
-                "nl": "CO2 gem. 24u"
+                "nl": "CO2 gem. 24u",
+                "de": "CO2 ø 24h"
             }
         },
         "measure_co2_quality.avg": {
             "title": {
                 "en": "CO2 Avg quality 24h",
-                "nl": "CO2 gem. kwaliteit 24u"
+                "nl": "CO2 gem. kwaliteit 24u",
+                "de": "CO2 ø Qualität 24h"
             }
         },
         "measure_pm10": {
             "title": {
                 "en": "PM10 Air Quality",
-                "nl": "PM10 Luchtkwaliteit"
+                "nl": "PM10 Luchtkwaliteit",
+                "de": "PM10 Luftqualität"
             }
         },
         "measure_pm10.avg": {
             "title": {
                 "en": "PM10 Air Quality Avg 24h",
-                "nl": "PM10 Luchtkwaliteit Gem. 24u"
+                "nl": "PM10 Luchtkwaliteit Gem. 24u",
+                "de": "PM10 Luftqualität ø 24h"
             }
         },
         "measure_aqi.pm10": {
             "title": {
                 "en": "PM10 Air Quality Index",
-                "nl": "PM10 luchtkwaliteitsindex"
+                "nl": "PM10 luchtkwaliteitsindex",
+                "de": "PM10 Luftqualitätsindex"
             }
         },
         "measure_aqi.pm10_avg": {
             "title": {
                 "en": "PM10 Air Quality Index Avg 24h",
-                "nl": "PM10 Luchtkwaliteitsindex Gem. 24u"
+                "nl": "PM10 Luchtkwaliteitsindex Gem. 24u",
+                "de": "PM10 Luftqualitätsindex ø 24h"
             }
         },
         "measure_aq.pm10": {
             "title": {
                 "en": "PM10 Air Quality",
-                "nl": "PM10 Luchtkwaliteit"
+                "nl": "PM10 Luchtkwaliteit",
+                "de": "PM10 Luftqualität"
             }
         },
         "measure_aq.pm10_avg": {
             "title": {
                 "en": "PM10 Air Quality Avg 24h",
-                "nl": "PM10 Luchtkwaliteit Gem. 24u"
+                "nl": "PM10 Luchtkwaliteit Gem. 24u",
+                "de": "PM10 Luftqualität ø 24h"
             }
         },
         "measure_pm25": {
             "title": {
                 "en": "PM2.5 Air Quality",
-                "nl": "PM2.5 Luchtkwaliteit"
+                "nl": "PM2.5 Luchtkwaliteit",
+                "de": "PM2.5 Luftqualität"
             }
         },
         "measure_pm25.avg": {
             "title": {
                 "en": "PM2.5 Avg 24h",
-                "nl": "PM2.5 gem. 24u"
+                "nl": "PM2.5 gem. 24u",
+                "de": "PM2.5 ø 24h"
             }
         },
         "measure_aqi": {
             "title": {
                 "en": "PM2.5 Air Quality Index",
-                "nl": "PM2.5 luchtkwaliteitsindex"
+                "nl": "PM2.5 luchtkwaliteitsindex",
+                "de": "PM2.5 Luftqualitätsindex"
             }
         },
         "measure_aqi.avg": {
             "title": {
                 "en": "PM2.5 Air Quality Index Avg 24h",
-                "nl": "PM2.5 Luchtkwaliteitsindex Gem. 24u"
+                "nl": "PM2.5 Luchtkwaliteitsindex Gem. 24u",
+                "de": "PM2.5 Luftqualitätsindex ø 24h"
             }
         },
         "measure_aq": {
             "title": {
                 "en": "PM2.5 Air Quality",
-                "nl": "PM2.5 Luchtkwaliteit"
+                "nl": "PM2.5 Luchtkwaliteit",
+                "de": "PM2.5 Luftqualität"
             }
         },
         "measure_aq.avg": {
             "title": {
                 "en": "PM2.5 Air Quality Avg 24h",
-                "nl": "PM2.5 Luchtkwaliteit Gem. 24u"
+                "nl": "PM2.5 Luchtkwaliteit Gem. 24u",
+                "de": "PM2.5 Luftqualität ø 24h"
             }
         }
     },
@@ -136,18 +151,21 @@
             },
             "value": "",
             "hint": {
-                "en": "Shows the ID of the gateway."
+                "en": "Shows the ID of the gateway.",
+                "de": "Zeigt die ID des Gateways."
             }
         },
         {
             "id": "stationType",
             "type": "label",
             "label": {
-                "en": "Station Type"
+                "en": "Station Type",
+                "de": "Stationstyp"
             },
             "value": "",
             "hint": {
-                "en": "Shows the type of gateway."
+                "en": "Shows the type of gateway.",
+                "de": "Zeigt den Stationstyp"
             }
         }
     ],

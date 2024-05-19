@@ -23,18 +23,21 @@
             },
             "value": "",
             "hint": {
-                "en": "Shows the ID of the gateway."
+                "en": "Shows the ID of the gateway.",
+                "de": "Zeigt die ID des Gateways."
             }
         },
         {
             "id": "stationType",
             "type": "label",
             "label": {
-                "en": "Station Type"
+                "en": "Station Type",
+                "de": "Stationstyp"
             },
             "value": "",
             "hint": {
-                "en": "Shows the type of gateway."
+                "en": "Shows the type of gateway.",
+                "de": "Zeigt den Stationstyp."
             }
         }
     ],

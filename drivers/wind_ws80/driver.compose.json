@@ -1,6 +1,7 @@
 {
     "name": {
-        "en": "Weather Station (WS80)"
+        "en": "Weather Station (WS80)",
+        "de": "Wetterstation (WS80)"
     },
     "platforms": [
         "local"
@@ -29,7 +30,8 @@
         "measure_gust_strength.daily": {
             "title": {
                 "en": "Max Gust Strength",
-                "nl": "Max windstoot kracht"
+                "nl": "Max windstoot kracht",
+                "de": "Maximale Böenstärke"
             }
         },
         "measure_temperature": {
@@ -67,18 +69,21 @@
             },
             "value": "",
             "hint": {
-                "en": "Shows the ID of the gateway."
+                "en": "Shows the ID of the gateway.",
+                "de": "Zeigt die ID des Gateways."
             }
         },
         {
             "id": "stationType",
             "type": "label",
             "label": {
-                "en": "Station Type"
+                "en": "Station Type",
+                "de": "Stationstyp"
             },
             "value": "",
             "hint": {
-                "en": "Shows the type of gateway."
+                "en": "Shows the type of gateway.",
+                "de": "Zeigt den Stationstyp"
             }
         }
     ],

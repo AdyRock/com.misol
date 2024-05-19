@@ -1,7 +1,8 @@
 {
     "name": {
         "en": "Lightning Detector",
-        "nl": "Bliksemdetector"
+        "nl": "Bliksemdetector",
+        "de": "Blitzdetektor"
     },
     "platforms": [
         "local"
@@ -44,18 +45,21 @@
             },
             "value": "",
             "hint": {
-                "en": "Shows the ID of the gateway."
+                "en": "Shows the ID of the gateway.",
+                "de": "Zeigt die ID des Gateways."
             }
         },
         {
             "id": "stationType",
             "type": "label",
             "label": {
-                "en": "Station Type"
+                "en": "Station Type",
+                "de": "Stationstyp"
             },
             "value": "",
             "hint": {
-                "en": "Shows the type of gateway."
+                "en": "Shows the type of gateway.",
+                "de": "Zeigt den Stationstyp"
             }
         },
         {
@@ -78,13 +82,15 @@
                 {
                     "id": "raw",
                     "label": {
-                        "en": "Device"
+                        "en": "Device",
+                        "de": "Gerät"
                     }
                 },
                 {
                     "id": "time_stamp",
                     "label": {
-                        "en": "Time stamp"
+                        "en": "Time stamp",
+                        "de": "Zeitstempel"
                     }
                 },
                 {

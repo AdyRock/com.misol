@@ -4,14 +4,16 @@
             "id": "measure_moisture_changed",
             "title": {
                 "en": "The soil moisture has changed",
-                "nl": "De bodemvochtigheid is veranderd"
+                "nl": "De bodemvochtigheid is veranderd",
+                "de": "Die Bodenfeuchte hat sich verändert"
             },
             "tokens": [
                 {
                     "name": "measure_moisture",
                     "title": {
                         "en": "Soil Moisture",
-                        "nl": "Bodemvocht"
+                        "nl": "Bodemvocht",
+                        "de": "Bodenfeuchte"
                     },
                     "type": "number",
                     "units": "%",
@@ -25,15 +27,18 @@
             "id": "measure_moisture_is_less",
             "title": {
                 "en": "Soil moisture is !{{is|is not}} less than",
-                "nl": "Bodemvocht is !{{is|is niet}} minder dan"
+                "nl": "Bodemvocht is !{{is|is niet}} minder dan",
+                "de": "Bodenfeuchte !{{ist|ist nicht}} kleiner als"
             },
             "hint": {
                 "en": "This Flow will continue if soil moisture is/is not less than the set value.",
-                "nl": "Deze Flow gaat door als de bodemvochtigheid wel/niet lager is dan de ingestelde waarde."
+                "nl": "Deze Flow gaat door als de bodemvochtigheid wel/niet lager is dan de ingestelde waarde.",
+                "de": "Dieser Flow wird weiterlaufen, wenn die Bodenfeuchte (nicht) kleiner als der gesetzte Wert ist."
             },
             "titleFormatted": {
                 "en": "The soil moisture is !{{is|is not}} less than [[value]]%",
-                "nl": "Het bodemvocht is !{{is|is niet}} minder dan [[value]]%"
+                "nl": "Het bodemvocht is !{{is|is niet}} minder dan [[value]]%",
+                "de": "Die Bodenfeuchte !{{ist|ist nicht}} kleiner als [[value]]%"
             },
             "args": [
                 {
@@ -45,11 +50,13 @@
                     "units": "%",
                     "placeholder": {
                         "en": "Set a value",
-                        "nl": "Stel een waarde in"
+                        "nl": "Stel een waarde in",
+                        "de": "Wert setzen"
                     },
                     "title": {
                         "en": "Soil Moisture",
-                        "nl": "Bodemvocht"
+                        "nl": "Bodemvocht",
+                        "de": "Bodenfeuchte"
                     }
                 }
             ]
@@ -58,15 +65,18 @@
             "id": "measure_moisture_equal",
             "title": {
                 "en": "Soil moisture is !{{equal|not equal}} to",
-                "nl": "Bodemvocht is !{{gelijk aan |niet gelijk}} aan"
+                "nl": "Bodemvocht is !{{gelijk aan |niet gelijk}} aan",
+                "de": "Bodenfeuchte !{{gleich|nicht gleich}}"
             },
             "hint": {
                 "en": "This Flow will continue if soil moisture is/is not equal to the set value.",
-                "nl": "Deze Flow gaat door als bodemvocht wel/niet gelijk is aan de ingestelde waarde."
+                "nl": "Deze Flow gaat door als bodemvocht wel/niet gelijk is aan de ingestelde waarde.",
+                "de": "Dieser Flow wird weiterlaufen, wenn die Bodenfeuchte (nicht) gleich dem gesetzten Wert ist."
             },
             "titleFormatted": {
                 "en": "The soil moisture is !{{equal|not equal}} to [[value]]%",
-                "nl": "Het bodemvocht is !{{equal|not equal}} tot [[value]]%"
+                "nl": "Het bodemvocht is !{{equal|not equal}} tot [[value]]%",
+                "de": "Die Bodenfeuchte ist !{{gleich|nicht gleich}} [[value]]%"
             },
             "args": [
                 {
@@ -78,11 +88,13 @@
                     "units": "%",
                     "placeholder": {
                         "en": "Set a value",
-                        "nl": "Stel een waarde in"
+                        "nl": "Stel een waarde in",
+                        "de": "Wert setzen"
                     },
                     "title": {
                         "en": "Soil Moisture",
-                        "nl": "Bodemvocht"
+                        "nl": "Bodemvocht",
+                        "de": "Bodenfeuchte"
                     }
                 }
             ]
