@@ -2,7 +2,7 @@
     "title": {
         "en": "The event rainfall Changed",
         "nl": "De gebeurtenis regenval gewijzigd",
-        "de": "Der Regenereignis Niederschlag hat sich verändert"
+        "de": "Der Niederschlag hat sich verändert"
     },
     "tokens": [
         {
@@ -10,7 +10,7 @@
             "title": {
                 "en": "Event rainfall",
                 "nl": "Gebeurtenis regenval",
-                "de": "Regenereignis Niederschlag"
+                "de": "Niederschlag"
             },
             "type": "number",
             "example": 3

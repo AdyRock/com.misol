@@ -631,7 +631,7 @@
         "title": {
           "en": "The event rainfall Changed",
           "nl": "De gebeurtenis regenval gewijzigd",
-          "de": "Der Regenereignis Niederschlag hat sich verändert"
+          "de": "Der Niederschlag hat sich verändert"
         },
         "tokens": [
           {
@@ -639,7 +639,7 @@
             "title": {
               "en": "Event rainfall",
               "nl": "Gebeurtenis regenval",
-              "de": "Regenereignis Niederschlag"
+              "de": "Niederschlag"
             },
             "type": "number",
             "example": 3
@@ -712,7 +712,7 @@
         "title": {
           "en": "The rain rate Changed",
           "nl": "De regenval is veranderd",
-          "de": "Die Regenrate hat sich geändert"
+          "de": "Die Niederschlagsrate hat sich geändert"
         },
         "tokens": [
           {
@@ -720,7 +720,7 @@
             "title": {
               "en": "Rain rate",
               "nl": "Regenval",
-              "de": "Regenrate"
+              "de": "Niederschlagsrate"
             },
             "type": "number",
             "example": 3
@@ -1724,17 +1724,17 @@
         "title": {
           "en": "Event rainfall is !{{equal|not equal}} to",
           "nl": "Evenement regenval is !{{gelijk aan | niet gelijk aan}}",
-          "de": "Regenereignis Niederschlag ist !{{gleich|nicht gleich}}"
+          "de": "Niederschlag ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if event rainfall is/is not equal to the set value.",
-          "nl": "Deze stroom gaat door als de regenval wel/niet gelijk is aan de ingestelde waarde.",
-          "de": "Dieser Flow wird weiterlaufen, wenn der Regenereignis Niederschlag (nicht) gleich dem gesetzten Wert ist."
+          "nl": "Deze stroom gaat door als de evenement regenval wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der Niederschlag (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The event rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De gebeurtenisregenval is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
-          "de": "Der Regenereignis Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
+          "nl": "De evenement regenval is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+          "de": "Der Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1756,7 +1756,7 @@
             "title": {
               "en": "Event rainfall",
               "nl": "Gebeurtenis regenval",
-              "de": "Regenereignis Niederschlag"
+              "de": "Niederschlag"
             }
           }
         ],
@@ -1766,17 +1766,17 @@
         "title": {
           "en": "Event rainfall is !{{is|is not}} less than",
           "nl": "Evenement regenval is !{{is|is niet}} minder dan",
-          "de": "Regenereignis Niederschlag !{{ist|ist nicht}} kleiner als"
+          "de": "Niederschlag !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if event rainfall is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de regenval wel/niet minder is dan de ingestelde waarde.",
-          "de": "Dieser Flow wird weiterlaufen, wenn der Regenereignis Niederschlag (nicht) kleiner als der gesetzte Wert ist."
+          "nl": "Deze stroom gaat door als de evenement regenval wel/niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der Niederschlag (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The event rainfall is !{{is|is not}} less than [[value]]mm",
-          "nl": "De regenval is !{{is|is niet}} minder dan [[value]]mm",
-          "de": "Der Regenereignis Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
+          "nl": "De evenement regenval is !{{is|is niet}} minder dan [[value]]mm",
+          "de": "Der Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -1798,7 +1798,7 @@
             "title": {
               "en": "Event rainfall",
               "nl": "Gebeurtenis regenval",
-              "de": "Regenereignis Niederschlag"
+              "de": "Niederschlag"
             }
           }
         ],
@@ -1975,18 +1975,18 @@
       {
         "title": {
           "en": "Rain rate is !{{equal|not equal}} to",
-          "nl": "Regenval is !{{gelijk aan|niet gelijk aan}}",
-          "de": "Regenrate ist !{{gleich|nicht gleich}}"
+          "nl": "Regenintensiteit is !{{gelijk aan|niet gelijk aan}}",
+          "de": "Niederschlagsrate ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if event rainfall is/is not equal to the set value.",
-          "nl": "Deze Flow gaat verder als de gebeurtenis regenval wel/niet gelijk is aan de ingestelde waarde.",
-          "de": "Dieser Flow wird fortgesetzt, wenn der Regenereignis Niederschlag gleich/ungleich dem eingestellten Wert ist."
+          "nl": "Deze Flow gaat verder als de regenintensiteit wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird fortgesetzt, wenn die Niederschlagsrate gleich/ungleich dem eingestellten Wert ist."
         },
         "titleFormatted": {
-          "en": "The event rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De gebeurtenis regenval is !{{gelijk aan|niet gelijk aan}} [[value]]mm",
-          "de": "Das Regenereignis Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
+          "en": "The rain rate is !{{equal|not equal}} to [[value]]mm/h",
+          "nl": "De regenintensiteit is !{{gelijk aan|niet gelijk aan}} [[value]]mm/h",
+          "de": "Das Niederschlagsrate ist !{{gleich|nicht gleich}} [[value]]mm/h"
         },
         "args": [
           {
@@ -2006,9 +2006,9 @@
               "de": "Wert setzen"
             },
             "title": {
-              "en": "Event rainfall",
-              "nl": "Gebeurtenis regenval",
-              "de": "Regenereignis Niederschlag"
+              "en": "Rain rate",
+              "nl": "Regenintensiteit",
+              "de": "Niederschlagsrate"
             }
           }
         ],
@@ -2017,18 +2017,18 @@
       {
         "title": {
           "en": "Rain rate is !{{is|is not}} less than",
-          "nl": "Regenval is !{{is|is niet}} minder dan",
-          "de": "Regenrate !{{ist|ist nicht}} kleiner als"
+          "nl": "Regenintensiteit is !{{is|is niet}} minder dan",
+          "de": "Niederschlagsrate !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if rain rate is/is not less than the set value.",
-          "nl": "Deze Flow gaat verder als de regenval wel/niet minder is dan de ingestelde waarde.",
-          "de": "Dieser Flow wird fortgesetzt, wenn die Regenrate kleiner/gleich der eingestellten Wert ist."
+          "nl": "Deze Flow gaat verder als de regenintensiteit wel/niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird fortgesetzt, wenn die Niederschlagsrate kleiner/gleich der eingestellten Wert ist."
         },
         "titleFormatted": {
-          "en": "The rain rate is !{{is|is not}} less than [[value]]mm",
-          "nl": "De regenval is !{{is|is niet}} minder dan [[value]]mm",
-          "de": "Die Regenrate ist !{{ist|ist nicht}} kleiner als [[value]]mm"
+          "en": "The rain rate is !{{is|is not}} less than [[value]]mm/h",
+          "nl": "De regenintensiteit is !{{is|is niet}} minder dan [[value]]mm/h",
+          "de": "Die Niederschlagsrate ist !{{ist|ist nicht}} kleiner als [[value]]mm/h"
         },
         "args": [
           {
@@ -2048,9 +2048,9 @@
               "de": "Wert setzen"
             },
             "title": {
-              "en": "Total rainfall",
-              "nl": "Totale regenval",
-              "de": "Gesamter Niederschlag"
+              "en": "Rain rate",
+              "nl": "Regenintensiteit",
+              "de": "Niederschlagsrate"
             }
           }
         ],
@@ -3906,7 +3906,7 @@
           "title": {
             "en": "Rain Rate",
             "nl": "Regenintensiteit",
-            "de": "Niederschlagsintensität"
+            "de": "Niederschlagsrate"
           },
           "units": {
             "en": "mm/hr",
@@ -3918,7 +3918,7 @@
           "title": {
             "en": "Rain Event",
             "nl": "Regenbui",
-            "de": "Regenereignis"
+            "de": "Niederschlag"
           }
         },
         "measure_rain.hourly": {
@@ -4181,7 +4181,7 @@
           "title": {
             "en": "Rain Rate",
             "nl": "Regenintensiteit",
-            "de": "Niederschlagsintensität"
+            "de": "Niederschlagsrate"
           },
           "units": {
             "en": "mm/hr",
@@ -4193,7 +4193,7 @@
           "title": {
             "en": "Rain Event",
             "nl": "Regenbui",
-            "de": "Regenereignis"
+            "de": "Niederschlag"
           }
         },
         "measure_rain.hourly": {

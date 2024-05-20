@@ -1,18 +1,18 @@
 {
     "title": {
         "en": "Rain rate is !{{equal|not equal}} to",
-		"nl": "Regenval is !{{gelijk aan|niet gelijk aan}}",
-		"de": "Regenrate ist !{{gleich|nicht gleich}}"
+		"nl": "Regenintensiteit is !{{gelijk aan|niet gelijk aan}}",
+		"de": "Niederschlagsrate ist !{{gleich|nicht gleich}}"
     },
     "hint": {
         "en": "This Flow will continue if event rainfall is/is not equal to the set value.",
-		"nl": "Deze Flow gaat verder als de gebeurtenis regenval wel/niet gelijk is aan de ingestelde waarde.",
-		"de": "Dieser Flow wird fortgesetzt, wenn der Regenereignis Niederschlag gleich/ungleich dem eingestellten Wert ist."
+		"nl": "Deze Flow gaat verder als de regenintensiteit wel/niet gelijk is aan de ingestelde waarde.",
+		"de": "Dieser Flow wird fortgesetzt, wenn die Niederschlagsrate gleich/ungleich dem eingestellten Wert ist."
     },
     "titleFormatted": {
-        "en": "The event rainfall is !{{equal|not equal}} to [[value]]mm",
-		"nl": "De gebeurtenis regenval is !{{gelijk aan|niet gelijk aan}} [[value]]mm",
-		"de": "Das Regenereignis Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
+        "en": "The rain rate is !{{equal|not equal}} to [[value]]mm/h",
+		"nl": "De regenintensiteit is !{{gelijk aan|niet gelijk aan}} [[value]]mm/h",
+		"de": "Das Niederschlagsrate ist !{{gleich|nicht gleich}} [[value]]mm/h"
     },
     "args": [
         {
@@ -32,9 +32,9 @@
                 "de": "Wert setzen"
             },
             "title": {
-                "en": "Event rainfall",
-                "nl": "Gebeurtenis regenval",
-                "de": "Regenereignis Niederschlag"
+                "en": "Rain rate",
+                "nl": "Regenintensiteit",
+                "de": "Niederschlagsrate"
             }
         }
     ]

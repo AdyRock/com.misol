@@ -68,7 +68,7 @@
             "title": {
                 "en": "Rain Rate",
                 "nl": "Regenintensiteit",
-                "de": "Niederschlagsintensität"
+                "de": "Niederschlagsrate"
             },
             "units": {
                 "en": "mm/hr",
@@ -80,7 +80,7 @@
             "title": {
                 "en": "Rain Event",
                 "nl": "Regenbui",
-                "de": "Regenereignis"
+                "de": "Niederschlag"
             }
         },
         "measure_rain.hourly": {

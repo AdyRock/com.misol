@@ -2,17 +2,17 @@
     "title": {
         "en": "Event rainfall is !{{is|is not}} less than",
         "nl": "Evenement regenval is !{{is|is niet}} minder dan",
-        "de": "Regenereignis Niederschlag !{{ist|ist nicht}} kleiner als"
+        "de": "Niederschlag !{{ist|ist nicht}} kleiner als"
     },
     "hint": {
         "en": "This Flow will continue if event rainfall is/is not less than the set value.",
-        "nl": "Deze stroom gaat door als de regenval wel/niet minder is dan de ingestelde waarde.",
-        "de": "Dieser Flow wird weiterlaufen, wenn der Regenereignis Niederschlag (nicht) kleiner als der gesetzte Wert ist."
+        "nl": "Deze stroom gaat door als de evenement regenval wel/niet minder is dan de ingestelde waarde.",
+        "de": "Dieser Flow wird weiterlaufen, wenn der Niederschlag (nicht) kleiner als der gesetzte Wert ist."
     },
     "titleFormatted": {
         "en": "The event rainfall is !{{is|is not}} less than [[value]]mm",
-        "nl": "De regenval is !{{is|is niet}} minder dan [[value]]mm",
-        "de": "Der Regenereignis Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
+        "nl": "De evenement regenval is !{{is|is niet}} minder dan [[value]]mm",
+        "de": "Der Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
     },
     "args": [
         {
@@ -34,7 +34,7 @@
             "title": {
                 "en": "Event rainfall",
                 "nl": "Gebeurtenis regenval",
-                "de": "Regenereignis Niederschlag"
+                "de": "Niederschlag"
             }
         }
     ]
