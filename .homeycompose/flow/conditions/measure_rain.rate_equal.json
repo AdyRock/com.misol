@@ -10,8 +10,8 @@
 		"de": "Dieser Flow wird fortgesetzt, wenn die Niederschlagsrate gleich/ungleich dem eingestellten Wert ist."
     },
     "titleFormatted": {
-        "en": "The rain rate is !{{equal|not equal}} to [[value]]mm/h",
-		"nl": "De regenintensiteit is !{{gelijk aan|niet gelijk aan}} [[value]]mm/h",
+        "en": "The rain rate is !{{equal|not equal}} to [[value]]mm/hr",
+		"nl": "De regenintensiteit is !{{gelijk aan|niet gelijk aan}} [[value]]mm/u",
 		"de": "Das Niederschlagsrate ist !{{gleich|nicht gleich}} [[value]]mm/h"
     },
     "args": [

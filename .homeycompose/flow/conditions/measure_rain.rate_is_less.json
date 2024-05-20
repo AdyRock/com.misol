@@ -10,8 +10,8 @@
 		"de": "Dieser Flow wird fortgesetzt, wenn die Niederschlagsrate kleiner/gleich der eingestellten Wert ist."
     },
     "titleFormatted": {
-        "en": "The rain rate is !{{is|is not}} less than [[value]]mm/h",
-		"nl": "De regenintensiteit is !{{is|is niet}} minder dan [[value]]mm/h",
+        "en": "The rain rate is !{{is|is not}} less than [[value]]mm/hr",
+		"nl": "De regenintensiteit is !{{is|is niet}} minder dan [[value]]mm/u",
 		"de": "Die Niederschlagsrate ist !{{ist|ist nicht}} kleiner als [[value]]mm/h"
     },
     "args": [
