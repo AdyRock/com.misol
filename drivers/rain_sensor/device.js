@@ -78,7 +78,7 @@ class RainSensorDevice extends Device
             if (!this.stationType)
             {
                 this.stationType = gateway.stationtype;
-                this.setSettings({stationType: this.stationType}).catch(this.error);;
+                this.setSettings({stationType: this.stationType}).catch(this.error);
             }
 
             let rain = Number(gateway.rainratein) * 25.4;
