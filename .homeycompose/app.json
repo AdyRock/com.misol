@@ -38,6 +38,13 @@
         "name": "Adrian Rockall",
         "email": "ady@rockall.plus.com"
     },
+	"contributors": {
+		"translators": [
+			{
+				"name": "mech78"
+			}
+		]
+	},
     "api": {
         "getLog": {
             "method": "get",

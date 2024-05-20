@@ -12,7 +12,7 @@
     ],
     "class": "sensor",
     "capabilities": [
-        "measure_rain",
+        "measure_rain.rate",
         "measure_rain.event",
         "measure_rain.hourly",
         "measure_rain.daily",
@@ -23,7 +23,7 @@
         "measure_hours_since_rained"
     ],
     "capabilitiesOptions": {
-        "measure_rain": {
+        "measure_rain.rate": {
             "title": {
                 "en": "Rain Rate",
                 "nl": "Regenintensiteit",

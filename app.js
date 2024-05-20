@@ -160,7 +160,21 @@ class MyApp extends Homey.App
             return value === args.value;
         });
 
-        let measure_rain_event_is_lessCondition = this.homey.flow.getConditionCard('measure_rain.event_is_less');
+        let measure_rain_rate_is_lessCondition = this.homey.flow.getConditionCard('measure_rain.rate_is_less');
+        measure_rain_rate_is_lessCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.device.getCapabilityValue('measure_rain.rate');
+            return value < args.value;
+        });
+
+        let measure_rain_rate_equalCondition = this.homey.flow.getConditionCard('measure_rain.rate_equal');
+        measure_rain_rate_equalCondition.registerRunListener(async (args, state) =>
+        {
+            let value = args.device.getCapabilityValue('measure_rain.rate');
+            return value === args.value;
+        });
+
+		let measure_rain_event_is_lessCondition = this.homey.flow.getConditionCard('measure_rain.event_is_less');
         measure_rain_event_is_lessCondition.registerRunListener(async (args, state) =>
         {
             let value = args.device.getCapabilityValue('measure_rain.event');

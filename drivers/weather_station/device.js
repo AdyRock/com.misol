@@ -37,6 +37,16 @@ class WeatherStationDevice extends Device
             this.addCapability('measure_luminance');
         }
 
+		if (this.hasCapability('measure_rain'))
+		{
+			this.removeCapability('measure_rain');
+		}
+
+		if (!this.hasCapability('measure_rain.rate'))
+		{
+			this.addCapability('measure_rain.rate');
+		}
+	
         this.lastRained = this.homey.settings.get('lastRainedTime');
         if (this.lastRained === null)
         {
@@ -133,6 +143,7 @@ class WeatherStationDevice extends Device
 
 		if (Units === 'RainfallUnits')
 		{
+			let timeText = this.homey.__('hourAbbr');
 			let unitsText = '';
 			let decimals = 0;
 			switch (this.homey.app.RainfallUnits)
@@ -150,7 +161,10 @@ class WeatherStationDevice extends Device
 
 			}
 
-			this.setCapabilityOptions('measure_rain', { "units": unitsText }).catch(this.error);
+            var opts = this.getCapabilityOptions('measure_rain.rate');
+            opts.units = `${unitsText}/h${timeText}`;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.rate', opts).catch(this.error);
 
             var opts = this.getCapabilityOptions('measure_rain.event');
             opts.units = unitsText;
@@ -187,7 +201,7 @@ class WeatherStationDevice extends Device
 			opts.decimals = decimals;
 			this.setCapabilityOptions('measure_rain.total', opts).catch(this.error);
 
-			this.setCapabilityValue('measure_rain', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.rate', null).catch(this.error);
 			this.setCapabilityValue('measure_rain.event', null).catch(this.error);
 			this.setCapabilityValue('measure_rain.hourly', null).catch(this.error);
 			this.setCapabilityValue('measure_rain.daily', null).catch(this.error);
@@ -309,9 +323,9 @@ class WeatherStationDevice extends Device
             let rain = 0;
             if (rainratein !== null)
             {
-                if (!this.hasCapability('measure_rain'))
+                if (!this.hasCapability('measure_rain.rate'))
                 {
-                    await this.addCapability('measure_rain');
+                    await this.addCapability('measure_rain.rate');
 
                 }
                 if (!this.hasCapability('measure_hours_since_rained'))
@@ -321,7 +335,7 @@ class WeatherStationDevice extends Device
                 }
 
                 rain = Number(rainratein) * rainConversion;
-                this.setCapabilityValue('measure_rain', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.rate', rain).catch(this.error);
 
                 if (rain > 0)
                 {

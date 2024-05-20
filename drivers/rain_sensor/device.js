@@ -82,7 +82,7 @@ class RainSensorDevice extends Device
             }
 
             let rain = Number(gateway.rainratein) * 25.4;
-            this.setCapabilityValue('measure_rain', rain).catch(this.error);
+            this.setCapabilityValue('measure_rain.rate', rain).catch(this.error);
 
             if (rain > 0)
             {

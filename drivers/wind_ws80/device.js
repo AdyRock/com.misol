@@ -32,6 +32,16 @@ class WindWS80Device extends Device
             this.addCapability('measure_luminance');
         }
 
+		if (this.hasCapability('measure_rain'))
+		{
+			this.removeCapability('measure_rain');
+		}
+
+		if (!this.hasCapability('measure_rain.rate'))
+		{
+			this.addCapability('measure_rain.rate');
+		}
+
         this.log('WindWS80Device has been initialized');
     }
 
@@ -107,7 +117,74 @@ class WindWS80Device extends Device
             this.setCapabilityValue('measure_gust_strength', null).catch(this.error);
             this.setCapabilityValue('measure_gust_strength.daily', null).catch(this.error);
         }
-    }
+
+
+		if (Units === 'RainfallUnits')
+		{
+			let unitsText = '';
+			let decimals = 0;
+			switch (this.homey.app.RainfallUnits)
+			{
+				case '0':
+					unitsText = this.homey.__('rainfallUnits.mm');
+					break;
+				case '1':
+					unitsText = this.homey.__('rainfallUnits.in');
+					decimals = 1;
+					break;
+				default:
+					unitsText = this.homey.__('rainfallUnits.mm');
+					break;
+
+			}
+
+			this.setCapabilityOptions('measure_rain.rate', { "units": `${unitsText}/hr` }).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.event');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.event', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.hourly');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.hourly', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.daily');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.daily', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.weekly');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.weekly', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.monthly');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.monthly', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.yearly');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.yearly', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.total');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.total', opts).catch(this.error);
+
+			this.setCapabilityValue('measure_rain.rate', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.event', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.hourly', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.daily', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.weekly', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.monthly', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.yearly', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.total', null).catch(this.error);
+		}
+	}
 
     async updateCapabilities(gateway)
     {
@@ -155,7 +232,7 @@ class WindWS80Device extends Device
 
             this.setCapabilityValue('measure_radiation', Number(gateway.solarradiation)).catch(this.error);
             this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.error);
-            this.setCapabilityValue('measure_rain', Number(gateway.rainratein) * 25.4).catch(this.error);
+            this.setCapabilityValue('measure_rain.rate', Number(gateway.rainratein) * 25.4).catch(this.error);
 
             var batteryType = this.getSetting( 'batteryType' );
             const batV = Number(gateway.wh80batt);

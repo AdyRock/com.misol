@@ -27,5 +27,10 @@
     "speedUnits": {
         "km": "km/u",
         "m": "m/s"
-    }
+    },
+	"rainfallUnits": {
+        "mm": "mm",
+        "in": "inch"
+    },
+	"hourAbbr": "u"
 }

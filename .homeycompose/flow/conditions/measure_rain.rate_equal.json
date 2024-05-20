@@ -1,0 +1,41 @@
+{
+    "title": {
+        "en": "Rain rate is !{{equal|not equal}} to",
+		"nl": "Regenval is !{{gelijk aan|niet gelijk aan}}",
+		"de": "Regenrate ist !{{gleich|nicht gleich}}"
+    },
+    "hint": {
+        "en": "This Flow will continue if event rainfall is/is not equal to the set value.",
+		"nl": "Deze Flow gaat verder als de gebeurtenis regenval wel/niet gelijk is aan de ingestelde waarde.",
+		"de": "Dieser Flow wird fortgesetzt, wenn der Regenereignis Niederschlag gleich/ungleich dem eingestellten Wert ist."
+    },
+    "titleFormatted": {
+        "en": "The event rainfall is !{{equal|not equal}} to [[value]]mm",
+		"nl": "De gebeurtenis regenval is !{{gelijk aan|niet gelijk aan}} [[value]]mm",
+		"de": "Das Regenereignis Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=rain_sensor|weather_station"
+        },
+        {
+            "type": "number",
+            "name": "value",
+            "min": 0,
+            "max": 70,
+            "step": 1,
+            "placeholder": {
+                "en": "Set a value",
+                "nl": "Stel een waarde in",
+                "de": "Wert setzen"
+            },
+            "title": {
+                "en": "Event rainfall",
+                "nl": "Gebeurtenis regenval",
+                "de": "Regenereignis Niederschlag"
+            }
+        }
+    ]
+}

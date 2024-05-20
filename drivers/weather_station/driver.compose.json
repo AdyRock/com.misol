@@ -25,7 +25,7 @@
         "measure_radiation",
         "measure_luminance",
         "measure_ultraviolet",
-        "measure_rain",
+        "measure_rain.rate",
         "measure_rain.event",
         "measure_rain.hourly",
         "measure_rain.daily",
@@ -64,7 +64,7 @@
             },
             "decimals": 1
         },
-        "measure_rain": {
+        "measure_rain.rate": {
             "title": {
                 "en": "Rain Rate",
                 "nl": "Regenintensiteit",

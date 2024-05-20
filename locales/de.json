@@ -34,6 +34,7 @@
         "mm": "mm",
         "in": "inch"
     },
+	"hourAbbr": "h",
     "pair": {
         "intro": "Verbindungsdetails eingeben",
         "title": "Kamera hinzufügen",

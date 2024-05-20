@@ -1,0 +1,41 @@
+{
+    "title": {
+        "en": "Rain rate is !{{is|is not}} less than",
+		"nl": "Regenval is !{{is|is niet}} minder dan",
+		"de": "Regenrate !{{ist|ist nicht}} kleiner als"
+    },
+    "hint": {
+        "en": "This Flow will continue if rain rate is/is not less than the set value.",
+		"nl": "Deze Flow gaat verder als de regenval wel/niet minder is dan de ingestelde waarde.",
+		"de": "Dieser Flow wird fortgesetzt, wenn die Regenrate kleiner/gleich der eingestellten Wert ist."
+    },
+    "titleFormatted": {
+        "en": "The rain rate is !{{is|is not}} less than [[value]]mm",
+		"nl": "De regenval is !{{is|is niet}} minder dan [[value]]mm",
+		"de": "Die Regenrate ist !{{ist|ist nicht}} kleiner als [[value]]mm"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=rain_sensor|weather_station"
+        },
+        {
+            "type": "number",
+            "name": "value",
+            "min": 0,
+            "max": 70,
+            "step": 1,
+            "placeholder": {
+                "en": "Set a value",
+                "nl": "Stel een waarde in",
+                "de": "Wert setzen"
+            },
+            "title": {
+                "en": "Total rainfall",
+                "nl": "Totale regenval",
+                "de": "Gesamter Niederschlag"
+            }
+        }
+    ]
+}
