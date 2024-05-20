@@ -631,7 +631,7 @@
         "title": {
           "en": "The event rainfall Changed",
           "nl": "De gebeurtenis regenval gewijzigd",
-          "de": "Der Niederschlag hat sich verändert"
+          "de": "Das Niederschlags-Ereignis hat sich verändert"
         },
         "tokens": [
           {
@@ -639,7 +639,7 @@
             "title": {
               "en": "Event rainfall",
               "nl": "Gebeurtenis regenval",
-              "de": "Niederschlag"
+              "de": "Niederschlags-Ereignis"
             },
             "type": "number",
             "example": 3
@@ -1724,17 +1724,17 @@
         "title": {
           "en": "Event rainfall is !{{equal|not equal}} to",
           "nl": "Evenement regenval is !{{gelijk aan | niet gelijk aan}}",
-          "de": "Niederschlag ist !{{gleich|nicht gleich}}"
+          "de": "Niederschlagsereignis ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if event rainfall is/is not equal to the set value.",
           "nl": "Deze stroom gaat door als de evenement regenval wel/niet gelijk is aan de ingestelde waarde.",
-          "de": "Dieser Flow wird weiterlaufen, wenn der Niederschlag (nicht) gleich dem gesetzten Wert ist."
+          "de": "Dieser Flow wird weiterlaufen, wenn das Niederschlagsereignis (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The event rainfall is !{{equal|not equal}} to [[value]]mm",
           "nl": "De evenement regenval is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
-          "de": "Der Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
+          "de": "Das Niederschlagsereignis ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1756,7 +1756,7 @@
             "title": {
               "en": "Event rainfall",
               "nl": "Gebeurtenis regenval",
-              "de": "Niederschlag"
+              "de": "Niederschlags-Ereignis"
             }
           }
         ],
@@ -1766,17 +1766,17 @@
         "title": {
           "en": "Event rainfall is !{{is|is not}} less than",
           "nl": "Evenement regenval is !{{is|is niet}} minder dan",
-          "de": "Niederschlag !{{ist|ist nicht}} kleiner als"
+          "de": "Niederschlagsereignis !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if event rainfall is/is not less than the set value.",
           "nl": "Deze stroom gaat door als de evenement regenval wel/niet minder is dan de ingestelde waarde.",
-          "de": "Dieser Flow wird weiterlaufen, wenn der Niederschlag (nicht) kleiner als der gesetzte Wert ist."
+          "de": "Dieser Flow wird weiterlaufen, wenn das Niederschlagsereignis (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The event rainfall is !{{is|is not}} less than [[value]]mm",
           "nl": "De evenement regenval is !{{is|is niet}} minder dan [[value]]mm",
-          "de": "Der Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
+          "de": "Das Niederschlagsereignis !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -1798,7 +1798,7 @@
             "title": {
               "en": "Event rainfall",
               "nl": "Gebeurtenis regenval",
-              "de": "Niederschlag"
+              "de": "Niederschlags-Ereignis"
             }
           }
         ],
@@ -3918,7 +3918,7 @@
           "title": {
             "en": "Rain Event",
             "nl": "Regenbui",
-            "de": "Niederschlag"
+            "de": "Niederschlags-Ereignis"
           }
         },
         "measure_rain.hourly": {
@@ -4193,7 +4193,7 @@
           "title": {
             "en": "Rain Event",
             "nl": "Regenbui",
-            "de": "Niederschlag"
+            "de": "Niederschlags-Ereignis"
           }
         },
         "measure_rain.hourly": {

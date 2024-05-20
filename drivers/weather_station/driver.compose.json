@@ -80,7 +80,7 @@
             "title": {
                 "en": "Rain Event",
                 "nl": "Regenbui",
-                "de": "Niederschlag"
+                "de": "Niederschlags-Ereignis"
             }
         },
         "measure_rain.hourly": {
