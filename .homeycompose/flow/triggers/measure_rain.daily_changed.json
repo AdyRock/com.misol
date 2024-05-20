@@ -1,14 +1,16 @@
 {
     "title": {
         "en": "The daily rainfall Changed",
-        "nl": "De dagelijkse neerslag veranderd"
+        "nl": "De dagelijkse neerslag veranderd",
+        "de": "Der tägliche Niederschlag hat sich verändert"
     },
     "tokens": [
         {
             "name": "measure_rain.daily",
             "title": {
                 "en": "Daily rainfall",
-                "nl": "Dagelijkse regenval"
+                "nl": "Dagelijkse regenval",
+                "de": "Täglicher Niederschlag"
             },
             "type": "number",
             "example": 3

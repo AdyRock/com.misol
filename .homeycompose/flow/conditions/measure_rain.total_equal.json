@@ -1,15 +1,18 @@
 {
     "title": {
         "en": "Total rainfall is !{{equal|not equal}} to",
-        "nl": "De totale regenval is !{{gelijk aan | niet gelijk aan}}"
+        "nl": "De totale regenval is !{{gelijk aan | niet gelijk aan}}",
+        "de": "Gesamter Niederschlag ist !{{gleich|nicht gleich}}"
     },
     "hint": {
         "en": "This Flow will continue if total rainfall is/is not equal to the set value.",
-        "nl": "Deze Flow gaat door als de totale neerslag wel/niet gelijk is aan de ingestelde waarde."
+        "nl": "Deze Flow gaat door als de totale neerslag wel/niet gelijk is aan de ingestelde waarde.",
+        "de": "Dieser Flow wird weiterlaufen, wenn der gesamte Niederschlag (nicht) gleich dem gesetzten Wert ist."
     },
     "titleFormatted": {
         "en": "The total rainfall is !{{equal|not equal}} to [[value]]mm",
-        "nl": "De totale neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+        "nl": "De totale neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+        "de": "Der gesamte Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
     },
     "args": [
         {
@@ -25,11 +28,13 @@
             "step": 1,
             "placeholder": {
                 "en": "Set a value",
-                "nl": "Stel een waarde in"
+                "nl": "Stel een waarde in",
+                "de": "Wert setzen"
             },
             "title": {
                 "en": "Total rainfall",
-                "nl": "Totale regenval"
+                "nl": "Totale regenval",
+                "de": "Gesamter Niederschlag"
             }
         }
     ]

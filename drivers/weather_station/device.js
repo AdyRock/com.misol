@@ -3,7 +3,8 @@
 const { Device } = require('homey');
 const Sector = {
     'en': ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW', 'N'],
-    'nl': ['N', 'NNO', 'NO', 'ONO', 'O', 'OZO', 'ZO', 'ZZO', 'Z', 'ZZW', 'ZW', 'WZW', 'W', 'WNW', 'NW', 'NNW', 'N']
+    'nl': ['N', 'NNO', 'NO', 'ONO', 'O', 'OZO', 'ZO', 'ZZO', 'Z', 'ZZW', 'ZW', 'WZW', 'W', 'WNW', 'NW', 'NNW', 'N'],
+    'de': ['N', 'NNO', 'NO', 'ONO', 'O', 'OSO', 'SO', 'SSO', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW', 'N']
 };
 
 class WeatherStationDevice extends Device
@@ -239,7 +240,8 @@ class WeatherStationDevice extends Device
 
             var index = parseInt(gateway.winddir / 22.5);
             let langCode = this.homey.i18n.getLanguage();
-            if ((langCode !== 'en') && (langCode !== 'nl'))
+            
+            if (!(Object.getOwnPropertyNames(Sector)).includes(langCode))
             {
                 langCode = 'en';
             }

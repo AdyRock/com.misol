@@ -62,7 +62,8 @@
       {
         "title": {
           "en": "The PM10 alarm turned off",
-          "nl": "Het PM10-alarm is uitgeschakeld"
+          "nl": "Het PM10-alarm is uitgeschakeld",
+          "de": "Der PM10-Alarm ist ausgegangen"
         },
         "args": [
           {
@@ -75,7 +76,9 @@
       },
       {
         "title": {
-          "en": "Het PM10-alarm ging aan"
+          "en": "The PM10 alarm turned on",
+          "nl": "Het PM10-alarm ging aan",
+          "de": "Der PM10-Alarm ging an"
         },
         "args": [
           {
@@ -89,7 +92,8 @@
       {
         "title": {
           "en": "The power turned on",
-          "nl": "De stroom is ingeschakeld"
+          "nl": "De stroom is ingeschakeld",
+          "de": "Der Strom wurde angeschaltet"
         },
         "args": [
           {
@@ -103,7 +107,8 @@
       {
         "title": {
           "en": "The power turned off",
-          "nl": "De stroom is uitgeschakeld"
+          "nl": "De stroom is uitgeschakeld",
+          "de": "Der Strom wurde ausgeschaltet"
         },
         "args": [
           {
@@ -117,11 +122,13 @@
       {
         "title": {
           "en": "The PM2.5 air quality has become",
-          "nl": "De PM2.5 luchtkwaliteit is geworden"
+          "nl": "De PM2.5 luchtkwaliteit is geworden",
+          "de": "Die PM2.5 Luftqualität wurde"
         },
         "titleFormatted": {
           "en": "The PM2.5 air quality has become [[compare_type]] [[measure_aq]]",
-          "nl": "De PM2.5 luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden"
+          "nl": "De PM2.5 luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden",
+          "de": "Die PM2.5 Luftqualität wurde [[compare_type]] [[measure_aq]]"
         },
         "args": [
           {
@@ -134,28 +141,32 @@
             "name": "compare_type",
             "title": {
               "en": "Comparison type",
-              "nl": "Soort vergelijking"
+              "nl": "Soort vergelijking",
+              "de": "Vergleichstyp"
             },
             "values": [
               {
                 "id": "<=",
                 "label": {
                   "en": "better than or equal to",
-                  "nl": "beter dan of gelijk aan"
+                  "nl": "beter dan of gelijk aan",
+                  "de": "besser oder gleich"
                 }
               },
               {
                 "id": "==",
                 "label": {
                   "en": "equal to",
-                  "nl": "gelijk aan"
+                  "nl": "gelijk aan",
+                  "de": "gleich"
                 }
               },
               {
                 "id": ">=",
                 "label": {
                   "en": "worse than or equal to",
-                  "nl": "slechter dan of gelijk aan"
+                  "nl": "slechter dan of gelijk aan",
+                  "de": "schlechter oder gleich"
                 }
               }
             ]
@@ -165,49 +176,56 @@
             "name": "measure_aq",
             "title": {
               "en": "Minimum Air quality",
-              "nl": "Minimale luchtkwaliteit"
+              "nl": "Minimale luchtkwaliteit",
+              "de": "Minimale Luftqualität"
             },
             "values": [
               {
                 "id": "0",
                 "label": {
                   "en": "Good",
-                  "nl": "Goed"
+                  "nl": "Goed",
+                  "de": "Gut"
                 }
               },
               {
                 "id": "1",
                 "label": {
                   "en": "Moderate",
-                  "nl": "Gematigd"
+                  "nl": "Gematigd",
+                  "de": "Durchschnittlich"
                 }
               },
               {
                 "id": "2",
                 "label": {
                   "en": "Slightly Unhealthy",
-                  "nl": "Enigszins ongezond"
+                  "nl": "Enigszins ongezond",
+                  "de": "Etwas ungesund"
                 }
               },
               {
                 "id": "3",
                 "label": {
                   "en": "Unhealthy",
-                  "nl": "Ongezond"
+                  "nl": "Ongezond",
+                  "de": "Ungesund"
                 }
               },
               {
                 "id": "4",
                 "label": {
                   "en": "Very Unhealthy",
-                  "nl": "Heel ongezond"
+                  "nl": "Heel ongezond",
+                  "de": "Sehr ungesund"
                 }
               },
               {
                 "id": "5",
                 "label": {
                   "en": "Hazardous",
-                  "nl": "Gevaarlijk"
+                  "nl": "Gevaarlijk",
+                  "de": "Gefährlich"
                 }
               }
             ]
@@ -219,11 +237,13 @@
             "type": "string",
             "title": {
               "en": "PM2.5 Air Quality",
-              "nl": "PM2.5 Luchtkwaliteit"
+              "nl": "PM2.5 Luchtkwaliteit",
+              "de": "PM2.5 Luftqualität"
             },
             "example": {
               "en": "Moderate",
-              "nl": "Gematigd"
+              "nl": "Gematigd",
+              "de": "Durchschnittlich"
             }
           },
           {
@@ -231,11 +251,13 @@
             "type": "number",
             "title": {
               "en": "Air Quality item number",
-              "nl": "Luchtkwaliteit artikelnummer"
+              "nl": "Luchtkwaliteit artikelnummer",
+              "de": "Luftqualität Positionsnummer"
             },
             "example": {
               "en": "0 to 5 = Good to Hazardous",
-              "nl": "Gematigd"
+              "nl": "0 tot 5 = goed tot gevaarlijk",
+              "de": "0 bis 5 = Gut bis Gefährlich"
             }
           }
         ],
@@ -244,11 +266,13 @@
       {
         "title": {
           "en": "The average PM2.5 air quality has become",
-          "nl": "De gemiddelde luchtkwaliteit PM2,5 is geworden"
+          "nl": "De gemiddelde luchtkwaliteit PM2,5 is geworden",
+          "de": "Die durchschnittliche PM2.5 Luftqualität wurde"
         },
         "titleFormatted": {
           "en": "The average PM2.5 air quality has become [[compare_type]] [[measure_aq]]",
-          "nl": "e gemiddelde PM2.5 luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden"
+          "nl": "e gemiddelde PM2.5 luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden",
+          "de": "Die durchschnittliche PM2.5 Luftqualität wurde [[compare_type]] [[measure_aq]]"
         },
         "args": [
           {
@@ -261,28 +285,32 @@
             "name": "compare_type",
             "title": {
               "en": "Comparison type",
-              "nl": "Soort vergelijking"
+              "nl": "Soort vergelijking",
+              "de": "Vergleichstyp"
             },
             "values": [
               {
                 "id": "<=",
                 "label": {
                   "en": "better than or equal to",
-                  "nl": "beter dan of gelijk aan"
+                  "nl": "beter dan of gelijk aan",
+                  "de": "besser oder gleich"
                 }
               },
               {
                 "id": "==",
                 "label": {
                   "en": "equal to",
-                  "nl": "gelijk aan"
+                  "nl": "gelijk aan",
+                  "de": "gleich"
                 }
               },
               {
                 "id": ">=",
                 "label": {
                   "en": "worse than or equal to",
-                  "nl": "slechter dan of gelijk aan"
+                  "nl": "slechter dan of gelijk aan",
+                  "de": "schlechter oder gleich"
                 }
               }
             ]
@@ -292,49 +320,56 @@
             "name": "measure_aq",
             "title": {
               "en": "Minimum Air quality",
-              "nl": "Minimale luchtkwaliteit"
+              "nl": "Minimale luchtkwaliteit",
+              "de": "Minimale Luftqualität"
             },
             "values": [
               {
                 "id": "0",
                 "label": {
                   "en": "Good",
-                  "nl": "Goed"
+                  "nl": "Goed",
+                  "de": "Gut"
                 }
               },
               {
                 "id": "1",
                 "label": {
                   "en": "Moderate",
-                  "nl": "Gematigd"
+                  "nl": "Gematigd",
+                  "de": "Durchschnittlich"
                 }
               },
               {
                 "id": "2",
                 "label": {
                   "en": "Slightly Unhealthy",
-                  "nl": "Enigszins ongezond"
+                  "nl": "Enigszins ongezond",
+                  "de": "Etwas ungesund"
                 }
               },
               {
                 "id": "3",
                 "label": {
                   "en": "Unhealthy",
-                  "nl": "Ongezond"
+                  "nl": "Ongezond",
+                  "de": "Ungesund"
                 }
               },
               {
                 "id": "4",
                 "label": {
                   "en": "Very Unhealthy",
-                  "nl": "Heel ongezond"
+                  "nl": "Heel ongezond",
+                  "de": "Sehr ungesund"
                 }
               },
               {
                 "id": "5",
                 "label": {
                   "en": "Hazardous",
-                  "nl": "Gevaarlijk"
+                  "nl": "Gevaarlijk",
+                  "de": "Gefährlich"
                 }
               }
             ]
@@ -346,11 +381,13 @@
             "type": "string",
             "title": {
               "en": "Average PM2.5 Air Quality",
-              "nl": "Gemiddelde PM2.5 luchtkwaliteit"
+              "nl": "Gemiddelde PM2.5 luchtkwaliteit",
+              "de": "Durchschnittliche PM2.5 Luftqualität"
             },
             "example": {
               "en": "Moderate",
-              "nl": "Gematigd"
+              "nl": "Gematigd",
+              "de": "Durchschnittlich"
             }
           },
           {
@@ -358,11 +395,13 @@
             "type": "number",
             "title": {
               "en": "Average Air Quality item number",
-              "nl": "Itemnummer gemiddelde luchtkwaliteit"
+              "nl": "Itemnummer gemiddelde luchtkwaliteit",
+              "de": "Durchschnittliche Luftqualität Positionsnummer"
             },
             "example": {
               "en": "0 to 5 = Good to Hazardous",
-              "nl": "0 tot 5 = goed tot gevaarlijk"
+              "nl": "0 tot 5 = goed tot gevaarlijk",
+              "de": "0 bis 5 = Gut bis Gefährlich"
             }
           }
         ],
@@ -371,14 +410,16 @@
       {
         "title": {
           "en": "The PM2.5 air quality index has changed",
-          "nl": "De PM2.5 luchtkwaliteitsindex is gewijzigd"
+          "nl": "De PM2.5 luchtkwaliteitsindex is gewijzigd",
+          "de": "Der PM2.5 Luftqualitätsindex hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_aqi",
             "title": {
               "en": "Air quality index",
-              "nl": "Luchtkwaliteitsindex"
+              "nl": "Luchtkwaliteitsindex",
+              "de": "Luftqualitätsindex"
             },
             "type": "number",
             "example": 3
@@ -396,7 +437,8 @@
       {
         "title": {
           "en": "The PM2.5 average air quality index has changed",
-          "nl": "De PM2.5 gemiddelde luchtkwaliteitsindex is veranderd"
+          "nl": "De PM2.5 gemiddelde luchtkwaliteitsindex is veranderd",
+          "de": "Der durchschnittliche PM2.5 Luftqualitätsindex hat sich verändert"
         },
         "args": [
           {
@@ -410,11 +452,13 @@
       {
         "title": {
           "en": "The CO2 quality has become",
-          "nl": "De CO2-kwaliteit is geworden"
+          "nl": "De CO2-kwaliteit is geworden",
+          "de": "Die CO2-Qualität wurde"
         },
         "titleFormatted": {
           "en": "The CO2 air quality has become [[compare_type]] [[measure_aq]]",
-          "nl": "De CO2-luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden"
+          "nl": "De CO2-luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden",
+          "de": "Die CO2-Luftqualität wurde [[compare_type]] [[measure_aq]]"
         },
         "args": [
           {
@@ -427,28 +471,32 @@
             "name": "compare_type",
             "title": {
               "en": "Comparison type",
-              "nl": "Soort vergelijking"
+              "nl": "Soort vergelijking",
+              "de": "Vergleichstyp"
             },
             "values": [
               {
                 "id": "<=",
                 "label": {
                   "en": "better than or equal to",
-                  "nl": "beter dan of gelijk aan"
+                  "nl": "beter dan of gelijk aan",
+                  "de": "besser oder gleich"
                 }
               },
               {
                 "id": "==",
                 "label": {
                   "en": "equal to",
-                  "nl": "gelijk aan"
+                  "nl": "gelijk aan",
+                  "de": "gleich"
                 }
               },
               {
                 "id": ">=",
                 "label": {
                   "en": "worse than or equal to",
-                  "nl": "slechter dan of gelijk aan"
+                  "nl": "slechter dan of gelijk aan",
+                  "de": "schlechter oder gleich"
                 }
               }
             ]
@@ -458,49 +506,56 @@
             "name": "measure_aq",
             "title": {
               "en": "Minimum CO2 quality",
-              "nl": "Minimale CO2-kwaliteit"
+              "nl": "Minimale CO2-kwaliteit",
+              "de": "Minimale CO2-Qualität"
             },
             "values": [
               {
                 "id": "0",
                 "label": {
                   "en": "Good",
-                  "nl": "Goed"
+                  "nl": "Goed",
+                  "de": "Gut"
                 }
               },
               {
                 "id": "1",
                 "label": {
                   "en": "Moderate",
-                  "nl": "Gematigd"
+                  "nl": "Gematigd",
+                  "de": "Durchschnittlich"
                 }
               },
               {
                 "id": "2",
                 "label": {
                   "en": "Slightly Unhealthy",
-                  "nl": "Enigszins ongezond"
+                  "nl": "Enigszins ongezond",
+                  "de": "Etwas ungesund"
                 }
               },
               {
                 "id": "3",
                 "label": {
                   "en": "Unhealthy",
-                  "nl": "Ongezond"
+                  "nl": "Ongezond",
+                  "de": "Ungesund"
                 }
               },
               {
                 "id": "4",
                 "label": {
                   "en": "Very Unhealthy",
-                  "nl": "Heel ongezond"
+                  "nl": "Heel ongezond",
+                  "de": "Sehr ungesund"
                 }
               },
               {
                 "id": "5",
                 "label": {
                   "en": "Hazardous",
-                  "nl": "Gevaarlijk"
+                  "nl": "Gevaarlijk",
+                  "de": "Gefährlich"
                 }
               }
             ]
@@ -512,11 +567,13 @@
             "type": "string",
             "title": {
               "en": "CO2 Quality",
-              "nl": "CO2-kwaliteit"
+              "nl": "CO2-kwaliteit",
+              "de": "CO2-Qualität"
             },
             "example": {
               "en": "Moderate",
-              "nl": "Gematigd"
+              "nl": "Gematigd",
+              "de": "Durchschnittlich"
             }
           },
           {
@@ -524,11 +581,13 @@
             "type": "number",
             "title": {
               "en": "CO2 Quality item number",
-              "nl": "CO2 Kwaliteit artikelnummer"
+              "nl": "CO2 Kwaliteit artikelnummer",
+              "de": "CO2-Qualität Positionsnummer"
             },
             "example": {
               "en": "0 to 5 = Good to Hazardous",
-              "nl": "Gematigd"
+              "nl": "0 tot 5 = goed tot gevaarlijk",
+              "de": "0 bis 5 = Gut bis Gefährlich"
             }
           }
         ],
@@ -537,14 +596,16 @@
       {
         "title": {
           "en": "The daily rainfall Changed",
-          "nl": "De dagelijkse neerslag veranderd"
+          "nl": "De dagelijkse neerslag veranderd",
+          "de": "Der tägliche Niederschlag hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_rain.daily",
             "title": {
               "en": "Daily rainfall",
-              "nl": "Dagelijkse regenval"
+              "nl": "Dagelijkse regenval",
+              "de": "Täglicher Niederschlag"
             },
             "type": "number",
             "example": 3
@@ -562,14 +623,16 @@
       {
         "title": {
           "en": "The event rainfall Changed",
-          "nl": "De gebeurtenis regenval gewijzigd"
+          "nl": "De gebeurtenis regenval gewijzigd",
+          "de": "Der Regenereignis Niederschlag hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_rain.event",
             "title": {
               "en": "Event rainfall",
-              "nl": "Gebeurtenis regenval"
+              "nl": "Gebeurtenis regenval",
+              "de": "Regenereignis Niederschlag"
             },
             "type": "number",
             "example": 3
@@ -587,14 +650,16 @@
       {
         "title": {
           "en": "The hourly rainfall Changed",
-          "nl": "De neerslag per uur is veranderd"
+          "nl": "De neerslag per uur is veranderd",
+          "de": "Der stündliche Niederschlag hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_rain.hourly",
             "title": {
               "en": "Hourly rainfall",
-              "nl": "Regenval per uur"
+              "nl": "Regenval per uur",
+              "de": "Stündlicher Niederschlag"
             },
             "type": "number",
             "example": 3
@@ -612,14 +677,16 @@
       {
         "title": {
           "en": "The monthly rainfall Changed",
-          "nl": "De maandelijkse neerslag veranderd"
+          "nl": "De maandelijkse neerslag veranderd",
+          "de": "Der monatliche Niederschlag hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_rain.month",
             "title": {
               "en": "Monthly rainfall",
-              "nl": "Maandelijkse regenval"
+              "nl": "Maandelijkse regenval",
+              "de": "Monatlicher Niederschlag"
             },
             "type": "number",
             "example": 3
@@ -637,14 +704,16 @@
       {
         "title": {
           "en": "The total rainfall Changed",
-          "nl": "De totale regenval is veranderd"
+          "nl": "De totale regenval is veranderd",
+          "de": "Der gesamte Niederschlag hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_rain.total",
             "title": {
               "en": "Total rainfall",
-              "nl": "Totale regenval"
+              "nl": "Totale regenval",
+              "de": "Gesamter Niederschlag"
             },
             "type": "number",
             "example": 3
@@ -662,14 +731,16 @@
       {
         "title": {
           "en": "The weekly rainfall Changed",
-          "nl": "De wekelijkse neerslag Veranderd"
+          "nl": "De wekelijkse neerslag Veranderd",
+          "de": "Der wöchentliche Niederschlag hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_rain.weekly",
             "title": {
               "en": "Weekly rainfall",
-              "nl": "Wekelijkse regenval"
+              "nl": "Wekelijkse regenval",
+              "de": "Wöchentlicher Niederschlag"
             },
             "type": "number",
             "example": 3
@@ -687,14 +758,16 @@
       {
         "title": {
           "en": "The yearly rainfall Changed",
-          "nl": "De jaarlijkse neerslag veranderd"
+          "nl": "De jaarlijkse neerslag veranderd",
+          "de": "Der jährliche Niederschlag hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_rain.yearly",
             "title": {
               "en": "Yearly rainfall",
-              "nl": "Jaarlijkse regenval"
+              "nl": "Jaarlijkse regenval",
+              "de": "Jährlicher Niederschlag"
             },
             "type": "number",
             "example": 3
@@ -712,14 +785,16 @@
       {
         "title": {
           "en": "Dew point Changed",
-          "nl": "Dauwpunt gewijzigd"
+          "nl": "Dauwpunt gewijzigd",
+          "de": "Der Taupunkt hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_temperature.dewPoint",
             "title": {
               "en": "Dew point",
-              "nl": "dauwpunt"
+              "nl": "dauwpunt",
+              "de": "Taupunkt"
             },
             "type": "number",
             "example": 3
@@ -737,14 +812,16 @@
       {
         "title": {
           "en": "The feels like temperature Changed",
-          "nl": "Het voelt alsof de temperatuur is veranderd"
+          "nl": "Het voelt alsof de temperatuur is veranderd",
+          "de": "Die gefühlte Temperatur hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_temperature.feelsLike",
             "title": {
               "en": "Feels like temperature",
-              "nl": "Voelt als temperatuur"
+              "nl": "Voelt als temperatuur",
+              "de": "Gefühlte Temperatur"
             },
             "type": "number",
             "example": 3
@@ -797,14 +874,16 @@
         "id": "measure_lightning_changed",
         "title": {
           "en": "Lightning Distance Changed",
-          "nl": "Bliksemafstand gewijzigd"
+          "nl": "Bliksemafstand gewijzigd",
+          "de": "Blitzentfernung geändert"
         },
         "tokens": [
           {
             "name": "measure_lightning",
             "title": {
               "en": "Lightning Distance",
-              "nl": "Bliksem afstand"
+              "nl": "Bliksem afstand",
+              "de": "Blitzentfernung"
             },
             "type": "number",
             "example": 1.4
@@ -822,14 +901,16 @@
         "id": "measure_lightning_num_changed",
         "title": {
           "en": "Number of lightning strikes Changed",
-          "nl": "Aantal blikseminslagen Gewijzigd"
+          "nl": "Aantal blikseminslagen Gewijzigd",
+          "de": "Anzahl Blitzschläge geändert"
         },
         "tokens": [
           {
             "name": "measure_lightning_num",
             "title": {
               "en": "Lightning Count",
-              "nl": "Bliksem tellen"
+              "nl": "Bliksem tellen",
+              "de": "Blitzanzahl"
             },
             "type": "number",
             "example": 3
@@ -847,14 +928,16 @@
         "id": "measure_pm10_changed",
         "title": {
           "en": "The PM10 level changed",
-          "nl": "Het PM10-niveau is veranderd"
+          "nl": "Het PM10-niveau is veranderd",
+          "de": "Das PM10-Niveau hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_pm10",
             "title": {
               "en": "PM10 level",
-              "nl": "PM10-niveau"
+              "nl": "PM10-niveau",
+              "de": "PM10-Niveau"
             },
             "type": "number",
             "example": 3
@@ -872,14 +955,16 @@
         "id": "measure_pm10.avg_changed",
         "title": {
           "en": "The average PM10 level changed",
-          "nl": "Het gemiddelde PM10-niveau veranderde"
+          "nl": "Het gemiddelde PM10-niveau veranderde",
+          "de": "Das durchschnittliche PM10-Niveau hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_pm10.avg",
             "title": {
               "en": "PM10 level",
-              "nl": "PM10-niveau"
+              "nl": "PM10-niveau",
+              "de": "PM10-Niveau"
             },
             "type": "number",
             "example": 3
@@ -897,11 +982,13 @@
         "id": "measure_aq.pm10_changed",
         "title": {
           "en": "The PM10 air quality has become",
-          "nl": "De luchtkwaliteit PM10 is geworden"
+          "nl": "De luchtkwaliteit PM10 is geworden",
+          "de": "Die PM10 Luftqualität wurde"
         },
         "titleFormatted": {
           "en": "The PM10 air quality has become [[compare_type]] [[measure_aq]]",
-          "nl": "De PM10 luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden"
+          "nl": "De PM10 luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden",
+          "de": "Die PM10 Luftqualität wurde [[compare_type]] [[measure_aq]]"
         },
         "args": [
           {
@@ -914,28 +1001,32 @@
             "name": "compare_type",
             "title": {
               "en": "Comparison type",
-              "nl": "Soort vergelijking"
+              "nl": "Soort vergelijking",
+              "de": "Vergleichstyp"
             },
             "values": [
               {
                 "id": "<=",
                 "label": {
                   "en": "better than or equal to",
-                  "nl": "beter dan of gelijk aan"
+                  "nl": "beter dan of gelijk aan",
+                  "de": "besser oder gleich"
                 }
               },
               {
                 "id": "==",
                 "label": {
                   "en": "equal to",
-                  "nl": "gelijk aan"
+                  "nl": "gelijk aan",
+                  "de": "gleich"
                 }
               },
               {
                 "id": ">=",
                 "label": {
                   "en": "worse than or equal to",
-                  "nl": "slechter dan of gelijk aan"
+                  "nl": "slechter dan of gelijk aan",
+                  "de": "schlechter oder gleich"
                 }
               }
             ]
@@ -945,49 +1036,56 @@
             "name": "measure_aq",
             "title": {
               "en": "Minimum Air quality",
-              "nl": "Minimale luchtkwaliteit"
+              "nl": "Minimale luchtkwaliteit",
+              "de": "Minimale Luftqualität"
             },
             "values": [
               {
                 "id": "0",
                 "label": {
                   "en": "Good",
-                  "nl": "Goed"
+                  "nl": "Goed",
+                  "de": "Gut"
                 }
               },
               {
                 "id": "1",
                 "label": {
                   "en": "Moderate",
-                  "nl": "Gematigd"
+                  "nl": "Gematigd",
+                  "de": "Durchschnittlich"
                 }
               },
               {
                 "id": "2",
                 "label": {
                   "en": "Slightly Unhealthy",
-                  "nl": "Enigszins ongezond"
+                  "nl": "Enigszins ongezond",
+                  "de": "Etwas ungesund"
                 }
               },
               {
                 "id": "3",
                 "label": {
                   "en": "Unhealthy",
-                  "nl": "Ongezond"
+                  "nl": "Ongezond",
+                  "de": "Ungesund"
                 }
               },
               {
                 "id": "4",
                 "label": {
                   "en": "Very Unhealthy",
-                  "nl": "Heel ongezond"
+                  "nl": "Heel ongezond",
+                  "de": "Sehr ungesund"
                 }
               },
               {
                 "id": "5",
                 "label": {
                   "en": "Hazardous",
-                  "nl": "Gevaarlijk"
+                  "nl": "Gevaarlijk",
+                  "de": "Gefährlich"
                 }
               }
             ]
@@ -999,11 +1097,13 @@
             "type": "string",
             "title": {
               "en": "PM10 Air Quality",
-              "nl": "PM10 Luchtkwaliteit"
+              "nl": "PM10 Luchtkwaliteit",
+              "de": "PM10 Luftqualität"
             },
             "example": {
               "en": "Moderate",
-              "nl": "Gematigd"
+              "nl": "Gematigd",
+              "de": "Durchschnittlich"
             }
           },
           {
@@ -1011,11 +1111,13 @@
             "type": "number",
             "title": {
               "en": "Air Quality item number",
-              "nl": "Luchtkwaliteit artikelnummer"
+              "nl": "Luchtkwaliteit artikelnummer",
+              "de": "Luftqualität Positionsnummer"
             },
             "example": {
               "en": "0 to 5 = Good to Hazardous",
-              "nl": "0 tot 5 = goed tot gevaarlijk"
+              "nl": "0 tot 5 = goed tot gevaarlijk",
+              "de": "0 bis 5 = Gut bis Gefährlich"
             }
           }
         ]
@@ -1024,11 +1126,13 @@
         "id": "measure_aq.pm10_avg_changed",
         "title": {
           "en": "The average PM10 air quality has become",
-          "nl": "De gemiddelde luchtkwaliteit PM10 is geworden"
+          "nl": "De gemiddelde luchtkwaliteit PM10 is geworden",
+          "de": "Die durchnittliche PM10 Luftqualität wurde"
         },
         "titleFormatted": {
           "en": "The average PM10 air quality has become [[compare_type]] [[measure_aq]]",
-          "nl": "De gemiddelde PM10-luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden"
+          "nl": "De gemiddelde PM10-luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden",
+          "de": "Die durchschnittliche PM10 Luftqualität wurde [[compare_type]] [[measure_aq]]"
         },
         "args": [
           {
@@ -1041,28 +1145,32 @@
             "name": "compare_type",
             "title": {
               "en": "Comparison type",
-              "nl": "Soort vergelijking"
+              "nl": "Soort vergelijking",
+              "de": "Vergleichstyp"
             },
             "values": [
               {
                 "id": "<=",
                 "label": {
                   "en": "better than or equal to",
-                  "nl": "beter dan of gelijk aan"
+                  "nl": "beter dan of gelijk aan",
+                  "de": "besser oder gleich"
                 }
               },
               {
                 "id": "==",
                 "label": {
                   "en": "equal to",
-                  "nl": "gelijk aan"
+                  "nl": "gelijk aan",
+                  "de": "gleich"
                 }
               },
               {
                 "id": ">=",
                 "label": {
                   "en": "worse than or equal to",
-                  "nl": "slechter dan of gelijk aan"
+                  "nl": "slechter dan of gelijk aan",
+                  "de": "schlechter oder gleich"
                 }
               }
             ]
@@ -1072,49 +1180,56 @@
             "name": "measure_aq",
             "title": {
               "en": "Minimum Air quality",
-              "nl": "Minimale luchtkwaliteit"
+              "nl": "Minimale luchtkwaliteit",
+              "de": "Minimale Luftqualität"
             },
             "values": [
               {
                 "id": "0",
                 "label": {
                   "en": "Good",
-                  "nl": "Goed"
+                  "nl": "Goed",
+                  "de": "Gut"
                 }
               },
               {
                 "id": "1",
                 "label": {
                   "en": "Moderate",
-                  "nl": "Gematigd"
+                  "nl": "Gematigd",
+                  "de": "Durchschnittlich"
                 }
               },
               {
                 "id": "2",
                 "label": {
                   "en": "Slightly Unhealthy",
-                  "nl": "Enigszins ongezond"
+                  "nl": "Enigszins ongezond",
+                  "de": "Etwas ungesund"
                 }
               },
               {
                 "id": "3",
                 "label": {
                   "en": "Unhealthy",
-                  "nl": "Ongezond"
+                  "nl": "Ongezond",
+                  "de": "Ungesund"
                 }
               },
               {
                 "id": "4",
                 "label": {
                   "en": "Very Unhealthy",
-                  "nl": "Heel ongezond"
+                  "nl": "Heel ongezond",
+                  "de": "Sehr ungesund"
                 }
               },
               {
                 "id": "5",
                 "label": {
                   "en": "Hazardous",
-                  "nl": "Gevaarlijk"
+                  "nl": "Gevaarlijk",
+                  "de": "Gefährlich"
                 }
               }
             ]
@@ -1126,11 +1241,13 @@
             "type": "string",
             "title": {
               "en": "PM10 Air Quality",
-              "nl": "PM10 Luchtkwaliteit"
+              "nl": "PM10 Luchtkwaliteit",
+              "de": "PM10 Luftqualität"
             },
             "example": {
               "en": "Moderate",
-              "nl": "Gematigd"
+              "nl": "Gematigd",
+              "de": "Durchschnittlich"
             }
           },
           {
@@ -1138,11 +1255,13 @@
             "type": "number",
             "title": {
               "en": "Air Quality item number",
-              "nl": "Luchtkwaliteit artikelnummer"
+              "nl": "Luchtkwaliteit artikelnummer",
+              "de": "Luftqualität Positionsnummer"
             },
             "example": {
               "en": "0 to 5 = Good to Hazardous",
-              "nl": "0 tot 5 = goed tot gevaarlijk"
+              "nl": "0 tot 5 = goed tot gevaarlijk",
+              "de": "0 bis 5 = Gut bis Gefährlich"
             }
           }
         ]
@@ -1151,14 +1270,16 @@
         "id": "measure_aqi.pm10_changed",
         "title": {
           "en": "The PM10 air quality index has changed",
-          "nl": "De PM10 luchtkwaliteitsindex is gewijzigd"
+          "nl": "De PM10 luchtkwaliteitsindex is gewijzigd",
+          "de": "Der PM10 Luftqualitätsindex hat sich geändert"
         },
         "tokens": [
           {
             "name": "measure_aqi.pm10",
             "title": {
               "en": "Air quality index",
-              "nl": "Luchtkwaliteitsindex"
+              "nl": "Luchtkwaliteitsindex",
+              "de": "Luftqualitätsindex"
             },
             "type": "number",
             "example": 3
@@ -1176,14 +1297,16 @@
         "id": "measure_aqi.pm10_avg_changed",
         "title": {
           "en": "The PM10 average air quality index has changed",
-          "nl": "De PM10 gemiddelde luchtkwaliteitsindex is gewijzigd"
+          "nl": "De PM10 gemiddelde luchtkwaliteitsindex is gewijzigd",
+          "de": "Der durchschnittliche PM10 Luftqualitätsindex hat sich geändert"
         },
         "tokens": [
           {
             "name": "measure_aqi.avg",
             "title": {
               "en": "Average Air quality index",
-              "nl": "Gemiddelde luchtkwaliteitsindex"
+              "nl": "Gemiddelde luchtkwaliteitsindex",
+              "de": "Durchschnittlicher Luftqualitätsindex"
             },
             "type": "number",
             "example": 3
@@ -1201,14 +1324,16 @@
         "id": "measure_moisture_changed",
         "title": {
           "en": "The soil moisture has changed",
-          "nl": "De bodemvochtigheid is veranderd"
+          "nl": "De bodemvochtigheid is veranderd",
+          "de": "Die Bodenfeuchte hat sich verändert"
         },
         "tokens": [
           {
             "name": "measure_moisture",
             "title": {
               "en": "Soil Moisture",
-              "nl": "Bodemvocht"
+              "nl": "Bodemvocht",
+              "de": "Bodenfeuchte"
             },
             "type": "number",
             "units": "%",
@@ -1228,15 +1353,18 @@
       {
         "title": {
           "en": "Air quality index is !{{equal|not equal}} to",
-          "nl": "De luchtkwaliteitsindex is !{{gelijk aan |niet gelijk}} aan"
+          "nl": "De luchtkwaliteitsindex is !{{gelijk aan |niet gelijk}} aan",
+          "de": "Der Luftqualitätsindex ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if air quality index is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de luchtkwaliteitsindex wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de luchtkwaliteitsindex wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der Luftqualitätsindex (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The air quality index is !{{equal|not equal}} to [[measure_aqi]]%",
-          "nl": "De luchtkwaliteitsindex is !{{equal|not equal}} tot [[measure_aqi]]%"
+          "nl": "De luchtkwaliteitsindex is !{{equal|not equal}} tot [[measure_aqi]]%",
+          "de": "Der Luftqualitätsindex ist !{{gleich|nicht gleich}} [[measure_aqi]]%"
         },
         "args": [
           {
@@ -1252,11 +1380,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Air quality index",
-              "nl": "Luchtkwaliteitsindex"
+              "nl": "Luchtkwaliteitsindex",
+              "de": "Luftqualitätsindex"
             }
           }
         ],
@@ -1265,15 +1395,18 @@
       {
         "title": {
           "en": "Air quality index is !{{less|greater}} than",
-          "nl": "Luchtkwaliteitsindex is !{{minder|groter}} dan"
+          "nl": "Luchtkwaliteitsindex is !{{minder|groter}} dan",
+          "de": "Der Luftqualitätsindex ist !{{kleiner|größer}} als"
         },
         "hint": {
           "en": "This Flow will continue if air quality index is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de luchtkwaliteitsindex wel/niet lager is dan de ingestelde waarde"
+          "nl": "Deze stroom gaat door als de luchtkwaliteitsindex wel/niet lager is dan de ingestelde waarde",
+          "de": "Dieser Flow wird weiterlaufen, wenn der Luftqualitätsindex kleiner/größer dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The air quality index is !{{less|greater}} than [[measure_aqi]]%",
-          "nl": "De luchtkwaliteitsindex is !{{minder|groter}} dan [[measure_aqi]]%"
+          "nl": "De luchtkwaliteitsindex is !{{minder|groter}} dan [[measure_aqi]]%",
+          "de": "Der Luftqualitätsindex ist !{{kleiner|größer}}als [[measure_aqi]]%"
         },
         "args": [
           {
@@ -1289,11 +1422,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Air quality index",
-              "nl": "Luchtkwaliteitsindex"
+              "nl": "Luchtkwaliteitsindex",
+              "de": "Luftqualitätsindex"
             }
           }
         ],
@@ -1302,15 +1437,18 @@
       {
         "title": {
           "en": "Average Air quality index is !{{equal|not equal}} to",
-          "nl": "De gemiddelde luchtkwaliteitsindex is !{{gelijk aan | niet gelijk aan}}"
+          "nl": "De gemiddelde luchtkwaliteitsindex is !{{gelijk aan | niet gelijk aan}}",
+          "de": "Der durchschnittliche Luftqualitätsindex ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if average air quality index is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de gemiddelde luchtkwaliteitsindex wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de gemiddelde luchtkwaliteitsindex wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der durchschnittliche Luftqualitätsindex (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The average air quality index is !{{equal|not equal}} to [[measure_aqi.avg]]%",
-          "nl": "De gemiddelde luchtkwaliteitsindex is !{{equal|not equal}} tot [[measure_aqi.avg]]%"
+          "nl": "De gemiddelde luchtkwaliteitsindex is !{{equal|not equal}} tot [[measure_aqi.avg]]%",
+          "de": "Der Luftqualitätsindex ist !{{gleich|nicht gleich}} [[measure_aqi.avg]]%"
         },
         "args": [
           {
@@ -1326,11 +1464,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Average Air quality index",
-              "nl": "Gemiddelde luchtkwaliteitsindex"
+              "nl": "Gemiddelde luchtkwaliteitsindex",
+              "de": "Durchschnittlicher Luftqualitätsindex"
             }
           }
         ],
@@ -1339,15 +1479,18 @@
       {
         "title": {
           "en": "Average Air quality index is !{{less|greater}} than",
-          "nl": "De gemiddelde luchtkwaliteitsindex is !{{minder|groter}} dan"
+          "nl": "De gemiddelde luchtkwaliteitsindex is !{{minder|groter}} dan",
+          "de": "Der durchschnittliche Luftqualitätsindex ist !{{kleiner|größer}} als"
         },
         "hint": {
           "en": "This Flow will continue if average air quality index is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de gemiddelde luchtkwaliteitsindex wel/niet lager is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de gemiddelde luchtkwaliteitsindex wel/niet lager is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der durchschnittliche Luftqualitätsindex kleiner/größer dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The average air quality index is !{{less|greater}} than [[measure_aqi.avg]]%",
-          "nl": "De gemiddelde luchtkwaliteitsindex is !{{minder|groter}} dan [[measure_aqi.avg]]%"
+          "nl": "De gemiddelde luchtkwaliteitsindex is !{{minder|groter}} dan [[measure_aqi.avg]]%",
+          "de": "Der Luftqualitätsindex ist !{{kleiner|größer}}als [[measure_aqi.avg]]%"
         },
         "args": [
           {
@@ -1363,11 +1506,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Average Air quality index",
-              "nl": "Gemiddelde luchtkwaliteitsindex"
+              "nl": "Gemiddelde luchtkwaliteitsindex",
+              "de": "Durchschnittlicher Luftqualitätsindex"
             }
           }
         ],
@@ -1376,15 +1521,18 @@
       {
         "title": {
           "en": "Hours since last rained is !{{equal|not equal}} to",
-          "nl": "Uren sinds de laatste regenbui is !{{gelijk aan | niet gelijk aan}}"
+          "nl": "Uren sinds de laatste regenbui is !{{gelijk aan | niet gelijk aan}}",
+          "de": "Stundenanzahl seit dem letzen Regen ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if hours since it last rained is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als het aantal uren sinds de laatste regen wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als het aantal uren sinds de laatste regen wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die Stundenanzahl seit dem letzten Regen (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The hours since it last rained is !{{equal|not equal}} to [[value]]Hours",
-          "nl": "Het aantal uren sinds het voor het laatst heeft geregend is !{{equal|not equal}} tot [[value]]Uren"
+          "nl": "Het aantal uren sinds het voor het laatst heeft geregend is !{{equal|not equal}} tot [[value]]Uren",
+          "de": "Die Stundenanzahl seit letztem Regen ist !{{gleich|nicht gleich}} [[value]] Stunden"
         },
         "args": [
           {
@@ -1400,11 +1548,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Hours since it last rained",
-              "nl": "Uren geleden dat het voor het laatst geregend heeft"
+              "nl": "Uren geleden dat het voor het laatst geregend heeft",
+              "de": "Stundenanzahl seit dem letzten Regen"
             }
           }
         ],
@@ -1413,15 +1563,18 @@
       {
         "title": {
           "en": "Hours since last rained is !{{less|greater}} than",
-          "nl": "Uren sinds de laatste regenbui is !{{minder|groter}} dan"
+          "nl": "Uren sinds de laatste regenbui is !{{minder|groter}} dan",
+          "de": "Stundenanzahl seit dem letzen Regen ist !{{kleiner|größer}} als"
         },
         "hint": {
           "en": "This Flow will continue if hours since it last rained is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als het aantal uren sinds de laatste regen niet minder is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als het aantal uren sinds de laatste regen niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die Stundenanzahl seit dem letzten Regen kleiner/größer dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The hours since it last rained is !{{less|greater}} less than [[value]]Hours",
-          "nl": "Het aantal uren sinds de laatste regenbui is !{{minder|groter}} minder dan [[value]]uren"
+          "nl": "Het aantal uren sinds de laatste regenbui is !{{minder|groter}} minder dan [[value]]uren",
+          "de": "Die Stundenanzahl seit letztem Regen ist !{{kleiner|größer}} [[value]] Stunden"
         },
         "args": [
           {
@@ -1437,11 +1590,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Hours since it last rained",
-              "nl": "Uren geleden dat het voor het laatst geregend heeft"
+              "nl": "Uren geleden dat het voor het laatst geregend heeft",
+              "de": "Stundenanzahl seit dem letzten Regen"
             }
           }
         ],
@@ -1450,15 +1605,18 @@
       {
         "title": {
           "en": "Daily rainfall is !{{equal|not equal}} to",
-          "nl": "Dagelijkse regenval is !{{gelijk aan |niet gelijk aan}}"
+          "nl": "Dagelijkse regenval is !{{gelijk aan |niet gelijk aan}}",
+          "de": "Täglicher Niederschlag ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if daily rainfall is/is not equal to the set value.",
-          "nl": "zijn Flow gaat door als de dagelijkse neerslag wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "zijn Flow gaat door als de dagelijkse neerslag wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der tägliche Niederschlag (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The daily rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De dagelijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+          "nl": "De dagelijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+          "de": "Der tägliche Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1474,11 +1632,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Daily rainfall",
-              "nl": "Dagelijkse regenval"
+              "nl": "Dagelijkse regenval",
+              "de": "Täglicher Niederschlag"
             }
           }
         ],
@@ -1487,15 +1647,18 @@
       {
         "title": {
           "en": "Daily rainfall is !{{is|is not}} less than",
-          "nl": "Dagelijkse regenval is !{{is|is niet}} minder dan"
+          "nl": "Dagelijkse regenval is !{{is|is niet}} minder dan",
+          "de": "Täglicher Niederschlag !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if daily rainfall is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de dagelijkse regenval wel/niet minder is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de dagelijkse regenval wel/niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der tägliche Niederschlag (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The daily rainfall is !{{is|is not}} less than [[value]]mm",
-          "nl": "De dagelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm"
+          "nl": "De dagelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm",
+          "de": "Der tägliche Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -1511,11 +1674,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Daily rainfall",
-              "nl": "Dagelijkse regenval"
+              "nl": "Dagelijkse regenval",
+              "de": "Täglicher Niederschlag"
             }
           }
         ],
@@ -1524,15 +1689,18 @@
       {
         "title": {
           "en": "Event rainfall is !{{equal|not equal}} to",
-          "nl": "Evenement regenval is !{{gelijk aan | niet gelijk aan}}"
+          "nl": "Evenement regenval is !{{gelijk aan | niet gelijk aan}}",
+          "de": "Regenereignis Niederschlag ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if event rainfall is/is not equal to the set value.",
-          "nl": "Deze stroom gaat door als de regenval wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de regenval wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der Regenereignis Niederschlag (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The event rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De gebeurtenisregenval is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+          "nl": "De gebeurtenisregenval is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+          "de": "Der Regenereignis Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1548,11 +1716,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Event rainfall",
-              "nl": "Gebeurtenis regenval"
+              "nl": "Gebeurtenis regenval",
+              "de": "Regenereignis Niederschlag"
             }
           }
         ],
@@ -1561,15 +1731,18 @@
       {
         "title": {
           "en": "Event rainfall is !{{is|is not}} less than",
-          "nl": "Evenement regenval is !{{is|is niet}} minder dan"
+          "nl": "Evenement regenval is !{{is|is niet}} minder dan",
+          "de": "Regenereignis Niederschlag !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if event rainfall is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de regenval wel/niet minder is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de regenval wel/niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der Regenereignis Niederschlag (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The event rainfall is !{{is|is not}} less than [[value]]mm",
-          "nl": "De regenval is !{{is|is niet}} minder dan [[value]]mm"
+          "nl": "De regenval is !{{is|is niet}} minder dan [[value]]mm",
+          "de": "Der Regenereignis Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -1585,11 +1758,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Event rainfall",
-              "nl": "Gebeurtenis regenval"
+              "nl": "Gebeurtenis regenval",
+              "de": "Regenereignis Niederschlag"
             }
           }
         ],
@@ -1598,15 +1773,18 @@
       {
         "title": {
           "en": "Hourly rainfall is !{{equal|not equal}} to",
-          "nl": "De neerslag per uur is !{{gelijk aan |niet gelijk aan}}"
+          "nl": "De neerslag per uur is !{{gelijk aan |niet gelijk aan}}",
+          "de": "Stündliche Niederschlag ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if hourly rainfall is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de neerslag per uur wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de neerslag per uur wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der stündliche Niederschlag (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The hourly rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De neerslag per uur is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+          "nl": "De neerslag per uur is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+          "de": "Der stündliche Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1622,11 +1800,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Hourly rainfall",
-              "nl": "Regenval per uur"
+              "nl": "Regenval per uur",
+              "de": "Stündlicher Niederschlag"
             }
           }
         ],
@@ -1635,15 +1815,18 @@
       {
         "title": {
           "en": "Hourly rainfall is !{{is|is not}} less than",
-          "nl": "De regenval per uur is !{{is|is niet}} minder dan"
+          "nl": "De regenval per uur is !{{is|is niet}} minder dan",
+          "de": "Stündlicher Niederschlag !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if hourly rainfall is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de regenval per uur minder is/is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de regenval per uur minder is/is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der stündliche Niederschlag (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The hourly rainfall is !{{is|is not}} less than [[value]]mm",
-          "nl": "De neerslag per uur is !{{is|is niet}} minder dan [[value]]mm"
+          "nl": "De neerslag per uur is !{{is|is niet}} minder dan [[value]]mm",
+          "de": "Der stündliche Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -1659,11 +1842,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Hourly rainfall",
-              "nl": "Regenval per uur"
+              "nl": "Regenval per uur",
+              "de": "Stündlicher Niederschlag"
             }
           }
         ],
@@ -1672,15 +1857,18 @@
       {
         "title": {
           "en": "Monthly rainfall is !{{equal|not equal}} to",
-          "nl": "Maandelijkse regenval is !{{gelijk aan | niet gelijk aan}}"
+          "nl": "Maandelijkse regenval is !{{gelijk aan | niet gelijk aan}}",
+          "de": "Monatliche Niederschlag ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if monthly rainfall is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de maandelijkse regenval wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de maandelijkse regenval wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der monatliche Niederschlag (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The monthly rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De maandelijkse regenval is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+          "nl": "De maandelijkse regenval is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+          "de": "Der monatliche Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1696,11 +1884,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Monthly rainfall",
-              "nl": "Maandelijkse regenval"
+              "nl": "Maandelijkse regenval",
+              "de": "Monatlicher Niederschlag"
             }
           }
         ],
@@ -1709,15 +1899,18 @@
       {
         "title": {
           "en": "Monthly rainfall is !{{is|is not}} less than",
-          "nl": "Maandelijkse regenval is !{{is|is niet}} minder dan"
+          "nl": "Maandelijkse regenval is !{{is|is niet}} minder dan",
+          "de": "Monatlicher Niederschlag !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if monthly rainfall is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de maandelijkse regenval wel/niet minder is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de maandelijkse regenval wel/niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der monatliche Niederschlag (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The monthly rainfall is !{{is|is not}} less than [[value]]mm",
-          "nl": "De maandelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm"
+          "nl": "De maandelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm",
+          "de": "Der monatliche Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -1733,11 +1926,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Monthly rainfall",
-              "nl": "Maandelijkse regenval"
+              "nl": "Maandelijkse regenval",
+              "de": "Monatlicher Niederschlag"
             }
           }
         ],
@@ -1746,15 +1941,18 @@
       {
         "title": {
           "en": "Total rainfall is !{{equal|not equal}} to",
-          "nl": "De totale regenval is !{{gelijk aan | niet gelijk aan}}"
+          "nl": "De totale regenval is !{{gelijk aan | niet gelijk aan}}",
+          "de": "Gesamter Niederschlag ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if total rainfall is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de totale neerslag wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de totale neerslag wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der gesamte Niederschlag (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The total rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De totale neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+          "nl": "De totale neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+          "de": "Der gesamte Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1770,11 +1968,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Total rainfall",
-              "nl": "Totale regenval"
+              "nl": "Totale regenval",
+              "de": "Gesamter Niederschlag"
             }
           }
         ],
@@ -1783,15 +1983,18 @@
       {
         "title": {
           "en": "Total rainfall is !{{is|is not}} less than",
-          "nl": "De totale regenval is !{{is|is niet}} minder dan"
+          "nl": "De totale regenval is !{{is|is niet}} minder dan",
+          "de": "Gesamter Niederschlag !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if total rainfall is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de totale regenval wel/niet minder is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de totale regenval wel/niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der gesamte Niederschlag (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The total rainfall is !{{is|is not}} less than [[value]]mm",
-          "nl": "De totale regenval is !{{is|is niet}} minder dan [[value]]mm"
+          "nl": "De totale regenval is !{{is|is niet}} minder dan [[value]]mm",
+          "de": "Der gesamte Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -1807,11 +2010,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Total rainfall",
-              "nl": "Totale regenval"
+              "nl": "Totale regenval",
+              "de": "Gesamter Niederschlag"
             }
           }
         ],
@@ -1820,15 +2025,18 @@
       {
         "title": {
           "en": "Weekly rainfall is !{{equal|not equal}} to",
-          "nl": "Wekelijkse regenval is !{{gelijk aan | niet gelijk aan}}"
+          "nl": "Wekelijkse regenval is !{{gelijk aan | niet gelijk aan}}",
+          "de": "Wöchentlicher Niederschlag ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if weekly rainfall is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de wekelijkse regenval wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de wekelijkse regenval wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der wöchentlicher Niederschlag (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The weekly rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De wekelijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+          "nl": "De wekelijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+          "de": "Der wöchentlicher Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1844,11 +2052,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Weekly rainfall",
-              "nl": "Wekelijkse regenval"
+              "nl": "Wekelijkse regenval",
+              "de": "Wöchentlicher Niederschlag"
             }
           }
         ],
@@ -1857,15 +2067,18 @@
       {
         "title": {
           "en": "Weekly rainfall is !{{is|is not}} less than",
-          "nl": "Wekelijkse regenval is !{{is|is niet}} minder dan"
+          "nl": "Wekelijkse regenval is !{{is|is niet}} minder dan",
+          "de": "Wöchentlicher Niederschlag !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if weekly rainfall is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de wekelijkse regenval wel/niet minder is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de wekelijkse regenval wel/niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der wöchentliche Niederschlag (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The weekly rainfall is !{{is|is not}} less than [[value]]mm",
-          "nl": "De wekelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm"
+          "nl": "De wekelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm",
+          "de": "Der wöchentliche Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -1881,11 +2094,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Weekly rainfall",
-              "nl": "Wekelijkse regenval"
+              "nl": "Wekelijkse regenval",
+              "de": "Wöchentlicher Niederschlag"
             }
           }
         ],
@@ -1894,15 +2109,18 @@
       {
         "title": {
           "en": "Yearly rainfall is !{{equal|not equal}} to",
-          "nl": "Jaarlijkse regenval is !{{gelijk aan | niet gelijk aan}}"
+          "nl": "Jaarlijkse regenval is !{{gelijk aan | niet gelijk aan}}",
+          "de": "Jährlicher Niederschlag ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if yearly rainfall is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de jaarlijkse neerslag wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de jaarlijkse neerslag wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der jährliche Niederschlag (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The yearly rainfall is !{{equal|not equal}} to [[value]]mm",
-          "nl": "De jaarlijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm"
+          "nl": "De jaarlijkse neerslag is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+          "de": "Der jährliche Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
         },
         "args": [
           {
@@ -1918,11 +2136,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Yearly rainfall",
-              "nl": "Jaarlijkse regenval"
+              "nl": "Jaarlijkse regenval",
+              "de": "Jährlicher Niederschlag"
             }
           }
         ],
@@ -1931,15 +2151,18 @@
       {
         "title": {
           "en": "Yearly rainfall is !{{is|is not}} less than",
-          "nl": "Jaarlijkse regenval is !{{is|is niet}} minder dan"
+          "nl": "Jaarlijkse regenval is !{{is|is niet}} minder dan",
+          "de": "Jährlicher Niederschlag !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if yearly rainfall is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de jaarlijkse regenval wel/niet minder is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de jaarlijkse regenval wel/niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der jährliche Niederschlag (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The yearly rainfall is !{{is|is not}} less than [[value]]mm",
-          "nl": "De jaarlijkse regenval is !{{is|is niet}} minder dan [[value]]mm"
+          "nl": "De jaarlijkse regenval is !{{is|is niet}} minder dan [[value]]mm",
+          "de": "Der jährliche Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
         },
         "args": [
           {
@@ -1955,11 +2178,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Yearly rainfall",
-              "nl": "Jaarlijkse regenval"
+              "nl": "Jaarlijkse regenval",
+              "de": "Jährlicher Niederschlag"
             }
           }
         ],
@@ -1968,15 +2193,18 @@
       {
         "title": {
           "en": "Dew point is !{{equal|not equal}} to",
-          "nl": "Dauwpunt is !{{gelijk aan |niet gelijk aan}}"
+          "nl": "Dauwpunt is !{{gelijk aan |niet gelijk aan}}",
+          "de": "Taupunkt ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if dew point is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als het dauwpunt wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als het dauwpunt wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der Taupunkt (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The dew point is !{{equal|not equal}} to [[value]]°C",
-          "nl": "Het dauwpunt is !{{gelijk aan|niet gelijk aan}} tot [[value]]°C"
+          "nl": "Het dauwpunt is !{{gelijk aan|niet gelijk aan}} tot [[value]]°C",
+          "de": "Der Taupunkt ist !{{gleich|nicht gleich}} [[value]]°C"
         },
         "args": [
           {
@@ -1992,11 +2220,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Dew point",
-              "nl": "dauwpunt"
+              "nl": "dauwpunt",
+              "de": "Taupunkt"
             }
           }
         ],
@@ -2005,15 +2235,18 @@
       {
         "title": {
           "en": "Dew point is !{{is|is not}} less than",
-          "nl": "Dauwpunt is !{{is|is niet}} lager dan"
+          "nl": "Dauwpunt is !{{is|is niet}} lager dan",
+          "de": "Taupunkt !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if the dew point is/is not less than the set value.",
-          "nl": "Deze Flow gaat door als het dauwpunt wel/niet lager is dan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als het dauwpunt wel/niet lager is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der Taupunkt (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The dew point is !{{is|is not}} less than [[value]]°C",
-          "nl": "Het dauwpunt is !{{is|is niet}} lager dan [[value]]°C"
+          "nl": "Het dauwpunt is !{{is|is niet}} lager dan [[value]]°C",
+          "de": "Der Taupunkt !{{ist|ist nicht}} kleiner als [[value]]°C"
         },
         "args": [
           {
@@ -2029,11 +2262,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Dew point",
-              "nl": "dauwpunt"
+              "nl": "dauwpunt",
+              "de": "Taupunkt"
             }
           }
         ],
@@ -2042,15 +2277,18 @@
       {
         "title": {
           "en": "Feels like temperature is !{{equal|not equal}} to",
-          "nl": "Het voelt alsof de temperatuur !{{equal|not equal}} is"
+          "nl": "Het voelt alsof de temperatuur !{{equal|not equal}} is",
+          "de": "Gefühlte Temperatur ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if feels like temperature is/is not equal to the set value.",
-          "nl": "Deze stroom gaat door als het voelt alsof de temperatuur wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als het voelt alsof de temperatuur wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die gefühlte Temperatur (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The feels like temperature is !{{equal|not equal}} to [[value]]°C",
-          "nl": "De gevoelstemperatuur is !{{gelijk aan|niet gelijk aan}} tot [[value]]°C"
+          "nl": "De gevoelstemperatuur is !{{gelijk aan|niet gelijk aan}} tot [[value]]°C",
+          "de": "Die gefühlte Temperatur ist !{{gleich|nicht gleich}} [[value]]°C"
         },
         "args": [
           {
@@ -2066,11 +2304,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Feels like temperature",
-              "nl": "Voelt als temperatuur"
+              "nl": "Voelt als temperatuur",
+              "de": "Gefühlte Temperatur"
             }
           }
         ],
@@ -2079,15 +2319,18 @@
       {
         "title": {
           "en": "Feels like temperature is !{{is|is not}} less than",
-          "nl": "Het voelt alsof de temperatuur !{{is|is niet}} lager is dan"
+          "nl": "Het voelt alsof de temperatuur !{{is|is niet}} lager is dan",
+          "de": "Die gefühlte Temperatur !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if feels like temperature is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als het voelt alsof de temperatuur wel/niet lager is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als het voelt alsof de temperatuur wel/niet lager is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die gefühlte Temperatur (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The feels like temperature is !{{is|is not}} less than [[value]]°C",
-          "nl": "Het voelt alsof de temperatuur !{{is|is niet}} lager is dan [[value]]°C"
+          "nl": "Het voelt alsof de temperatuur !{{is|is niet}} lager is dan [[value]]°C",
+          "de": "Die gefühlte Temperatur !{{ist|ist nicht}} kleiner als [[value]]°C"
         },
         "args": [
           {
@@ -2103,11 +2346,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Feels like temperature",
-              "nl": "Voelt als temperatuur"
+              "nl": "Voelt als temperatuur",
+              "de": "Gefühlte Temperatur"
             }
           }
         ],
@@ -2116,7 +2361,7 @@
       {
         "title": {
           "en": "Motion snapshot is ready within...",
-          "de": "Bewegungsschnappschuss ist innerhalb von ...",
+          "de": "Bewegungsschnappschuss ist fertig innerhalb von ...",
           "nl": "Bewegings snapshot is klaar binnen ...",
           "it": "L'istantanea in movimento è pronta entro ..."
         },
@@ -2150,15 +2395,18 @@
         "id": "measure_lightning_is_less",
         "title": {
           "en": "Lightning Distance is !{{is|is not}} less than",
-          "nl": "Bliksemafstand is !{{is|is niet}} kleiner dan"
+          "nl": "Bliksemafstand is !{{is|is niet}} kleiner dan",
+          "de": "Blitzentfernung !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if Lightning Distance is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de bliksemafstand wel/niet kleiner is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de bliksemafstand wel/niet kleiner is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die Blitzentfernung (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The Lightning Distance !{{is|is not}} less than [[value]]km",
-          "nl": "De bliksemafstand !{{is|is niet}} kleiner dan [[value]]km"
+          "nl": "De bliksemafstand !{{is|is niet}} kleiner dan [[value]]km",
+          "de": "Die Blitzentfernung !{{ist|ist nicht}} weniger als [[value]]km"
         },
         "args": [
           {
@@ -2174,11 +2422,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "dl": "Wert setzen"
             },
             "title": {
               "en": "Lightning Distance",
-              "nl": "Bliksem afstand"
+              "nl": "Bliksem afstand",
+              "de": "Blitzentfernung"
             }
           }
         ]
@@ -2187,15 +2437,18 @@
         "id": "measure_lightning_equal",
         "title": {
           "en": "Lightning Distance is !{{equal|not equal}} to",
-          "nl": "Bliksemafstand is !{{gelijk aan |niet gelijk aan}}"
+          "nl": "Bliksemafstand is !{{gelijk aan |niet gelijk aan}}",
+          "de": "Blitzentfernung !{{ist|ist nicht}} gleich"
         },
         "hint": {
           "en": "This Flow will continue if Lightning Distance is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als Lightning Distance wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als Lightning Distance wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die Blitzentfernung (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The Lightning Distance is !{{equal|not equal}} to [[value]]km",
-          "nl": "De bliksemafstand is !{{equal|not equal}} tot [[value]]km"
+          "nl": "De bliksemafstand is !{{equal|not equal}} tot [[value]]km",
+          "de": "Die Blitzentfernung !{{ist|ist nicht}} gleich [[value]]km"
         },
         "args": [
           {
@@ -2211,11 +2464,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Lightning Distance",
-              "nl": "Bliksem afstand"
+              "nl": "Bliksem afstand",
+              "de": "Blitzentfernung"
             }
           }
         ]
@@ -2224,15 +2479,18 @@
         "id": "measure_lightning_num_is_less",
         "title": {
           "en": "Lightning strikes is !{{is|is not}} less than",
-          "nl": "Blikseminslag is !{{is|is niet}} minder dan"
+          "nl": "Blikseminslag is !{{is|is niet}} minder dan",
+          "de": "Blitzanzahl !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if number of Lightning strikes is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als het aantal blikseminslagen kleiner is/is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als het aantal blikseminslagen kleiner is/is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die Blitzanzahl (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The Lightning strikes is !{{is|is not}} less than [[value]]",
-          "nl": "De blikseminslag is !{{is|is niet}} minder dan [[value]]"
+          "nl": "De blikseminslag is !{{is|is niet}} minder dan [[value]]",
+          "de": "Die Blitzanzahl !{{ist|ist nicht}} kleiner als [[value]]"
         },
         "args": [
           {
@@ -2248,11 +2506,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Lightning Strikes",
-              "nl": "Blikseminslagen"
+              "nl": "Blikseminslagen",
+              "de": "Blitzanzahl"
             }
           }
         ]
@@ -2261,15 +2521,18 @@
         "id": "measure_lightning_num_equal",
         "title": {
           "en": "Lightning strikes is !{{equal|not equal}} to",
-          "nl": "Blikseminslag is !{{equal|not equal}} aan"
+          "nl": "Blikseminslag is !{{equal|not equal}} aan",
+          "de": "Blitzanzahl ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if Lightning strikes is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als Blikseminslag wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als Blikseminslag wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die Blitzanzahl (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The Lightning strikes is !{{equal|not equal}} to [[value]]",
-          "nl": "De blikseminslag is !{{equal|not equal}} tot [[value]]"
+          "nl": "De blikseminslag is !{{equal|not equal}} tot [[value]]",
+          "de": "Die Blitzanzahl ist !{{gleich|nicht gleich}} [[value]]"
         },
         "args": [
           {
@@ -2285,11 +2548,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Lightning Strikes",
-              "nl": "Blikseminslagen"
+              "nl": "Blikseminslagen",
+              "de": "Blitzanzahl"
             }
           }
         ]
@@ -2298,15 +2563,18 @@
         "id": "measure_aqi.pm10_is_less",
         "title": {
           "en": "Air PM10 quality index is !{{less|greater}} than",
-          "nl": "Lucht PM10-kwaliteitsindex is !{{minder|groter}} dan"
+          "nl": "Lucht PM10-kwaliteitsindex is !{{minder|groter}} dan",
+          "de": "Der PM10 Luftqualitätsindex ist !{{kleiner|größer}} als"
         },
         "hint": {
           "en": "This Flow will continue if PM10 air quality index is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de PM10-luchtkwaliteitsindex wel/niet lager is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de PM10-luchtkwaliteitsindex wel/niet lager is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der PM10 Luftqualitätsindex kleiner/größer als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The PM10 air quality index is !{{less|greater}} than [[measure_aqi]]",
-          "nl": "De PM10 luchtkwaliteitsindex is !{{minder|groter}} dan [[measure_aqi]]"
+          "nl": "De PM10 luchtkwaliteitsindex is !{{minder|groter}} dan [[measure_aqi]]",
+          "de": "Der PM10 Luftqualitätsindex ist !{{kleiner|größer}} als [[measure_aqi]]"
         },
         "args": [
           {
@@ -2322,11 +2590,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Air quality index",
-              "nl": "Luchtkwaliteitsindex"
+              "nl": "Luchtkwaliteitsindex",
+              "de": "Luftqualitätsindex"
             }
           }
         ]
@@ -2335,15 +2605,18 @@
         "id": "measure_aqi.pm10_equal",
         "title": {
           "en": "Air quality index is !{{equal|not equal}} to",
-          "nl": "De luchtkwaliteitsindex is !{{gelijk aan |niet gelijk}} aan"
+          "nl": "De luchtkwaliteitsindex is !{{gelijk aan |niet gelijk}} aan",
+          "de": "Der Luftqualitätsindex ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if PM10 air quality index is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de PM10 luchtkwaliteitsindex wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de PM10 luchtkwaliteitsindex wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der PM10 Luftqualitätsindex (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The PM10 air quality index is !{{equal|not equal}} to [[measure_aqi]]",
-          "nl": "De PM10 luchtkwaliteitsindex is !{{equal|not equal}} tot [[measure_aqi]]"
+          "nl": "De PM10 luchtkwaliteitsindex is !{{equal|not equal}} tot [[measure_aqi]]",
+          "de": "Der PM10 Luftqualitätsindex ist !{{gleich|nicht gleich}} [[measure_aqi]]"
         },
         "args": [
           {
@@ -2359,11 +2632,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Air quality index",
-              "nl": "Luchtkwaliteitsindex"
+              "nl": "Luchtkwaliteitsindex",
+              "de": "Luftqualitätsindex"
             }
           }
         ]
@@ -2372,15 +2647,18 @@
         "id": "measure_aqi.pm10_avg_is_less",
         "title": {
           "en": "Average PM10 Air quality index is !{{less|greater}} than",
-          "nl": "De gemiddelde PM10 luchtkwaliteitsindex is !{{minder|groter}} dan"
+          "nl": "De gemiddelde PM10 luchtkwaliteitsindex is !{{minder|groter}} dan",
+          "de": "Der durchschnittliche PM10 Luftqualitätsindex is !{{kleiner|größer}} als"
         },
         "hint": {
           "en": "This Flow will continue if average PM10 air quality index is/is not less than the set value.",
-          "nl": "Deze stroom gaat door als de gemiddelde PM10-luchtkwaliteitsindex wel/niet lager is dan de ingestelde waarde."
+          "nl": "Deze stroom gaat door als de gemiddelde PM10-luchtkwaliteitsindex wel/niet lager is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der PM10 Luftqualitätsindex kleiner/größer als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The average PM10 air quality index is !{{less|greater}} than [[measure_aqi.avg]]",
-          "nl": "De gemiddelde PM10 luchtkwaliteitsindex is !{{minder|groter}} dan [[measure_aqi.avg]]"
+          "nl": "De gemiddelde PM10 luchtkwaliteitsindex is !{{minder|groter}} dan [[measure_aqi.avg]]",
+          "de": "Der durchschnittliche PM10 Luftqualitätsindex ist !{{kleiner|größer}} als [[measure_aqi.avg]]"
         },
         "args": [
           {
@@ -2396,10 +2674,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
-              "en": "Average Air quality index"
+              "en": "Average Air quality index",
+              "nl": "Gemiddelde luchtkwaliteitsindex",
+              "de": "Durchschnittlicher Luftqualitätsindex"
             }
           }
         ]
@@ -2408,15 +2689,18 @@
         "id": "measure_aqi.pm10_avg_equal",
         "title": {
           "en": "Average PM10 Air quality index is !{{equal|not equal}} to",
-          "nl": "De gemiddelde PM10 luchtkwaliteitsindex is !{{gelijk aan | niet gelijk aan}}"
+          "nl": "De gemiddelde PM10 luchtkwaliteitsindex is !{{gelijk aan | niet gelijk aan}}",
+          "de": "Der durchschnittliche PM10 Luftqualitätsindex ist !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if average PM10 air quality index is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als de gemiddelde PM10 luchtkwaliteitsindex wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de gemiddelde PM10 luchtkwaliteitsindex wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn der PM10 Luftqualitätsindex (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The average PM10 air quality index is !{{equal|not equal}} to [[measure_aqi.avg]]",
-          "nl": "De gemiddelde PM10-luchtkwaliteitsindex is !{{equal|not equal}} tot [[measure_aqi.avg]]"
+          "nl": "De gemiddelde PM10-luchtkwaliteitsindex is !{{equal|not equal}} tot [[measure_aqi.avg]]",
+          "de": "Der durchschnittliche PM10 Luftqualitätsindex ist !{{gleich|nicht gleich}} [[measure_aqi.avg]]"
         },
         "args": [
           {
@@ -2432,11 +2716,13 @@
             "step": 1,
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Average Air quality index",
-              "nl": "Gemiddelde luchtkwaliteitsindex"
+              "nl": "Gemiddelde luchtkwaliteitsindex",
+              "de": "Durchschnittlicher Luftqualitätsindex"
             }
           }
         ]
@@ -2445,15 +2731,18 @@
         "id": "measure_moisture_is_less",
         "title": {
           "en": "Soil moisture is !{{is|is not}} less than",
-          "nl": "Bodemvocht is !{{is|is niet}} minder dan"
+          "nl": "Bodemvocht is !{{is|is niet}} minder dan",
+          "de": "Bodenfeuchte !{{ist|ist nicht}} kleiner als"
         },
         "hint": {
           "en": "This Flow will continue if soil moisture is/is not less than the set value.",
-          "nl": "Deze Flow gaat door als de bodemvochtigheid wel/niet lager is dan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als de bodemvochtigheid wel/niet lager is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die Bodenfeuchte (nicht) kleiner als der gesetzte Wert ist."
         },
         "titleFormatted": {
           "en": "The soil moisture is !{{is|is not}} less than [[value]]%",
-          "nl": "Het bodemvocht is !{{is|is niet}} minder dan [[value]]%"
+          "nl": "Het bodemvocht is !{{is|is niet}} minder dan [[value]]%",
+          "de": "Die Bodenfeuchte !{{ist|ist nicht}} kleiner als [[value]]%"
         },
         "args": [
           {
@@ -2470,11 +2759,13 @@
             "units": "%",
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Soil Moisture",
-              "nl": "Bodemvocht"
+              "nl": "Bodemvocht",
+              "de": "Bodenfeuchte"
             }
           }
         ]
@@ -2483,15 +2774,18 @@
         "id": "measure_moisture_equal",
         "title": {
           "en": "Soil moisture is !{{equal|not equal}} to",
-          "nl": "Bodemvocht is !{{gelijk aan |niet gelijk}} aan"
+          "nl": "Bodemvocht is !{{gelijk aan |niet gelijk}} aan",
+          "de": "Bodenfeuchte !{{gleich|nicht gleich}}"
         },
         "hint": {
           "en": "This Flow will continue if soil moisture is/is not equal to the set value.",
-          "nl": "Deze Flow gaat door als bodemvocht wel/niet gelijk is aan de ingestelde waarde."
+          "nl": "Deze Flow gaat door als bodemvocht wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die Bodenfeuchte (nicht) gleich dem gesetzten Wert ist."
         },
         "titleFormatted": {
           "en": "The soil moisture is !{{equal|not equal}} to [[value]]%",
-          "nl": "Het bodemvocht is !{{equal|not equal}} tot [[value]]%"
+          "nl": "Het bodemvocht is !{{equal|not equal}} tot [[value]]%",
+          "de": "Die Bodenfeuchte ist !{{gleich|nicht gleich}} [[value]]%"
         },
         "args": [
           {
@@ -2508,11 +2802,13 @@
             "units": "%",
             "placeholder": {
               "en": "Set a value",
-              "nl": "Stel een waarde in"
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
             },
             "title": {
               "en": "Soil Moisture",
-              "nl": "Bodemvocht"
+              "nl": "Bodemvocht",
+              "de": "Bodenfeuchte"
             }
           }
         ]
@@ -2547,7 +2843,8 @@
     {
       "name": {
         "en": "Temperature Meter",
-        "nl": "Temperatuurmeter"
+        "nl": "Temperatuurmeter",
+        "de": "Thermometer"
       },
       "platforms": [
         "local"
@@ -2588,18 +2885,21 @@
           },
           "value": "",
           "hint": {
-            "en": "Shows the ID of the gateway."
+            "en": "Shows the ID of the gateway.",
+            "de": "Zeigt die ID des Gateways."
           }
         },
         {
           "id": "stationType",
           "type": "label",
           "label": {
-            "en": "Station Type"
+            "en": "Station Type",
+            "de": "Stationstyp"
           },
           "value": "",
           "hint": {
-            "en": "Shows the type of gateway."
+            "en": "Shows the type of gateway.",
+            "de": "Zeigt den Stationstyp"
           }
         },
         {
@@ -2607,26 +2907,30 @@
           "type": "dropdown",
           "label": {
             "en": "Battery Type",
-            "nl": "Type batterij"
+            "nl": "Type batterij",
+            "de": "Batterietyp"
           },
           "value": "0",
           "hint": {
             "en": "Specify the battery type for the correct % estimation. The setting will take affect on the next status update.",
-            "nl": "Geef het batterijtype op voor de juiste %-schatting. De instelling wordt van kracht bij de volgende statusupdate."
+            "nl": "Geef het batterijtype op voor de juiste %-schatting. De instelling wordt van kracht bij de volgende statusupdate.",
+            "de": "Batterietyp angeben, um eine korrekte %-Schätzung zu erhalten. Die Einstellung wird bei der nächsten Statusaktualisierung wirksam."
           },
           "values": [
             {
               "id": "0",
               "label": {
                 "en": "Non-rechargeable",
-                "nl": "Niet oplaadbaar"
+                "nl": "Niet oplaadbaar",
+                "de": "Nicht aufladbar"
               }
             },
             {
               "id": "1",
               "label": {
                 "en": "Rechargeable",
-                "nl": "Oplaadbaar"
+                "nl": "Oplaadbaar",
+                "de": "Aufladbar"
               }
             }
           ]
@@ -2641,7 +2945,8 @@
     {
       "name": {
         "en": "Temperature & Humidity Meter",
-        "nl": "Temperatuur- en vochtigheidsmeter"
+        "nl": "Temperatuur- en vochtigheidsmeter",
+        "de": "Thermometer & Hygrometer"
       },
       "platforms": [
         "local"
@@ -2683,18 +2988,21 @@
           },
           "value": "",
           "hint": {
-            "en": "Shows the ID of the gateway."
+            "en": "Shows the ID of the gateway.",
+            "de": "Zeigt die ID des Gateways."
           }
         },
         {
           "id": "stationType",
           "type": "label",
           "label": {
-            "en": "Station Type"
+            "en": "Station Type",
+            "de": "Stationstyp"
           },
           "value": "",
           "hint": {
-            "en": "Shows the type of gateway."
+            "en": "Shows the type of gateway.",
+            "de": "Zeigt den Stationstyp."
           }
         },
         {
@@ -2702,26 +3010,30 @@
           "type": "dropdown",
           "label": {
             "en": "Battery Type",
-            "nl": "Type batterij"
+            "nl": "Type batterij",
+            "de": "Batterietyp"
           },
           "value": "0",
           "hint": {
             "en": "Specify the battery type for the correct % estimation. The setting will take affect on the next status update.",
-            "nl": "Geef het batterijtype op voor de juiste %-schatting. De instelling wordt van kracht bij de volgende statusupdate."
+            "nl": "Geef het batterijtype op voor de juiste %-schatting. De instelling wordt van kracht bij de volgende statusupdate.",
+            "de": "Batterietyp angeben, um eine korrekte %-Schätzung zu erhalten. Die Einstellung wird bei der nächsten Statusaktualisierung wirksam."
           },
           "values": [
             {
               "id": "0",
               "label": {
                 "en": "Non-rechargeable",
-                "nl": "Niet oplaadbaar"
+                "nl": "Niet oplaadbaar",
+                "de": "Nicht aufladbar"
               }
             },
             {
               "id": "1",
               "label": {
                 "en": "Rechargeable",
-                "nl": "Oplaadbaar"
+                "nl": "Oplaadbaar",
+                "de": "Aufladbar"
               }
             }
           ]
@@ -2736,7 +3048,8 @@
     {
       "name": {
         "en": "Water Temperature Meter",
-        "nl": "Watertemperatuurmeter"
+        "nl": "Watertemperatuurmeter",
+        "de": "Wasser-Thermometer"
       },
       "platforms": [
         "local"
@@ -2777,18 +3090,21 @@
           },
           "value": "",
           "hint": {
-            "en": "Shows the ID of the gateway."
+            "en": "Shows the ID of the gateway.",
+            "de": "Zeigt die ID des Gateways"
           }
         },
         {
           "id": "stationType",
           "type": "label",
           "label": {
-            "en": "Station Type"
+            "en": "Station Type",
+            "de": "Stationstyp"
           },
           "value": "",
           "hint": {
-            "en": "Shows the type of gateway."
+            "en": "Shows the type of gateway.",
+            "de": "Zeigt den Stationstyp."
           }
         },
         {
@@ -2796,26 +3112,30 @@
           "type": "dropdown",
           "label": {
             "en": "Battery Type",
-            "nl": "Type batterij"
+            "nl": "Type batterij",
+            "de": "Batterietyp"
           },
           "value": "0",
           "hint": {
             "en": "Specify the battery type for the correct % estimation. The setting will take affect on the next status update.",
-            "nl": "Geef het batterijtype op voor de juiste %-schatting. De instelling wordt van kracht bij de volgende statusupdate."
+            "nl": "Geef het batterijtype op voor de juiste %-schatting. De instelling wordt van kracht bij de volgende statusupdate.",
+            "de": "Batterietyp angeben, um eine korrekte %-Schätzung zu erhalten. Die Einstellung wird bei der nächsten Statusaktualisierung wirksam."
           },
           "values": [
             {
               "id": "0",
               "label": {
                 "en": "Non-rechargeable",
-                "nl": "Niet oplaadbaar"
+                "nl": "Niet oplaadbaar",
+                "de": "Nicht aufladbar"
               }
             },
             {
               "id": "1",
               "label": {
                 "en": "Rechargeable",
-                "nl": "Oplaadbaar"
+                "nl": "Oplaadbaar",
+                "de": "Aufladbar"
               }
             }
           ]
@@ -2829,7 +3149,8 @@
     },
     {
       "name": {
-        "en": "camera"
+        "en": "camera",
+        "de": "Kamera"
       },
       "class": "camera",
       "capabilities": [],
@@ -2849,11 +3170,13 @@
           "id": "ip",
           "type": "text",
           "label": {
-            "en": "IP Address"
+            "en": "IP Address",
+            "de": "IP Adresse"
           },
           "value": "",
           "hint": {
-            "en": "Set the IP address of the camera."
+            "en": "Set the IP address of the camera.",
+            "de": "Setze die IP Adresse der Kamera."
           }
         }
       ],
@@ -2889,18 +3212,21 @@
           },
           "value": "",
           "hint": {
-            "en": "Shows the ID of the gateway."
+            "en": "Shows the ID of the gateway.",
+            "de": "Zeigt die ID des Gateways."
           }
         },
         {
           "id": "stationType",
           "type": "label",
           "label": {
-            "en": "Station Type"
+            "en": "Station Type",
+            "de": "Stationstyp"
           },
           "value": "",
           "hint": {
-            "en": "Shows the type of gateway."
+            "en": "Shows the type of gateway.",
+            "de": "Zeigt den Stationstyp."
           }
         }
       ],
@@ -2926,7 +3252,8 @@
     {
       "name": {
         "en": "Water Leak Sensor",
-        "nl": "Waterlekkagesensor"
+        "nl": "Waterlekkagesensor",
+        "de": "Wasserleck-Sensor"
       },
       "platforms": [
         "local"
@@ -2967,18 +3294,21 @@
           },
           "value": "",
           "hint": {
-            "en": "Shows the ID of the gateway."
+            "en": "Shows the ID of the gateway.",
+            "de": "Zeigt die ID des Gateways."
           }
         },
         {
           "id": "stationType",
           "type": "label",
           "label": {
-            "en": "Station Type"
+            "en": "Station Type",
+            "de": "Stationstyp"
           },
           "value": "",
           "hint": {
-            "en": "Shows the type of gateway."
+            "en": "Shows the type of gateway.",
+            "de": "Zeigt den Stationstyp"
           }
         },
         {
@@ -2986,26 +3316,30 @@
           "type": "dropdown",
           "label": {
             "en": "Battery Type",
-            "nl": "Type batterij"
+            "nl": "Type batterij",
+            "de": "Batterietyp"
           },
           "value": "0",
           "hint": {
             "en": "Specify the battery type for the correct % estimation. The setting will take affect on the next status update.",
-            "nl": "Geef het batterijtype op voor de juiste %-schatting. De instelling wordt van kracht bij de volgende statusupdate."
+            "nl": "Geef het batterijtype op voor de juiste %-schatting. De instelling wordt van kracht bij de volgende statusupdate.",
+            "de": "Batterietyp angeben, um eine korrekte %-Schätzung zu erhalten. Die Einstellung wird bei der nächsten Statusaktualisierung wirksam."
           },
           "values": [
             {
               "id": "0",
               "label": {
                 "en": "Non-rechargeable",
-                "nl": "Niet oplaadbaar"
+                "nl": "Niet oplaadbaar",
+                "de": "Nicht aufladbar"
               }
             },
             {
               "id": "1",
               "label": {
                 "en": "Rechargeable",
-                "nl": "Oplaadbaar"
+                "nl": "Oplaadbaar",
+                "de": "Aufladbar"
               }
             }
           ]
@@ -3020,7 +3354,8 @@
     {
       "name": {
         "en": "Lightning Detector",
-        "nl": "Bliksemdetector"
+        "nl": "Bliksemdetector",
+        "de": "Blitzdetektor"
       },
       "platforms": [
         "local"
@@ -3063,18 +3398,21 @@
           },
           "value": "",
           "hint": {
-            "en": "Shows the ID of the gateway."
+            "en": "Shows the ID of the gateway.",
+            "de": "Zeigt die ID des Gateways."
           }
         },
         {
           "id": "stationType",
           "type": "label",
           "label": {
-            "en": "Station Type"
+            "en": "Station Type",
+            "de": "Stationstyp"
           },
           "value": "",
           "hint": {
-            "en": "Shows the type of gateway."
+            "en": "Shows the type of gateway.",
+            "de": "Zeigt den Stationstyp"
           }
         },
         {
@@ -3097,13 +3435,15 @@
             {
               "id": "raw",
               "label": {
-                "en": "Device"
+                "en": "Device",
+                "de": "Gerät"
               }
             },
             {
               "id": "time_stamp",
               "label": {
-                "en": "Time stamp"
+                "en": "Time stamp",
+                "de": "Zeitstempel"
               }
             },
             {
@@ -3136,7 +3476,8 @@
     {
       "name": {
         "en": "PM10 and CO2 Meter",
-        "nl": "PM10 en CO2-meter"
+        "nl": "PM10 en CO2-meter",
+        "de": "PM10- & CO2-Messer"
       },
       "platforms": [
         "local"
@@ -3174,85 +3515,99 @@
         "measure_co2.avg": {
           "title": {
             "en": "CO2 Avg 24h",
-            "nl": "CO2 gem. 24u"
+            "nl": "CO2 gem. 24u",
+            "de": "CO2 ø 24h"
           }
         },
         "measure_co2_quality.avg": {
           "title": {
             "en": "CO2 Avg quality 24h",
-            "nl": "CO2 gem. kwaliteit 24u"
+            "nl": "CO2 gem. kwaliteit 24u",
+            "de": "CO2 ø Qualität 24h"
           }
         },
         "measure_pm10": {
           "title": {
             "en": "PM10 Air Quality",
-            "nl": "PM10 Luchtkwaliteit"
+            "nl": "PM10 Luchtkwaliteit",
+            "de": "PM10 Luftqualität"
           }
         },
         "measure_pm10.avg": {
           "title": {
             "en": "PM10 Air Quality Avg 24h",
-            "nl": "PM10 Luchtkwaliteit Gem. 24u"
+            "nl": "PM10 Luchtkwaliteit Gem. 24u",
+            "de": "PM10 Luftqualität ø 24h"
           }
         },
         "measure_aqi.pm10": {
           "title": {
             "en": "PM10 Air Quality Index",
-            "nl": "PM10 luchtkwaliteitsindex"
+            "nl": "PM10 luchtkwaliteitsindex",
+            "de": "PM10 Luftqualitätsindex"
           }
         },
         "measure_aqi.pm10_avg": {
           "title": {
             "en": "PM10 Air Quality Index Avg 24h",
-            "nl": "PM10 Luchtkwaliteitsindex Gem. 24u"
+            "nl": "PM10 Luchtkwaliteitsindex Gem. 24u",
+            "de": "PM10 Luftqualitätsindex ø 24h"
           }
         },
         "measure_aq.pm10": {
           "title": {
             "en": "PM10 Air Quality",
-            "nl": "PM10 Luchtkwaliteit"
+            "nl": "PM10 Luchtkwaliteit",
+            "de": "PM10 Luftqualität"
           }
         },
         "measure_aq.pm10_avg": {
           "title": {
             "en": "PM10 Air Quality Avg 24h",
-            "nl": "PM10 Luchtkwaliteit Gem. 24u"
+            "nl": "PM10 Luchtkwaliteit Gem. 24u",
+            "de": "PM10 Luftqualität ø 24h"
           }
         },
         "measure_pm25": {
           "title": {
             "en": "PM2.5 Air Quality",
-            "nl": "PM2.5 Luchtkwaliteit"
+            "nl": "PM2.5 Luchtkwaliteit",
+            "de": "PM2.5 Luftqualität"
           }
         },
         "measure_pm25.avg": {
           "title": {
             "en": "PM2.5 Avg 24h",
-            "nl": "PM2.5 gem. 24u"
+            "nl": "PM2.5 gem. 24u",
+            "de": "PM2.5 ø 24h"
           }
         },
         "measure_aqi": {
           "title": {
             "en": "PM2.5 Air Quality Index",
-            "nl": "PM2.5 luchtkwaliteitsindex"
+            "nl": "PM2.5 luchtkwaliteitsindex",
+            "de": "PM2.5 Luftqualitätsindex"
           }
         },
         "measure_aqi.avg": {
           "title": {
             "en": "PM2.5 Air Quality Index Avg 24h",
-            "nl": "PM2.5 Luchtkwaliteitsindex Gem. 24u"
+            "nl": "PM2.5 Luchtkwaliteitsindex Gem. 24u",
+            "de": "PM2.5 Luftqualitätsindex ø 24h"
           }
         },
         "measure_aq": {
           "title": {
             "en": "PM2.5 Air Quality",
-            "nl": "PM2.5 Luchtkwaliteit"
+            "nl": "PM2.5 Luchtkwaliteit",
+            "de": "PM2.5 Luftqualität"
           }
         },
         "measure_aq.avg": {
           "title": {
             "en": "PM2.5 Air Quality Avg 24h",
-            "nl": "PM2.5 Luchtkwaliteit Gem. 24u"
+            "nl": "PM2.5 Luchtkwaliteit Gem. 24u",
+            "de": "PM2.5 Luftqualität ø 24h"
           }
         }
       },
@@ -3271,18 +3626,21 @@
           },
           "value": "",
           "hint": {
-            "en": "Shows the ID of the gateway."
+            "en": "Shows the ID of the gateway.",
+            "de": "Zeigt die ID des Gateways."
           }
         },
         {
           "id": "stationType",
           "type": "label",
           "label": {
-            "en": "Station Type"
+            "en": "Station Type",
+            "de": "Stationstyp"
           },
           "value": "",
           "hint": {
-            "en": "Shows the type of gateway."
+            "en": "Shows the type of gateway.",
+            "de": "Zeigt den Stationstyp"
           }
         }
       ],
@@ -3307,7 +3665,8 @@
     },
     {
       "name": {
-        "en": "PM25 Meter"
+        "en": "PM25 Meter",
+        "de": "PM25-Messer"
       },
       "platforms": [
         "local"
@@ -3329,19 +3688,22 @@
         "measure_pm25.avg": {
           "title": {
             "en": "PM2.5 Avg 24h",
-            "nl": "PM2.5 gem. 24u"
+            "nl": "PM2.5 gem. 24u",
+            "dl": "PM2.5 ø 24h"
           }
         },
         "measure_aqi.avg": {
           "title": {
             "en": "Air Quality Index Avg 24h",
-            "nl": "Luchtkwaliteitsindex Gem. 24u"
+            "nl": "Luchtkwaliteitsindex Gem. 24u",
+            "de": "Luftqualitätsindex ø 24h"
           }
         },
         "measure_aq.avg": {
           "title": {
             "en": "Air Quality Avg 24h",
-            "nl": "Luchtkwaliteit Gem. 24u"
+            "nl": "Luchtkwaliteit Gem. 24u",
+            "de": "Luftqualität ø 24h"
           }
         }
       },
@@ -3360,18 +3722,21 @@
           },
           "value": "",
           "hint": {
-            "en": "Shows the ID of the gateway."
+            "en": "Shows the ID of the gateway.",
+            "de": "Zeigt die ID des Gateways."
           }
         },
         {
           "id": "stationType",
           "type": "label",
           "label": {
-            "en": "Station Type"
+            "en": "Station Type",
+            "de": "Stationstyp"
           },
           "value": "",
           "hint": {
-            "en": "Shows the type of gateway."
+            "en": "Shows the type of gateway.",
+            "de": "Zeigt den Stationstyp"
           }
         }
       ],
@@ -3397,7 +3762,8 @@
     {
       "name": {
         "en": "Rain sensor",
-        "nl": "Regen sensor"
+        "nl": "Regen sensor",
+        "de": "Regensensor"
       },
       "platforms": [
         "local"
@@ -3421,53 +3787,62 @@
         "measure_rain": {
           "title": {
             "en": "Rain Rate",
-            "nl": "Regenintensiteit"
+            "nl": "Regenintensiteit",
+            "de": "Niederschlagsintensität"
           },
           "units": {
             "en": "mm/hr",
-            "nl": "mm/u"
+            "nl": "mm/u",
+            "de": "mm/h"
           }
         },
         "measure_rain.event": {
           "title": {
             "en": "Rain Event",
-            "nl": "Regenbui"
+            "nl": "Regenbui",
+            "de": "Regenereignis"
           }
         },
         "measure_rain.hourly": {
           "title": {
             "en": "Rain Hourly",
-            "nl": "Regen afgelopen uur"
+            "nl": "Regen afgelopen uur",
+            "de": "Niederschlag stündlich"
           }
         },
         "measure_rain.daily": {
           "title": {
             "en": "Rain daily",
-            "nl": "Regen vandaag"
+            "nl": "Regen vandaag",
+            "de": "Niederschlag täglich"
           }
         },
         "measure_rain.weekly": {
           "title": {
             "en": "Rain weekly",
-            "nl": "Regen deze week"
+            "nl": "Regen deze week",
+            "de": "Niederschlag wöchentlich"
           }
         },
         "measure_rain.monthly": {
           "title": {
             "en": "Rain monthly",
-            "nl": "Regen deze maand"
+            "nl": "Regen deze maand",
+            "de": "Niederschlag monatlich"
           }
         },
         "measure_rain.yearly": {
           "title": {
             "en": "Rain yearly",
-            "nl": "Regen dit jaar"
+            "nl": "Regen dit jaar",
+            "de": "Niederschlag jährlich"
           }
         },
         "measure_rain.total": {
           "title": {
             "en": "Rain Total",
-            "nl": "Regen totaal"
+            "nl": "Regen totaal",
+            "de": "Niederschlag gesamt"
           }
         }
       },
@@ -3493,18 +3868,21 @@
           },
           "value": "",
           "hint": {
-            "en": "Shows the ID of the gateway."
+            "en": "Shows the ID of the gateway.",
+            "de": "Zeigt die ID des Gateways."
           }
         },
         {
           "id": "stationType",
           "type": "label",
           "label": {
-            "en": "Station Type"
+            "en": "Station Type",
+            "de": "Stationstyp"
           },
           "value": "",
           "hint": {
-            "en": "Shows the type of gateway."
+            "en": "Shows the type of gateway.",
+            "de": "Zeigt den Stationstyp"
           }
         }
       ],
@@ -3517,7 +3895,8 @@
     {
       "name": {
         "en": "Soil Moisture",
-        "nl": "Bodemvocht"
+        "nl": "Bodemvocht",
+        "de": "Bodenfeuchte-Messer"
       },
       "platforms": [
         "local"
@@ -3557,18 +3936,21 @@
           },
           "value": "",
           "hint": {
-            "en": "Shows the ID of the gateway."
+            "en": "Shows the ID of the gateway.",
+            "de": "Zeigt die ID des Gateways."
           }
         },
         {
           "id": "stationType",
           "type": "label",
           "label": {
-            "en": "Station Type"
+            "en": "Station Type",
+            "de": "Stationstyp"
           },
           "value": "",
           "hint": {
-            "en": "Shows the type of gateway."
+            "en": "Shows the type of gateway.",
+            "de": "Zeigt den Stationstyp"
           }
         },
         {
@@ -3576,26 +3958,30 @@
           "type": "dropdown",
           "label": {
             "en": "Battery Type",
-            "nl": "Type batterij"
+            "nl": "Type batterij",
+            "de": "Batterietyp"
           },
           "value": "0",
           "hint": {
             "en": "Specify the battery type for the correct % estimation. The setting will take affect on the next status update.",
-            "nl": "Geef het batterijtype op voor de juiste %-schatting. De instelling wordt van kracht bij de volgende statusupdate."
+            "nl": "Geef het batterijtype op voor de juiste %-schatting. De instelling wordt van kracht bij de volgende statusupdate.",
+            "de": "Batterietyp angeben, um eine korrekte %-Schätzung zu erhalten. Die Einstellung wird bei der nächsten Statusaktualisierung wirksam."
           },
           "values": [
             {
               "id": "0",
               "label": {
                 "en": "Non-rechargeable",
-                "nl": "Niet oplaadbaar"
+                "nl": "Niet oplaadbaar",
+                "de": "Nicht aufladbar"
               }
             },
             {
               "id": "1",
               "label": {
                 "en": "Rechargeable",
-                "nl": "Oplaadbaar"
+                "nl": "Oplaadbaar",
+                "de": "Aufladbar"
               }
             }
           ]
@@ -3610,7 +3996,8 @@
     {
       "name": {
         "en": "Weather Station",
-        "nl": "Weerstation"
+        "nl": "Weerstation",
+        "de": "Wetterstation"
       },
       "platforms": [
         "local"
@@ -3649,7 +4036,8 @@
         "measure_gust_strength.daily": {
           "title": {
             "en": "Max Gust Strength",
-            "nl": "Max windstoot kracht"
+            "nl": "Max windstoot kracht",
+            "de": "Maximale Böenstärke"
           }
         },
         "measure_temperature": {
@@ -3674,53 +4062,62 @@
         "measure_rain": {
           "title": {
             "en": "Rain Rate",
-            "nl": "Regenintensiteit"
+            "nl": "Regenintensiteit",
+            "de": "Niederschlagsintensität"
           },
           "units": {
             "en": "mm/hr",
-            "nl": "mm/u"
+            "nl": "mm/u",
+            "de": "mm/h"
           }
         },
         "measure_rain.event": {
           "title": {
             "en": "Rain Event",
-            "nl": "Regenbui"
+            "nl": "Regenbui",
+            "de": "Regenereignis"
           }
         },
         "measure_rain.hourly": {
           "title": {
             "en": "Rain Hourly",
-            "nl": "Regen afgelopen uur"
+            "nl": "Regen afgelopen uur",
+            "de": "Niederschlag stündlich"
           }
         },
         "measure_rain.daily": {
           "title": {
             "en": "Rain daily",
-            "nl": "Regen vandaag"
+            "nl": "Regen vandaag",
+            "de": "Niederschlag täglich"
           }
         },
         "measure_rain.weekly": {
           "title": {
             "en": "Rain weekly",
-            "nl": "Regen deze week"
+            "nl": "Regen deze week",
+            "de": "Niederschlag wöchentlich"
           }
         },
         "measure_rain.monthly": {
           "title": {
             "en": "Rain monthly",
-            "nl": "Regen deze maand"
+            "nl": "Regen deze maand",
+            "de": "Niederschlag monatlich"
           }
         },
         "measure_rain.yearly": {
           "title": {
             "en": "Rain yearly",
-            "nl": "Regen dit jaar"
+            "nl": "Regen dit jaar",
+            "de": "Niederschlag jährlich"
           }
         },
         "measure_rain.total": {
           "title": {
             "en": "Rain Total",
-            "nl": "Regen totaal"
+            "nl": "Regen totaal",
+            "de": "Niederschlag gesamt"
           }
         }
       },
@@ -3752,18 +4149,21 @@
           },
           "value": "",
           "hint": {
-            "en": "Shows the ID of the gateway."
+            "en": "Shows the ID of the gateway.",
+            "de": "Zeigt die ID des Gateways."
           }
         },
         {
           "id": "stationType",
           "type": "label",
           "label": {
-            "en": "Station Type"
+            "en": "Station Type",
+            "de": "Stationstyp"
           },
           "value": "",
           "hint": {
-            "en": "Shows the type of gateway."
+            "en": "Shows the type of gateway.",
+            "de": "Zeigt den Stationstyp."
           }
         },
         {
@@ -3771,26 +4171,30 @@
           "type": "dropdown",
           "label": {
             "en": "Battery Type",
-            "nl": "Type batterij"
+            "nl": "Type batterij",
+            "de": "Batterietyp"
           },
           "value": "0",
           "hint": {
             "en": "Specify the battery type for the correct % estimation. The setting will take affect on the next status update.",
-            "nl": "Geef het batterijtype op voor de juiste %-schatting. De instelling wordt van kracht bij de volgende statusupdate."
+            "nl": "Geef het batterijtype op voor de juiste %-schatting. De instelling wordt van kracht bij de volgende statusupdate.",
+            "de": "Batterietyp angeben, um eine korrekte %-Schätzung zu erhalten. Die Einstellung wird bei der nächsten Statusaktualisierung wirksam."
           },
           "values": [
             {
               "id": "0",
               "label": {
                 "en": "Non-rechargeable",
-                "nl": "Niet oplaadbaar"
+                "nl": "Niet oplaadbaar",
+                "de": "Nicht aufladbar"
               }
             },
             {
               "id": "1",
               "label": {
                 "en": "Rechargeable",
-                "nl": "Oplaadbaar"
+                "nl": "Oplaadbaar",
+                "de": "Aufladbar"
               }
             }
           ]
@@ -3804,7 +4208,8 @@
     },
     {
       "name": {
-        "en": "Weather Station (WS80)"
+        "en": "Weather Station (WS80)",
+        "de": "Wetterstation (WS80)"
       },
       "platforms": [
         "local"
@@ -3833,7 +4238,8 @@
         "measure_gust_strength.daily": {
           "title": {
             "en": "Max Gust Strength",
-            "nl": "Max windstoot kracht"
+            "nl": "Max windstoot kracht",
+            "de": "Maximale Böenstärke"
           }
         },
         "measure_temperature": {
@@ -3871,18 +4277,21 @@
           },
           "value": "",
           "hint": {
-            "en": "Shows the ID of the gateway."
+            "en": "Shows the ID of the gateway.",
+            "de": "Zeigt die ID des Gateways."
           }
         },
         {
           "id": "stationType",
           "type": "label",
           "label": {
-            "en": "Station Type"
+            "en": "Station Type",
+            "de": "Stationstyp"
           },
           "value": "",
           "hint": {
-            "en": "Shows the type of gateway."
+            "en": "Shows the type of gateway.",
+            "de": "Zeigt den Stationstyp"
           }
         }
       ],
@@ -3911,20 +4320,24 @@
       "type": "boolean",
       "title": {
         "en": "PM10 alarm",
-        "nl": "PM10-alarm"
+        "nl": "PM10-alarm",
+        "de": "PM10-Alarm"
       },
       "desc": {
         "en": "Active when the PM10 level is high",
-        "nl": "Actief wanneer het PM10-niveau hoog is"
+        "nl": "Actief wanneer het PM10-niveau hoog is",
+        "de": "Aktiv, wenn das PM10-Niveau hoch ist"
       },
       "insights": true,
       "insightsTitleTrue": {
-        "en": "PM10 alarm tuned om",
-        "nl": "PM10 alarm afgesteld om"
+        "en": "PM10 alarm turned on",
+        "nl": "PM10 alarm afgesteld om",
+        "de": "PM10 alarm angegangen"
       },
       "insightsTitleFalse": {
         "en": "PM10 alarm turned off",
-        "nl": "PM10-alarm uitgeschakeld"
+        "nl": "PM10-alarm uitgeschakeld",
+        "de": "PM10-Alarm ausgegangen"
       },
       "getable": true,
       "setable": false,
@@ -3935,20 +4348,24 @@
       "type": "boolean",
       "title": {
         "en": "Power off alarm",
-        "nl": "Alarm uitschakelen"
+        "nl": "Alarm uitschakelen",
+        "de": "Alarm ausschalten"
       },
       "desc": {
         "en": "Power off alarm",
-        "nl": "Alarm uitschakelen"
+        "nl": "Alarm uitschakelen",
+        "de": "Alarm ausschalten"
       },
       "insights": true,
       "insightsTitleTrue": {
         "en": "Power turned off",
-        "nl": "Stroom uitgeschakeld"
+        "nl": "Stroom uitgeschakeld",
+        "de": "Strom ausgeschaltet"
       },
       "insightsTitleFalse": {
         "en": "Power turned on",
-        "nl": "Stroom ingeschakeld"
+        "nl": "Stroom ingeschakeld",
+        "de": "Strom angeschaltet"
       },
       "getable": true,
       "setable": false,
@@ -3959,7 +4376,8 @@
       "type": "string",
       "title": {
         "en": "Air Quality",
-        "nl": "Luchtkwaliteit"
+        "nl": "Luchtkwaliteit",
+        "de": "Luftqualität"
       },
       "getable": true,
       "setable": false,
@@ -3969,7 +4387,8 @@
       "type": "number",
       "title": {
         "en": "Air Quality Index",
-        "nl": "Luchtkwaliteitsindex"
+        "nl": "Luchtkwaliteitsindex",
+        "de": "Luftqualitätsindex"
       },
       "decimals": 0,
       "insights": true,
@@ -3981,7 +4400,8 @@
       "type": "string",
       "title": {
         "en": "CO2 Quality",
-        "nl": "CO2-kwaliteit"
+        "nl": "CO2-kwaliteit",
+        "de": "CO2-Qualität"
       },
       "getable": true,
       "setable": false,
@@ -3991,10 +4411,12 @@
       "type": "number",
       "title": {
         "en": "Hours Since Last Rained",
-        "nl": "Uren sinds laatste regen"
+        "nl": "Uren sinds laatste regen",
+        "de": "Stunden seit letztem Regen"
       },
       "units": {
-        "en": "Hours"
+        "en": "Hours",
+        "de": "Stunden"
       },
       "getable": true,
       "setable": false,
@@ -4005,7 +4427,8 @@
       "type": "number",
       "title": {
         "en": "Lightning Distance",
-        "nl": "Bliksem afstand"
+        "nl": "Bliksem afstand",
+        "de": "Blitzentfernung"
       },
       "units": {
         "en": "km"
@@ -4019,7 +4442,8 @@
       "type": "number",
       "title": {
         "en": "Daily Count",
-        "nl": "Dagelijkse telling"
+        "nl": "Dagelijkse telling",
+        "de": "Anzahl täglich"
       },
       "getable": true,
       "setable": false,
@@ -4030,7 +4454,8 @@
       "type": "string",
       "title": {
         "en": "Lightning Time",
-        "nl": "Bliksem Tijd"
+        "nl": "Bliksem Tijd",
+        "de": "Blitzschlag-Zeit"
       },
       "getable": true,
       "setable": false,
@@ -4040,7 +4465,8 @@
       "type": "number",
       "title": {
         "en": "Soil Moisture",
-        "nl": "Bodemvocht"
+        "nl": "Bodemvocht",
+        "de": "Bodenfeuchte"
       },
       "units": {
         "en": "%"
@@ -4083,7 +4509,8 @@
       "type": "string",
       "title": {
         "en": "Wind Direction",
-        "nl": "Windrichting"
+        "nl": "Windrichting",
+        "de": "Windrichtung"
       },
       "getable": true,
       "setable": false,

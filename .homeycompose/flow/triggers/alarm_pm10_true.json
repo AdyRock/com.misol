@@ -1,6 +1,8 @@
 {
     "title": {
-        "en": "Het PM10-alarm ging aan"
+        "en": "The PM10 alarm turned on",
+        "nl": "Het PM10-alarm ging aan",
+        "de": "Der PM10-Alarm ging an"
     },
     "args": [
         {

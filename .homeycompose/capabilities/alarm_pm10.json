@@ -2,20 +2,24 @@
     "type": "boolean",
     "title": {
       "en": "PM10 alarm",
-      "nl": "PM10-alarm"
+      "nl": "PM10-alarm",
+      "de": "PM10-Alarm"
     },
     "desc": {
       "en": "Active when the PM10 level is high",
-      "nl": "Actief wanneer het PM10-niveau hoog is"
+      "nl": "Actief wanneer het PM10-niveau hoog is",
+      "de": "Aktiv, wenn das PM10-Niveau hoch ist"
     },
     "insights": true,
     "insightsTitleTrue": {
-      "en": "PM10 alarm tuned om",
-      "nl": "PM10 alarm afgesteld om"
+      "en": "PM10 alarm turned on",
+      "nl": "PM10 alarm afgesteld om",
+      "de": "PM10 alarm angegangen"
     },
     "insightsTitleFalse": {
       "en": "PM10 alarm turned off",
-      "nl": "PM10-alarm uitgeschakeld"
+      "nl": "PM10-alarm uitgeschakeld",
+      "de": "PM10-Alarm ausgegangen"
     },
     "getable": true,
     "setable": false,

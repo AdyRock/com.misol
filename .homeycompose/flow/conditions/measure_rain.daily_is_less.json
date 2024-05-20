@@ -1,15 +1,18 @@
 {
     "title": {
         "en": "Daily rainfall is !{{is|is not}} less than",
-        "nl": "Dagelijkse regenval is !{{is|is niet}} minder dan"
+        "nl": "Dagelijkse regenval is !{{is|is niet}} minder dan",
+        "de": "Täglicher Niederschlag !{{ist|ist nicht}} kleiner als"
     },
     "hint": {
         "en": "This Flow will continue if daily rainfall is/is not less than the set value.",
-        "nl": "Deze stroom gaat door als de dagelijkse regenval wel/niet minder is dan de ingestelde waarde."
+        "nl": "Deze stroom gaat door als de dagelijkse regenval wel/niet minder is dan de ingestelde waarde.",
+        "de": "Dieser Flow wird weiterlaufen, wenn der tägliche Niederschlag (nicht) kleiner als der gesetzte Wert ist."
     },
     "titleFormatted": {
         "en": "The daily rainfall is !{{is|is not}} less than [[value]]mm",
-        "nl": "De dagelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm"
+        "nl": "De dagelijkse neerslag is !{{is|is niet}} minder dan [[value]]mm",
+        "de": "Der tägliche Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
     },
     "args": [
         {
@@ -25,11 +28,13 @@
             "step": 1,
             "placeholder": {
                 "en": "Set a value",
-                "nl": "Stel een waarde in"
+                "nl": "Stel een waarde in",
+                "de": "Wert setzen"
             },
             "title": {
                 "en": "Daily rainfall",
-                "nl": "Dagelijkse regenval"
+                "nl": "Dagelijkse regenval",
+                "de": "Täglicher Niederschlag"
             }
         }
     ]

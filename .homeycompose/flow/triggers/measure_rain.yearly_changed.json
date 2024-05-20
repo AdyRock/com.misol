@@ -1,14 +1,16 @@
 {
     "title": {
         "en": "The yearly rainfall Changed",
-        "nl": "De jaarlijkse neerslag veranderd"
+        "nl": "De jaarlijkse neerslag veranderd",
+        "de": "Der jährliche Niederschlag hat sich verändert"
     },
     "tokens": [
         {
             "name": "measure_rain.yearly",
             "title": {
                 "en": "Yearly rainfall",
-                "nl": "Jaarlijkse regenval"
+                "nl": "Jaarlijkse regenval",
+                "de": "Jährlicher Niederschlag"
             },
             "type": "number",
             "example": 3

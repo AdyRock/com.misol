@@ -1,7 +1,8 @@
 {
     "name": {
         "en": "Rain sensor",
-        "nl": "Regen sensor"
+        "nl": "Regen sensor",
+        "de": "Regensensor"
     },
     "platforms": [
         "local"
@@ -25,53 +26,62 @@
         "measure_rain": {
             "title": {
                 "en": "Rain Rate",
-                "nl": "Regenintensiteit"
+                "nl": "Regenintensiteit",
+                "de": "Niederschlagsintensität"
             },
             "units": {
                 "en": "mm/hr",
-                "nl": "mm/u"
+                "nl": "mm/u",
+                "de": "mm/h"
             }
         },
         "measure_rain.event": {
             "title": {
                 "en": "Rain Event",
-                "nl": "Regenbui"
+                "nl": "Regenbui",
+                "de": "Regenereignis"
             }
         },
         "measure_rain.hourly": {
             "title": {
                 "en": "Rain Hourly",
-                "nl": "Regen afgelopen uur"         
+                "nl": "Regen afgelopen uur",
+                "de": "Niederschlag stündlich"
             }
         },
         "measure_rain.daily": {
             "title": {
                 "en": "Rain daily",
-                "nl": "Regen vandaag" 
+                "nl": "Regen vandaag",
+                "de": "Niederschlag täglich"
             }
         },
         "measure_rain.weekly": {
             "title": {
                 "en": "Rain weekly",
-                "nl": "Regen deze week" 
+                "nl": "Regen deze week",
+                "de": "Niederschlag wöchentlich"
             }
         },
         "measure_rain.monthly": {
             "title": {
                 "en": "Rain monthly",
-                "nl": "Regen deze maand" 
+                "nl": "Regen deze maand",
+                "de": "Niederschlag monatlich"
             }
         },
         "measure_rain.yearly": {
             "title": {
                 "en": "Rain yearly",
-                "nl": "Regen dit jaar" 
+                "nl": "Regen dit jaar",
+                "de": "Niederschlag jährlich"
             }
         },
         "measure_rain.total": {
             "title": {
                 "en": "Rain Total",
-                "nl": "Regen totaal" 
+                "nl": "Regen totaal",
+                "de": "Niederschlag gesamt"
             }
         }
     },
@@ -97,18 +107,21 @@
             },
             "value": "",
             "hint": {
-                "en": "Shows the ID of the gateway."
+                "en": "Shows the ID of the gateway.",
+                "de": "Zeigt die ID des Gateways."
             }
         },
         {
             "id": "stationType",
             "type": "label",
             "label": {
-                "en": "Station Type"
+                "en": "Station Type",
+                "de": "Stationstyp"
             },
             "value": "",
             "hint": {
-                "en": "Shows the type of gateway."
+                "en": "Shows the type of gateway.",
+                "de": "Zeigt den Stationstyp"
             }
         }
     ],

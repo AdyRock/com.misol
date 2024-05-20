@@ -1,7 +1,8 @@
 {
     "name": {
         "en": "Temperature Meter",
-        "nl": "Temperatuurmeter"
+        "nl": "Temperatuurmeter",
+        "de": "Thermometer"
     },
     "platforms": [
         "local"
@@ -42,18 +43,21 @@
             },
             "value": "",
             "hint": {
-                "en": "Shows the ID of the gateway."
+                "en": "Shows the ID of the gateway.",
+                "de": "Zeigt die ID des Gateways."
             }
         },
         {
             "id": "stationType",
             "type": "label",
             "label": {
-                "en": "Station Type"
+                "en": "Station Type",
+                "de": "Stationstyp"
             },
             "value": "",
             "hint": {
-                "en": "Shows the type of gateway."
+                "en": "Shows the type of gateway.",
+                "de": "Zeigt den Stationstyp"
             }
         },
         {
@@ -61,26 +65,30 @@
             "type": "dropdown",
             "label": {
                 "en": "Battery Type",
-                "nl": "Type batterij"
+                "nl": "Type batterij",
+                "de": "Batterietyp"
             },
             "value": "0",
             "hint": {
                 "en": "Specify the battery type for the correct % estimation. The setting will take affect on the next status update.",
-                "nl": "Geef het batterijtype op voor de juiste %-schatting. De instelling wordt van kracht bij de volgende statusupdate."
+                "nl": "Geef het batterijtype op voor de juiste %-schatting. De instelling wordt van kracht bij de volgende statusupdate.",
+                "de": "Batterietyp angeben, um eine korrekte %-Schätzung zu erhalten. Die Einstellung wird bei der nächsten Statusaktualisierung wirksam."
             },
             "values": [
                 {
                     "id": "0",
                     "label": {
                         "en": "Non-rechargeable",
-                        "nl": "Niet oplaadbaar"
+                        "nl": "Niet oplaadbaar",
+                        "de": "Nicht aufladbar"
                     }
                 },
                 {
                     "id": "1",
                     "label": {
                         "en": "Rechargeable",
-                        "nl": "Oplaadbaar"
+                        "nl": "Oplaadbaar",
+                        "de": "Aufladbar"
                     }
                 }
             ]

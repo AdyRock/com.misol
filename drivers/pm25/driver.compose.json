@@ -1,6 +1,7 @@
 {
     "name": {
-        "en": "PM25 Meter"
+        "en": "PM25 Meter",
+        "de": "PM25-Messer"
     },
     "platforms": [
         "local"
@@ -22,19 +23,22 @@
         "measure_pm25.avg": {
             "title": {
                 "en": "PM2.5 Avg 24h",
-                "nl": "PM2.5 gem. 24u"
+                "nl": "PM2.5 gem. 24u",
+                "dl": "PM2.5 ø 24h"
             }
         },
         "measure_aqi.avg": {
             "title": {
                 "en": "Air Quality Index Avg 24h",
-                "nl": "Luchtkwaliteitsindex Gem. 24u"
+                "nl": "Luchtkwaliteitsindex Gem. 24u",
+                "de": "Luftqualitätsindex ø 24h"
             }
         },
         "measure_aq.avg": {
             "title": {
                 "en": "Air Quality Avg 24h",
-                "nl": "Luchtkwaliteit Gem. 24u"
+                "nl": "Luchtkwaliteit Gem. 24u",
+                "de": "Luftqualität ø 24h"
             }
         }
     }
@@ -53,18 +57,21 @@
             },
             "value": "",
             "hint": {
-                "en": "Shows the ID of the gateway."
+                "en": "Shows the ID of the gateway.",
+                "de": "Zeigt die ID des Gateways."
             }
         },
         {
             "id": "stationType",
             "type": "label",
             "label": {
-                "en": "Station Type"
+                "en": "Station Type",
+                "de": "Stationstyp"
             },
             "value": "",
             "hint": {
-                "en": "Shows the type of gateway."
+                "en": "Shows the type of gateway.",
+                "de": "Zeigt den Stationstyp"
             }
         }
     ],

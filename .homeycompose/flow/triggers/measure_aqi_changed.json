@@ -1,14 +1,16 @@
 {
     "title": {
         "en": "The PM2.5 air quality index has changed",
-        "nl": "De PM2.5 luchtkwaliteitsindex is gewijzigd"
+        "nl": "De PM2.5 luchtkwaliteitsindex is gewijzigd",
+        "de": "Der PM2.5 Luftqualitätsindex hat sich verändert"
     },
     "tokens": [
         {
             "name": "measure_aqi",
             "title": {
                 "en": "Air quality index",
-                "nl": "Luchtkwaliteitsindex"
+                "nl": "Luchtkwaliteitsindex",
+                "de": "Luftqualitätsindex"
             },
             "type": "number",
             "example": 3

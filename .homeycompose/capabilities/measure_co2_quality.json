@@ -2,7 +2,8 @@
     "type": "string",
     "title": {
         "en": "CO2 Quality",
-        "nl": "CO2-kwaliteit"
+        "nl": "CO2-kwaliteit",
+        "de": "CO2-Qualität"
     },
     "getable": true,
     "setable": false,

@@ -2,7 +2,8 @@
     "type": "string",
     "title": {
         "en": "Lightning Time",
-        "nl": "Bliksem Tijd"
+        "nl": "Bliksem Tijd",
+        "de": "Blitzschlag-Zeit"
     },
     "getable": true,
     "setable": false,

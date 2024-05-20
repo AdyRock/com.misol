@@ -1,15 +1,18 @@
 {
     "title": {
         "en": "Dew point is !{{equal|not equal}} to",
-        "nl": "Dauwpunt is !{{gelijk aan |niet gelijk aan}}"
+        "nl": "Dauwpunt is !{{gelijk aan |niet gelijk aan}}",
+        "de": "Taupunkt ist !{{gleich|nicht gleich}}"
     },
     "hint": {
         "en": "This Flow will continue if dew point is/is not equal to the set value.",
-        "nl": "Deze Flow gaat door als het dauwpunt wel/niet gelijk is aan de ingestelde waarde."
+        "nl": "Deze Flow gaat door als het dauwpunt wel/niet gelijk is aan de ingestelde waarde.",
+        "de": "Dieser Flow wird weiterlaufen, wenn der Taupunkt (nicht) gleich dem gesetzten Wert ist."
     },
     "titleFormatted": {
         "en": "The dew point is !{{equal|not equal}} to [[value]]°C",
-        "nl": "Het dauwpunt is !{{gelijk aan|niet gelijk aan}} tot [[value]]°C"
+        "nl": "Het dauwpunt is !{{gelijk aan|niet gelijk aan}} tot [[value]]°C",
+        "de": "Der Taupunkt ist !{{gleich|nicht gleich}} [[value]]°C"
     },
     "args": [
         {
@@ -25,11 +28,13 @@
             "step": 1,
             "placeholder": {
                 "en": "Set a value",
-                "nl": "Stel een waarde in"
+                "nl": "Stel een waarde in",
+                "de": "Wert setzen"
             },
             "title": {
                 "en": "Dew point",
-                "nl": "dauwpunt"
+                "nl": "dauwpunt",
+                "de": "Taupunkt"
             }
         }
     ]

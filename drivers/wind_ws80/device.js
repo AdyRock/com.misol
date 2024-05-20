@@ -1,5 +1,9 @@
 'use strict';
-const Sector = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW','N'];
+const Sector = {
+    'en': ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW', 'N'],
+    'nl': ['N', 'NNO', 'NO', 'ONO', 'O', 'OZO', 'ZO', 'ZZO', 'Z', 'ZZW', 'ZW', 'WZW', 'W', 'WNW', 'NW', 'NNW', 'N'],
+    'de': ['N', 'NNO', 'NO', 'ONO', 'O', 'OSO', 'SO', 'SSO', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW', 'N']
+};
 
 const { Device } = require('homey');
 
@@ -140,7 +144,14 @@ class WindWS80Device extends Device
             this.setCapabilityValue('measure_wind_angle', parseInt(gateway.winddir)).catch(this.error);
 
             var index = parseInt(gateway.winddir / 22.5);
-            this.setCapabilityValue('measure_wind_direction', Sector[index]).catch(this.error);
+            let langCode = this.homey.i18n.getLanguage();
+            
+            if (!(Object.getOwnPropertyNames(Sector)).includes(langCode))
+            {
+                langCode = 'en';
+            }
+            let windDir = Sector[langCode][index];
+            this.setCapabilityValue('measure_wind_direction', windDir).catch(this.error);
 
             this.setCapabilityValue('measure_radiation', Number(gateway.solarradiation)).catch(this.error);
             this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.error);

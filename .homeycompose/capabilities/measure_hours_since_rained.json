@@ -2,10 +2,12 @@
     "type": "number",
     "title": {
         "en": "Hours Since Last Rained",
-        "nl": "Uren sinds laatste regen"
+        "nl": "Uren sinds laatste regen",
+        "de": "Stunden seit letztem Regen"
     },
     "units": {
-        "en": "Hours"
+        "en": "Hours",
+        "de": "Stunden"
     },
     "getable": true,
     "setable": false,

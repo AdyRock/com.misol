@@ -1,14 +1,16 @@
 {
     "title": {
         "en": "The hourly rainfall Changed",
-        "nl": "De neerslag per uur is veranderd"
+        "nl": "De neerslag per uur is veranderd",
+        "de": "Der stündliche Niederschlag hat sich verändert"
     },
     "tokens": [
         {
             "name": "measure_rain.hourly",
             "title": {
                 "en": "Hourly rainfall",
-                "nl": "Regenval per uur"
+                "nl": "Regenval per uur",
+                "de": "Stündlicher Niederschlag"
             },
             "type": "number",
             "example": 3

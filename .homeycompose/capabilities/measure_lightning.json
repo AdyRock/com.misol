@@ -2,7 +2,8 @@
     "type": "number",
     "title": {
         "en": "Lightning Distance",
-        "nl": "Bliksem afstand"
+        "nl": "Bliksem afstand",
+        "de": "Blitzentfernung"
     },
     "units": {
         "en": "km"

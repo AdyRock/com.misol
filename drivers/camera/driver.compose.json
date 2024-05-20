@@ -1,6 +1,7 @@
 {
     "name": {
-        "en": "camera"
+        "en": "camera",
+        "de": "Kamera"
     },
     "class": "camera",
     "capabilities": [],
@@ -20,11 +21,13 @@
             "id": "ip",
             "type": "text",
             "label": {
-                "en": "IP Address"
+                "en": "IP Address",
+                "de": "IP Adresse"
             },
             "value": "",
             "hint": {
-                "en": "Set the IP address of the camera."
+                "en": "Set the IP address of the camera.",
+                "de": "Setze die IP Adresse der Kamera."
             }
         }
     ],
