@@ -104,7 +104,7 @@ class WindWS80Device extends Device
     {
         if ( Units === 'SpeedUnits' )
         {
-            let unitsText = this.homey.app.SpeedUnits === '0' ? "Km/H" : "m/s";
+            let unitsText = this.homey.app.SpeedUnits === '0' ? "km/h" : "m/s";
             
             this.setCapabilityOptions( 'measure_wind_strength', { "units": unitsText } ).catch(this.error);
             this.setCapabilityOptions( 'measure_gust_strength', { "units": unitsText } ).catch(this.error);
