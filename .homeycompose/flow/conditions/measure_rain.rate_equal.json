@@ -2,17 +2,17 @@
     "title": {
         "en": "Rain rate is !{{equal|not equal}} to",
 		"nl": "Regenintensiteit is !{{gelijk aan|niet gelijk aan}}",
-		"de": "Niederschlagsrate ist !{{gleich|nicht gleich}}"
+		"de": "Regenrate ist !{{gleich|nicht gleich}}"
     },
     "hint": {
         "en": "This Flow will continue if event rainfall is/is not equal to the set value.",
 		"nl": "Deze Flow gaat verder als de regenintensiteit wel/niet gelijk is aan de ingestelde waarde.",
-		"de": "Dieser Flow wird fortgesetzt, wenn die Niederschlagsrate gleich/ungleich dem eingestellten Wert ist."
+		"de": "Dieser Flow wird fortgesetzt, wenn die Regenrate gleich/ungleich dem eingestellten Wert ist."
     },
     "titleFormatted": {
         "en": "The rain rate is !{{equal|not equal}} to [[value]]mm/hr",
 		"nl": "De regenintensiteit is !{{gelijk aan|niet gelijk aan}} [[value]]mm/u",
-		"de": "Das Niederschlagsrate ist !{{gleich|nicht gleich}} [[value]]mm/h"
+		"de": "Das Regenrate ist !{{gleich|nicht gleich}} [[value]]mm/h"
     },
     "args": [
         {
@@ -34,7 +34,7 @@
             "title": {
                 "en": "Rain rate",
                 "nl": "Regenintensiteit",
-                "de": "Niederschlagsrate"
+                "de": "Regenrate"
             }
         }
     ]

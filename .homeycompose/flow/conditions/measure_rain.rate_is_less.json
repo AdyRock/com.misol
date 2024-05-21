@@ -2,17 +2,17 @@
     "title": {
         "en": "Rain rate is !{{is|is not}} less than",
 		"nl": "Regenintensiteit is !{{is|is niet}} minder dan",
-		"de": "Niederschlagsrate !{{ist|ist nicht}} kleiner als"
+		"de": "Regenrate !{{ist|ist nicht}} kleiner als"
     },
     "hint": {
         "en": "This Flow will continue if rain rate is/is not less than the set value.",
 		"nl": "Deze Flow gaat verder als de regenintensiteit wel/niet minder is dan de ingestelde waarde.",
-		"de": "Dieser Flow wird fortgesetzt, wenn die Niederschlagsrate kleiner/gleich der eingestellten Wert ist."
+		"de": "Dieser Flow wird fortgesetzt, wenn die Regenrate kleiner/gleich der eingestellten Wert ist."
     },
     "titleFormatted": {
         "en": "The rain rate is !{{is|is not}} less than [[value]]mm/hr",
 		"nl": "De regenintensiteit is !{{is|is niet}} minder dan [[value]]mm/u",
-		"de": "Die Niederschlagsrate ist !{{ist|ist nicht}} kleiner als [[value]]mm/h"
+		"de": "Die Regenrate ist !{{ist|ist nicht}} kleiner als [[value]]mm/h"
     },
     "args": [
         {
@@ -34,7 +34,7 @@
             "title": {
                 "en": "Rain rate",
                 "nl": "Regenintensiteit",
-                "de": "Niederschlagsrate"
+                "de": "Regenrate"
             }
         }
     ]

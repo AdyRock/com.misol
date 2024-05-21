@@ -2,7 +2,7 @@
     "title": {
         "en": "The weekly rainfall Changed",
         "nl": "De wekelijkse neerslag Veranderd",
-        "de": "Der wöchentliche Niederschlag hat sich verändert"
+        "de": "Der wöchentliche Regen hat sich verändert"
     },
     "tokens": [
         {
@@ -10,7 +10,7 @@
             "title": {
                 "en": "Weekly rainfall",
                 "nl": "Wekelijkse regenval",
-                "de": "Wöchentlicher Niederschlag"
+                "de": "Wöchentlicher Regen"
             },
             "type": "number",
             "example": 3
