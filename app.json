@@ -1566,7 +1566,7 @@
         "titleFormatted": {
           "en": "The hours since it last rained is !{{equal|not equal}} to [[value]]Hours",
           "nl": "Het aantal uren sinds het voor het laatst heeft geregend is !{{equal|not equal}} tot [[value]]Uren",
-          "de": "Die Stundenanzahl seit letztem Regen ist !{{gleich|nicht gleich}} [[value]] Stunden"
+          "de": "Die Stundenanzahl seit dem letzten Regen ist !{{gleich|nicht gleich}} [[value]] Stunden"
         },
         "args": [
           {
@@ -1608,7 +1608,7 @@
         "titleFormatted": {
           "en": "The hours since it last rained is !{{less|greater}} less than [[value]]Hours",
           "nl": "Het aantal uren sinds de laatste regenbui is !{{minder|groter}} minder dan [[value]]uren",
-          "de": "Die Stundenanzahl seit letztem Regen ist !{{kleiner|größer}} [[value]] Stunden"
+          "de": "Die Stundenanzahl seit dem letzten Regen ist !{{kleiner|größer}} [[value]] Stunden"
         },
         "args": [
           {
