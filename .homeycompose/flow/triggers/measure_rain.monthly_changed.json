@@ -2,7 +2,7 @@
     "title": {
         "en": "The monthly rainfall Changed",
         "nl": "De maandelijkse neerslag veranderd",
-        "de": "Der monatliche Niederschlag hat sich verändert"
+        "de": "Der monatliche Regen hat sich verändert"
     },
     "tokens": [
         {
@@ -10,7 +10,7 @@
             "title": {
                 "en": "Monthly rainfall",
                 "nl": "Maandelijkse regenval",
-                "de": "Monatlicher Niederschlag"
+                "de": "Monatlicher Regen"
             },
             "type": "number",
             "example": 3

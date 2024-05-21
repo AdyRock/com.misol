@@ -2,17 +2,17 @@
     "title": {
         "en": "Total rainfall is !{{is|is not}} less than",
         "nl": "De totale regenval is !{{is|is niet}} minder dan",
-        "de": "Gesamter Niederschlag !{{ist|ist nicht}} kleiner als"
+        "de": "Gesamter Regen !{{ist|ist nicht}} kleiner als"
     },
     "hint": {
         "en": "This Flow will continue if total rainfall is/is not less than the set value.",
         "nl": "Deze stroom gaat door als de totale regenval wel/niet minder is dan de ingestelde waarde.",
-        "de": "Dieser Flow wird weiterlaufen, wenn der gesamte Niederschlag (nicht) kleiner als der gesetzte Wert ist."
+        "de": "Dieser Flow wird weiterlaufen, wenn der gesamte Regen (nicht) kleiner als der gesetzte Wert ist."
     },
     "titleFormatted": {
         "en": "The total rainfall is !{{is|is not}} less than [[value]]mm",
         "nl": "De totale regenval is !{{is|is niet}} minder dan [[value]]mm",
-        "de": "Der gesamte Niederschlag !{{ist|ist nicht}} kleiner als [[value]]mm"
+        "de": "Der gesamte Regen !{{ist|ist nicht}} kleiner als [[value]]mm"
     },
     "args": [
         {
@@ -34,7 +34,7 @@
             "title": {
                 "en": "Total rainfall",
                 "nl": "Totale regenval",
-                "de": "Gesamter Niederschlag"
+                "de": "Gesamter Regen"
             }
         }
     ]

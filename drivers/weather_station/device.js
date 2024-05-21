@@ -162,7 +162,7 @@ class WeatherStationDevice extends Device
 			}
 
             var opts = this.getCapabilityOptions('measure_rain.rate');
-            opts.units = `${unitsText}/h${timeText}`;
+            opts.units = `${unitsText}/${timeText}`;
 			opts.decimals = decimals;
 			this.setCapabilityOptions('measure_rain.rate', opts).catch(this.error);
 
@@ -220,7 +220,7 @@ class WeatherStationDevice extends Device
             if (!this.stationType)
             {
                 this.stationType = gateway.stationtype;
-                this.setSettings({stationType: this.stationType}).catch(this.error);;
+                this.setSettings({stationType: this.stationType}).catch(this.error);
             }
 
             var temperatureF = Number(gateway.tempf);

@@ -12,7 +12,7 @@
     "titleFormatted": {
         "en": "The hours since it last rained is !{{less|greater}} less than [[value]]Hours",
         "nl": "Het aantal uren sinds de laatste regenbui is !{{minder|groter}} minder dan [[value]]uren",
-        "de": "Die Stundenanzahl seit letztem Regen ist !{{kleiner|größer}} [[value]] Stunden"
+        "de": "Die Stundenanzahl seit dem letzten Regen ist !{{kleiner|größer}} [[value]] Stunden"
     },
     "args": [
         {

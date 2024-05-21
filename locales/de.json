@@ -17,10 +17,10 @@
         "logSendFailed": "Senden nach 5 Versuchen fehlgeschlagen.\nDie Fehlermeldungen sind am Ende des Protokolls.",
         "Units": "Einheiten",
         "SpeedUnits": "Windgeschwindigkeit",
-		"RainfallUnits": "Niederschlag Einheiten"
+		"RainfallUnits": "Regenhöhe"
     },
     "good": "Gut",
-    "Moderate": "Durchschnittlich",
+    "Moderate": "Mäßig",
     "UnhealthyLo": "Etwas ungesund",
     "Unhealthy": "Ungesund",
     "UnhealthyHi": "Sehr ungesund",

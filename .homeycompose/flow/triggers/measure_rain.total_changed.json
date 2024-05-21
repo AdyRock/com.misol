@@ -2,7 +2,7 @@
     "title": {
         "en": "The total rainfall Changed",
         "nl": "De totale regenval is veranderd",
-        "de": "Der gesamte Niederschlag hat sich verändert"
+        "de": "Der gesamte Regen hat sich verändert"
     },
     "tokens": [
         {
@@ -10,7 +10,7 @@
             "title": {
                 "en": "Total rainfall",
                 "nl": "Totale regenval",
-                "de": "Gesamter Niederschlag"
+                "de": "Gesamter Regen"
             },
             "type": "number",
             "example": 3

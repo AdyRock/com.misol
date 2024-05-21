@@ -26,7 +26,7 @@
     "UnhealthyHi": "Very Unhealthy",
     "Hazardous": "Hazardous",
     "speedUnits": {
-        "km": "km/H",
+        "km": "km/h",
         "m": "m/s",
         "mph": "mph"
     },

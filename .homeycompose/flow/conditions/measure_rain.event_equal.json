@@ -2,17 +2,17 @@
     "title": {
         "en": "Event rainfall is !{{equal|not equal}} to",
         "nl": "Evenement regenval is !{{gelijk aan | niet gelijk aan}}",
-        "de": "Regenereignis Niederschlag ist !{{gleich|nicht gleich}}"
+        "de": "Regenereignis ist !{{gleich|nicht gleich}}"
     },
     "hint": {
         "en": "This Flow will continue if event rainfall is/is not equal to the set value.",
-        "nl": "Deze stroom gaat door als de regenval wel/niet gelijk is aan de ingestelde waarde.",
-        "de": "Dieser Flow wird weiterlaufen, wenn der Regenereignis Niederschlag (nicht) gleich dem gesetzten Wert ist."
+        "nl": "Deze stroom gaat door als de evenement regenval wel/niet gelijk is aan de ingestelde waarde.",
+        "de": "Dieser Flow wird weiterlaufen, wenn das Regenereignis (nicht) gleich dem gesetzten Wert ist."
     },
     "titleFormatted": {
         "en": "The event rainfall is !{{equal|not equal}} to [[value]]mm",
-        "nl": "De gebeurtenisregenval is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
-        "de": "Der Regenereignis Niederschlag ist !{{gleich|nicht gleich}} [[value]]mm"
+        "nl": "De evenement regenval is !{{gelijk aan|niet gelijk aan}} tot [[value]]mm",
+        "de": "Das Regenereignis ist !{{gleich|nicht gleich}} [[value]]mm"
     },
     "args": [
         {
@@ -34,7 +34,7 @@
             "title": {
                 "en": "Event rainfall",
                 "nl": "Gebeurtenis regenval",
-                "de": "Regenereignis Niederschlag"
+                "de": "Regenereignis"
             }
         }
     ]
