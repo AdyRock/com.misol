@@ -196,10 +196,13 @@ class WeatherStationDevice extends Device
 			opts.decimals = decimals;
 			this.setCapabilityOptions('measure_rain.yearly', opts).catch(this.error);
 
-			var opts = this.getCapabilityOptions('measure_rain.total');
-			opts.units = unitsText;
-			opts.decimals = decimals;
-			this.setCapabilityOptions('measure_rain.total', opts).catch(this.error);
+            if (this.hasCapability('measure_rain.total'))
+			{
+				var opts = this.getCapabilityOptions('measure_rain.total');
+				opts.units = unitsText;
+				opts.decimals = decimals;
+				this.setCapabilityOptions('measure_rain.total', opts).catch(this.error);
+			}
 
 			this.setCapabilityValue('measure_rain.rate', null).catch(this.error);
 			this.setCapabilityValue('measure_rain.event', null).catch(this.error);
@@ -208,7 +211,10 @@ class WeatherStationDevice extends Device
 			this.setCapabilityValue('measure_rain.weekly', null).catch(this.error);
 			this.setCapabilityValue('measure_rain.monthly', null).catch(this.error);
 			this.setCapabilityValue('measure_rain.yearly', null).catch(this.error);
-			this.setCapabilityValue('measure_rain.total', null).catch(this.error);
+            if (this.hasCapability('measure_rain.total'))
+			{
+				this.setCapabilityValue('measure_rain.total', null).catch(this.error);
+			}
 		}
     }
 
@@ -298,11 +304,14 @@ class WeatherStationDevice extends Device
                 yearlyrainin = gateway.yearlyrainin;
                 totalrainin = gateway.totalrainin;
 
-                let rain = Number(totalrainin) * rainConversion;
-                if (rain != this.getCapabilityValue('measure_rain.total'))
-                {
-                    this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
-                }
+				if (this.hasCapability('measure_rain.total'))
+				{
+					let rain = Number(totalrainin) * rainConversion;
+					if (rain != this.getCapabilityValue('measure_rain.total'))
+					{
+						this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
+					}
+				}
             }
             else if (gateway.rrain_piezo)
             {

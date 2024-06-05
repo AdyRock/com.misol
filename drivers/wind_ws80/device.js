@@ -170,10 +170,13 @@ class WindWS80Device extends Device
 			opts.decimals = decimals;
 			this.setCapabilityOptions('measure_rain.yearly', opts).catch(this.error);
 
-			var opts = this.getCapabilityOptions('measure_rain.total');
-			opts.units = unitsText;
-			opts.decimals = decimals;
-			this.setCapabilityOptions('measure_rain.total', opts).catch(this.error);
+            if (this.hasCapability('measure_rain.total'))
+			{
+				var opts = this.getCapabilityOptions('measure_rain.total');
+				opts.units = unitsText;
+				opts.decimals = decimals;
+				this.setCapabilityOptions('measure_rain.total', opts).catch(this.error);
+			}
 
 			this.setCapabilityValue('measure_rain.rate', null).catch(this.error);
 			this.setCapabilityValue('measure_rain.event', null).catch(this.error);
@@ -182,7 +185,11 @@ class WindWS80Device extends Device
 			this.setCapabilityValue('measure_rain.weekly', null).catch(this.error);
 			this.setCapabilityValue('measure_rain.monthly', null).catch(this.error);
 			this.setCapabilityValue('measure_rain.yearly', null).catch(this.error);
-			this.setCapabilityValue('measure_rain.total', null).catch(this.error);
+            
+			if (this.hasCapability('measure_rain.total'))
+			{
+				this.setCapabilityValue('measure_rain.total', null).catch(this.error);
+			}
 		}
 	}
 

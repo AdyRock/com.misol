@@ -124,5 +124,8 @@
 	},
 	"0.1.41": {
 		"en": "Added an app setting to show rain in mm or inches."
+	},
+	"0.1.42": {
+		"en": "Added checks for 'measure_rain.total' existence to prevent errors."
 	}
 }

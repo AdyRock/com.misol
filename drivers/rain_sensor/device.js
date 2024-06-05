@@ -141,12 +141,15 @@ class RainSensorDevice extends Device
                 //this.driver.trigger_measure_rain_yearly(this, rain);
             }
 
-            rain = Number(gateway.totalrainin) * 25.4;
-            if (rain != this.getCapabilityValue('measure_rain.total'))
-            {
-                this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
-                //this.driver.trigger_measure_rain_total(this, rain);
-            }
+            if (this.hasCapability('measure_rain.total'))
+			{
+				rain = Number(gateway.totalrainin) * 25.4;
+				if (rain != this.getCapabilityValue('measure_rain.total'))
+				{
+					this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
+					//this.driver.trigger_measure_rain_total(this, rain);
+				}
+			}
 
             rain = Number(gateway.dailyrainin) * 25.4;
             if (rain != this.getCapabilityValue('measure_rain.daily'))
