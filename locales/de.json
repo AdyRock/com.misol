@@ -28,7 +28,8 @@
     "speedUnits": {
         "km": "km/h",
         "m": "m/s",
-        "mph": "mph"
+        "mph": "mph",
+		"knots": "Knoten"
     },
     "rainfallUnits": {
         "mm": "mm",

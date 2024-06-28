@@ -127,5 +127,8 @@
 	},
 	"0.1.42": {
 		"en": "Added checks for 'measure_rain.total' existence to prevent errors."
+	},
+	"0.1.43": {
+		"en": "Added option to show windspeed in knots."
 	}
 }

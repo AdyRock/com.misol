@@ -64,14 +64,8 @@ class WeatherStationDevice extends Device
      */
     async onAdded()
     {
-        let unitsText = this.homey.app.SpeedUnits === '0' ? this.homey.__('speedUnits.km') : this.homey.__('speedUnits.m');
-
-        this.setCapabilityOptions('measure_wind_strength', { "units": unitsText }).catch(this.error);
-        this.setCapabilityOptions('measure_gust_strength', { "units": unitsText }).catch(this.error);
-
-        var opts = this.getCapabilityOptions('measure_gust_strength.daily');
-        opts.units = unitsText;
-        this.setCapabilityOptions('measure_gust_strength.daily', opts).catch(this.error);
+        this.unitsChanged('SpeedUnits');
+		this.unitsChanged('RainfallUnits');
 
         this.log('WeatherStationDevice has been added');
     }
@@ -124,7 +118,10 @@ class WeatherStationDevice extends Device
                 case '2':
                     unitsText = this.homey.__('speedUnits.mph');
                     break;
-                default:
+				case '3':
+					unitsText = this.homey.__('speedUnits.knots');
+					break;
+				default:
                     unitsText = this.homey.__('speedUnits.km');
                     break;
             }
@@ -237,25 +234,36 @@ class WeatherStationDevice extends Device
             this.setCapabilityValue('measure_pressure', Number(gateway.baromrelin) * 33.8639).catch(this.error);
             this.setCapabilityValue('measure_temperature', (temperatureF - 32) * 5 / 9).catch(this.error);
 
-            if (this.homey.app.SpeedUnits === '0')
+            // Speed data is in MPH, convert to the selected units
+			if (this.homey.app.SpeedUnits === '0')
             {
+				// KPH
                 this.setCapabilityValue('measure_wind_strength', windSpeed * 1.609344).catch(this.error);
                 this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) * 1.609344).catch(this.error);
                 this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) * 1.609344).catch(this.error);
             }
             else if (this.homey.app.SpeedUnits === '1')
             {
+				// MPS
                 this.setCapabilityValue('measure_wind_strength', (windSpeed * 1.609344) * 1000 / 3600).catch(this.error);
                 this.setCapabilityValue('measure_gust_strength', (Number(gateway.windgustmph) * 1.609344) * 1000 / 3600).catch(this.error);
                 this.setCapabilityValue('measure_gust_strength.daily', (Number(gateway.maxdailygust) * 1.609344) * 1000 / 3600).catch(this.error);
             }
-            else
+            else if (this.homey.app.SpeedUnits === '2')
             {
+				// MPH
                 this.setCapabilityValue('measure_wind_strength', windSpeed).catch(this.error);
                 this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph)).catch(this.error);
                 this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust)).catch(this.error);
             }
-
+            else if (this.homey.app.SpeedUnits === '3')
+			{
+				// Knots
+				this.setCapabilityValue('measure_wind_strength', windSpeed / 1.151).catch(this.error);
+				this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) / 1.151).catch(this.error);
+				this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) / 1.151).catch(this.error);
+			}
+	
             this.setCapabilityValue('measure_wind_angle', parseInt(gateway.winddir)).catch(this.error);
 
             var index = parseInt(gateway.winddir / 22.5);

@@ -26,7 +26,9 @@
     "Hazardous": "Gevaarlijk",
     "speedUnits": {
         "km": "km/u",
-        "m": "m/s"
+        "m": "m/s",
+		"mph": "mph",
+		"knots": "knopen"
     },
 	"rainfallUnits": {
         "mm": "mm",
