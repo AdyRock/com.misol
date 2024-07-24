@@ -45,7 +45,7 @@ class LightningDevice extends Device
     async onSettings({ oldSettings, newSettings, changedKeys })
     {
         this.log('Lightning Device settings where changed');
-        if (changedKeys.indexOf("timeFormat") >= 0)
+        if ((changedKeys.indexOf("timeFormat") >= 0) || (changedKeys.indexOf("adjustTime") >= 0))
         {
             this.setCapabilityValue('measure_lightning_time', this.convertDate(this.lightning_time, newSettings)).catch(this.error);
         }
@@ -56,15 +56,19 @@ class LightningDevice extends Device
         var strDate = "";
         if (date)
         {
-            let tz = this.homey.clock.getTimezone();
-            let lang = this.homey.i18n.getLanguage();
+			let tz = this.homey.clock.getTimezone();
+			let lang = this.homey.i18n.getLanguage();
 
-            let dateZero = new Date(0);
-            let offset = dateZero.toLocaleString(lang, {hour: '2-digit',   hour12: false, timeZone: tz });
+			var d = new Date(date * 1000);
+			if (settings.adjustTime !== false)
+			{
+				let dateZero = new Date(0);
+				let offset = dateZero.toLocaleString(lang, {hour: '2-digit',   hour12: false, timeZone: tz });
 
-            let dataNum = (parseInt(offset) * 60 * 60) + parseInt(date);
+				let dataNum = (parseInt(offset) * 60 * 60) + parseInt(date);
 
-            var d = new Date(dataNum * 1000);
+				d = new Date(dataNum * 1000);
+			}
 
             if (settings.timeFormat == "mm_dd")
             {
@@ -123,11 +127,11 @@ class LightningDevice extends Device
             {
                 this.setCapabilityValue('measure_lightning', Number(gateway.lightning)).catch(this.error);
 
-                const settings = this.getSettings();
-                if (gateway.lightning_time !== '')
+                if (gateway.lightning_time !== '' && gateway.lightning_time != this.lightning_time)
                 {
+					const settings = this.getSettings();
                     this.lightning_time = gateway.lightning_time;
-                    this.setStoreValue('lightning_time', this.lightning_time);
+                    this.setStoreValue('lightning_time', this.lightning_time).catch(this.error);
                     this.setCapabilityValue('measure_lightning_time', this.convertDate(this.lightning_time, settings)).catch(this.error);
                 }
 

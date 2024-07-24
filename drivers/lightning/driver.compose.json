@@ -112,7 +112,24 @@
                     }
                 }
             ]
-        }
+        },
+		{
+			"id": "adjustTime",
+			"type": "checkbox",
+			"label": {
+				"en": "Adjust Time",
+				"de": "Zeit anpassen",
+				"nl": "Tijd aanpassen",
+				"it": "Regola il tempo"
+			},
+			"value": true,
+			"hint": {
+				"en": "Adjust UTC time to the local time.",
+				"de": "Passt die UTC-Zeit an die lokale Zeit an.",
+				"nl": "Pas UTC-tijd aan naar lokale tijd.",
+				"it": "Regola l'ora UTC all'ora locale."
+			}
+		}
     ],
     "images": {
         "small": "/drivers/lightning/assets/images/small.png",

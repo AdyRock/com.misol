@@ -42,7 +42,10 @@ class WindWS80Device extends Device
 			this.addCapability('measure_rain.rate');
 		}
 
-        this.log('WindWS80Device has been initialized');
+        this.unitsChanged('SpeedUnits');
+		this.unitsChanged('RainfallUnits');
+
+		this.log('WindWS80Device has been initialized');
     }
 
     /**

@@ -130,5 +130,8 @@
 	},
 	"0.1.43": {
 		"en": "Added option to show windspeed in knots."
+	},
+	"0.1.44": {
+		"en": "Added option to adjust lightening time from UTC to Homey local time."
 	}
 }
