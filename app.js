@@ -45,7 +45,7 @@ class MyApp extends Homey.App
         this.SpeedUnits = this.homey.settings.get( 'SpeedUnits' );
         if ( this.SpeedUnits === null )
         {
-            this.SpeedUnits = 0;
+            this.SpeedUnits = '0';
             this.homey.settings.set( 'SpeedUnits', this.SpeedUnits );
         }
 

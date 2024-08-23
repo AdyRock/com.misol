@@ -133,5 +133,8 @@
 	},
 	"0.1.44": {
 		"en": "Added option to adjust lightening time from UTC to Homey local time."
+	},
+	"0.1.45": {
+		"en": "Fix Wind Speed units initialisation."
 	}
 }
