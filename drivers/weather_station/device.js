@@ -315,12 +315,24 @@ class WeatherStationDevice extends Device
                 yearlyrainin = gateway.yearlyrainin;
                 totalrainin = gateway.totalrainin;
 
-				if (this.hasCapability('measure_rain.total'))
+				if (totalrainin !== null)
 				{
+					if (!this.hasCapability('measure_rain.total'))
+					{
+						await this.addCapability('measure_rain.total');
+					}
+
 					let rain = Number(totalrainin) * rainConversion;
 					if (rain != this.getCapabilityValue('measure_rain.total'))
 					{
 						this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
+					}
+				}
+				else
+				{
+					if (this.hasCapability('measure_rain.total'))
+					{
+						this.removeCapability('measure_rain.total');
 					}
 				}
             }
@@ -374,9 +386,9 @@ class WeatherStationDevice extends Device
             }
             else
             {
-                if (this.hasCapability('measure_rain'))
+                if (this.hasCapability('measure_rain.rate'))
                 {
-                    this.removeCapability('measure_rain');
+                    this.removeCapability('measure_rain.rate');
                 }
                 if (this.hasCapability('measure_hours_since_rained'))
                 {

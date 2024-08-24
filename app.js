@@ -52,7 +52,7 @@ class MyApp extends Homey.App
         this.RainfallUnits = this.homey.settings.get( 'RainfallUnits' );
         if ( this.RainfallUnits === null )
         {
-            this.RainfallUnits = 0;
+            this.RainfallUnits = '0';
             this.homey.settings.set( 'RainfallUnits', this.RainfallUnits );
         }
 

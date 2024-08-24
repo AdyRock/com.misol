@@ -120,7 +120,7 @@
 		"en": "Added mph option for window speed."
 	},
 	"0.1.40": {
-		"en": "Changed gateway class to sensor to it appears in the Climate section of Homey."
+		"en": "Changed gateway class to sensor so it appears in the Climate section of Homey."
 	},
 	"0.1.41": {
 		"en": "Added an app setting to show rain in mm or inches."
