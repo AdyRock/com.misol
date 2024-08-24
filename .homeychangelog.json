@@ -136,5 +136,8 @@
 	},
 	"0.1.45": {
 		"en": "Fix Wind Speed units initialisation."
+	},
+	"0.1.46": {
+		"en": "Remove Rain Rate and Rain Total capabilities if the data is not reported by the weather station."
 	}
 }

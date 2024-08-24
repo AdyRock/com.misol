@@ -298,7 +298,7 @@ class WeatherStationDevice extends Device
             let weeklyrainin = 0;
             let monthlyrainin = 0;
             let yearlyrainin = 0;
-            let totalrainin = 0;
+            let totalrainin = null;
 
             if (gateway.rainratein)
             {
@@ -313,28 +313,6 @@ class WeatherStationDevice extends Device
                 weeklyrainin = gateway.weeklyrainin;
                 monthlyrainin = gateway.monthlyrainin;
                 yearlyrainin = gateway.yearlyrainin;
-                totalrainin = gateway.totalrainin;
-
-				if (totalrainin !== null)
-				{
-					if (!this.hasCapability('measure_rain.total'))
-					{
-						await this.addCapability('measure_rain.total');
-					}
-
-					let rain = Number(totalrainin) * rainConversion;
-					if (rain != this.getCapabilityValue('measure_rain.total'))
-					{
-						this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
-					}
-				}
-				else
-				{
-					if (this.hasCapability('measure_rain.total'))
-					{
-						this.removeCapability('measure_rain.total');
-					}
-				}
             }
             else if (gateway.rrain_piezo)
             {
@@ -345,12 +323,33 @@ class WeatherStationDevice extends Device
                 weeklyrainin = gateway.wrain_piezo;
                 monthlyrainin = gateway.mrain_piezo;
                 yearlyrainin = gateway.yrain_piezo;
-
-                if (this.hasCapability('measure_rain.total'))
-                {
-                    this.removeCapability('measure_rain.total');
-                }
             }
+
+			if (gateway.totalrainin)
+			{
+				totalrainin = gateway.totalrainin;
+			}
+
+			if (totalrainin !== null)
+			{
+				if (!this.hasCapability('measure_rain.total'))
+				{
+					await this.addCapability('measure_rain.total');
+				}
+
+				let rain = Number(totalrainin) * rainConversion;
+				if (rain != this.getCapabilityValue('measure_rain.total'))
+				{
+					this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
+				}
+			}
+			else
+			{
+				if (this.hasCapability('measure_rain.total'))
+				{
+					this.removeCapability('measure_rain.total');
+				}
+			}
 
             let rain = 0;
             if (rainratein !== null)
