@@ -139,5 +139,8 @@
 	},
 	"0.1.46": {
 		"en": "Remove Rain Rate and Rain Total capabilities if the data is not reported by the weather station."
+	},
+	"0.1.47": {
+		"en": "Log timezone and language parameters to diagnose conversion from UTC to regional time."
 	}
 }

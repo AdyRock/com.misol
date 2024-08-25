@@ -622,7 +622,7 @@ class MyApp extends Homey.App
                         data = JSON.parse('{"' + bodyMsg.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function(key, value) { return key === "" ? value : decodeURIComponent(value); });
                     }
 
-                    this.updateLog(this.varToString(data), 1);
+//                    this.updateLog(this.varToString(data), 1);
 
                     // Update discovery array used to add devices
                     var gatewatEntry = this.detectedGateways.findIndex(x => x.PASSKEY === data.PASSKEY);

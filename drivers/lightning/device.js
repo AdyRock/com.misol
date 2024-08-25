@@ -59,6 +59,8 @@ class LightningDevice extends Device
 			let tz = this.homey.clock.getTimezone();
 			let lang = this.homey.i18n.getLanguage();
 
+			this.homey.app.updateLog(`Timezone: ${tz}, Language: ${lang}`);
+
 			var d = new Date(date * 1000);
 			if (settings.adjustTime !== false)
 			{
