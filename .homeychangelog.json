@@ -142,5 +142,8 @@
 	},
 	"0.1.47": {
 		"en": "Log timezone and language parameters to diagnose conversion from UTC to regional time."
+	},
+	"0.1.48": {
+		"en": "Added support for units to the rain sensor."
 	}
 }
