@@ -29,12 +29,12 @@ class WeatherStationDevice extends Device
 
         if (!this.hasCapability('measure_wind_direction'))
         {
-            this.addCapability('measure_wind_direction');
+            await this.addCapability('measure_wind_direction');
         }
 
         if (!this.hasCapability('measure_luminance'))
         {
-            this.addCapability('measure_luminance');
+            await this.addCapability('measure_luminance');
         }
 
 		if (this.hasCapability('measure_rain'))
@@ -44,9 +44,9 @@ class WeatherStationDevice extends Device
 
 		if (!this.hasCapability('measure_rain.rate'))
 		{
-			this.addCapability('measure_rain.rate');
+			await this.addCapability('measure_rain.rate');
 		}
-	
+
         this.lastRained = this.homey.settings.get('lastRainedTime');
         if (this.lastRained === null)
         {
@@ -54,9 +54,10 @@ class WeatherStationDevice extends Device
             this.lastRained = now.getTime();
             this.homey.settings.set('lastRainedTime', this.lastRained);
         }
-        this.log('WeatherStationDevice has been initialized');
         this.unitsChanged('SpeedUnits');
 		this.unitsChanged('RainfallUnits');
+
+		this.log('WeatherStationDevice has been initialized');
     }
 
     /**
@@ -106,7 +107,7 @@ class WeatherStationDevice extends Device
         if (Units === 'SpeedUnits')
         {
             let unitsText = '';
-            
+
             switch (this.homey.app.SpeedUnits)
             {
                 case '0':
@@ -266,12 +267,12 @@ class WeatherStationDevice extends Device
 				this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) * 1.609344).catch(this.error);
 				this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) * 1.609344).catch(this.error);
 			}
-	
+
             this.setCapabilityValue('measure_wind_angle', parseInt(gateway.winddir)).catch(this.error);
 
             var index = parseInt(gateway.winddir / 22.5);
             let langCode = this.homey.i18n.getLanguage();
-            
+
             if (!(Object.getOwnPropertyNames(Sector)).includes(langCode))
             {
                 langCode = 'en';
@@ -284,11 +285,9 @@ class WeatherStationDevice extends Device
             this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.error);
 
             let rainConversion = 25.4;
-			let decimals = 0;
 			if (this.homey.app.RainfallUnits === '1')
 			{
 				rainConversion = 1;
-				decimals = 1;
 			}
 
 			let rainratein = null;

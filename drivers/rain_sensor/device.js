@@ -18,7 +18,7 @@ class RainSensorDevice extends Device
 
         if (!this.hasCapability('measure_hours_since_rained'))
         {
-            this.addCapability('measure_hours_since_rained');
+            await this.addCapability('measure_hours_since_rained');
         }
 
         this.lastRained = this.homey.settings.get('lastRainedTime');
@@ -28,7 +28,10 @@ class RainSensorDevice extends Device
             this.lastRained = now.getTime();
             this.homey.settings.set('lastRainedTime', this.lastRained);
         }
-        this.log('RainSensorDevice has been initialized');
+
+		this.unitsChanged('RainfallUnits');
+
+		this.log('RainSensorDevice has been initialized');
     }
 
     /**
@@ -36,6 +39,7 @@ class RainSensorDevice extends Device
      */
     async onAdded()
     {
+		this.unitsChanged('RainfallUnits');
         this.log('RainSensorDevice has been added');
     }
 
@@ -70,6 +74,88 @@ class RainSensorDevice extends Device
         this.log('RainSensorDevice has been deleted');
     }
 
+	async unitsChanged(Units)
+	{
+		if (Units === 'RainfallUnits')
+		{
+			let timeText = this.homey.__('hourAbbr');
+			let unitsText = '';
+			let decimals = 0;
+			switch (this.homey.app.RainfallUnits)
+			{
+				case '0':
+					unitsText = this.homey.__('rainfallUnits.mm');
+					break;
+				case '1':
+					unitsText = this.homey.__('rainfallUnits.in');
+					decimals = 1;
+					break;
+				default:
+					unitsText = this.homey.__('rainfallUnits.mm');
+					break;
+
+			}
+
+			if (this.hasCapability('measure_rain.rate'))
+			{
+				var opts = this.getCapabilityOptions('measure_rain.rate');
+				opts.units = `${unitsText}/${timeText}`;
+				opts.decimals = decimals;
+				this.setCapabilityOptions('measure_rain.rate', opts).catch(this.error);
+			}
+
+			var opts = this.getCapabilityOptions('measure_rain.event');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.event', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.hourly');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.hourly', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.daily');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.daily', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.weekly');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.weekly', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.monthly');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.monthly', opts).catch(this.error);
+
+			var opts = this.getCapabilityOptions('measure_rain.yearly');
+			opts.units = unitsText;
+			opts.decimals = decimals;
+			this.setCapabilityOptions('measure_rain.yearly', opts).catch(this.error);
+
+			if (this.hasCapability('measure_rain.total'))
+			{
+				var opts = this.getCapabilityOptions('measure_rain.total');
+				opts.units = unitsText;
+				opts.decimals = decimals;
+				this.setCapabilityOptions('measure_rain.total', opts).catch(this.error);
+			}
+
+			this.setCapabilityValue('measure_rain.rate', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.event', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.hourly', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.daily', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.weekly', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.monthly', null).catch(this.error);
+			this.setCapabilityValue('measure_rain.yearly', null).catch(this.error);
+			if (this.hasCapability('measure_rain.total'))
+			{
+				this.setCapabilityValue('measure_rain.total', null).catch(this.error);
+			}
+		}
+	}
+
     async updateCapabilities(gateway)
     {
         const dd = this.getData();
@@ -81,81 +167,165 @@ class RainSensorDevice extends Device
                 this.setSettings({stationType: this.stationType}).catch(this.error);
             }
 
-            let rain = Number(gateway.rainratein) * 25.4;
-            this.setCapabilityValue('measure_rain.rate', rain).catch(this.error);
+			let rainConversion = 25.4;
+			if (this.homey.app.RainfallUnits === '1')
+			{
+				rainConversion = 1;
+			}
 
-            if (rain > 0)
-            {
-                const now = new Date(Date.now());
-                this.lastRained = now.getTime();
-                this.homey.settings.set('lastRainedTime', this.lastRained);
-                this.setCapabilityValue('measure_hours_since_rained', 0).catch(this.error);
-            }
-            else
-            {
-                const now = new Date(Date.now());
-                const diff = now.getTime() - this.lastRained;
-                const noRainHours = Math.floor(diff / 1000 / 60 / 60);
-                this.setCapabilityValue('measure_hours_since_rained', noRainHours).catch(this.error);
-            }
+			let rainratein = null;
+			let eventrainin = 0;
+			let hourlyrainin = 0;
+			let dailyrainin = 0;
+			let weeklyrainin = 0;
+			let monthlyrainin = 0;
+			let yearlyrainin = 0;
+			let totalrainin = null;
 
-            rain = Number(gateway.eventrainin) * 25.4;
+			if (gateway.rainratein)
+			{
+				rainratein = gateway.rainratein;
+			}
+
+			if (gateway.eventrainin)
+			{
+				eventrainin = gateway.eventrainin;
+				hourlyrainin = gateway.hourlyrainin;
+				dailyrainin = gateway.dailyrainin;
+				weeklyrainin = gateway.weeklyrainin;
+				monthlyrainin = gateway.monthlyrainin;
+				yearlyrainin = gateway.yearlyrainin;
+			}
+			else if (gateway.rrain_piezo)
+			{
+				rainratein = gateway.rrain_piezo;
+				eventrainin = gateway.erain_piezo;
+				hourlyrainin = gateway.hrain_piezo;
+				dailyrainin = gateway.drain_piezo;
+				weeklyrainin = gateway.wrain_piezo;
+				monthlyrainin = gateway.mrain_piezo;
+				yearlyrainin = gateway.yrain_piezo;
+			}
+
+			if (gateway.totalrainin)
+			{
+				totalrainin = gateway.totalrainin;
+			}
+
+			if (totalrainin !== null)
+			{
+				if (!this.hasCapability('measure_rain.total'))
+				{
+					await this.addCapability('measure_rain.total');
+				}
+
+				let rain = Number(totalrainin) * rainConversion;
+				if (rain != this.getCapabilityValue('measure_rain.total'))
+				{
+					this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
+				}
+			}
+			else
+			{
+				if (this.hasCapability('measure_rain.total'))
+				{
+					this.removeCapability('measure_rain.total');
+				}
+			}
+
+			let rain = 0;
+			if (rainratein !== null)
+			{
+				if (!this.hasCapability('measure_rain.rate'))
+				{
+					await this.addCapability('measure_rain.rate');
+				}
+				if (!this.hasCapability('measure_hours_since_rained'))
+				{
+					await this.addCapability('measure_hours_since_rained');
+
+				}
+
+				let rain = Number(rainratein) * rainConversion;
+				this.setCapabilityValue('measure_rain.rate', rain).catch(this.error);
+
+				if (rain > 0)
+				{
+					const now = new Date(Date.now());
+					this.lastRained = now.getTime();
+					this.homey.settings.set('lastRainedTime', this.lastRained);
+					this.setCapabilityValue('measure_hours_since_rained', 0).catch(this.error);
+				}
+				else
+				{
+					const now = new Date(Date.now());
+					const diff = now.getTime() - this.lastRained;
+					const noRainHours = Math.floor(diff / 1000 / 60 / 60);
+					this.setCapabilityValue('measure_hours_since_rained', noRainHours).catch(this.error);
+				}
+			}
+			else
+			{
+				if (this.hasCapability('measure_rain.rate'))
+				{
+					this.removeCapability('measure_rain.rate');
+				}
+				if (this.hasCapability('measure_hours_since_rained'))
+				{
+					this.removeCapability('measure_hours_since_rained');
+				}
+			}
+
+			rain = Number(eventrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.event'))
             {
                 this.setCapabilityValue('measure_rain.event', rain).catch(this.error);
                 //this.driver.trigger_measure_rain_event(this, rain);
             }
 
-            rain = Number(gateway.hourlyrainin) * 25.4;
+			rain = Number(hourlyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.hourly'))
             {
                 this.setCapabilityValue('measure_rain.hourly', rain).catch(this.error);
-                //this.driver.trigger_measure_rain_hourly(this, rain);
             }
 
-            rain = Number(gateway.dailyrainin) * 25.4;
+			rain = Number(dailyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.daily'))
             {
                 this.setCapabilityValue('measure_rain.daily', rain).catch(this.error);
-                //this.driver.trigger_measure_rain_daily(this, rain);
             }
 
-            rain = Number(gateway.weeklyrainin) * 25.4;
+			rain = Number(weeklyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.weekly'))
             {
                 this.setCapabilityValue('measure_rain.weekly', rain).catch(this.error);
-                //this.driver.trigger_measure_rain_weekly(this, rain);
             }
 
-            rain = Number(gateway.monthlyrainin) * 25.4;
+			rain = Number(monthlyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.monthly'))
             {
                 this.setCapabilityValue('measure_rain.monthly', rain).catch(this.error);
-                //this.driver.trigger_measure_rain_monthly(this, rain);
             }
 
-            rain = Number(gateway.yearlyrainin) * 25.4;
+			rain = Number(yearlyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.yearly'))
             {
                 this.setCapabilityValue('measure_rain.yearly', rain).catch(this.error);
-                //this.driver.trigger_measure_rain_yearly(this, rain);
             }
 
             if (this.hasCapability('measure_rain.total'))
 			{
-				rain = Number(gateway.totalrainin) * 25.4;
+				rain = Number(totalrainin) * rainConversion
 				if (rain != this.getCapabilityValue('measure_rain.total'))
 				{
 					this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
-					//this.driver.trigger_measure_rain_total(this, rain);
 				}
 			}
 
-            rain = Number(gateway.dailyrainin) * 25.4;
+			rain = Number(dailyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.daily'))
             {
                 this.setCapabilityValue('measure_rain.daily', rain).catch(this.error);
-                //this.driver.trigger_measure_rain_daily(this, rain);
             }
 
         }
