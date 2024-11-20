@@ -145,5 +145,8 @@
 	},
 	"0.1.48": {
 		"en": "Added support for units to the rain sensor."
+	},
+	"0.1.49": {
+		"en": "Fix issue when changing units for a capability that had no options set."
 	}
 }
