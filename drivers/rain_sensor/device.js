@@ -74,6 +74,35 @@ class RainSensorDevice extends Device
         this.log('RainSensorDevice has been deleted');
     }
 
+	// Merge the new units with the current options
+	setUnitsOptions(capability, newUnits)
+	{
+		if (this.hasCapability(capability))
+		{
+			let options = {};
+			try
+			{
+				options = this.getCapabilityOptions(capability);
+			}
+			catch (error)
+			{
+				// No options set yet
+				const drivers = this.homey.app.manifest.drivers;
+				const driver = drivers.find(driver => driver.id === this.driver.id);
+				const capabilityOpt = driver.capabilitiesOptions[capability];
+				if (capabilityOpt && capabilityOpt.title)
+				{
+					const title = capabilityOpt.title;
+					options = { title: title };
+				}
+			}
+
+			const combinedOptions = Object.assign(options, newUnits);
+			this.setCapabilityOptions(capability, combinedOptions).catch(this.error);
+			this.setCapabilityValue(capability, null).catch(this.error);
+		}
+	}
+
 	async unitsChanged(Units)
 	{
 		if (Units === 'RainfallUnits')
@@ -96,63 +125,18 @@ class RainSensorDevice extends Device
 
 			}
 
-			if (this.hasCapability('measure_rain.rate'))
-			{
-				var opts = this.getCapabilityOptions('measure_rain.rate');
-				opts.units = `${unitsText}/${timeText}`;
-				opts.decimals = decimals;
-				this.setCapabilityOptions('measure_rain.rate', opts).catch(this.error);
-			}
-
-			var opts = this.getCapabilityOptions('measure_rain.event');
-			opts.units = unitsText;
+			var opts = {};
+			opts.units = `${unitsText}/${timeText}`;
 			opts.decimals = decimals;
-			this.setCapabilityOptions('measure_rain.event', opts).catch(this.error);
 
-			var opts = this.getCapabilityOptions('measure_rain.hourly');
-			opts.units = unitsText;
-			opts.decimals = decimals;
-			this.setCapabilityOptions('measure_rain.hourly', opts).catch(this.error);
-
-			var opts = this.getCapabilityOptions('measure_rain.daily');
-			opts.units = unitsText;
-			opts.decimals = decimals;
-			this.setCapabilityOptions('measure_rain.daily', opts).catch(this.error);
-
-			var opts = this.getCapabilityOptions('measure_rain.weekly');
-			opts.units = unitsText;
-			opts.decimals = decimals;
-			this.setCapabilityOptions('measure_rain.weekly', opts).catch(this.error);
-
-			var opts = this.getCapabilityOptions('measure_rain.monthly');
-			opts.units = unitsText;
-			opts.decimals = decimals;
-			this.setCapabilityOptions('measure_rain.monthly', opts).catch(this.error);
-
-			var opts = this.getCapabilityOptions('measure_rain.yearly');
-			opts.units = unitsText;
-			opts.decimals = decimals;
-			this.setCapabilityOptions('measure_rain.yearly', opts).catch(this.error);
-
-			if (this.hasCapability('measure_rain.total'))
-			{
-				var opts = this.getCapabilityOptions('measure_rain.total');
-				opts.units = unitsText;
-				opts.decimals = decimals;
-				this.setCapabilityOptions('measure_rain.total', opts).catch(this.error);
-			}
-
-			this.setCapabilityValue('measure_rain.rate', null).catch(this.error);
-			this.setCapabilityValue('measure_rain.event', null).catch(this.error);
-			this.setCapabilityValue('measure_rain.hourly', null).catch(this.error);
-			this.setCapabilityValue('measure_rain.daily', null).catch(this.error);
-			this.setCapabilityValue('measure_rain.weekly', null).catch(this.error);
-			this.setCapabilityValue('measure_rain.monthly', null).catch(this.error);
-			this.setCapabilityValue('measure_rain.yearly', null).catch(this.error);
-			if (this.hasCapability('measure_rain.total'))
-			{
-				this.setCapabilityValue('measure_rain.total', null).catch(this.error);
-			}
+			this.setUnitsOptions('measure_rain.rate', opts);
+			this.setUnitsOptions('measure_rain.event', opts);
+			this.setUnitsOptions('measure_rain.hourly', opts);
+			this.setUnitsOptions('measure_rain.daily', opts);
+			this.setUnitsOptions('measure_rain.weekly', opts);
+			this.setUnitsOptions('measure_rain.monthly', opts);
+			this.setUnitsOptions('measure_rain.yearly', opts);
+			this.setUnitsOptions('measure_rain.total', opts);
 		}
 	}
 

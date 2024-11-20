@@ -97,12 +97,41 @@ class WindWS80Device extends Device
         this.log('WindWS80Device has been deleted');
     }
 
+	// Merge the new units with the current options
+	setUnitsOptions(capability, newUnits)
+	{
+		if (this.hasCapability(capability))
+		{
+			let options = {};
+			try
+			{
+				options = this.getCapabilityOptions(capability);
+			}
+			catch (error)
+			{
+				// No options set yet
+				const drivers = this.homey.app.manifest.drivers;
+				const driver = drivers.find(driver => driver.id === this.driver.id);
+				const capabilityOpt = driver.capabilitiesOptions[capability];
+				if (capabilityOpt && capabilityOpt.title)
+				{
+					const title = capabilityOpt.title;
+					options = { title: title };
+				}
+			}
+
+			const combinedOptions = Object.assign(options, newUnits);
+			this.setCapabilityOptions(capability, combinedOptions).catch(this.error);
+			this.setCapabilityValue(capability, null).catch(this.error);
+		}
+	}
+
     async unitsChanged( Units )
     {
         if ( Units === 'SpeedUnits' )
         {
             let unitsText = '';
-            
+
             switch (this.homey.app.SpeedUnits)
             {
                 case '0':
@@ -121,19 +150,11 @@ class WindWS80Device extends Device
                     unitsText = this.homey.__('speedUnits.km');
                     break;
             }
-            
-            this.setCapabilityOptions( 'measure_wind_strength', { "units": unitsText } ).catch(this.error);
-            this.setCapabilityOptions( 'measure_gust_strength', { "units": unitsText } ).catch(this.error);
 
-            let options = this.getCapabilityOptions('measure_gust_strength.daily');
-            options.units = unitsText;
-            this.setCapabilityOptions( 'measure_gust_strength.daily', options ).catch(this.error);
-
-            this.setCapabilityValue('measure_wind_strength', null).catch(this.error);
-            this.setCapabilityValue('measure_gust_strength', null).catch(this.error);
-            this.setCapabilityValue('measure_gust_strength.daily', null).catch(this.error);
+			this.setUnitsOptions('measure_wind_strength', { "units": unitsText });
+			this.setUnitsOptions('measure_gust_strength', { "units": unitsText });
+			this.setUnitsOptions('measure_gust_strength.daily', { "units": unitsText });
         }
-
 
 		if (Units === 'RainfallUnits')
 		{
@@ -154,58 +175,14 @@ class WindWS80Device extends Device
 
 			}
 
-			this.setCapabilityOptions('measure_rain.rate', { "units": `${unitsText}/hr` }).catch(this.error);
-
-			var opts = this.getCapabilityOptions('measure_rain.event');
-			opts.units = unitsText;
-			opts.decimals = decimals;
-			this.setCapabilityOptions('measure_rain.event', opts).catch(this.error);
-
-			var opts = this.getCapabilityOptions('measure_rain.hourly');
-			opts.units = unitsText;
-			opts.decimals = decimals;
-			this.setCapabilityOptions('measure_rain.hourly', opts).catch(this.error);
-
-			var opts = this.getCapabilityOptions('measure_rain.daily');
-			opts.units = unitsText;
-			opts.decimals = decimals;
-			this.setCapabilityOptions('measure_rain.daily', opts).catch(this.error);
-
-			var opts = this.getCapabilityOptions('measure_rain.weekly');
-			opts.units = unitsText;
-			opts.decimals = decimals;
-			this.setCapabilityOptions('measure_rain.weekly', opts).catch(this.error);
-
-			var opts = this.getCapabilityOptions('measure_rain.monthly');
-			opts.units = unitsText;
-			opts.decimals = decimals;
-			this.setCapabilityOptions('measure_rain.monthly', opts).catch(this.error);
-
-			var opts = this.getCapabilityOptions('measure_rain.yearly');
-			opts.units = unitsText;
-			opts.decimals = decimals;
-			this.setCapabilityOptions('measure_rain.yearly', opts).catch(this.error);
-
-            if (this.hasCapability('measure_rain.total'))
-			{
-				var opts = this.getCapabilityOptions('measure_rain.total');
-				opts.units = unitsText;
-				opts.decimals = decimals;
-				this.setCapabilityOptions('measure_rain.total', opts).catch(this.error);
-			}
-
-			this.setCapabilityValue('measure_rain.rate', null).catch(this.error);
-			this.setCapabilityValue('measure_rain.event', null).catch(this.error);
-			this.setCapabilityValue('measure_rain.hourly', null).catch(this.error);
-			this.setCapabilityValue('measure_rain.daily', null).catch(this.error);
-			this.setCapabilityValue('measure_rain.weekly', null).catch(this.error);
-			this.setCapabilityValue('measure_rain.monthly', null).catch(this.error);
-			this.setCapabilityValue('measure_rain.yearly', null).catch(this.error);
-            
-			if (this.hasCapability('measure_rain.total'))
-			{
-				this.setCapabilityValue('measure_rain.total', null).catch(this.error);
-			}
+			this.setUnitsOptions('measure_rain.rate', { "units": `${unitsText}/hr` });
+			this.setUnitsOptions('measure_rain.event', { "units": unitsText, "decimals": decimals });
+			this.setUnitsOptions('measure_rain.hourly', { "units": unitsText, "decimals": decimals });
+			this.setUnitsOptions('measure_rain.daily', { "units": unitsText, "decimals": decimals });
+			this.setUnitsOptions('measure_rain.weekly', { "units": unitsText, "decimals": decimals });
+			this.setUnitsOptions('measure_rain.monthly', { "units": unitsText, "decimals": decimals });
+			this.setUnitsOptions('measure_rain.yearly', { "units": unitsText, "decimals": decimals });
+			this.setUnitsOptions('measure_rain.total', { "units": unitsText, "decimals": decimals });
 		}
 	}
 
@@ -262,7 +239,7 @@ class WindWS80Device extends Device
 
             var index = parseInt(gateway.winddir / 22.5);
             let langCode = this.homey.i18n.getLanguage();
-            
+
             if (!(Object.getOwnPropertyNames(Sector)).includes(langCode))
             {
                 langCode = 'en';
@@ -277,7 +254,7 @@ class WindWS80Device extends Device
             var batteryType = this.getSetting( 'batteryType' );
             const batV = Number(gateway.wh80batt);
             var batP = 0;
-            
+
             if (batteryType === '0')
             {
                 batP = (batV - 0.9) / (1.7 - 0.9) * 100;
@@ -309,12 +286,12 @@ class WindWS80Device extends Device
             {
                 feelsLike = temperatureF;
             }
-            
+
             // Replace it with the Heat Index, if necessary
             if ((feelsLike == temperatureF) && (temperatureF >= 80))
             {
                 feelsLike = 0.5 * (temperatureF + 61.0 + ((temperatureF - 68.0) * 1.2) + (relativeHumidity * 0.094));
-            
+
                 if (feelsLike >= 80)
                 {
                     feelsLike = -42.379 + 2.04901523 * temperatureF + 10.14333127 * relativeHumidity - 0.22475541 * temperatureF*relativeHumidity - 0.00683783 * temperatureF * temperatureF - 0.05481717 * relativeHumidity*relativeHumidity + 0.00122874 * temperatureF*temperatureF * relativeHumidity + 0.00085282 * temperatureF*relativeHumidity*relativeHumidity - 0.00000199 * temperatureF * temperatureF * relativeHumidity * relativeHumidity;
