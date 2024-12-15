@@ -148,5 +148,8 @@
 	},
 	"0.1.49": {
 		"en": "Fix issue when changing units for a capability that had no options set."
+	},
+	"0.1.50": {
+		"en": "Added support for the CO2 meater of the WS3910A."
 	}
 }

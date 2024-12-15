@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.misol",
-  "version": "0.1.49",
+  "version": "0.1.50",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "platforms": [
@@ -3304,6 +3304,75 @@
         "xlarge": "/drivers/camera/assets/images/xlarge.png"
       },
       "id": "camera"
+    },
+    {
+      "name": {
+        "en": "CO2 Meter",
+        "nl": "CO2-meter",
+        "de": "CO2-Messer"
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "class": "sensor",
+      "capabilities": [
+        "measure_co2",
+        "measure_co2.avg",
+        "measure_co2_quality",
+        "measure_co2_quality.avg",
+        "alarm_co2"
+      ],
+      "capabilitiesOptions": {
+        "measure_co2.avg": {
+          "title": {
+            "en": "CO2 Avg 24h",
+            "nl": "CO2 gem. 24u",
+            "de": "CO2 ø 24h"
+          }
+        },
+        "measure_co2_quality.avg": {
+          "title": {
+            "en": "CO2 Avg quality 24h",
+            "nl": "CO2 gem. kwaliteit 24u",
+            "de": "CO2 ø Qualität 24h"
+          }
+        }
+      },
+      "settings": [
+        {
+          "id": "gatewayID",
+          "type": "label",
+          "label": {
+            "en": "Gateway ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the ID of the gateway.",
+            "de": "Zeigt die ID des Gateways."
+          }
+        }
+      ],
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "images": {
+        "small": "/drivers/co2/assets/images/small.png",
+        "large": "/drivers/co2/assets/images/large.png"
+      },
+      "id": "co2"
     },
     {
       "name": {
