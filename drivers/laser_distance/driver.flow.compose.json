@@ -1,0 +1,100 @@
+{
+    "triggers": [
+        {
+            "id": "measure_distance_depth_changed",
+            "title": {
+                "en": "Measure Depth Changed",
+				"nl": "Diepte Meten Gewijzigd",
+				"de": "Tiefe Messen geändert"
+            },
+            "tokens": [
+                {
+                    "name": "measure_distance_depth",
+                    "title": {
+                        "en": "Depth",
+						"nl": "Diepte",
+						"de": "Tiefe"
+                    },
+                    "type": "number",
+                    "example": 1.4
+                }
+            ]
+        }
+    ],
+    "conditions": [
+        {
+            "id": "measure_distance_depth_is_less",
+            "title": {
+                "en": "Depth is !{{is|is not}} less than",
+				"nl": "Diepte is !{{is|is niet}} minder dan",
+				"de": "Tiefe ist !{{ist|ist nicht}} kleiner als"
+            },
+            "hint": {
+                "en": "This Flow will continue if the depth is/is not less than the set value.",
+				"nl": "Deze stroom gaat door als de diepte wel/niet minder is dan de ingestelde waarde.",
+				"de": "Dieser Flow wird weiterlaufen, wenn die Tiefe (nicht) kleiner als der gesetzte Wert ist."
+            },
+            "titleFormatted": {
+                "en": "The depth !{{is|is not}} less than [[value]]m",
+				"nl": "De diepte is !{{is|is niet}} minder dan [[value]]m",
+				"de": "Die Tiefe ist !{{ist|ist nicht}} kleiner als [[value]]m"
+            },
+            "args": [
+                {
+                    "type": "number",
+                    "name": "value",
+                    "min": 0,
+                    "max": 50,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value",
+                        "nl": "Stel een waarde in",
+                        "dl": "Wert setzen"
+                    },
+                    "title": {
+                        "en": "Depth",
+						"nl": "Diepte",
+						"de": "Tiefe"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "measure_distance_depth_equal",
+            "title": {
+                "en": "Depth is !{{equal|not equal}} to",
+				"nl": "Diepte is !{{equal|not equal}} aan",
+				"de": "Tiefe ist !{{gleich|nicht gleich}}"
+            },
+            "hint": {
+                "en": "This Flow will continue if depth is/is not equal to the set value.",
+				"nl": "Deze stroom gaat door als de diepte wel/niet gelijk is aan de ingestelde waarde.",
+				"de": "Dieser Flow wird weiterlaufen, wenn die Tiefe (nicht) gleich dem gesetzten Wert ist."
+            },
+            "titleFormatted": {
+                "en": "The depth is !{{equal|not equal}} to [[value]]m",
+				"nl": "De diepte is !{{equal|not equal}} aan [[value]]m",
+				"de": "Die Tiefe ist !{{gleich|nicht gleich}} [[value]]m"
+            },
+            "args": [
+                {
+                    "type": "number",
+                    "name": "value",
+                    "min": 0,
+                    "max": 50,
+                    "step": 1,
+                    "placeholder": {
+                        "en": "Set a value",
+                        "nl": "Stel een waarde in",
+                        "de": "Wert setzen"
+                    },
+                    "title": {
+                        "en": "Depth",
+						"nl": "Diepte",
+						"de": "Tiefe"
+                    }
+                }
+            ]
+        }
+    ]
+}

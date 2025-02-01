@@ -1,7 +1,7 @@
 {
     "id": "com.misol",
-    "version": "0.1.51",
-    "compatibility": ">=5.0.0",
+    "version": "0.1.52",
+    "compatibility": ">=12.2.0",
     "sdk": 3,
     "platforms": [
       "local"

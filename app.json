@@ -1,8 +1,8 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.misol",
-  "version": "0.1.51",
-  "compatibility": ">=5.0.0",
+  "version": "0.1.52",
+  "compatibility": ">=12.2.0",
   "sdk": 3,
   "platforms": [
     "local"
@@ -903,6 +903,33 @@
           }
         ],
         "id": "snapshotReadyTrigger"
+      },
+      {
+        "id": "measure_distance_depth_changed",
+        "title": {
+          "en": "Measure Depth Changed",
+          "nl": "Diepte Meten Gewijzigd",
+          "de": "Tiefe Messen geändert"
+        },
+        "tokens": [
+          {
+            "name": "measure_distance_depth",
+            "title": {
+              "en": "Depth",
+              "nl": "Diepte",
+              "de": "Tiefe"
+            },
+            "type": "number",
+            "example": 1.4
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=laser_distance"
+          }
+        ]
       },
       {
         "id": "measure_lightning_changed",
@@ -2510,6 +2537,90 @@
         "id": "motionReadyCondition"
       },
       {
+        "id": "measure_distance_depth_is_less",
+        "title": {
+          "en": "Depth is !{{is|is not}} less than",
+          "nl": "Diepte is !{{is|is niet}} minder dan",
+          "de": "Tiefe ist !{{ist|ist nicht}} kleiner als"
+        },
+        "hint": {
+          "en": "This Flow will continue if the depth is/is not less than the set value.",
+          "nl": "Deze stroom gaat door als de diepte wel/niet minder is dan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die Tiefe (nicht) kleiner als der gesetzte Wert ist."
+        },
+        "titleFormatted": {
+          "en": "The depth !{{is|is not}} less than [[value]]m",
+          "nl": "De diepte is !{{is|is niet}} minder dan [[value]]m",
+          "de": "Die Tiefe ist !{{ist|ist nicht}} kleiner als [[value]]m"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=laser_distance"
+          },
+          {
+            "type": "number",
+            "name": "value",
+            "min": 0,
+            "max": 50,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value",
+              "nl": "Stel een waarde in",
+              "dl": "Wert setzen"
+            },
+            "title": {
+              "en": "Depth",
+              "nl": "Diepte",
+              "de": "Tiefe"
+            }
+          }
+        ]
+      },
+      {
+        "id": "measure_distance_depth_equal",
+        "title": {
+          "en": "Depth is !{{equal|not equal}} to",
+          "nl": "Diepte is !{{equal|not equal}} aan",
+          "de": "Tiefe ist !{{gleich|nicht gleich}}"
+        },
+        "hint": {
+          "en": "This Flow will continue if depth is/is not equal to the set value.",
+          "nl": "Deze stroom gaat door als de diepte wel/niet gelijk is aan de ingestelde waarde.",
+          "de": "Dieser Flow wird weiterlaufen, wenn die Tiefe (nicht) gleich dem gesetzten Wert ist."
+        },
+        "titleFormatted": {
+          "en": "The depth is !{{equal|not equal}} to [[value]]m",
+          "nl": "De diepte is !{{equal|not equal}} aan [[value]]m",
+          "de": "Die Tiefe ist !{{gleich|nicht gleich}} [[value]]m"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=laser_distance"
+          },
+          {
+            "type": "number",
+            "name": "value",
+            "min": 0,
+            "max": 50,
+            "step": 1,
+            "placeholder": {
+              "en": "Set a value",
+              "nl": "Stel een waarde in",
+              "de": "Wert setzen"
+            },
+            "title": {
+              "en": "Depth",
+              "nl": "Diepte",
+              "de": "Tiefe"
+            }
+          }
+        ]
+      },
+      {
         "id": "measure_lightning_is_less",
         "title": {
           "en": "Lightning Distance is !{{is|is not}} less than",
@@ -3435,6 +3546,129 @@
         "large": "/drivers/gateway/assets/images/large.png"
       },
       "id": "gateway"
+    },
+    {
+      "name": {
+        "en": "Laser Distance Sensor",
+        "nl": "Laser Afstandssensor",
+        "de": "Laser-Entfernungssensor"
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "class": "sensor",
+      "capabilities": [
+        "measure_distance",
+        "measure_distance.depth",
+        "measure_battery"
+      ],
+      "capabilitiesOptions": {
+        "measure_distance.depth": {
+          "title": {
+            "en": "Depth",
+            "nl": "Diepte",
+            "de": "Tiefe"
+          }
+        }
+      },
+      "energy": {
+        "batteries": [
+          "AA",
+          "AA",
+          "AA",
+          "AA",
+          "AA",
+          "AA",
+          "AA",
+          "AA"
+        ]
+      },
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "id": "gatewayID",
+          "type": "label",
+          "label": {
+            "en": "Gateway ID",
+            "nl": "Gateway-ID",
+            "de": "Gateway-ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the ID of the gateway.",
+            "nl": "Toont de ID van de gateway.",
+            "de": "Zeigt die ID des Gateways."
+          }
+        },
+        {
+          "id": "stationType",
+          "type": "label",
+          "label": {
+            "en": "Station Type",
+            "nl": "Stationstype",
+            "de": "Stationstyp"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the type of gateway.",
+            "nl": "Toont het type gateway.",
+            "de": "Zeigt den Stationstyp"
+          }
+        },
+        {
+          "id": "batteryType",
+          "type": "dropdown",
+          "label": {
+            "en": "Battery Type",
+            "nl": "Type batterij",
+            "de": "Batterietyp"
+          },
+          "value": "0",
+          "hint": {
+            "en": "Specify the battery type for the correct % estimation. The setting will take affect on the next status update.",
+            "nl": "Geef het batterijtype op voor de juiste %-schatting. De instelling wordt van kracht bij de volgende statusupdate.",
+            "de": "Batterietyp angeben, um eine korrekte %-Schätzung zu erhalten. Die Einstellung wird bei der nächsten Statusaktualisierung wirksam."
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Non-rechargeable",
+                "nl": "Niet oplaadbaar",
+                "de": "Nicht aufladbar"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Rechargeable",
+                "nl": "Oplaadbaar",
+                "de": "Aufladbar"
+              }
+            }
+          ]
+        }
+      ],
+      "images": {
+        "small": "/drivers/laser_distance/assets/images/small.png",
+        "large": "/drivers/laser_distance/assets/images/large.png"
+      },
+      "id": "laser_distance"
     },
     {
       "name": {

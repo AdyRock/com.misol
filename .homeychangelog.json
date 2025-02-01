@@ -154,5 +154,8 @@
 	},
 	"0.1.51": {
 		"en": "Fixed missing decimals on rainfall data."
+	},
+	"0.1.52": {
+		"en": "Add Laser Distance Sensor driver. Expanded soil moisture driver to 16 sensors."
 	}
 }
