@@ -151,5 +151,8 @@
 	},
 	"0.1.50": {
 		"en": "Added support for the CO2 meater of the WS3910A."
+	},
+	"0.1.51": {
+		"en": "Fixed missing decimals on rainfall data."
 	}
 }

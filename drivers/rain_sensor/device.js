@@ -109,7 +109,7 @@ class RainSensorDevice extends Device
 		{
 			let timeText = this.homey.__('hourAbbr');
 			let unitsText = '';
-			let decimals = 0;
+			let decimals = 2;
 			switch (this.homey.app.RainfallUnits)
 			{
 				case '0':
@@ -117,7 +117,7 @@ class RainSensorDevice extends Device
 					break;
 				case '1':
 					unitsText = this.homey.__('rainfallUnits.in');
-					decimals = 1;
+					decimals = 3;
 					break;
 				default:
 					unitsText = this.homey.__('rainfallUnits.mm');
