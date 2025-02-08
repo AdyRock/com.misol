@@ -16,7 +16,9 @@
         "logSent": "Het logboek is verzonden.",
         "logSendFailed": "Verzenden mislukt na 5 pogingen.\nDe foutmeldingen staan ​​aan het einde van het logboek.",
         "Units": "Eenheden",
-        "SpeedUnits": "Windsnelheid"
+        "SpeedUnits": "Windsnelheid",
+		"RainfallUnits": "Regenval Eenheden",
+		"instructions": "Zorg ervoor dat je de gateway eerst instelt in de WS View-app op je telefoon, zodat de gegevens naar Homey worden verzonden.<br>Instructies zijn hier te vinden:"
     },
     "good": "Goed",
     "Moderate": "Gemiddeld",

@@ -157,5 +157,8 @@
 	},
 	"0.1.52": {
 		"en": "Add Laser Distance Sensor driver. Expanded soil moisture driver to 16 sensors."
+	},
+	"0.1.53": {
+		"en": "Added link to gateway setup instructions in App Settings page."
 	}
 }

@@ -14,12 +14,14 @@
         <button class="tablinks" onclick="setPage(event, 'settings')" id="defaultOpen"><span data-i18n="settings.settings"></span></button>
         <button class="tablinks" onclick="setPage(event, 'detected')"><span data-i18n="settings.detected"></span></button>
         <button class="tablinks" onclick="setPage(event, 'log')"><span data-i18n="settings.diagnosticsLog"></span></button>
-        <button class="tablinks" onclick="setPage(event, 'simulator')" id="simLogTab">Simulation Data</button>
+        <button class="tablinks" onclick="setPage(event, 'simulator')" id="simLogTab" style="display:none">Simulation Data</button>
     </div>
 
     <!-- SETTINGS PAGE -->
     <div id="settings" class="tabcontent">
         <fieldset class="homey-form-fieldset">
+			<h2 data-i18n="settings.instructions"></h2>
+            <p><a href="https://community.homey.app/t/app-pro-misol-and-ecowitt-release-0-1-49-test-0-1-52/47076?u=adrian_rockall" target="_blank">Homey Forum</a></p>
             <div class="field row">
                 <label class="homey-form-label" for="port"><span data-i18n="settings.port"></span></label>
                 <input class="homey-form-input" id="port" type="text" value="" />
@@ -113,7 +115,16 @@
         // a method named 'onHomeyReady' must be present in your code
         function onHomeyReady(Homey)
         {
-            document.getElementById("defaultOpen").click();
+			Homey.get('debugMode', function (err, debugMode)
+			{
+				if (err) return Homey.alert(err);
+				if (debugMode)
+				{
+					document.getElementById("simLogTab").style.display = 'block';
+				}
+			});
+
+			document.getElementById("defaultOpen").click();
 
             Homey.on('com.misol.logupdated', function(data)
             {

@@ -17,7 +17,8 @@
         "logSendFailed": "Senden nach 5 Versuchen fehlgeschlagen.\nDie Fehlermeldungen sind am Ende des Protokolls.",
         "Units": "Einheiten",
         "SpeedUnits": "Windgeschwindigkeit",
-		"RainfallUnits": "Regenhöhe"
+		"RainfallUnits": "Regenhöhe",
+		"instructions": "Stellen Sie sicher, dass Sie das Gateway zuerst in der WS View-App auf Ihrem Telefon einrichten, damit die Daten an Homey gesendet werden.<br>Anweisungen finden Sie hier:"
     },
     "good": "Gut",
     "Moderate": "Mäßig",
