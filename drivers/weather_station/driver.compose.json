@@ -87,7 +87,7 @@
             "title": {
                 "en": "Rain Hourly",
                 "nl": "Regen afgelopen uur",
-                "de": "Regen stündlich"       
+                "de": "Regen stündlich"
             }
         },
         "measure_rain.daily": {
@@ -162,13 +162,13 @@
             "id": "stationType",
             "type": "label",
             "label": {
-                "en": "Station Type",
-                "de": "Stationstyp"
+                "en": "Gateway Type",
+                "de": "Gateway-Typ"
             },
             "value": "",
             "hint": {
                 "en": "Shows the type of gateway.",
-                "de": "Zeigt den Stationstyp."
+                "de": "Zeigt den Gateway-Typ."
             }
         },
         {

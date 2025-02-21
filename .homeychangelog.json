@@ -160,5 +160,8 @@
 	},
 	"0.1.53": {
 		"en": "Added link to gateway setup instructions in App Settings page."
+	},
+	"0.1.54": {
+		"en": "Updated icon for the WS90 weather station."
 	}
 }
