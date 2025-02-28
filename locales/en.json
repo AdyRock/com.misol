@@ -18,7 +18,9 @@
         "Units": "Units",
         "SpeedUnits": "Wind Speed",
 		"RainfallUnits": "Rainfall Units",
-		"instructions": "Make sure you setup the gateway in WS View app on your phone first so that data is pushed to Homey.<br>Instructions can be found here:"
+		"instructions": "Make sure you setup the gateway in WS View app on your phone first so that data is pushed to Homey.<br>Instructions can be found here:",
+		"autoConfigEnabled": "Auto Configure Gateways",
+		"autoConfigInfo": "Auto Configure Gateways will automatically detect and configure gateways, on the same network segment, to push data to Homey."
     },
     "good": "Good",
     "Moderate": "Moderate",

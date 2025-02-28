@@ -22,6 +22,14 @@
         <fieldset class="homey-form-fieldset">
 			<h2 data-i18n="settings.instructions"></h2>
             <p><a href="https://community.homey.app/t/app-pro-misol-and-ecowitt-release-0-1-49-test-0-1-52/47076?u=adrian_rockall" target="_blank">Homey Forum</a></p>
+			<div class="field row">
+				<label class="homey-form-checkbox">
+					<input class="homey-form-checkbox-input" id="autoConfigEnabled" type="checkbox" value="autoConfigEnabled" />
+					<span class="homey-form-checkbox-checkmark"></span>
+					<span class="homey-form-checkbox-text"><span data-i18n="settings.autoConfigEnabled"></span></span>
+				</label>
+				<h2 data-i18n="settings.autoConfigInfo"></h2>
+			</div>
             <div class="field row">
                 <label class="homey-form-label" for="port"><span data-i18n="settings.port"></span></label>
                 <input class="homey-form-input" id="port" type="text" value="" />
@@ -94,6 +102,7 @@
     </div>
 
     <script type="text/javascript">
+        var autoConfigEnabledElement = document.getElementById('autoConfigEnabled');
         var portElement = document.getElementById('port');
         var SpeedUnitsElement = document.getElementById( 'SpeedUnits' );
         var RainfallUnitsElement = document.getElementById( 'RainfallUnits' );
@@ -160,6 +169,12 @@
                 logEnabledElement.checked = logEnabled;
             });
 
+			Homey.get('autoConfigEnabled', function(err, autoConfigEnabled)
+			{
+				if (err) return Homey.alert(err);
+				autoConfigEnabledElement.checked = autoConfigEnabled;
+			});
+
             Homey.api('GET', '/getLog/',
             {
                 notify: true
@@ -211,6 +226,14 @@
             logEnabledElement.addEventListener('click', function(e)
             {
                 Homey.set('logEnabled', logEnabledElement.checked, function(err)
+                {
+                    if (err) return Homey.alert(err);
+                });
+            });
+
+			autoConfigEnabledElement.addEventListener('click', function(e)
+			{
+                Homey.set('autoConfigEnabled', autoConfigEnabledElement.checked, function(err)
                 {
                     if (err) return Homey.alert(err);
                 });

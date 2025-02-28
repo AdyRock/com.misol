@@ -163,5 +163,8 @@
 	},
 	"0.1.54": {
 		"en": "Updated icon for the WS90 weather station."
+	},
+	"0.2.0": {
+		"en": "Added support auto detection and configuration of gateways."
 	}
 }
