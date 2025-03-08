@@ -169,5 +169,8 @@
 	},
 	"0.2.1": {
 		"en": "Removed rain rate from WS80. Fixed rain units for the Rain Sensor device. Fixed the Luminance value for WS80."
+	},
+	"0.2.2": {
+		"en": "Fix issue with CO2 Flow trigger"
 	}
 }
