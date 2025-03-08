@@ -37,9 +37,9 @@ class WindWS80Device extends Device
 			this.removeCapability('measure_rain');
 		}
 
-		if (!this.hasCapability('measure_rain.rate'))
+		if (this.hasCapability('measure_rain.rate'))
 		{
-			this.addCapability('measure_rain.rate');
+			this.removeCapability('measure_rain.rate');
 		}
 
         this.unitsChanged('SpeedUnits');
@@ -155,35 +155,6 @@ class WindWS80Device extends Device
 			this.setUnitsOptions('measure_gust_strength', { "units": unitsText });
 			this.setUnitsOptions('measure_gust_strength.daily', { "units": unitsText });
         }
-
-		if (Units === 'RainfallUnits')
-		{
-			let unitsText = '';
-			let decimals = 2;
-			switch (this.homey.app.RainfallUnits)
-			{
-				case '0':
-					unitsText = this.homey.__('rainfallUnits.mm');
-					break;
-				case '1':
-					unitsText = this.homey.__('rainfallUnits.in');
-					decimals = 3;
-					break;
-				default:
-					unitsText = this.homey.__('rainfallUnits.mm');
-					break;
-
-			}
-
-			this.setUnitsOptions('measure_rain.rate', { "units": `${unitsText}/hr` });
-			this.setUnitsOptions('measure_rain.event', { "units": unitsText, "decimals": decimals });
-			this.setUnitsOptions('measure_rain.hourly', { "units": unitsText, "decimals": decimals });
-			this.setUnitsOptions('measure_rain.daily', { "units": unitsText, "decimals": decimals });
-			this.setUnitsOptions('measure_rain.weekly', { "units": unitsText, "decimals": decimals });
-			this.setUnitsOptions('measure_rain.monthly', { "units": unitsText, "decimals": decimals });
-			this.setUnitsOptions('measure_rain.yearly', { "units": unitsText, "decimals": decimals });
-			this.setUnitsOptions('measure_rain.total', { "units": unitsText, "decimals": decimals });
-		}
 	}
 
     async updateCapabilities(gateway)
@@ -248,8 +219,8 @@ class WindWS80Device extends Device
             this.setCapabilityValue('measure_wind_direction', windDir).catch(this.error);
 
             this.setCapabilityValue('measure_radiation', Number(gateway.solarradiation)).catch(this.error);
+			this.setCapabilityValue('measure_luminance', Number(gateway.solarradiation) * 126.7).catch(this.error);
             this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.error);
-            this.setCapabilityValue('measure_rain.rate', Number(gateway.rainratein) * 25.4).catch(this.error);
 
             var batteryType = this.getSetting( 'batteryType' );
             const batV = Number(gateway.wh80batt);

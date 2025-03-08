@@ -166,5 +166,8 @@
 	},
 	"0.2.0": {
 		"en": "Added support auto detection and configuration of gateways."
+	},
+	"0.2.1": {
+		"en": "Removed rain rate from WS80. Fixed rain units for the Rain Sensor device. Fixed the Luminance value for WS80."
 	}
 }

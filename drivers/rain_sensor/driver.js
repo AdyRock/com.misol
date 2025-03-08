@@ -21,16 +21,16 @@ class RainSensorDriver extends Driver
          var devices = [];
          for (const gateway of this.homey.app.detectedGateways)
          {
-             if (((gateway.winddir === undefined) || ((gateway.wh80batt !== undefined))) && (gateway.rainratein !== undefined))
+			 if (((gateway.wh40batt !== undefined)) && (gateway.rainratein !== undefined))
              {
                  const meter = { name: "Rain Sensor", data: { id: gateway.PASSKEY, PASSKEY: gateway.PASSKEY, meterNumber: 0 } };
                  devices.push(meter);
              }
          }
- 
+
          return devices;
      }
- 
+
 }
 
 module.exports = RainSensorDriver;

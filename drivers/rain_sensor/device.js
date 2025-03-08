@@ -21,6 +21,11 @@ class RainSensorDevice extends Device
             await this.addCapability('measure_hours_since_rained');
         }
 
+		if (!this.hasCapability('measure_battery'))
+		{
+			await this.addCapability('measure_battery');
+		}
+
         this.lastRained = this.homey.settings.get('lastRainedTime');
         if (this.lastRained === null)
         {
@@ -125,18 +130,14 @@ class RainSensorDevice extends Device
 
 			}
 
-			var opts = {};
-			opts.units = `${unitsText}/${timeText}`;
-			opts.decimals = decimals;
-
-			this.setUnitsOptions('measure_rain.rate', opts);
-			this.setUnitsOptions('measure_rain.event', opts);
-			this.setUnitsOptions('measure_rain.hourly', opts);
-			this.setUnitsOptions('measure_rain.daily', opts);
-			this.setUnitsOptions('measure_rain.weekly', opts);
-			this.setUnitsOptions('measure_rain.monthly', opts);
-			this.setUnitsOptions('measure_rain.yearly', opts);
-			this.setUnitsOptions('measure_rain.total', opts);
+			this.setUnitsOptions('measure_rain.rate', { "units": `${unitsText}/${timeText}`, "decimals": decimals });
+			this.setUnitsOptions('measure_rain.event', { "units": unitsText, "decimals": decimals });
+			this.setUnitsOptions('measure_rain.hourly', { "units": unitsText, "decimals": decimals });
+			this.setUnitsOptions('measure_rain.daily', { "units": unitsText, "decimals": decimals });
+			this.setUnitsOptions('measure_rain.weekly', { "units": unitsText, "decimals": decimals });
+			this.setUnitsOptions('measure_rain.monthly', { "units": unitsText, "decimals": decimals });
+			this.setUnitsOptions('measure_rain.yearly', { "units": unitsText, "decimals": decimals });
+			this.setUnitsOptions('measure_rain.total', { "units": unitsText, "decimals": decimals });
 		}
 	}
 
@@ -312,6 +313,31 @@ class RainSensorDevice extends Device
                 this.setCapabilityValue('measure_rain.daily', rain).catch(this.error);
             }
 
+			if (gateway.wh40batt !== undefined)
+			{
+				var batteryType = this.getSetting('batteryType');
+				const batV = Number(gateway.wh40batt);
+				var batP = 0;
+
+				if (batteryType === '0')
+				{
+					batP = (batV - 0.9) / (1.7 - 0.9) * 100;
+				}
+				else
+				{
+					batP = (batV - 0.9) / (1.3 - 0.9) * 100;
+				}
+
+				if (batP > 100)
+				{
+					batP = 100;
+				}
+				if (batP < 0)
+				{
+					batP = 0;
+				}
+				this.setCapabilityValue('measure_battery', batP).catch(this.error);
+			}
         }
     }
 }

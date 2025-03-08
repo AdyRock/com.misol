@@ -10,31 +10,6 @@ class CO2Driver extends Driver
     async onInit()
     {
         this.log('CO2Driver has been initialized');
-
-        this.measure_co2q_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_co2q_changed');
-        this.measure_co2q_changedTrigger.registerRunListener(async (args, state) =>
-        {
-            // If true, this flow should run
-            const argValue = parseInt(args.measure_aq);
-
-            if (args.compare_type === '<=')
-            {
-                // Check <=
-                return state.value <= argValue;
-            }
-            else if (args.compare_type === '==')
-            {
-                // Check <=
-                return state.value == argValue;
-            }
-            else if (args.compare_type === '>=')
-            {
-                // Check <=
-                return state.value >= argValue;
-            }
-
-            return false;
-        });
     }
 
     async triggerCo2QChanged(device, tokens, state)

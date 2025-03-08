@@ -515,11 +515,30 @@ class MyApp extends Homey.App
             return true;
         });
 
-        let measure_co2g_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_co2q_changed');
-        measure_co2g_changedTrigger.registerRunListener(async (args, state) =>
-        {
-            return true;
-        });
+        this.measure_co2g_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_co2q_changed');
+        this.measure_co2g_changedTrigger.registerRunListener(async (args, state) =>
+		{
+			// If true, this flow should run
+			const argValue = parseInt(args.measure_aq);
+
+			if (args.compare_type === '<=')
+			{
+				// Check <=
+				return state.value <= argValue;
+			}
+			else if (args.compare_type === '==')
+			{
+				// Check <=
+				return state.value == argValue;
+			}
+			else if (args.compare_type === '>=')
+			{
+				// Check <=
+				return state.value >= argValue;
+			}
+
+			return false;
+		});
 
         let measure_rain_event_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_rain.event_changed');
         measure_rain_event_changedTrigger.registerRunListener(async (args, state) =>
@@ -579,6 +598,11 @@ class MyApp extends Homey.App
 			this.createBroadcastServer();
 		}
     }
+
+	async triggerCo2QChanged(device, tokens, state)
+	{
+		this.measure_co2q_changedTrigger.trigger(device, tokens, state).catch(this.error);
+	}
 
     async changeUnits( Units )
     {
@@ -910,254 +934,286 @@ class MyApp extends Homey.App
 
 	createBroadcastServer()
 	{
-		function sendBroadcast(appInstance)
-		{
-			if (appInstance.homey.settings.get('autoConfigEnabled'))
+	    function sendBroadcast(appInstance)
+	    {
+	        if (appInstance.homey.settings.get('autoConfigEnabled'))
+	        {
+	            appInstance.updateLog(`Sending Broadcast`);
+	            let request = new Uint8Array(6);
+	            request[0] = 0xFF;
+	            request[1] = 0xFF;
+	            request[2] = 0x12;
+	            request[3] = 0x00;
+	            request[4] = 0x04;
+	            request[5] = 0x12 + 0x04; // Checksum
+	            appInstance.broadcastServer.send(request, 46000, '192.168.1.255');
+	            appInstance.homey.setTimeout(() =>
+	            {
+	                sendBroadcast(appInstance);
+	            }, 60000);
+	        }
+	    }
+
+	    // Create a server to listen for data from gateways
+	    this.broadcastServer = dgram.createSocket('udp4');
+
+	    this.broadcastServer.on('error', (err) =>
+	    {
+	        this.updateLog(`server error:\n${err.stack}`, 0);
+	        this.broadcastServer.close();
+	    });
+
+	    this.broadcastServer.on('listening', () =>
+	    {
+	        try
+	        {
+	            this.broadcastServer.setBroadcast(true);
+	        }
+	        catch (err)
+	        {
+	            this.updateLog(`Error setting broadcast: ${err.message}`, 0);
+	            this.broadcastServer.close();
+	            return;
+	        }
+
+	        const address = this.broadcastServer.address();
+	        this.homey.app.updateLog(`server listening ${address.address}:${address.port}`);
+
+	        this.homey.setTimeout(() =>
+	        {
+	            sendBroadcast(this);
+	        }, 15000);
+	    });
+
+	    this.broadcastServer.on('message', (msg, rinfo) =>
+	    {
+			// Convert the message to a string with non-printable characters as \hex values
+			let formattedMsg = '';
+			for (let i = 0; i < msg.length; i++)
 			{
-				appInstance.updateLog(`Sending Broadcast`);
-				let request = new Uint8Array(6);
-				request[0] = 0xFF;
-				request[1] = 0xFF;
-				request[2] = 0x12;
-				request[3] = 0x00;
-				request[4] = 0x04;
-				request[5] = 0x12 + 0x04; // Checksum
-				appInstance.broadcastServer.send(request, 46000, '192.168.1.255');
-				appInstance.homey.setTimeout(() =>
+				const charCode = msg[i];
+				if (charCode >= 32 && charCode <= 126)
 				{
-					sendBroadcast(appInstance);
-				}, 60000);
-			}
-		}
-
-		// Create a server to listen for data from gateways
-		this.broadcastServer = dgram.createSocket('udp4');
-		this.broadcastServer.bind(46000);
-
-		this.broadcastServer.on('listening', () =>
-		{
-			this.broadcastServer.setBroadcast(true);
-
-			const address = this.broadcastServer.address();
-			this.homey.app.updateLog(`server listening ${address.address}:${address.port}`);
-
-			this.homey.setTimeout(() =>
-			{
-				sendBroadcast(this);
-			}, 15000);
-		});
-
-		this.broadcastServer.on('error', (err) =>
-		{
-			this.updateLog(`server error:\n${err.stack}`, 0);
-			this.broadcastServer.close();
-		});
-
-		this.broadcastServer.on('message', (msg, rinfo) =>
-		{
-			this.updateLog(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
-			// Convert the message to a byte array
-
-			const byteArray = new Uint8Array(msg);
-
-			// Validate the message to confirm it is from a hub
-			if ((byteArray.length >= 15) &&  (byteArray[ 0 ] === 0xFF) && (byteArray[ 1 ] == 0xFF) && (byteArray[ 2 ] === 0x12))
-			{
-				// byteArray 3 and 4 are the length of the message
-				let length = byteArray[ 3 ] * 256 + byteArray[ 4 ];
-
-				// byteArray 5 to 11 is the MAC address of the hub
-				let macAddress = '';
-				for (let i = 5; i < 10; i++)
-				{
-					macAddress += byteArray[ i ].toString(16).padStart(2, '0');
+					// Printable characters (ASCII range 32-126)
+					formattedMsg += String.fromCharCode(charCode);
 				}
-
-				// byteArray 12 to 15 is the IP address of the hub
-				let ipAddress = '';
-				for (let i = 11; i < 15; i++)
+				else
 				{
-					ipAddress += byteArray[ i ];
-					if (i < 14)
+					// Non-printable characters
+					formattedMsg += `\\${charCode.toString(16).padStart(2, '0')}`;
+					if (i < msg.length - 1)
 					{
-						ipAddress += '.';
+						formattedMsg += ' ';
 					}
 				}
-
-				this.updateLog(`Gateway: ${macAddress} on IP: ${ipAddress}`);
-
-				const client = new net.Socket();
-				client.connect(45000, ipAddress , () =>
-				{
-					// format byte array to read the custom server settings from the gateway
-					let request = new Uint8Array(5);
-					request[0] = 0xFF;
-					request[1] = 0xFF;
-					request[2] = 0x2A;
-					request[3] = 0x03;
-					request[4] = 0x2A + 0x03;
-
-					console.log("TCP Connected. Sending request for custom server settings");
-					client.write(request); //This will send the byte buffer over TCP
-				});
-
-				client.on('error', (err) =>
-				{
-					this.updateLog(`Client error: ${err.message}`, 0);
-				});
-
-				client.on('data', (data) =>
-				{
-					// Convert the data to a hex string of the byte array with bytes separated by a space
-					let hexString = '';
-					for (let i = 0; i < data.length; i++)
-					{
-						hexString += data[i].toString(16).padStart(2, '0');
-						if (i < data.length - 1) hexString += ' ';
-					}
-					this.updateLog(`Received data from ${ipAddress}: ${hexString}`);
-
-					// Validate the data to confirm it is the custom server settings
-					if ((data.length > 5) && (data[0] === 0xFF) && (data[1] === 0xFF) && (data[2] === 0x2A))
-					{
-						// data 3 is the packet size
-						let packetSize = data[3];
-
-						// data 4 is the ID size
-						let idSize = data[4];
-
-						// data 5 to 5 + idSize is the ID of the gateway in ASCII
-						let gatewayID = '';
-						for (let i = 5; i < 5 + idSize; i++)
-						{
-							gatewayID += String.fromCharCode(data[i]);
-						}
-
-						// data 5 + idSize is the password size
-						let passwordSize = data[5 + idSize];
-
-						// data 6 + idSize to 6 + idSize + passwordSize is the password of the gateway in ASCII
-						let password = '';
-
-						for (let i = 6 + idSize; i < 6 + idSize + passwordSize; i++)
-						{
-							password += String.fromCharCode(data[i]);
-						}
-
-						// data 6 + idSize + passwordSize is the server address size
-						let serverAddressSize = data[6 + idSize + passwordSize];
-
-						// data 7 + idSize + passwordSize to 7 + idSize + passwordSize + serverAddressSize is the server address of the gateway in ASCII
-						let serverAddress = '';
-						for (let i = 7 + idSize + passwordSize; i < 7 + idSize + passwordSize + serverAddressSize; i++)
-						{
-							serverAddress += String.fromCharCode(data[i]);
-						}
-
-						// data 7 + idSize + passwordSize + serverAddressSize is the server port
-						let port = data[7 + idSize + passwordSize + serverAddressSize] * 256 + data[8 + idSize + passwordSize + serverAddressSize];
-
-						// data 9 + idSize + passwordSize + serverAddressSize + 1 is the 2 byte interval
-						let interval = (data[9 + idSize + passwordSize + serverAddressSize] << 8) + data[10 + idSize + passwordSize + serverAddressSize];
-
-						// data 11 + idSize + passwordSize + serverAddressSize + 1 is the format type
-						let format = data[11 + idSize + passwordSize + serverAddressSize];
-
-						// data 12 + idSize + passwordSize + serverAddressSize + 1 is the enabled flag
-						let enabled = data[12 + idSize + passwordSize + serverAddressSize];
-
-						// data 13 + idSize + passwordSize + serverAddressSize + 1 is the checksum
-						let checksum = data[13 + idSize + passwordSize + serverAddressSize];
-
-						// Compute the checksum which is the sum of all the bytes from 2 to packetSize + 2
-						let computedChecksum = 0;
-						for (let i = 2; i <= packetSize; i++)
-						{
-							computedChecksum += data[i];
-						}
-
-						// make the computedChecksum 8 bits
-						computedChecksum = computedChecksum & 0xFF;
-
-						if (checksum !== computedChecksum)
-						{
-							this.updateLog('Invalid checksum');
-
-							// Close the TCP connection
-							client.end();
-							return;
-						}
-
-						// compare the gateway IP with this.homeyIP, ensure the port matches the integer of pushServerPort string, and ensure the format is 0
-						if ((serverAddress !== this.homeyIP) || (port !== parseInt(this.pushServerPort, 10)) || (format !== 0) || (enabled !== 1))
-						{
-							this.updateLog('Updating the gateway settings', 0);
-							// format byte array to write the custom server settings to the gateway
-							let request = new Uint8Array(30);
-							request[0] = 0xFF;
-							request[1] = 0xFF;
-							request[2] = 0x2B;
-							request[4] = idSize;	// ID size
-
-							// copy the gateway ID to the request
-							for (let i = 0; i < idSize; i++)
-							{
-								request[5 + i] = data[5 + i];
-							}
-
-							request[5 + idSize] = 0;	// password size
-
-							// copy Homey's IP address to the request as ascii bytes
-							request[6 + idSize] = this.homeyIP.length;	// server address size
-							for (let i = 0; i < this.homeyIP.length; i++)
-							{
-								request[7 + idSize + i] = this.homeyIP.charCodeAt(i);
-							}
-
-							// copy the push server port to the request as 2 bytes
-							request[7 + idSize + this.homeyIP.length] = this.pushServerPort >> 8;
-							request[8 + idSize + this.homeyIP.length] = this.pushServerPort & 0xFF;
-
-							interval = 16;	// 16 seconds
-							// copy the interval to the request as 2 bytes
-							request[9 + idSize + this.homeyIP.length] = interval >> 8; // updated to use this.homeyIP.length
-							request[10 + idSize + this.homeyIP.length] = interval & 0xFF; // updated to use this.homeyIP.length
-
-							// Set the format to 0
-							request[11 + idSize + this.homeyIP.length] = 0; // updated to use this.homeyIP.length
-
-							// Enable the custom server
-							request[12 + idSize + this.homeyIP.length] = 1; // updated to use this.homeyIP.length
-
-							// set the packet size to 12 + idSize + this.homeyIP.length + 1
-							request[3] = 12 + idSize + this.homeyIP.length; // updated to use this.homeyIP.length
-
-							// Compute the checksum which is the sum of all the bytes from 2 to packetSize
-							let checksum = 0;
-							for (let i = 2; i < request.length - 1; i++) // adjusted loop to use request.length
-							{
-								checksum += request[i];
-							}
-							request[13 + idSize + this.homeyIP.length] = checksum; // updated to set checksum in the last position of the request array
-
-							// Reaize the request to the correct size
-							request = request.slice(0, request[3] + 2);
-
-							client.write(request);
-						}
-
-						// Close the TCP connection
-						client.end();
-					}
-
-				});
-
-				client.on('close', () =>
-				{
-					this.updateLog('Connection closed');
-				});
 			}
-		});
+
+			this.updateLog(`server got: "${formattedMsg}" from ${rinfo.address}:${rinfo.port}`);
+
+	        // Convert the message to a byte array
+
+	        const byteArray = new Uint8Array(msg);
+
+	        // Validate the message to confirm it is from a hub
+	        if ((byteArray.length >= 15) &&  (byteArray[ 0 ] === 0xFF) && (byteArray[ 1 ] == 0xFF) && (byteArray[ 2 ] === 0x12))
+	        {
+	            // byteArray 3 and 4 are the length of the message
+	            let length = byteArray[ 3 ] * 256 + byteArray[ 4 ];
+
+	            // byteArray 5 to 11 is the MAC address of the hub
+	            let macAddress = '';
+	            for (let i = 5; i < 10; i++)
+	            {
+	                macAddress += byteArray[ i ].toString(16).padStart(2, '0');
+	            }
+
+	            // byteArray 12 to 15 is the IP address of the hub
+	            let ipAddress = '';
+	            for (let i = 11; i < 15; i++)
+	            {
+	                ipAddress += byteArray[ i ];
+	                if (i < 14)
+	                {
+	                    ipAddress += '.';
+	                }
+	            }
+
+	            this.updateLog(`Gateway: ${macAddress} on IP: ${ipAddress}`);
+
+	            const client = new net.Socket();
+	            client.connect(45000, ipAddress , () =>
+	            {
+	                // format byte array to read the custom server settings from the gateway
+	                let request = new Uint8Array(5);
+	                request[0] = 0xFF;
+	                request[1] = 0xFF;
+	                request[2] = 0x2A;
+	                request[3] = 0x03;
+	                request[4] = 0x2A + 0x03;
+
+					this.updateLog("TCP Connected. Sending request for custom server settings");
+	                client.write(request); //This will send the byte buffer over TCP
+	            });
+
+	            client.on('error', (err) =>
+	            {
+	                this.updateLog(`Client error: ${err.message}`, 0);
+	            });
+
+	            client.on('data', (data) =>
+	            {
+	                // Convert the data to a hex string of the byte array with bytes separated by a space
+	                let hexString = '';
+	                for (let i = 0; i < data.length; i++)
+	                {
+	                    hexString += data[i].toString(16).padStart(2, '0');
+	                    if (i < data.length - 1) hexString += ' ';
+	                }
+	                this.updateLog(`Received data from ${ipAddress}: ${hexString}`);
+
+	                // Validate the data to confirm it is the custom server settings
+	                if ((data.length > 5) && (data[0] === 0xFF) && (data[1] === 0xFF) && (data[2] === 0x2A))
+	                {
+	                    // data 3 is the packet size
+	                    let packetSize = data[3];
+
+	                    // data 4 is the ID size
+	                    let idSize = data[4];
+
+	                    // data 5 to 5 + idSize is the ID of the gateway in ASCII
+	                    let gatewayID = '';
+	                    for (let i = 5; i < 5 + idSize; i++)
+	                    {
+	                        gatewayID += String.fromCharCode(data[i]);
+	                    }
+
+	                    // data 5 + idSize is the password size
+	                    let passwordSize = data[5 + idSize];
+
+	                    // data 6 + idSize to 6 + idSize + passwordSize is the password of the gateway in ASCII
+	                    let password = '';
+
+	                    for (let i = 6 + idSize; i < 6 + idSize + passwordSize; i++)
+	                    {
+	                        password += String.fromCharCode(data[i]);
+	                    }
+
+	                    // data 6 + idSize + passwordSize is the server address size
+	                    let serverAddressSize = data[6 + idSize + passwordSize];
+
+	                    // data 7 + idSize + passwordSize to 7 + idSize + passwordSize + serverAddressSize is the server address of the gateway in ASCII
+	                    let serverAddress = '';
+	                    for (let i = 7 + idSize + passwordSize; i < 7 + idSize + passwordSize + serverAddressSize; i++)
+	                    {
+	                        serverAddress += String.fromCharCode(data[i]);
+	                    }
+
+	                    // data 7 + idSize + passwordSize + serverAddressSize is the server port
+	                    let port = data[7 + idSize + passwordSize + serverAddressSize] * 256 + data[8 + idSize + passwordSize + serverAddressSize];
+
+	                    // data 9 + idSize + passwordSize + serverAddressSize + 1 is the 2 byte interval
+	                    let interval = (data[9 + idSize + passwordSize + serverAddressSize] << 8) + data[10 + idSize + passwordSize + serverAddressSize];
+
+	                    // data 11 + idSize + passwordSize + serverAddressSize + 1 is the format type
+	                    let format = data[11 + idSize + passwordSize + serverAddressSize];
+
+	                    // data 12 + idSize + passwordSize + serverAddressSize + 1 is the enabled flag
+	                    let enabled = data[12 + idSize + passwordSize + serverAddressSize];
+
+	                    // data 13 + idSize + passwordSize + serverAddressSize + 1 is the checksum
+	                    let checksum = data[13 + idSize + passwordSize + serverAddressSize];
+
+	                    // Compute the checksum which is the sum of all the bytes from 2 to packetSize + 2
+	                    let computedChecksum = 0;
+	                    for (let i = 2; i <= packetSize; i++)
+	                    {
+	                        computedChecksum += data[i];
+	                    }
+
+	                    // make the computedChecksum 8 bits
+	                    computedChecksum = computedChecksum & 0xFF;
+
+	                    if (checksum !== computedChecksum)
+	                    {
+	                        this.updateLog('Invalid checksum');
+
+	                        // Close the TCP connection
+	                        client.end();
+	                        return;
+	                    }
+
+	                    // compare the gateway IP with this.homeyIP, ensure the port matches the integer of pushServerPort string, and ensure the format is 0
+	                    if ((serverAddress !== this.homeyIP) || (port !== parseInt(this.pushServerPort, 10)) || (format !== 0) || (enabled !== 1))
+	                    {
+	                        this.updateLog('Updating the gateway settings', 0);
+	                        // format byte array to write the custom server settings to the gateway
+	                        let request = new Uint8Array(30);
+	                        request[0] = 0xFF;
+	                        request[1] = 0xFF;
+	                        request[2] = 0x2B;
+	                        request[4] = idSize;	// ID size
+
+	                        // copy the gateway ID to the request
+	                        for (let i = 0; i < idSize; i++)
+	                        {
+	                            request[5 + i] = data[5 + i];
+	                        }
+
+	                        request[5 + idSize] = 0;	// password size
+
+	                        // copy Homey's IP address to the request as ascii bytes
+	                        request[6 + idSize] = this.homeyIP.length;	// server address size
+	                        for (let i = 0; i < this.homeyIP.length; i++)
+	                        {
+	                            request[7 + idSize + i] = this.homeyIP.charCodeAt(i);
+	                        }
+
+	                        // copy the push server port to the request as 2 bytes
+	                        request[7 + idSize + this.homeyIP.length] = this.pushServerPort >> 8;
+	                        request[8 + idSize + this.homeyIP.length] = this.pushServerPort & 0xFF;
+
+	                        interval = 16;	// 16 seconds
+	                        // copy the interval to the request as 2 bytes
+	                        request[9 + idSize + this.homeyIP.length] = interval >> 8; // updated to use this.homeyIP.length
+	                        request[10 + idSize + this.homeyIP.length] = interval & 0xFF; // updated to use this.homeyIP.length
+
+	                        // Set the format to 0
+	                        request[11 + idSize + this.homeyIP.length] = 0; // updated to use this.homeyIP.length
+
+	                        // Enable the custom server
+	                        request[12 + idSize + this.homeyIP.length] = 1; // updated to use this.homeyIP.length
+
+	                        // set the packet size to 12 + idSize + this.homeyIP.length + 1
+	                        request[3] = 12 + idSize + this.homeyIP.length; // updated to use this.homeyIP.length
+
+	                        // Compute the checksum which is the sum of all the bytes from 2 to packetSize
+	                        let checksum = 0;
+	                        for (let i = 2; i < request.length - 1; i++) // adjusted loop to use request.length
+	                        {
+	                            checksum += request[i];
+	                        }
+	                        request[13 + idSize + this.homeyIP.length] = checksum; // updated to set checksum in the last position of the request array
+
+	                        // Reaize the request to the correct size
+	                        request = request.slice(0, request[3] + 2);
+
+	                        client.write(request);
+	                    }
+
+	                    // Close the TCP connection
+	                    client.end();
+	                }
+
+	            });
+
+	            client.on('close', () =>
+	            {
+	                this.updateLog('Connection closed');
+	            });
+	        }
+	    });
+
+	    this.broadcastServer.bind(46000);
 	}
 
 }
