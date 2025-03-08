@@ -14,7 +14,7 @@ class CO2Driver extends Driver
 
     async triggerCo2QChanged(device, tokens, state)
     {
-        this.measure_co2q_changedTrigger.trigger(device, tokens, state).catch(this.error);
+		this.homey.app.triggerCo2QChanged(device, tokens, state).catch(this.error);
     }
 
     /**

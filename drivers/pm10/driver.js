@@ -14,31 +14,6 @@ class PM10Driver extends Driver
         this.measure_aq25_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq_changed');
         this.measure_aq25_avg_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq.avg_changed');
 
-        this.measure_co2q_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_co2q_changed');
-        this.measure_co2q_changedTrigger.registerRunListener(async (args, state) =>
-        {
-            // If true, this flow should run
-            const argValue = parseInt(args.measure_aq);
-
-            if (args.compare_type === '<=')
-            {
-                // Check <=
-                return state.value <= argValue;
-            }
-            else if (args.compare_type === '==')
-            {
-                // Check <=
-                return state.value == argValue;
-            }
-            else if (args.compare_type === '>=')
-            {
-                // Check <=
-                return state.value >= argValue;
-            }
-
-            return false;
-        });
-
         this.measure_aq10_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq.pm10_changed');
         this.measure_aq10_changedTrigger.registerRunListener(async (args, state) =>
         {
