@@ -86,6 +86,11 @@
             }
         }
     },
+	"energy": {
+		"batteries": [
+			"AA"
+		]
+	},
     "pair": [
         {
             "id": "list_my_devices",
