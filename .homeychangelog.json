@@ -172,5 +172,8 @@
 	},
 	"0.2.2": {
 		"en": "Fix issue with CO2 Flow trigger"
+	},
+	"0.2.3": {
+		"en": "Fix some Dutch translations. Changed the point at which the broadcast is sent."
 	}
 }

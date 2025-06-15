@@ -45,18 +45,18 @@
         {
             "id": "measure_lightning_is_less",
             "title": {
-                "en": "Lightning Distance is !{{is|is not}} less than",
-                "nl": "Bliksemafstand is !{{is|is niet}} kleiner dan",
+                "en": "Lightning Distance !{{is|is not}} less than",
+                "nl": "Bliksemafstand !{{is|is niet}} kleiner dan",
                 "de": "Blitzentfernung !{{ist|ist nicht}} kleiner als"
             },
             "hint": {
                 "en": "This Flow will continue if Lightning Distance is/is not less than the set value.",
-                "nl": "Deze stroom gaat door als de bliksemafstand wel/niet kleiner is dan de ingestelde waarde.",
+                "nl": "Deze Flow gaat door als de bliksemafstand wel/niet kleiner is dan de ingestelde waarde.",
                 "de": "Dieser Flow wird weiterlaufen, wenn die Blitzentfernung (nicht) kleiner als der gesetzte Wert ist."
             },
             "titleFormatted": {
                 "en": "The Lightning Distance !{{is|is not}} less than [[value]]km",
-                "nl": "De bliksemafstand !{{is|is niet}} kleiner dan [[value]]km",
+                "nl": "De bliksemafstand !{{is|is niet}} minder dan [[value]]km",
                 "de": "Die Blitzentfernung !{{ist|ist nicht}} weniger als [[value]]km"
             },
             "args": [
@@ -93,7 +93,7 @@
             },
             "titleFormatted": {
                 "en": "The Lightning Distance is !{{equal|not equal}} to [[value]]km",
-                "nl": "De bliksemafstand is !{{equal|not equal}} tot [[value]]km",
+                "nl": "De bliksemafstand is !{{gelijk|niet gelijk}} aan [[value]]km",
                 "de": "Die Blitzentfernung !{{ist|ist nicht}} gleich [[value]]km"
             },
             "args": [
@@ -119,8 +119,8 @@
         {
             "id": "measure_lightning_num_is_less",
             "title": {
-                "en": "Lightning strikes is !{{is|is not}} less than",
-                "nl": "Blikseminslag is !{{is|is niet}} minder dan",
+                "en": "Lightning strikes !{{is|is not}} less than",
+                "nl": "Blikseminslag !{{is|is niet}} minder dan",
                 "de": "Blitzanzahl !{{ist|ist nicht}} kleiner als"
             },
             "hint": {
@@ -129,8 +129,8 @@
                 "de": "Dieser Flow wird weiterlaufen, wenn die Blitzanzahl (nicht) kleiner als der gesetzte Wert ist."
             },
             "titleFormatted": {
-                "en": "The Lightning strikes is !{{is|is not}} less than [[value]]",
-                "nl": "De blikseminslag is !{{is|is niet}} minder dan [[value]]",
+                "en": "The Lightning strikes !{{is|is not}} less than [[value]]",
+                "nl": "De blikseminslag !{{is|is niet}} kleiner dan [[value]]",
                 "de": "Die Blitzanzahl !{{ist|ist nicht}} kleiner als [[value]]"
             },
             "args": [
@@ -157,7 +157,7 @@
             "id": "measure_lightning_num_equal",
             "title": {
                 "en": "Lightning strikes is !{{equal|not equal}} to",
-                "nl": "Blikseminslag is !{{equal|not equal}} aan",
+                "nl": "Blikseminslag is !{{gelijk|niet gelijk}} aan",
                 "de": "Blitzanzahl ist !{{gleich|nicht gleich}}"
             },
             "hint": {
@@ -167,7 +167,7 @@
             },
             "titleFormatted": {
                 "en": "The Lightning strikes is !{{equal|not equal}} to [[value]]",
-                "nl": "De blikseminslag is !{{equal|not equal}} tot [[value]]",
+                "nl": "De blikseminslag is !{{gelijk|niet gelijk}} aan [[value]]",
                 "de": "Die Blitzanzahl ist !{{gleich|nicht gleich}} [[value]]"
             },
             "args": [

@@ -491,17 +491,17 @@ class MyApp extends Homey.App
 
 
 
-        let measure_aq_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq_changed');
-        measure_aq_changedTrigger.registerRunListener(async (args, state) =>
-        {
-            return true;
-        });
+        // let measure_aq_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq_changed');
+        // measure_aq_changedTrigger.registerRunListener(async (args, state) =>
+        // {
+        //     return true;
+        // });
 
-        let measure_aq_avg_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq.avg_changed');
-        measure_aq_avg_changedTrigger.registerRunListener(async (args, state) =>
-        {
-            return true;
-        });
+        // let measure_aq_avg_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq.avg_changed');
+        // measure_aq_avg_changedTrigger.registerRunListener(async (args, state) =>
+        // {
+        //     return true;
+        // });
 
         let measure_aqi_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aqi_changed');
         measure_aqi_changedTrigger.registerRunListener(async (args, state) =>
@@ -957,7 +957,7 @@ class MyApp extends Homey.App
 	    // Create a server to listen for data from gateways
 	    this.broadcastServer = dgram.createSocket('udp4');
 
-	    this.broadcastServer.on('error', (err) =>
+		this.broadcastServer.on('error', (err) =>
 	    {
 	        this.updateLog(`server error:\n${err.stack}`, 0);
 	        this.broadcastServer.close();
@@ -965,19 +965,19 @@ class MyApp extends Homey.App
 
 	    this.broadcastServer.on('listening', () =>
 	    {
-	        try
-	        {
-	            this.broadcastServer.setBroadcast(true);
-	        }
-	        catch (err)
-	        {
-	            this.updateLog(`Error setting broadcast: ${err.message}`, 0);
-	            this.broadcastServer.close();
-	            return;
-	        }
+	        // try
+	        // {
+	        //     this.broadcastServer.setBroadcast(true);
+	        // }
+	        // catch (err)
+	        // {
+	        //     this.updateLog(`Error setting broadcast: ${err.message}`, 0);
+	        //     this.broadcastServer.close();
+	        //     return;
+	        // }
 
 	        const address = this.broadcastServer.address();
-	        this.homey.app.updateLog(`server listening ${address.address}:${address.port}`);
+	        this.homey.app.updateLog(`Broadcast server listening ${address.address}:${address.port}`);
 
 	        this.homey.setTimeout(() =>
 	        {
@@ -1213,7 +1213,23 @@ class MyApp extends Homey.App
 	        }
 	    });
 
-	    this.broadcastServer.bind(46000);
+		this.broadcastServer.bind(46000, () =>
+		{
+			this.updateLog(`Broadcast server bind to port 46000. Setting broadcast...`);
+			try
+			{
+				this.broadcastServer.setBroadcast(true);
+			}
+			catch (err)
+			{
+				this.updateLog(`Error setting broadcast: ${err.message}`, 0);
+				this.broadcastServer.close();
+				return;
+			}
+
+			this.updateLog(`Broadcast server ready to receive data`);
+		});
+
 	}
 
 }

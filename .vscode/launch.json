@@ -12,7 +12,7 @@
         "address": "0.0.0.0",
         "port": 9229,
         "localRoot": "${workspaceFolder}",
-        "remoteRoot": "/"
+        "remoteRoot": "/app/"
     },
     {
         "type": "node",
@@ -20,6 +20,16 @@
         "restart": true,
         "name": "Attach to Homey",
         "address": "192.168.1.47",
+        "port": 9222,
+        "localRoot": "${workspaceFolder}",
+        "remoteRoot": "/"
+    },
+    {
+        "type": "node",
+        "request": "attach",
+        "restart": true,
+        "name": "Attach to Homey Dev",
+        "address": "192.168.1.70",
         "port": 9222,
         "localRoot": "${workspaceFolder}",
         "remoteRoot": "/"
@@ -38,10 +48,31 @@
         "type": "node",
         "request": "attach",
         "restart": true,
+        "name": "Attach to Homey Dev USB",
+        "address": "10.116.240.1",
+        "port": 9222,
+        "localRoot": "${workspaceFolder}",
+        "remoteRoot": "/"
+    },
+    {
+        "type": "node",
+        "request": "attach",
+        "restart": true,
         "name": "Attach to Homey 2023",
         "address": "192.168.1.32",
         "port": 9222,
         "localRoot": "${workspaceFolder}",
         "remoteRoot": "/app/"
-    }]
+    },
+    {
+        "type": "node",
+        "request": "attach",
+        "restart": true,
+        "name": "Attach to Docker Homey 2023",
+        "address": "0.0.0.0",
+        "port": 9229,
+        "localRoot": "${workspaceFolder}",
+        "remoteRoot": "/app/"
+    },
+]
 }

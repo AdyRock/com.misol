@@ -10,18 +10,18 @@ class PM25Driver extends Driver
     async onInit()
     {
         this.log('PM25Driver has been initialized');
-        this.measure_aq_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq_changed');
-        this.measure_aq_avg_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq.avg_changed');
+        // this.measure_aq_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq_changed');
+        // this.measure_aq_avg_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq.avg_changed');
     }
 
     async triggerAQChanged(device, tokens, state)
     {
-        this.measure_aq_changedTrigger.trigger(device, tokens, state).catch(this.error);
+        this.homey.app.measure_aq_changedTrigger.trigger(device, tokens, state).catch(this.error);
     }
 
     async triggerAQAvgChanged(device, tokens, state)
     {
-        this.measure_aq_avg_changedTrigger.trigger(device, tokens, state).catch(this.error);
+		this.homey.app.this.measure_aq_avg_changedTrigger.trigger(device, tokens, state).catch(this.error);
     }
 
     /**
