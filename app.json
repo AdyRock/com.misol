@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.misol",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "compatibility": ">=12.2.0",
   "sdk": 3,
   "platforms": [
@@ -125,6 +125,36 @@
           }
         ],
         "id": "alarm_power_true"
+      },
+      {
+        "title": {
+          "en": "It stopped raining",
+          "nl": "Het is gestopt met regenen",
+          "de": "Es hat aufgehört zu regnen"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=rain_sensor|weather_station&capabilities=alarm_rain"
+          }
+        ],
+        "id": "alarm_rain_false"
+      },
+      {
+        "title": {
+          "en": "It started raining",
+          "nl": "Het is begonnen met regenen",
+          "de": "Es hat angefangen zu regnen"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=rain_sensor|weather_station&capabilities=alarm_rain"
+          }
+        ],
+        "id": "alarm_rain_true"
       },
       {
         "title": {
@@ -4815,6 +4845,34 @@
       "setable": false,
       "uiComponent": "sensor",
       "icon": "/assets/power_plug.svg"
+    },
+    "alarm_rain": {
+      "type": "boolean",
+      "title": {
+        "en": "Raining",
+        "nl": "Regen",
+        "de": "Regen"
+      },
+      "desc": {
+        "en": "Raining",
+        "nl": "Regen",
+        "de": "Regen"
+      },
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Raining",
+        "nl": "Regen",
+        "de": "Regen"
+      },
+      "insightsTitleFalse": {
+        "en": "Not raining",
+        "nl": "Niet regen",
+        "de": "Nicht regen"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/rain.svg"
     },
     "measure_aq": {
       "type": "string",

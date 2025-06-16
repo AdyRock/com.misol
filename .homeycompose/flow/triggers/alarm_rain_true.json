@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "It started raining",
+        "nl": "Het is begonnen met regenen",
+        "de": "Es hat angefangen zu regnen"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=rain_sensor|weather_station&capabilities=alarm_rain"
+        }
+    ]
+}

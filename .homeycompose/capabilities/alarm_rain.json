@@ -1,0 +1,28 @@
+{
+    "type": "boolean",
+    "title": {
+      "en": "Raining",
+      "nl": "Regen",
+      "de": "Regen"
+    },
+    "desc": {
+      "en": "Raining",
+      "nl": "Regen",
+      "de": "Regen"
+    },
+    "insights": true,
+    "insightsTitleTrue": {
+      "en": "Raining",
+      "nl": "Regen",
+      "de": "Regen"
+    },
+    "insightsTitleFalse": {
+      "en": "Not raining",
+      "nl": "Niet regen",
+      "de": "Nicht regen"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "icon": "/assets/rain.svg"
+  }

@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "It stopped raining",
+        "nl": "Het is gestopt met regenen",
+        "de": "Es hat aufgehört zu regnen"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=rain_sensor|weather_station&capabilities=alarm_rain"
+        }
+    ]
+}

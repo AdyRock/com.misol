@@ -175,5 +175,8 @@
 	},
 	"0.2.3": {
 		"en": "Fix some Dutch translations. Changed the point at which the broadcast is sent."
+	},
+	"0.2.4": {
+		"en": "Added Started / Stopped raining alarm and triggers."
 	}
 }

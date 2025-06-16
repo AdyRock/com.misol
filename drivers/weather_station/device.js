@@ -295,6 +295,16 @@ class WeatherStationDevice extends Device
                 weeklyrainin = gateway.wrain_piezo;
                 monthlyrainin = gateway.mrain_piezo;
                 yearlyrainin = gateway.yrain_piezo;
+
+				if (gateway.srain_piezo !== undefined)
+				{
+					if (!this.hasCapability('alarm_rain'))
+					{
+						await this.addCapability('alarm_rain');
+					}
+
+					this.setCapabilityValue('alarm_rain', gateway.srain_piezo === '1').catch(this.error);
+				}
             }
 
 			if (gateway.totalrainin)

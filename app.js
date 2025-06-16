@@ -488,7 +488,17 @@ class MyApp extends Homey.App
             return true;
         });
 
+		let alarmPowerFalseTrigger = this.homey.flow.getDeviceTriggerCard('alarm_rain_false');
+		alarmPowerFalseTrigger.registerRunListener(async (args, state) =>
+		{
+			return state.value === false;
+		});
 
+		let alarmPowerTrueTrigger = this.homey.flow.getDeviceTriggerCard('alarm_rain_true');
+		alarmPowerTrueTrigger.registerRunListener(async (args, state) =>
+		{
+			return state.value === true;
+		});
 
 
         // let measure_aq_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq_changed');
