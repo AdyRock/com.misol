@@ -178,5 +178,8 @@
 	},
 	"0.2.4": {
 		"en": "Added Started / Stopped raining alarm and triggers."
+	},
+	"0.2.5": {
+		"en": "Fix some Flow trigger issues."
 	}
 }
