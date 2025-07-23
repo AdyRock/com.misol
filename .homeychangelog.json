@@ -184,5 +184,8 @@
 	},
 	"0.2.6": {
 		"en": "Fix issue with rain rate and total rain not being reported by the WS90."
+	},
+	"0.2.7": {
+		"en": "Fix typo for AQ triggers."
 	}
 }

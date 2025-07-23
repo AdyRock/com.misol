@@ -14,12 +14,12 @@ class PM25Driver extends Driver
 
     async triggerAQChanged(device, tokens, state)
     {
-        this.homey.app.measure_aq_changedTrigger.trigger(device, tokens, state).catch(this.error);
+		this.homey.app.measure_aq25_changedTrigger.trigger(device, tokens, state).catch(this.error);
     }
 
     async triggerAQAvgChanged(device, tokens, state)
     {
-		this.homey.app.measure_aq_avg_changedTrigger.trigger(device, tokens, state).catch(this.error);
+		this.homey.app.measure_aq25_avg_changedTrigger.trigger(device, tokens, state).catch(this.error);
     }
 
     /**
