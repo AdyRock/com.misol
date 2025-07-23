@@ -181,5 +181,8 @@
 	},
 	"0.2.5": {
 		"en": "Fix some Flow trigger issues."
+	},
+	"0.2.6": {
+		"en": "Fix issue with rain rate and total rain not being reported by the WS90."
 	}
 }

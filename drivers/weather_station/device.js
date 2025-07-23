@@ -272,21 +272,7 @@ class WeatherStationDevice extends Device
             let yearlyrainin = 0;
             let totalrainin = null;
 
-            if (gateway.rainratein)
-            {
-                rainratein = gateway.rainratein;
-            }
-
-            if (gateway.eventrainin)
-            {
-                eventrainin = gateway.eventrainin;
-                hourlyrainin = gateway.hourlyrainin;
-                dailyrainin = gateway.dailyrainin;
-                weeklyrainin = gateway.weeklyrainin;
-                monthlyrainin = gateway.monthlyrainin;
-                yearlyrainin = gateway.yearlyrainin;
-            }
-            else if (gateway.rrain_piezo)
+			if (gateway.rrain_piezo !== undefined)
             {
                 rainratein = gateway.rrain_piezo;
                 eventrainin = gateway.erain_piezo;
@@ -306,6 +292,37 @@ class WeatherStationDevice extends Device
 					this.setCapabilityValue('alarm_rain', gateway.srain_piezo === '1').catch(this.error);
 				}
             }
+			else
+			{
+				if (gateway.rainratein !== undefined)
+				{
+					rainratein = gateway.rainratein;
+				}
+				if (gateway.eventrainin !== undefined)
+				{
+					eventrainin = gateway.eventrainin;
+				}
+				if (gateway.hourlyrainin !== undefined)
+				{
+					hourlyrainin = gateway.hourlyrainin;
+				}
+				if (gateway.dailyrainin !== undefined)
+				{
+					dailyrainin = gateway.dailyrainin;
+				}
+				if (gateway.weeklyrainin !== undefined)
+				{
+					weeklyrainin = gateway.weeklyrainin;
+				}
+				if (gateway.monthlyrainin !== undefined)
+				{
+					monthlyrainin = gateway.monthlyrainin;
+				}
+				if (gateway.yearlyrainin !== undefined)
+				{
+					yearlyrainin = gateway.yearlyrainin;
+				}
+			}
 
 			if (gateway.totalrainin)
 			{
