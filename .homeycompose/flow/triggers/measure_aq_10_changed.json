@@ -1,0 +1,143 @@
+{
+    "title": {
+        "en": "The PM2.5 air quality has become",
+        "nl": "De PM2.5 luchtkwaliteit is geworden",
+        "de": "Die PM2.5 Luftqualität wurde"
+    },
+    "titleFormatted": {
+        "en": "The PM2.5 air quality has become [[compare_type]] [[measure_aq]]",
+        "nl": "De PM2.5 luchtkwaliteit is [[compare_type]] [[measure_aq]] geworden",
+        "de": "Die PM2.5 Luftqualität wurde [[compare_type]] [[measure_aq]]"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=pm25|pm10"
+        },
+        {
+            "type": "dropdown",
+            "name": "compare_type",
+            "title": {
+                "en": "Comparison type",
+                "nl": "Soort vergelijking",
+                "de": "Vergleichstyp"
+            },
+            "values": [
+                {
+                    "id": "<=",
+                    "label": {
+                        "en": "better than or equal to",
+                        "nl": "beter dan of gelijk aan",
+                        "de": "besser oder gleich"
+                    }
+                },
+                {
+                    "id": "==",
+                    "label": {
+                        "en": "equal to",
+                        "nl": "gelijk aan",
+                        "de": "gleich"
+                    }
+                },
+                {
+                    "id": ">=",
+                    "label": {
+                        "en": "worse than or equal to",
+                        "nl": "slechter dan of gelijk aan",
+                        "de": "schlechter oder gleich"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "dropdown",
+            "name": "measure_aq",
+            "title": {
+                "en": "Minimum Air quality",
+                "nl": "Minimale luchtkwaliteit",
+                "de": "Minimale Luftqualität"
+            },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Good",
+                        "nl": "Goed",
+                        "de": "Gut"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Moderate",
+                        "nl": "Gematigd",
+                        "de": "Mäßig"
+                    }
+                },
+                {
+                    "id": "2",
+                    "label": {
+                        "en": "Slightly Unhealthy",
+                        "nl": "Enigszins ongezond",
+                        "de": "Etwas ungesund"
+                    }
+                },
+                {
+                    "id": "3",
+                    "label": {
+                        "en": "Unhealthy",
+                        "nl": "Ongezond",
+                        "de": "Ungesund"
+                    }
+                },
+                {
+                    "id": "4",
+                    "label": {
+                        "en": "Very Unhealthy",
+                        "nl": "Heel ongezond",
+                        "de": "Sehr ungesund"
+                    }
+                },
+                {
+                    "id": "5",
+                    "label": {
+                        "en": "Hazardous",
+                        "nl": "Gevaarlijk",
+                        "de": "Gefährlich"
+                    }
+                }
+            ]
+        }
+    ],
+    "tokens": [
+        {
+            "name": "measure_aq_name",
+            "type": "string",
+            "title": {
+                "en": "PM2.5 Air Quality",
+                "nl": "PM2.5 Luchtkwaliteit",
+                "de": "PM2.5 Luftqualität"
+            },
+            "example": {
+                "en": "Moderate",
+                "nl": "Gematigd",
+                "de": "Mäßig"
+            }
+        },
+        {
+            "name": "measure_aq_item",
+            "type": "number",
+            "title": {
+                "en": "Air Quality item number",
+                "nl": "Luchtkwaliteit artikelnummer",
+                "de": "Luftqualität Positionsnummer"
+            },
+            "example": {
+                "en": "0 to 5 = Good to Hazardous",
+                "nl": "0 tot 5 = goed tot gevaarlijk",
+                "de": "0 bis 5 = Gut bis Gefährlich"
+            }
+        }
+    ]
+}

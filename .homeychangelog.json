@@ -187,5 +187,8 @@
 	},
 	"0.2.7": {
 		"en": "Fix typo for AQ triggers."
+	},
+	"0.2.8": {
+		"en": "Fix issue with PM10 AQ triggers not being registered correctly."
 	}
 }

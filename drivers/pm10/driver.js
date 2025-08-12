@@ -91,12 +91,12 @@ class PM10Driver extends Driver
 
     async triggerAQPM10Changed(device, tokens, state)
     {
-		this.homey.app.measure_aq10_changedTrigger.trigger(device, tokens, state).catch(this.error);
+		this.measure_aq10_changedTrigger.trigger(device, tokens, state).catch(this.error);
     }
 
     async triggerAQPM10AvgChanged(device, tokens, state)
     {
-		this.homey.app.measure_aq10Avg_changedTrigger.trigger(device, tokens, state).catch(this.error);
+		this.measure_aq10Avg_changedTrigger.trigger(device, tokens, state).catch(this.error);
     }
 
     /**
