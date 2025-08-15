@@ -68,6 +68,36 @@
     "triggers": [
       {
         "title": {
+          "en": "A water leak has stopped",
+          "nl": "Er is een waterlek gestopt",
+          "de": "Ein Wasserleck wurde gestoppt"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=wittflow&capabilities=alarm_leak"
+          }
+        ],
+        "id": "alarm_leak_false"
+      },
+      {
+        "title": {
+          "en": "A water leak is detected",
+          "nl": "Er is een waterlek gedetecteerd",
+          "de": "Ein Wasserleck wurde erkannt"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=wittflow&capabilities=alarm_leak"
+          }
+        ],
+        "id": "alarm_leak_true"
+      },
+      {
+        "title": {
           "en": "The PM10 alarm turned off",
           "nl": "Het PM10-alarm is uitgeschakeld",
           "de": "Der PM10-Alarm ist ausgegangen"
@@ -4931,9 +4961,126 @@
         "large": "/drivers/wind_ws80/assets/images/large.png"
       },
       "id": "wind_ws80"
+    },
+    {
+      "name": {
+        "en": "WittFlow"
+      },
+      "class": "watervalve",
+      "capabilities": [
+        "meter_water",
+        "measure_water",
+        "alarm_water",
+        "alarm_leak",
+        "measure_signal_strength",
+        "measure_temperature",
+        "onoff",
+        "measure_battery"
+      ],
+      "capabilitiesOptions": {
+        "alarm_water": {
+          "title": {
+            "en": "No water alarm",
+            "nl": "Geen wateralarm",
+            "de": "Kein Wasseralarm",
+            "fr": "Pas d'alarme d'eau",
+            "es": "Sin alarma de agua",
+            "it": "Nessun allarme acqua",
+            "pt": "Sem alarme de água",
+            "ko": "물 경고 없음"
+          }
+        },
+        "measure_signal_strength": {
+          "units": ""
+        }
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "energy": {
+        "batteries": [
+          "AA",
+          "AA"
+        ]
+      },
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "id": "address",
+          "type": "text",
+          "label": {
+            "en": "Gateway IP",
+            "de": "Gateway-IP",
+            "fr": "IP de la passerelle",
+            "es": "IP de la puerta de enlace",
+            "it": "IP del gateway",
+            "pt": "IP do gateway",
+            "ko": "게이트웨이 IP"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the IP address of the gateway.",
+            "de": "Zeigt die IP-Adresse des Gateways.",
+            "fr": "Affiche l'adresse IP de la passerelle.",
+            "es": "Muestra la dirección IP de la puerta de enlace.",
+            "it": "Mostra l'indirizzo IP del gateway.",
+            "pt": "Mostra o endereço IP do gateway.",
+            "ko": "게이트웨이의 IP 주소를 표시합니다."
+          }
+        }
+      ],
+      "images": {
+        "small": "/drivers/wittflow/assets/images/small.png",
+        "large": "/drivers/wittflow/assets/images/large.png",
+        "xlarge": "/drivers/wittflow/assets/images/xlarge.png"
+      },
+      "id": "wittflow"
     }
   ],
   "capabilities": {
+    "alarm_leak": {
+      "type": "boolean",
+      "title": {
+        "en": "Water leak",
+        "nl": "Waterlek",
+        "de": "Wasserleck"
+      },
+      "desc": {
+        "en": "Water leak detected",
+        "nl": "Waterlek gedetecteerd",
+        "de": "Wasserleck erkannt"
+      },
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Water leak",
+        "nl": "Waterlek",
+        "de": "Wasserleck"
+      },
+      "insightsTitleFalse": {
+        "en": "No water leak",
+        "nl": "Geen waterlek",
+        "de": "Kein Wasserleck"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/leaking.svg"
+    },
     "alarm_pm10": {
       "type": "boolean",
       "title": {

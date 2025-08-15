@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "A water leak is detected",
+        "nl": "Er is een waterlek gedetecteerd",
+        "de": "Ein Wasserleck wurde erkannt"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=wittflow&capabilities=alarm_leak"
+        }
+    ]
+}

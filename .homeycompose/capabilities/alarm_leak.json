@@ -1,0 +1,28 @@
+{
+    "type": "boolean",
+    "title": {
+      "en": "Water leak",
+      "nl": "Waterlek",
+      "de": "Wasserleck"
+    },
+    "desc": {
+      "en": "Water leak detected",
+      "nl": "Waterlek gedetecteerd",
+      "de": "Wasserleck erkannt"
+    },
+    "insights": true,
+    "insightsTitleTrue": {
+      "en": "Water leak",
+      "nl": "Waterlek",
+      "de": "Wasserleck"
+    },
+    "insightsTitleFalse": {
+      "en": "No water leak",
+      "nl": "Geen waterlek",
+      "de": "Kein Wasserleck"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "icon": "/assets/leaking.svg"
+  }

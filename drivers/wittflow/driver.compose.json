@@ -1,0 +1,88 @@
+{
+	"name": {
+		"en": "WittFlow"
+	},
+	"class": "watervalve",
+	"capabilities": [
+		"meter_water",
+		"measure_water",
+		"alarm_water",
+		"alarm_leak",
+		"measure_signal_strength",
+		"measure_temperature",
+		"onoff",
+		"measure_battery"
+	],
+	"capabilitiesOptions": {
+		"alarm_water": {
+			"title": {
+				"en": "No water alarm",
+				"nl": "Geen wateralarm",
+				"de": "Kein Wasseralarm",
+				"fr": "Pas d'alarme d'eau",
+				"es": "Sin alarma de agua",
+				"it": "Nessun allarme acqua",
+				"pt": "Sem alarme de água",
+				"ko": "물 경고 없음"
+			}
+		},
+		"measure_signal_strength": {
+			"units": ""
+		}
+	},
+	"platforms": [
+		"local"
+	],
+	"connectivity": [
+		"lan"
+	],
+	"energy": {
+		"batteries": [
+			"AA",
+			"AA"
+		]
+	},
+	"pair": [
+		{
+			"id": "list_my_devices",
+			"template": "list_devices",
+			"navigation": {
+				"next": "add_my_devices"
+			}
+		},
+		{
+			"id": "add_my_devices",
+			"template": "add_devices"
+		}
+	],
+	"settings": [
+		{
+			"id": "address",
+			"type": "text",
+			"label": {
+				"en": "Gateway IP",
+				"de": "Gateway-IP",
+				"fr": "IP de la passerelle",
+				"es": "IP de la puerta de enlace",
+				"it": "IP del gateway",
+				"pt": "IP do gateway",
+				"ko": "게이트웨이 IP"
+			},
+			"value": "",
+			"hint": {
+				"en": "Shows the IP address of the gateway.",
+				"de": "Zeigt die IP-Adresse des Gateways.",
+				"fr": "Affiche l'adresse IP de la passerelle.",
+				"es": "Muestra la dirección IP de la puerta de enlace.",
+				"it": "Mostra l'indirizzo IP del gateway.",
+				"pt": "Mostra o endereço IP do gateway.",
+				"ko": "게이트웨이의 IP 주소를 표시합니다."
+			}
+		}
+	],
+	"images": {
+		"small": "{{driverAssetsPath}}/images/small.png",
+		"large": "{{driverAssetsPath}}/images/large.png",
+		"xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+	}
+}

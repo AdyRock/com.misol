@@ -190,5 +190,8 @@
 	},
 	"0.2.8": {
 		"en": "Fix issue with PM10 AQ triggers not being registered correctly."
+	},
+	"0.2.9": {
+		"en": "Added WittFlow WFC01 support."
 	}
 }

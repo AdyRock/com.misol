@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "A water leak has stopped",
+        "nl": "Er is een waterlek gestopt",
+        "de": "Ein Wasserleck wurde gestoppt"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=wittflow&capabilities=alarm_leak"
+        }
+    ]
+}
