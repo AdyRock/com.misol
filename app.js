@@ -36,6 +36,7 @@ class MyApp extends Homey.App
 		try
 		{
 			const homeyLocalURL = await this.homey.cloud.getLocalAddress();
+			this.updateLog(`Homey IP: ${homeyLocalURL}`, 0);
 			this.homeyIP = homeyLocalURL.split(':')[0];
 		}
 		catch (err)
@@ -981,6 +982,12 @@ class MyApp extends Homey.App
 
 	createBroadcastServer()
 	{
+		if (!this.homeyIP)
+		{
+			this.updateLog("No Homey IP address found. Broadcast server not started", 0);
+			return;
+		}
+
 		function sendBroadcast(appInstance)
 		{
 			if (appInstance.homey.settings.get('autoConfigEnabled'))
@@ -1023,13 +1030,22 @@ class MyApp extends Homey.App
 			//     return;
 			// }
 
-			const address = this.broadcastServer.address();
-			this.homey.app.updateLog(`Broadcast server listening ${address.address}:${address.port}`);
-
-			this.homey.setTimeout(() =>
+			try
 			{
-				sendBroadcast(this);
-			}, 15000);
+				const address = this.broadcastServer.address();
+				this.homey.app.updateLog(`Broadcast server listening ${address.address}:${address.port}`);
+
+				this.homey.setTimeout(() =>
+				{
+					sendBroadcast(this);
+				}, 15000);
+			}
+			catch (err)
+			{
+				this.updateLog(`Error getting address: ${err.message}`, 0);
+				this.broadcastServer.close();
+				return;
+			}
 		});
 
 		this.broadcastServer.on('message', (msg, rinfo) =>
