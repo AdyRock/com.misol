@@ -196,5 +196,8 @@
 	},
 	"0.2.10": {
 		"en": "Fix issue where the broadcast server would crash if the Homey local IP address could not be determined."
+	},
+	"0.2.11": {
+		"en": "Revised 'Dew Point' calculation."
 	}
 }

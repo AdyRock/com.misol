@@ -521,25 +521,25 @@ class WeatherStationDevice extends Device
                 }
             }
 
-            let temperature = (feelsLike - 32) * 5 / 9;
-            temperature = Math.round(temperature * 10 + Number.EPSILON) / 10;
-            if (temperature != this.getCapabilityValue('measure_temperature.feelsLike'))
+			// Convert to Celsius
+			feelsLike = (feelsLike - 32) * 5 / 9;
+			feelsLike = Math.round(feelsLike * 10 + Number.EPSILON) / 10;
+            if (feelsLike != this.getCapabilityValue('measure_temperature.feelsLike'))
             {
-                this.setCapabilityValue('measure_temperature.feelsLike', temperature).catch(this.error);
+                this.setCapabilityValue('measure_temperature.feelsLike', feelsLike).catch(this.error);
             }
 
-            relativeHumidity /= 100;
-            var dewPoint = (temperatureF - 32) * 5 / 9;
-            if (dewPoint > 0 && dewPoint < 60)
+            // Calculate Dew Point
+			relativeHumidity /= 100;
+            var temperature = (temperatureF - 32) * 5 / 9;
+            var dewPoint = 0;
+
+            if (relativeHumidity > 0.01 && relativeHumidity <= 1)
             {
-                if ((relativeHumidity) > 0.01 && (relativeHumidity < 1))
-                {
-                    var a = 17.27;
-                    var b = 237.7;
-                    var alphaTR = ((a * dewPoint) / (b + dewPoint)) + Math.log(relativeHumidity);
-                    var Tr = (b * alphaTR) / (a - alphaTR);
-                    dewPoint = Tr;
-                }
+                var a = 17.625;
+                var b = 243.04;
+                var alpha = Math.log(relativeHumidity) + (a * temperature) / (b + temperature);
+                dewPoint = (b * alpha) / (a - alpha);
             }
 
             dewPoint = Math.round(dewPoint * 10 + Number.EPSILON) / 10;
