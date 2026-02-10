@@ -17,7 +17,7 @@ module.exports = class MyDevice extends Homey.Device
 		this.updateTimer = this.homey.setTimeout(() =>
 		{
 			this.updateStatus();
-		}, 2000);
+		}, 5000);
 	}
 
 	/**
@@ -94,7 +94,7 @@ module.exports = class MyDevice extends Homey.Device
 		this.updateTimer = this.homey.setTimeout(() =>
 		{
 			this.updateStatus();
-		}, 2000);
+		}, 5000);
 	}
 
 };

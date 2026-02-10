@@ -1,0 +1,27 @@
+{
+	"title": {
+		"en": "The moisture has changed",
+		"nl": "De vochtigheid is veranderd",
+		"de": "Die Feuchtigkeit hat sich verändert"
+	},
+	"tokens": [
+		{
+			"name": "measure_moisture",
+			"title": {
+				"en": "Moisture",
+				"nl": "Vochtigheid",
+				"de": "Feuchtigkeit"
+			},
+			"type": "number",
+			"units": "%",
+			"example": 3
+		}
+	],
+	"args": [
+		{
+			"name": "device",
+			"type": "device",
+			"filter": "driver_id=soil_moisture|leaf_wetness"
+		}
+	]
+}

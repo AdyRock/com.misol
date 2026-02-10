@@ -514,8 +514,8 @@ class MyApp extends Homey.App
 			return true;
 		});
 
-		this.measure_co2g_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_co2q_changed');
-		this.measure_co2g_changedTrigger.registerRunListener(async (args, state) =>
+		this.measure_co2q_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_co2q_changed');
+		this.measure_co2q_changedTrigger.registerRunListener(async (args, state) =>
 		{
 			// If true, this flow should run
 			const argValue = parseInt(args.measure_aq);
