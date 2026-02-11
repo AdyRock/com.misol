@@ -50,9 +50,13 @@ class MyApp extends Homey.App
 			this.pushServerPort = 7777;
 			this.homey.settings.set('port', this.pushServerPort);
 		}
-		else if ((this.pushServerPort < 0) || (this.pushServerPort >= 65536))
+		else
 		{
-			this.pushServerPort = 7777;
+			this.pushServerPort = Number(this.pushServerPort);
+			if ((this.pushServerPort < 0) || (this.pushServerPort >= 65536))
+			{
+				this.pushServerPort = 7777;
+			}
 		}
 
 		this.SpeedUnits = this.homey.settings.get('SpeedUnits');
@@ -83,13 +87,14 @@ class MyApp extends Homey.App
 				}
 				else
 				{
-					this.broadcastServer.close();
+					this.safeCloseBroadcastServer();
 				}
 			}
 
 			if (key === 'port')
 			{
 				this.pushServerPort = this.homey.settings.get('port');
+				this.pushServerPort = Number(this.pushServerPort);
 				if ((this.pushServerPort < 0) || (this.pushServerPort >= 65536))
 				{
 					this.pushServerPort = 7777;
@@ -800,6 +805,9 @@ class MyApp extends Homey.App
 		};
 
 		this.server = http.createServer(requestListener);
+
+		// Make sure the port is a number and is valid
+		this.pushServerPort = Number(this.pushServerPort);
 		if ((this.pushServerPort < 0) || (this.pushServerPort >= 65536))
 		{
 			this.pushServerPort = 7777;
@@ -918,6 +926,24 @@ class MyApp extends Homey.App
 		}
 	}
 
+	safeCloseBroadcastServer()
+	{
+		if (!this.broadcastServer || this.broadcastServerClosed)
+		{
+			return;
+		}
+
+		this.broadcastServerClosed = true;
+		try
+		{
+			this.broadcastServer.close();
+		}
+		catch (err)
+		{
+			this.updateLog(`Broadcast server close error: ${err.message}`, 0);
+		}
+	}
+
 	async sendLog(body)
 	{
 		let tries = 5;
@@ -1010,11 +1036,12 @@ class MyApp extends Homey.App
 
 		// Create a server to listen for data from gateways
 		this.broadcastServer = dgram.createSocket('udp4');
+		this.broadcastServerClosed = false;
 
 		this.broadcastServer.on('error', (err) =>
 		{
 			this.updateLog(`server error:\n${err.stack}`, 0);
-			this.broadcastServer.close();
+			this.safeCloseBroadcastServer();
 		});
 
 		this.broadcastServer.on('listening', () =>
@@ -1043,7 +1070,7 @@ class MyApp extends Homey.App
 			catch (err)
 			{
 				this.updateLog(`Error getting address: ${err.message}`, 0);
-				this.broadcastServer.close();
+				this.safeCloseBroadcastServer();
 				return;
 			}
 		});
@@ -1300,7 +1327,7 @@ class MyApp extends Homey.App
 			catch (err)
 			{
 				this.updateLog(`Error setting broadcast: ${err.message}`, 0);
-				this.broadcastServer.close();
+				this.safeCloseBroadcastServer();
 				return;
 			}
 

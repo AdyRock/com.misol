@@ -205,5 +205,8 @@
 	},
 	"0.2.13": {
 		"en": "Fixed Dutch and German translations for the Leaf Wetness sensor."
+	},
+	"0.2.14": {
+		"en": "Fixed Math.fabs issue. Ensure port is a number and valid. Added error handling for server start up. Added error handling for broadcast messages."
 	}
 }
