@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.misol",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "compatibility": ">=12.2.0",
   "sdk": 3,
   "platforms": [
@@ -3878,7 +3878,7 @@
       "name": {
         "en": "Leaf Wetness Sensor",
         "nl": "Bladnatheidssensor",
-        "de": "Bodenfeuchte-Messer"
+        "de": "Blattfeuchtesensor"
       },
       "platforms": [
         "local"

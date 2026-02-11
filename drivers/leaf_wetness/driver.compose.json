@@ -2,7 +2,7 @@
     "name": {
         "en": "Leaf Wetness Sensor",
         "nl": "Bladnatheidssensor",
-        "de": "Bodenfeuchte-Messer"
+        "de": "Blattfeuchtesensor"
     },
     "platforms": [
         "local"

@@ -202,5 +202,8 @@
 	},
 	"0.2.12": {
 		"en": "Added support for the Leaf Wetness sensor."
+	},
+	"0.2.13": {
+		"en": "Fixed Dutch and German translations for the Leaf Wetness sensor."
 	}
 }
