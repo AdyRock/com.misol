@@ -44,16 +44,15 @@ class MyApp extends Homey.App
 			this.updateLog(`Error getting homey IP: ${err.message}`, 0);
 		}
 
-		this.pushServerPort = this.homey.settings.get('port');
-		if (!this.pushServerPort)
+		this.pushServerPort = Number(this.homey.settings.get('port'));
+		if (isNaN(this.pushServerPort))
 		{
 			this.pushServerPort = 7777;
 			this.homey.settings.set('port', this.pushServerPort);
 		}
 		else
 		{
-			this.pushServerPort = Number(this.pushServerPort);
-			if ((this.pushServerPort < 0) || (this.pushServerPort >= 65536))
+			if ((this.pushServerPort <= 0) || (this.pushServerPort >= 65536))
 			{
 				this.pushServerPort = 7777;
 			}
