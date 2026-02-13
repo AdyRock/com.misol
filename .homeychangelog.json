@@ -208,5 +208,8 @@
 	},
 	"0.2.14": {
 		"en": "Fixed Math.fabs issue. Ensure port is a number and valid. Added error handling for server start up. Added error handling for broadcast messages."
+	},
+	"0.2.15": {
+		"en": "Corrected conditional checks for temperature and humidity in WeatherStationDevice as they had backward logic."
 	}
 }

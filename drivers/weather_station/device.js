@@ -512,7 +512,7 @@ class WeatherStationDevice extends Device
                 this.setCapabilityValue('alarm_battery', gateway.battout === '0').catch(this.error);
             }
 
-			if (temperatureF === null || relativeHumidity === undefined)
+			if (temperatureF !== null || relativeHumidity !== undefined)
 			{
 				var feelsLike = 0;
 
