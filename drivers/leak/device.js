@@ -72,25 +72,43 @@ class LeakDevice extends Device
                     this.setSettings({stationType: this.stationType}).catch(this.error);;
                 }
 
-                this.setCapabilityValue('alarm_water', (gateway['leak_ch' + dd.meterNumber] !== '0')).catch(this.error);
+                this.setCapabilityValue('alarm_water', (gateway['leak_ch' + dd.meterNumber] === '1')).catch(this.error);
+				if (gateway['leak_ch' + dd.meterNumber] === '2')
+				{
+					// The sensor is offline
+					if (this.hasCapability('measure_battery'))
+					{
+						this.setCapabilityValue('measure_battery', null).catch(this.error);
+					}
 
-                if (gateway['leakbatt' + dd.meterNumber])
-                {
-                    // The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
-                    const bat = parseInt(gateway['leakbatt' + dd.meterNumber]);
-                    if (!isNaN(bat) && (bat >= 0))
-                    {
-                        this.setCapabilityValue('measure_battery', bat * 20).catch(this.error);
-                    }
-                }
-                else
-                {
-                    if (this.hasCapability('measure_battery'))
-                    {
-                        await this.removeCapability('measure_battery').catch(this.error);
-                    }
-                }
-            }
+					this.setUnavailable().catch(this.error);
+				}
+				else
+				{
+					this.setAvailable().catch(this.error);
+					if (gateway['leakbatt' + dd.meterNumber])
+					{
+						// The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
+						if (!this.hasCapability('measure_battery'))
+						{
+							await this.addCapability('measure_battery').catch(this.error);
+						}
+
+						const bat = parseInt(gateway['leakbatt' + dd.meterNumber]);
+						if (!isNaN(bat) && (bat >= 0))
+						{
+							this.setCapabilityValue('measure_battery', bat * 20).catch(this.error);
+						}
+					}
+					else
+					{
+						if (this.hasCapability('measure_battery'))
+						{
+							await this.removeCapability('measure_battery').catch(this.error);
+						}
+					}
+				}
+			}
         }
     }
 }

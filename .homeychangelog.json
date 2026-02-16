@@ -211,5 +211,8 @@
 	},
 	"0.2.15": {
 		"en": "Corrected conditional checks for temperature and humidity in WeatherStationDevice as they had backward logic."
+	},
+	"0.2.16": {
+		"en": "Added support for water leak sensor offline detection."
 	}
 }
