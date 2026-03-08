@@ -9,7 +9,7 @@ class LaserDriver extends Driver
      */
     async onInit()
     {
-        this.log('Lightning Driver has been initialized');
+        this.log('Laser Distance Driver has been initialized');
     }
 
     /**
