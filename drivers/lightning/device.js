@@ -117,7 +117,7 @@ class LightningDevice extends Device
     async updateCapabilities(gateway)
     {
         const dd = this.getData();
-        if ((gateway.PASSKEY === dd.PASSKEY) && (gateway.lightning != undefined))
+        if (gateway.PASSKEY === dd.PASSKEY)
         {
             if (!this.stationType)
             {
@@ -125,7 +125,7 @@ class LightningDevice extends Device
                 this.setSettings({stationType: this.stationType}).catch(this.error);;
             }
 
-            if (gateway.lightning !== '')
+            if ((gateway.lightning !== '') && (gateway.lightning != undefined))
             {
                 this.setCapabilityValue('measure_lightning', Number(gateway.lightning)).catch(this.error);
 
@@ -136,18 +136,17 @@ class LightningDevice extends Device
                     this.setStoreValue('lightning_time', this.lightning_time).catch(this.error);
                     this.setCapabilityValue('measure_lightning_time', this.convertDate(this.lightning_time, settings)).catch(this.error);
                 }
-
-                // The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
-                const bat = parseInt(gateway.wh57batt);
-                if (!isNaN(bat) && (bat >= 0))
+            }
+    		// The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
+            const bat = parseInt(gateway.wh57batt);
+            if (!isNaN(bat) && (bat >= 0))
                 {
                     this.setCapabilityValue('measure_battery', bat * 20).catch(this.error);
                 }
-            }
-
             this.setCapabilityValue('measure_lightning_num', parseInt(gateway.lightning_num)).catch(this.error);
         }
     }
 }
+
 
 module.exports = LightningDevice;
