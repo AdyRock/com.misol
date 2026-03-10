@@ -19,6 +19,8 @@
         "SpeedUnits": "Windgeschwindigkeit",
 		"RainfallUnits": "Regenhöhe",
 		"instructions": "Stellen Sie sicher, dass Sie das Gateway zuerst in der WS View-App auf Ihrem Telefon einrichten, damit die Daten an Homey gesendet werden.<br>Anweisungen finden Sie hier:"
+		"autoConfigEnabled": "Gateways automatisch konfigurieren",
+		"autoConfigInfo": "Wenn aktiviert, werden die Gateways im selben Netzwerk automatisch so konfiguriert, dass sie Daten an Homey senden."
     },
     "good": "Gut",
     "Moderate": "Mäßig",
