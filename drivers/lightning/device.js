@@ -125,7 +125,7 @@ class LightningDevice extends Device
                 this.setSettings({stationType: this.stationType}).catch(this.error);;
             }
 
-            if ((gateway.lightning !== '') && (gateway.lightning != undefined))
+			if ((gateway.lightning != undefined) && (gateway.lightning !== ''))
             {
                 this.setCapabilityValue('measure_lightning', Number(gateway.lightning)).catch(this.error);
 
@@ -137,13 +137,21 @@ class LightningDevice extends Device
                     this.setCapabilityValue('measure_lightning_time', this.convertDate(this.lightning_time, settings)).catch(this.error);
                 }
             }
-    		// The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
-            const bat = parseInt(gateway.wh57batt);
-            if (!isNaN(bat) && (bat >= 0))
-                {
-                    this.setCapabilityValue('measure_battery', bat * 20).catch(this.error);
-                }
-            this.setCapabilityValue('measure_lightning_num', parseInt(gateway.lightning_num)).catch(this.error);
+
+			if ((gateway.wh57batt != undefined) && (gateway.wh57batt !== ''))
+			{
+				// The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
+				const bat = parseInt(gateway.wh57batt);
+				if (!isNaN(bat) && (bat >= 0))
+				{
+					this.setCapabilityValue('measure_battery', bat * 20).catch(this.error);
+				}
+			}
+
+			if ((gateway.lightning_num != undefined) && (gateway.lightning_num !== ''))
+			{
+				this.setCapabilityValue('measure_lightning_num', parseInt(gateway.lightning_num)).catch(this.error);
+			}
         }
     }
 }
