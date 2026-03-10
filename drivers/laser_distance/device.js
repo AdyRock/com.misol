@@ -76,7 +76,7 @@ class LaserDevice extends Device
 				this.setCapabilityValue('measure_distance', distance).catch(this.error);
 			}
 
-			const depth = Number(gateway['depth_ch1' + dd.meterNumber]) / 1000;
+			const depth = Number(gateway['depth_ch' + dd.meterNumber]) / 1000;
 			if (depth != this.getCapabilityValue('measure_distance.depth'))
 			{
 				this.setCapabilityValue('measure_distance.depth', depth).catch(this.error);
