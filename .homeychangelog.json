@@ -220,5 +220,8 @@
 	},
 	"0.2.18": {
 		"en": "Ensure Lighting detector battery is updated. Updated German translations."
+	},
+	"0.2.19": {
+		"en": "Fix depth value for Laser Distance sensor (thanks to DaBozzz for the new update)."
 	}
 }
