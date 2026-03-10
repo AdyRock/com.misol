@@ -215,7 +215,10 @@
 	"0.2.16": {
 		"en": "Added support for water leak sensor offline detection."
 	},
-	"0.2.18": {
+	"0.2.17": {
 		"en": "Added support for the WS20 Rain Sensor. Fix issue with incorrect Laser Distance sensor depth value (thanks to DaBozzz for the update)."
+	},
+	"0.2.18": {
+		"en": "Ensure Lighting detector battery is updated. Updated German translations."
 	}
 }
