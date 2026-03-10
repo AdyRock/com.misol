@@ -223,5 +223,8 @@
 	},
 	"0.2.19": {
 		"en": "Fix depth value for Laser Distance sensor (thanks to DaBozzz for the new update)."
+	},
+	"0.2.20": {
+		"en": "Fix battery status for wn20 Rain sensor."
 	}
 }

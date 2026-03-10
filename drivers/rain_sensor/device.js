@@ -323,10 +323,10 @@ class RainSensorDevice extends Device
                 this.setCapabilityValue('measure_rain.daily', rain).catch(this.error);
             }
 
-			if (gateway.wh40batt !== undefined)
+			if ((gateway.wh40batt !== undefined) || (gateway.wn20batt !== undefined))
 			{
 				var batteryType = this.getSetting('batteryType');
-				const batV = Number(gateway.wh40batt);
+				const batV = Number(gateway.wh40batt || gateway.wn20batt);
 				var batP = 0;
 
 				if (batteryType === '0')
