@@ -64,7 +64,7 @@ class TempDevice extends Device
         const dd = this.getData();
         if (dd.meterNumber)
         {
-            if ((gateway.PASSKEY === dd.PASSKEY) && gateway['temp' + dd.meterNumber] + 'f')
+            if ((gateway.PASSKEY === dd.PASSKEY) && (gateway['temp' + dd.meterNumber + 'f'] !== undefined))
             {
                 if (!this.stationType)
                 {
@@ -85,7 +85,7 @@ class TempDevice extends Device
                         }
                         var batteryType = this.getSetting( 'batteryType' );
                         var batP = 0;
-                        
+
                         if (batteryType === '0')
                         {
                             batP = (batV - 0.9) / (1.7 - 0.9) * 100;
@@ -94,7 +94,7 @@ class TempDevice extends Device
                         {
                             batP = (batV - 0.9) / (1.3 - 0.9) * 100;
                         }
-        
+
                         if (batP > 100)
                         {
                             batP = 100;

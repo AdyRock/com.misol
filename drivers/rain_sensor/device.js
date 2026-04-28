@@ -232,7 +232,7 @@ class RainSensorDevice extends Device
 			{
 				if (this.hasCapability('measure_rain.total'))
 				{
-					this.removeCapability('measure_rain.total');
+					await this.removeCapability('measure_rain.total').catch(this.error);
 				}
 			}
 
@@ -271,11 +271,11 @@ class RainSensorDevice extends Device
 			{
 				if (this.hasCapability('measure_rain.rate'))
 				{
-					this.removeCapability('measure_rain.rate');
+					await this.removeCapability('measure_rain.rate').catch(this.error);
 				}
 				if (this.hasCapability('measure_hours_since_rained'))
 				{
-					this.removeCapability('measure_hours_since_rained');
+					await this.removeCapability('measure_hours_since_rained').catch(this.error);
 				}
 			}
 

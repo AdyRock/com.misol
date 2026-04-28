@@ -45,7 +45,7 @@ class WeatherStationDevice extends Device
 
 		if (this.hasCapability('measure_rain'))
 		{
-			this.removeCapability('measure_rain');
+			await this.removeCapability('measure_rain').catch(this.error);
 		}
 
 		if (!this.hasCapability('measure_rain.rate'))
@@ -219,7 +219,11 @@ class WeatherStationDevice extends Device
             	this.setCapabilityValue('measure_humidity', relativeHumidity).catch(this.error);
 			}
 
-            this.setCapabilityValue('measure_pressure', Number(gateway.baromrelin) * 33.8639).catch(this.error);
+			const pressure = Number(gateway.baromrelin);
+			if (!isNaN(pressure))
+			{
+				this.setCapabilityValue('measure_pressure', pressure * 33.8639).catch(this.error);
+			}
 
 			if (gateway.tempf !== undefined)
 			{
@@ -376,7 +380,7 @@ class WeatherStationDevice extends Device
 			{
 				if (this.hasCapability('measure_rain.total'))
 				{
-					this.removeCapability('measure_rain.total');
+					await this.removeCapability('measure_rain.total').catch(this.error);
 				}
 			}
 
@@ -416,11 +420,11 @@ class WeatherStationDevice extends Device
             {
                 if (this.hasCapability('measure_rain.rate'))
                 {
-                    this.removeCapability('measure_rain.rate');
+					await this.removeCapability('measure_rain.rate').catch(this.error);
                 }
                 if (this.hasCapability('measure_hours_since_rained'))
                 {
-                    this.removeCapability('measure_hours_since_rained');
+					await this.removeCapability('measure_hours_since_rained').catch(this.error);
                 }
             }
 
@@ -470,7 +474,7 @@ class WeatherStationDevice extends Device
             {
                 if (this.hasCapability('measure_battery'))
                 {
-                    this.removeCapability('measure_battery');
+					await this.removeCapability('measure_battery').catch(this.error);
                 }
                 this.setCapabilityValue('alarm_battery', gateway.wh65batt === '1').catch(this.error);
             }
@@ -478,7 +482,7 @@ class WeatherStationDevice extends Device
             {
                 if (this.hasCapability('alarm_battery'))
                 {
-                    this.removeCapability('alarm_battery');
+					await this.removeCapability('alarm_battery').catch(this.error);
                 }
                 var batV = Number(gateway.wh90batt);
                 if (batV > 0)
@@ -515,7 +519,7 @@ class WeatherStationDevice extends Device
             {
                 if (this.hasCapability('measure_battery'))
                 {
-                    this.removeCapability('measure_battery');
+					await this.removeCapability('measure_battery').catch(this.error);
                 }
                 this.setCapabilityValue('alarm_battery', gateway.battout === '0').catch(this.error);
             }

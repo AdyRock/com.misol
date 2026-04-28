@@ -157,7 +157,7 @@ class MyDevice extends Device
             }
 
             // Soil Temperature from soil_ec_tempX (convert from °F to °C)
-            if (gateway['soil_ec_temp' + dd.meterNumber])
+            if (gateway['soil_ec_temp' + dd.meterNumber] !== undefined)
             {
                 const tempF = Number(gateway['soil_ec_temp' + dd.meterNumber]);
                 const tempC = (tempF - 32) * 5 / 9;
@@ -168,7 +168,7 @@ class MyDevice extends Device
             }
 
             // Soil EC from soil_ecX (electrical conductivity in μS/cm)
-            if (gateway['soil_ec' + dd.meterNumber])
+            if (gateway['soil_ec' + dd.meterNumber] !== undefined)
             {
                 const ec = Number(gateway['soil_ec' + dd.meterNumber]);
                 if (ec != this.getCapabilityValue('measure_ec'))

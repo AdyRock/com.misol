@@ -86,7 +86,7 @@ class CameraDevice extends Device
                         if (!res.ok)
                         {
                             this.homey.app.updateLog('Fetch NOW error (' + this.name + '): ' + res.statusText, 0);
-                            this.setWarning(res.statusText);
+                            this.setWarning(res.statusText).catch(this.error);
                             throw new Error(res.statusText);
                         }
 
@@ -146,7 +146,7 @@ class CameraDevice extends Device
 
         if (!res.ok)
         {
-            this.setWarning(res.statusText);
+            this.setWarning(res.statusText).catch(this.error);
         }
 
         return res;

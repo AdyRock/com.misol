@@ -24,22 +24,22 @@ class WindWS80Device extends Device
 
         if (!this.hasCapability('measure_wind_direction'))
         {
-            this.addCapability('measure_wind_direction');
+            await this.addCapability('measure_wind_direction').catch(this.error);
         }
 
         if (!this.hasCapability('measure_luminance'))
         {
-            this.addCapability('measure_luminance');
+            await this.addCapability('measure_luminance').catch(this.error);
         }
 
 		if (this.hasCapability('measure_rain'))
 		{
-			this.removeCapability('measure_rain');
+            await this.removeCapability('measure_rain').catch(this.error);
 		}
 
 		if (this.hasCapability('measure_rain.rate'))
 		{
-			this.removeCapability('measure_rain.rate');
+            await this.removeCapability('measure_rain.rate').catch(this.error);
 		}
 
         this.unitsChanged('SpeedUnits');
@@ -168,141 +168,200 @@ class WindWS80Device extends Device
                 this.setSettings({stationType: this.stationType}).catch(this.error);;
             }
 
-            var temperatureF = Number(gateway.tempf);
-            var windSpeed = Number(gateway.windspeedmph);
-            var relativeHumidity = parseInt(gateway.humidity);
+            const temperatureF = Number(gateway.tempf);
+            const windSpeed = Number(gateway.windspeedmph);
+            const relativeHumidityRaw = parseInt(gateway.humidity);
 
-            this.setCapabilityValue('measure_humidity', relativeHumidity).catch(this.error);
-            this.setCapabilityValue('measure_pressure', Number(gateway.baromrelin) * 33.8639).catch(this.error);
-            this.setCapabilityValue('measure_temperature', (temperatureF - 32) * 5 / 9).catch(this.error);
+            if (!isNaN(relativeHumidityRaw))
+            {
+                this.setCapabilityValue('measure_humidity', relativeHumidityRaw).catch(this.error);
+            }
+
+            const pressure = Number(gateway.baromrelin);
+            if (!isNaN(pressure))
+            {
+                this.setCapabilityValue('measure_pressure', pressure * 33.8639).catch(this.error);
+            }
+
+            if (!isNaN(temperatureF))
+            {
+                this.setCapabilityValue('measure_temperature', (temperatureF - 32) * 5 / 9).catch(this.error);
+            }
+
+            const windGust = Number(gateway.windgustmph);
+            const maxDailyGust = Number(gateway.maxdailygust);
 
            // Wind Speed is in MPH, convert to the selected unit
-			if ( this.homey.app.SpeedUnits === '0' )
+			if (!isNaN(windSpeed) && ( this.homey.app.SpeedUnits === '0' ))
             {
 				// km/h
                 this.setCapabilityValue('measure_wind_strength', windSpeed * 1.609344).catch(this.error);
-                this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) * 1.609344).catch(this.error);
-                this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) * 1.609344).catch(this.error);
+                if (!isNaN(windGust))
+                {
+                    this.setCapabilityValue('measure_gust_strength', windGust * 1.609344).catch(this.error);
+                }
+                if (!isNaN(maxDailyGust))
+                {
+                    this.setCapabilityValue('measure_gust_strength.daily', maxDailyGust * 1.609344).catch(this.error);
+                }
             }
-            else if ( this.homey.app.SpeedUnits === '1' )
+            else if (!isNaN(windSpeed) && ( this.homey.app.SpeedUnits === '1' ))
             {
 				// m/s
                 this.setCapabilityValue('measure_wind_strength', (windSpeed * 1.609344) * 1000 / 3600).catch(this.error);
-                this.setCapabilityValue('measure_gust_strength', (Number(gateway.windgustmph) * 1.609344) * 1000 / 3600).catch(this.error);
-                this.setCapabilityValue('measure_gust_strength.daily', (Number(gateway.maxdailygust) * 1.609344) * 1000 / 3600).catch(this.error);
+                if (!isNaN(windGust))
+                {
+                    this.setCapabilityValue('measure_gust_strength', (windGust * 1.609344) * 1000 / 3600).catch(this.error);
+                }
+                if (!isNaN(maxDailyGust))
+                {
+                    this.setCapabilityValue('measure_gust_strength.daily', (maxDailyGust * 1.609344) * 1000 / 3600).catch(this.error);
+                }
             }
-			else if ( this.homey.app.SpeedUnits === '2' )
+			else if (!isNaN(windSpeed) && ( this.homey.app.SpeedUnits === '2' ))
 			{
 				// mph
 				this.setCapabilityValue('measure_wind_strength', windSpeed).catch(this.error);
-				this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph)).catch(this.error);
-				this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust)).catch(this.error);
+				if (!isNaN(windGust))
+				{
+					this.setCapabilityValue('measure_gust_strength', windGust).catch(this.error);
+				}
+				if (!isNaN(maxDailyGust))
+				{
+					this.setCapabilityValue('measure_gust_strength.daily', maxDailyGust).catch(this.error);
+				}
 			}
-			else if ( this.homey.app.SpeedUnits === '3' )
+			else if (!isNaN(windSpeed) && ( this.homey.app.SpeedUnits === '3' ))
 			{
 				// knots
 				this.setCapabilityValue('measure_wind_strength', windSpeed / 1.15078).catch(this.error);
-				this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) / 1.15078).catch(this.error);
-				this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) / 1.15078).catch(this.error);
+				if (!isNaN(windGust))
+				{
+					this.setCapabilityValue('measure_gust_strength', windGust / 1.15078).catch(this.error);
+				}
+				if (!isNaN(maxDailyGust))
+				{
+					this.setCapabilityValue('measure_gust_strength.daily', maxDailyGust / 1.15078).catch(this.error);
+				}
 			}
 
-            this.setCapabilityValue('measure_wind_angle', parseInt(gateway.winddir)).catch(this.error);
-
-            var index = parseInt(gateway.winddir / 22.5);
-            let langCode = this.homey.i18n.getLanguage();
-
-            if (!(Object.getOwnPropertyNames(Sector)).includes(langCode))
+            const windDirection = parseInt(gateway.winddir);
+            if (!isNaN(windDirection))
             {
-                langCode = 'en';
-            }
-            let windDir = Sector[langCode][index];
-            this.setCapabilityValue('measure_wind_direction', windDir).catch(this.error);
+                this.setCapabilityValue('measure_wind_angle', windDirection).catch(this.error);
 
-            this.setCapabilityValue('measure_radiation', Number(gateway.solarradiation)).catch(this.error);
-			this.setCapabilityValue('measure_luminance', Number(gateway.solarradiation) * 126.7).catch(this.error);
-            this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.error);
+                const index = Math.max(0, Math.min(16, parseInt(windDirection / 22.5)));
+                let langCode = this.homey.i18n.getLanguage();
+
+                if (!(Object.getOwnPropertyNames(Sector)).includes(langCode))
+                {
+                    langCode = 'en';
+                }
+                const windDir = Sector[langCode][index];
+                this.setCapabilityValue('measure_wind_direction', windDir).catch(this.error);
+            }
+
+            const solarRadiation = Number(gateway.solarradiation);
+            if (!isNaN(solarRadiation))
+            {
+                this.setCapabilityValue('measure_radiation', solarRadiation).catch(this.error);
+				this.setCapabilityValue('measure_luminance', solarRadiation * 126.7).catch(this.error);
+            }
+
+            const uv = Number(gateway.uv);
+            if (!isNaN(uv))
+            {
+                this.setCapabilityValue('measure_ultraviolet', uv).catch(this.error);
+            }
 
             var batteryType = this.getSetting( 'batteryType' );
             const batV = Number(gateway.wh80batt);
             var batP = 0;
 
-            if (batteryType === '0')
+            if (!isNaN(batV))
             {
-                batP = (batV - 0.9) / (1.7 - 0.9) * 100;
-            }
-            else
-            {
-                batP = (batV - 0.9) / (1.3 - 0.9) * 100;
-            }
+                if (batteryType === '0')
+                {
+                    batP = (batV - 0.9) / (1.7 - 0.9) * 100;
+                }
+                else
+                {
+                    batP = (batV - 0.9) / (1.3 - 0.9) * 100;
+                }
 
-            if (batP > 100)
-            {
-                batP = 100;
+                if (batP > 100)
+                {
+                    batP = 100;
+                }
+                if (batP < 0)
+                {
+                    batP = 0;
+                }
+                this.setCapabilityValue('measure_battery', batP).catch(this.error);
             }
-            if (batP < 0)
-            {
-                batP = 0;
-            }
-            this.setCapabilityValue('measure_battery', batP).catch(this.error);
 
 
             var feelsLike = 0;
+            const canCalculateFeelsLike = !isNaN(temperatureF) && !isNaN(windSpeed) && !isNaN(relativeHumidityRaw);
 
             // Try Wind Chill first
-            if ((temperatureF <= 50) && (windSpeed >= 3))
+            if (canCalculateFeelsLike && (temperatureF <= 50) && (windSpeed >= 3))
             {
                 feelsLike = 35.74 + (0.6215*temperatureF) - 35.75*(windSpeed**0.16) + ((0.4275*temperatureF)*(windSpeed**0.16));
             }
-            else
+            else if (canCalculateFeelsLike)
             {
                 feelsLike = temperatureF;
             }
 
             // Replace it with the Heat Index, if necessary
-            if ((feelsLike == temperatureF) && (temperatureF >= 80))
+            if (canCalculateFeelsLike && (feelsLike == temperatureF) && (temperatureF >= 80))
             {
-                feelsLike = 0.5 * (temperatureF + 61.0 + ((temperatureF - 68.0) * 1.2) + (relativeHumidity * 0.094));
+                feelsLike = 0.5 * (temperatureF + 61.0 + ((temperatureF - 68.0) * 1.2) + ((relativeHumidityRaw / 100) * 0.094));
 
                 if (feelsLike >= 80)
                 {
-                    feelsLike = -42.379 + 2.04901523 * temperatureF + 10.14333127 * relativeHumidity - 0.22475541 * temperatureF*relativeHumidity - 0.00683783 * temperatureF * temperatureF - 0.05481717 * relativeHumidity*relativeHumidity + 0.00122874 * temperatureF*temperatureF * relativeHumidity + 0.00085282 * temperatureF*relativeHumidity*relativeHumidity - 0.00000199 * temperatureF * temperatureF * relativeHumidity * relativeHumidity;
-                    if ((relativeHumidity < 13) && (temperatureF >= 80) && (temperatureF <= 112))
+                    feelsLike = -42.379 + 2.04901523 * temperatureF + 10.14333127 * relativeHumidityRaw - 0.22475541 * temperatureF*relativeHumidityRaw - 0.00683783 * temperatureF * temperatureF - 0.05481717 * relativeHumidityRaw*relativeHumidityRaw + 0.00122874 * temperatureF*temperatureF * relativeHumidityRaw + 0.00085282 * temperatureF*relativeHumidityRaw*relativeHumidityRaw - 0.00000199 * temperatureF * temperatureF * relativeHumidityRaw * relativeHumidityRaw;
+                    if ((relativeHumidityRaw < 13) && (temperatureF >= 80) && (temperatureF <= 112))
                     {
-                        feelsLike = feelsLike - ((13 - relativeHumidity) /4) * Math.sqrt((17 - Math.abs(temperatureF - 95)) / 17);
-                        if ((relativeHumidity > 85) && (temperatureF >= 80) && (temperatureF <= 87))
+                        feelsLike = feelsLike - ((13 - relativeHumidityRaw) /4) * Math.sqrt((17 - Math.abs(temperatureF - 95)) / 17);
+                        if ((relativeHumidityRaw > 85) && (temperatureF >= 80) && (temperatureF <= 87))
                         {
-                            feelsLike = feelsLike + ((relativeHumidity -85 ) / 10) * ((87 - temperatureF) / 5);
+                            feelsLike = feelsLike + ((relativeHumidityRaw -85 ) / 10) * ((87 - temperatureF) / 5);
                         }
                     }
                 }
             }
 
-            let temperature = (feelsLike - 32) * 5 / 9;
-            temperature = Math.round( temperature * 10 + Number.EPSILON ) / 10;
-            if (temperature != this.getCapabilityValue('measure_temperature.feelsLike'))
+            if (canCalculateFeelsLike)
             {
-                this.setCapabilityValue('measure_temperature.feelsLike', temperature).catch(this.error);
-            }
-
-            relativeHumidity /= 100;
-            var dewPoint = (temperatureF - 32) * 5 / 9;
-            if (dewPoint > 0 && dewPoint < 60)
-            {
-                if ((relativeHumidity) > 0.01 && (relativeHumidity < 1))
+                let temperature = (feelsLike - 32) * 5 / 9;
+                temperature = Math.round( temperature * 10 + Number.EPSILON ) / 10;
+                if (temperature != this.getCapabilityValue('measure_temperature.feelsLike'))
                 {
-                    var a = 17.27;
-                    var b = 237.7;
-                    var alphaTR = ((a * dewPoint) / (b + dewPoint)) + Math.log(relativeHumidity);
-                    var Tr = (b * alphaTR) / (a - alphaTR);
-                    dewPoint = Tr;
+                    this.setCapabilityValue('measure_temperature.feelsLike', temperature).catch(this.error);
                 }
-            }
 
-            dewPoint = Math.round( dewPoint * 10 + Number.EPSILON ) / 10;
+                let relativeHumidity = relativeHumidityRaw / 100;
+                var dewPoint = (temperatureF - 32) * 5 / 9;
+                if (dewPoint > 0 && dewPoint < 60)
+                {
+                    if ((relativeHumidity) > 0.01 && (relativeHumidity < 1))
+                    {
+                        var a = 17.27;
+                        var b = 237.7;
+                        var alphaTR = ((a * dewPoint) / (b + dewPoint)) + Math.log(relativeHumidity);
+                        var Tr = (b * alphaTR) / (a - alphaTR);
+                        dewPoint = Tr;
+                    }
+                }
 
-            if (dewPoint != this.getCapabilityValue('measure_temperature.dewPoint'))
-            {
-                this.setCapabilityValue('measure_temperature.dewPoint', dewPoint).catch(this.error);
+                dewPoint = Math.round( dewPoint * 10 + Number.EPSILON ) / 10;
+
+                if (dewPoint != this.getCapabilityValue('measure_temperature.dewPoint'))
+                {
+                    this.setCapabilityValue('measure_temperature.dewPoint', dewPoint).catch(this.error);
+                }
             }
         }
     }

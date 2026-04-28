@@ -165,7 +165,7 @@ class PM10Device extends Device
 
                     this.driver.triggerCo2QChanged(this, tokens, state);
                 }
-            }                
+            }
 
             const pm10 = parseInt(gateway.pm10_co2);
             if (!isNaN(pm10))
@@ -174,7 +174,10 @@ class PM10Device extends Device
                 this.setCapabilityValue('alarm_pm10', (pm10 > 255)).catch(this.error);
 
                 const pm10Avg = parseInt(gateway.pm10_24h_co2);
-                this.setCapabilityValue('measure_pm10.avg', pm10Avg).catch(this.error);
+                if (!isNaN(pm10Avg))
+                {
+                    this.setCapabilityValue('measure_pm10.avg', pm10Avg).catch(this.error);
+                }
 
                 // Calculate PM10 AQI
                 let tableIdx = AQITablePM10.findIndex( entry => entry.ConcHi > pm10);
@@ -202,31 +205,34 @@ class PM10Device extends Device
 
                     this.driver.triggerAQPM10Changed(this, tokens, state);
                 }
-                // Calculate PM10 AQI Ag
-                tableIdx = AQITablePM10.findIndex( entry => entry.ConcHi > pm10Avg);
-                if (tableIdx < 0)
+                if (!isNaN(pm10Avg))
                 {
-                    tableIdx = AQITablePM10.length - 1;
-                }
+                    // Calculate PM10 AQI Ag
+                    tableIdx = AQITablePM10.findIndex( entry => entry.ConcHi > pm10Avg);
+                    if (tableIdx < 0)
+                    {
+                        tableIdx = AQITablePM10.length - 1;
+                    }
 
-                AQI = ((AQITablePM10[ tableIdx ].AQIhi - AQITablePM10[ tableIdx ].AQIlo) / (AQITablePM10[ tableIdx ].ConcHi - AQITablePM10[ tableIdx ].ConcLo)) * (pm10Avg - AQITablePM10[ tableIdx ].ConcLo)  + AQITablePM10[ tableIdx ].AQIlo;
+                    AQI = ((AQITablePM10[ tableIdx ].AQIhi - AQITablePM10[ tableIdx ].AQIlo) / (AQITablePM10[ tableIdx ].ConcHi - AQITablePM10[ tableIdx ].ConcLo)) * (pm10Avg - AQITablePM10[ tableIdx ].ConcLo)  + AQITablePM10[ tableIdx ].AQIlo;
 
-                this.setCapabilityValue('measure_aqi.pm10_avg', AQI).catch(this.error);
-                aqText = this.homey.__(AQITablePM10[ tableIdx ].name);
-                if (aqText !== this.getCapabilityValue('measure_aq.pm10_avg'))
-                {
-                    this.setCapabilityValue('measure_aq.pm10_avg', aqText).catch(this.error);
+                    this.setCapabilityValue('measure_aqi.pm10_avg', AQI).catch(this.error);
+                    aqText = this.homey.__(AQITablePM10[ tableIdx ].name);
+                    if (aqText !== this.getCapabilityValue('measure_aq.pm10_avg'))
+                    {
+                        this.setCapabilityValue('measure_aq.pm10_avg', aqText).catch(this.error);
 
-                    const tokens = {
-                        "measure_aq.pm10_name": aqText,
-                        "measure_aq_item": tableIdx
-                    };
+                        const tokens = {
+                            "measure_aq.pm10_name": aqText,
+                            "measure_aq_item": tableIdx
+                        };
 
-                    const state = {
-                        "value": tableIdx
-                    };
+                        const state = {
+                            "value": tableIdx
+                        };
 
-                    this.driver.triggerAQPM10AvgChanged(this, tokens, state);
+                        this.driver.triggerAQPM10AvgChanged(this, tokens, state);
+                    }
                 }
             }
 

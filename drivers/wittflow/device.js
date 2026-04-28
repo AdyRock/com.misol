@@ -15,6 +15,7 @@ module.exports = class MyDevice extends Homey.Device
 	async onInit()
 	{
 		this.log('MyDevice has been initialized');
+		this.isDeleted = false;
 		// Register capability listeners
 		this.registerCapabilityListener('onoff', this.onOnOff.bind(this));
 
@@ -61,9 +62,34 @@ module.exports = class MyDevice extends Homey.Device
 	async onDeleted()
 	{
 		this.log('MyDevice has been deleted');
+		this.isDeleted = true;
 		if (this.updateTimer) {
 			this.homey.clearTimeout(this.updateTimer);
 			this.updateTimer = null;
+		}
+	}
+
+	async setDeviceWarning(message)
+	{
+		try
+		{
+			await this.setWarning(message);
+		}
+		catch (warningError)
+		{
+			this.error('Failed to set device warning:', warningError);
+		}
+	}
+
+	async clearDeviceWarning()
+	{
+		try
+		{
+			await this.unsetWarning();
+		}
+		catch (warningError)
+		{
+			this.error('Failed to clear device warning:', warningError);
 		}
 	}
 
@@ -99,21 +125,33 @@ module.exports = class MyDevice extends Homey.Device
 
 	async updateStatus()
 	{
+		if (this.isDeleted)
+		{
+			return;
+		}
+
 		let nextPollMs = NORMAL_POLL_MS;
 
 		try
 		{
 			const data = await this.homey.app.getIOTDeviceStatus(this.getSettings().address, 1, this.getData().id);
+			if (!data || !Array.isArray(data.command) || data.command.length === 0)
+			{
+				throw new Error('Unexpected status response: missing command payload');
+			}
+
 			const status = data.command[0];
-			this.unsetWarning();
-			this.setCapabilityValue('measure_temperature', parseFloat(status.water_temp));
-			this.setCapabilityValue('onoff', status.water_status === 1);
-			this.setCapabilityValue('measure_battery', status.wfc01batt * 20);
-			this.setCapabilityValue('measure_signal_strength', status.rssi);
-			this.setCapabilityValue('alarm_water', (status.warning & 2) === 2);
-			this.setCapabilityValue('alarm_leak', (status.warning & 1) === 1);
-			this.setCapabilityValue('measure_water', parseFloat(status.flow_velocity));
-			this.setCapabilityValue('meter_water', parseFloat(status.happen_water));
+			await this.clearDeviceWarning();
+			await Promise.all([
+				this.setCapabilityValue('measure_temperature', parseFloat(status.water_temp)),
+				this.setCapabilityValue('onoff', status.water_status === 1),
+				this.setCapabilityValue('measure_battery', status.wfc01batt * 20),
+				this.setCapabilityValue('measure_signal_strength', status.rssi),
+				this.setCapabilityValue('alarm_water', (status.warning & 2) === 2),
+				this.setCapabilityValue('alarm_leak', (status.warning & 1) === 1),
+				this.setCapabilityValue('measure_water', parseFloat(status.flow_velocity)),
+				this.setCapabilityValue('meter_water', parseFloat(status.happen_water)),
+			]);
 		}
 		catch (error)
 		{
@@ -127,36 +165,39 @@ module.exports = class MyDevice extends Homey.Device
 					if (!rediscoveryResult.found)
 					{
 						nextPollMs = BACKOFF_POLL_MS;
-						this.setWarning('Device unreachable and IP rediscovery failed. Retrying in 2 minutes.');
+						await this.setDeviceWarning('Device unreachable and IP rediscovery failed. Retrying in 2 minutes.');
 					}
 					else if (!rediscoveryResult.changed)
 					{
 						nextPollMs = BACKOFF_POLL_MS;
-						this.setWarning('Device unreachable and IP is unchanged. Retrying in 2 minutes.');
+						await this.setDeviceWarning('Device unreachable and IP is unchanged. Retrying in 2 minutes.');
 					}
 					else
 					{
-						this.setWarning('Device unreachable; address rediscovered. Retrying shortly.');
+						await this.setDeviceWarning('Device unreachable; address rediscovered. Retrying shortly.');
 					}
 				}
 				catch (rediscoveryError)
 				{
 					nextPollMs = BACKOFF_POLL_MS;
 					this.error('Failed to rediscover WittFlow address:', rediscoveryError);
-					this.setWarning('Device unreachable and address check failed. Retrying in 2 minutes.');
+					await this.setDeviceWarning('Device unreachable and address check failed. Retrying in 2 minutes.');
 				}
 			}
 			else
 			{
 				this.error('Failed to update device status:', error);
-				this.setWarning(`Failed to update device status ${error.message}`);
+				await this.setDeviceWarning(`Failed to update device status ${error.message}`);
 			}
 		}
 
-		this.updateTimer = this.homey.setTimeout(() =>
+		if (!this.isDeleted)
 		{
-			this.updateStatus();
-		}, nextPollMs);
+			this.updateTimer = this.homey.setTimeout(() =>
+			{
+				this.updateStatus();
+			}, nextPollMs);
+		}
 	}
 
 };
