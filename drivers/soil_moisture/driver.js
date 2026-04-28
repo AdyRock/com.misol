@@ -23,10 +23,19 @@ class MyDriver extends Driver
         {
             for (var i = 1; i <= 16; i++)
             {
+                // Check for old-style soil moisture sensors
                 const soilMeter = "soilmoisture" + i;
                 if (gateway[soilMeter])
                 {
                     const meter = { name: `Soil Moisture: Channel ${i}`, data: { id: gateway.PASSKEY + "_" + i, PASSKEY: gateway.PASSKEY, meterNumber: i } };
+                    devices.push(meter);
+                }
+
+                // Check for new-style soil EC sensors (WH52)
+                const soilEcHumMeter = "soil_ec_hum" + i;
+                if (gateway[soilEcHumMeter] && !gateway[soilMeter])
+                {
+                    const meter = { name: `Soil Sensor (EC): Channel ${i}`, data: { id: gateway.PASSKEY + "_ec_" + i, PASSKEY: gateway.PASSKEY, meterNumber: i } };
                     devices.push(meter);
                 }
             }

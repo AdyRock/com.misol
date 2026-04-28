@@ -1,5 +1,20 @@
 {
     "cSpell.words": [
         "misol"
-    ]
+    ],
+    "terminal.integrated.profiles.windows": {
+        "PowerShell (Workspace)": {
+            "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "args": [
+                "-NoLogo"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell (Workspace)",
+    "terminal.integrated.automationProfile.windows": {
+        "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "args": [
+            "-NoLogo"
+        ]
+    }
 }

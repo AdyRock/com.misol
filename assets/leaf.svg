@@ -1,0 +1,19 @@
+<svg id="leaf" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <!-- Leaf shape with vein -->
+    <path d="M 256 50 Q 400 150 420 300 Q 400 400 256 480 Q 112 400 92 300 Q 112 150 256 50 Z"
+          fill="none" stroke="currentColor" stroke-width="24" stroke-linejoin="round"/>
+
+    <!-- Center vein -->
+    <path d="M 256 50 Q 280 200 256 480"
+          fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"/>
+
+    <!-- Left vein -->
+    <path d="M 180 150 Q 160 250 140 380"
+          fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- Right vein -->
+    <path d="M 332 150 Q 352 250 372 380"
+          fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+  </g>
+</svg>

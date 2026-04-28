@@ -248,9 +248,9 @@ class WeatherStationDevice extends Device
 				else if (this.homey.app.SpeedUnits === '3')
 				{
 					// Knots
-					this.setCapabilityValue('measure_wind_strength', windSpeed / 1.151).catch(this.error);
-					this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) / 1.151).catch(this.error);
-					this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) / 1.151).catch(this.error);
+					this.setCapabilityValue('measure_wind_strength', windSpeed / 1.15078).catch(this.error);
+					this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) / 1.15078).catch(this.error);
+					this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) / 1.15078).catch(this.error);
 				}
 				else
 				{

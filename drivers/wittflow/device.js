@@ -2,6 +2,10 @@
 
 const Homey = require('homey');
 
+const NORMAL_POLL_MS = 5000;
+const BACKOFF_POLL_MS = 120000;
+const TRANSIENT_NETWORK_ERRORS = ['EHOSTUNREACH', 'ENETUNREACH', 'ECONNREFUSED', 'ETIMEDOUT'];
+
 module.exports = class MyDevice extends Homey.Device
 {
 
@@ -17,7 +21,7 @@ module.exports = class MyDevice extends Homey.Device
 		this.updateTimer = this.homey.setTimeout(() =>
 		{
 			this.updateStatus();
-		}, 5000);
+		}, NORMAL_POLL_MS);
 	}
 
 	/**
@@ -69,8 +73,34 @@ module.exports = class MyDevice extends Homey.Device
 		await this.homey.app.setIOTDeviceOnOff(this.getSettings().address, 1, this.getData().id, value);
 	}
 
+	async refreshAddressFromIOTList()
+	{
+		const devices = await this.homey.app.getIOTDeviceList();
+		const deviceID = this.getData().id;
+		const foundDevice = devices
+			.flatMap(deviceGroup => deviceGroup.command || [])
+			.find(device => device.id === deviceID);
+
+		if (!foundDevice || !foundDevice.gatewayIP)
+		{
+			return { found: false, changed: false };
+		}
+
+		const currentAddress = this.getSettings().address;
+		if (currentAddress !== foundDevice.gatewayIP)
+		{
+			await this.setSettings({ address: foundDevice.gatewayIP });
+			this.log(`WittFlow IP updated from ${currentAddress} to ${foundDevice.gatewayIP}`);
+			return { found: true, changed: true };
+		}
+
+		return { found: true, changed: false };
+	}
+
 	async updateStatus()
 	{
+		let nextPollMs = NORMAL_POLL_MS;
+
 		try
 		{
 			const data = await this.homey.app.getIOTDeviceStatus(this.getSettings().address, 1, this.getData().id);
@@ -87,14 +117,46 @@ module.exports = class MyDevice extends Homey.Device
 		}
 		catch (error)
 		{
-			this.error('Failed to update device status:', error);
-			this.setWarning(`Failed to update device status ${error.message}`);
+			if (TRANSIENT_NETWORK_ERRORS.includes(error.code))
+			{
+				this.log(`Transient network error (${error.code}) while polling WittFlow at ${this.getSettings().address}; trying IP rediscovery.`);
+
+				try
+				{
+					const rediscoveryResult = await this.refreshAddressFromIOTList();
+					if (!rediscoveryResult.found)
+					{
+						nextPollMs = BACKOFF_POLL_MS;
+						this.setWarning('Device unreachable and IP rediscovery failed. Retrying in 2 minutes.');
+					}
+					else if (!rediscoveryResult.changed)
+					{
+						nextPollMs = BACKOFF_POLL_MS;
+						this.setWarning('Device unreachable and IP is unchanged. Retrying in 2 minutes.');
+					}
+					else
+					{
+						this.setWarning('Device unreachable; address rediscovered. Retrying shortly.');
+					}
+				}
+				catch (rediscoveryError)
+				{
+					nextPollMs = BACKOFF_POLL_MS;
+					this.error('Failed to rediscover WittFlow address:', rediscoveryError);
+					this.setWarning('Device unreachable and address check failed. Retrying in 2 minutes.');
+				}
+			}
+			else
+			{
+				this.error('Failed to update device status:', error);
+				this.setWarning(`Failed to update device status ${error.message}`);
+			}
 		}
 
 		this.updateTimer = this.homey.setTimeout(() =>
 		{
 			this.updateStatus();
-		}, 5000);
+		}, nextPollMs);
 	}
 
 };

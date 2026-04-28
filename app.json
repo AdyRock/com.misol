@@ -5354,6 +5354,21 @@
       "setable": false,
       "icon": "/assets/co2.svg"
     },
+    "measure_ec": {
+      "type": "number",
+      "title": {
+        "en": "Soil EC",
+        "nl": "Bodinggeleidingsvermogen",
+        "de": "Bodenleitfähigkeit"
+      },
+      "units": {
+        "en": "μS/cm"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "icon": "/assets/leaf.svg"
+    },
     "measure_hours_since_rained": {
       "type": "number",
       "title": {

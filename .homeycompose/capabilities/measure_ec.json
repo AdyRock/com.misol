@@ -1,0 +1,15 @@
+{
+    "type": "number",
+    "title": {
+        "en": "Soil EC",
+        "nl": "Bodinggeleidingsvermogen",
+        "de": "Bodenleitfähigkeit"
+    },
+    "units": {
+        "en": "μS/cm"
+    },
+    "getable": true,
+    "setable": false,
+    "insights": true,
+    "icon": "/assets/leaf.svg"
+}
