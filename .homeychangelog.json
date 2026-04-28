@@ -231,6 +231,6 @@
 		"en": "Added a device setting to the weather station to ignore the piezo sensor values. Added a repair option to the WittFlow device to update the IP address."
 	},
 	"0.2.22": {
-		"en": "Implemented auto repair for WittFlow devices if the IP address changes, Extra guards for bad data."
+		"en": "Implemented auto repair for WittFlow devices if the IP address changes, Extra guards for bad data. Add support for new WH52 Soil Moisture sensor"
 	}
 }
