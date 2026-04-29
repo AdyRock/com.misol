@@ -94,7 +94,7 @@ class MyApp extends Homey.App
 			{
 				this.pushServerPort = this.homey.settings.get('port');
 				this.pushServerPort = Number(this.pushServerPort);
-				if ((this.pushServerPort < 0) || (this.pushServerPort >= 65536))
+				if (!Number.isInteger(this.pushServerPort) || (this.pushServerPort <= 0) || (this.pushServerPort >= 65536))
 				{
 					this.pushServerPort = 7777;
 				}
@@ -807,7 +807,7 @@ class MyApp extends Homey.App
 
 		// Make sure the port is a number and is valid
 		this.pushServerPort = Number(this.pushServerPort);
-		if ((this.pushServerPort < 0) || (this.pushServerPort >= 65536))
+		if (!Number.isInteger(this.pushServerPort) || (this.pushServerPort <= 0) || (this.pushServerPort >= 65536))
 		{
 			this.pushServerPort = 7777;
 		}
@@ -1025,7 +1025,18 @@ class MyApp extends Homey.App
 				request[3] = 0x00;
 				request[4] = 0x04;
 				request[5] = 0x12 + 0x04; // Checksum
-				appInstance.broadcastServer.send(request, 46000, '192.168.1.255');
+
+				// Send to limited broadcast and subnet /24 broadcast to improve gateway discovery.
+				appInstance.broadcastServer.send(request, 46000, '255.255.255.255');
+				if ((typeof appInstance.homeyIP === 'string') && /^\d+\.\d+\.\d+\.\d+$/.test(appInstance.homeyIP))
+				{
+					let ipParts = appInstance.homeyIP.split('.');
+					let subnetBroadcast = `${ipParts[0]}.${ipParts[1]}.${ipParts[2]}.255`;
+					if (subnetBroadcast !== '255.255.255.255')
+					{
+						appInstance.broadcastServer.send(request, 46000, subnetBroadcast);
+					}
+				}
 				appInstance.homey.setTimeout(() =>
 				{
 					sendBroadcast(appInstance);
@@ -1045,17 +1056,6 @@ class MyApp extends Homey.App
 
 		this.broadcastServer.on('listening', () =>
 		{
-			// try
-			// {
-			//     this.broadcastServer.setBroadcast(true);
-			// }
-			// catch (err)
-			// {
-			//     this.updateLog(`Error setting broadcast: ${err.message}`, 0);
-			//     this.broadcastServer.close();
-			//     return;
-			// }
-
 			try
 			{
 				const address = this.broadcastServer.address();
@@ -1108,10 +1108,50 @@ class MyApp extends Homey.App
 			{
 				// byteArray 3 and 4 are the length of the message
 				let length = byteArray[3] * 256 + byteArray[4];
+				const packetSizeOptionA = length + 2;
+				const packetSizeOptionB = length + 3;
+				let packetSize = 0;
+				let checksumValid = false;
+
+				if (byteArray.length >= packetSizeOptionA)
+				{
+					let receivedChecksumA = byteArray[packetSizeOptionA - 1];
+					let computedChecksumA = 0;
+					for (let i = 2; i < packetSizeOptionA - 1; i++)
+					{
+						computedChecksumA += byteArray[i];
+					}
+					if (receivedChecksumA === (computedChecksumA & 0xFF))
+					{
+						packetSize = packetSizeOptionA;
+						checksumValid = true;
+					}
+				}
+
+				if (!checksumValid && byteArray.length >= packetSizeOptionB)
+				{
+					let receivedChecksumB = byteArray[packetSizeOptionB - 1];
+					let computedChecksumB = 0;
+					for (let i = 2; i < packetSizeOptionB - 1; i++)
+					{
+						computedChecksumB += byteArray[i];
+					}
+					if (receivedChecksumB === (computedChecksumB & 0xFF))
+					{
+						packetSize = packetSizeOptionB;
+						checksumValid = true;
+					}
+				}
+
+				if (!checksumValid)
+				{
+					this.updateLog('Ignoring discovery packet with invalid checksum', 1);
+					return;
+				}
 
 				// byteArray 5 to 11 is the MAC address of the hub
 				let macAddress = '';
-				for (let i = 5; i < 10; i++)
+				for (let i = 5; i < 11; i++)
 				{
 					macAddress += byteArray[i].toString(16).padStart(2, '0');
 				}
@@ -1165,71 +1205,117 @@ class MyApp extends Homey.App
 					{
 						// data 3 is the packet size
 						let packetSize = data[3];
+						let totalPacketSize = packetSize + 2;
 
-						// data 4 is the ID size
-						let idSize = data[4];
-
-						// data 5 to 5 + idSize is the ID of the gateway in ASCII
-						let gatewayID = '';
-						for (let i = 5; i < 5 + idSize; i++)
+						if (data.length < totalPacketSize)
 						{
-							gatewayID += String.fromCharCode(data[i]);
+							this.updateLog(`Invalid custom server response size: expected ${totalPacketSize} bytes, got ${data.length}`, 0);
+							client.end();
+							return;
 						}
 
-						// data 5 + idSize is the password size
-						let passwordSize = data[5 + idSize];
-
-						// data 6 + idSize to 6 + idSize + passwordSize is the password of the gateway in ASCII
-						let password = '';
-
-						for (let i = 6 + idSize; i < 6 + idSize + passwordSize; i++)
-						{
-							password += String.fromCharCode(data[i]);
-						}
-
-						// data 6 + idSize + passwordSize is the server address size
-						let serverAddressSize = data[6 + idSize + passwordSize];
-
-						// data 7 + idSize + passwordSize to 7 + idSize + passwordSize + serverAddressSize is the server address of the gateway in ASCII
-						let serverAddress = '';
-						for (let i = 7 + idSize + passwordSize; i < 7 + idSize + passwordSize + serverAddressSize; i++)
-						{
-							serverAddress += String.fromCharCode(data[i]);
-						}
-
-						// data 7 + idSize + passwordSize + serverAddressSize is the server port
-						let port = data[7 + idSize + passwordSize + serverAddressSize] * 256 + data[8 + idSize + passwordSize + serverAddressSize];
-
-						// data 9 + idSize + passwordSize + serverAddressSize + 1 is the 2 byte interval
-						let interval = (data[9 + idSize + passwordSize + serverAddressSize] << 8) + data[10 + idSize + passwordSize + serverAddressSize];
-
-						// data 11 + idSize + passwordSize + serverAddressSize + 1 is the format type
-						let format = data[11 + idSize + passwordSize + serverAddressSize];
-
-						// data 12 + idSize + passwordSize + serverAddressSize + 1 is the enabled flag
-						let enabled = data[12 + idSize + passwordSize + serverAddressSize];
-
-						// data 13 + idSize + passwordSize + serverAddressSize + 1 is the checksum
-						let checksum = data[13 + idSize + passwordSize + serverAddressSize];
-
-						// Compute the checksum which is the sum of all the bytes from 2 to packetSize + 2
+						let checksumIndex = totalPacketSize - 1;
+						let checksum = data[checksumIndex];
 						let computedChecksum = 0;
-						for (let i = 2; i <= packetSize; i++)
+						for (let i = 2; i < checksumIndex; i++)
 						{
 							computedChecksum += data[i];
 						}
-
-						// make the computedChecksum 8 bits
 						computedChecksum = computedChecksum & 0xFF;
 
 						if (checksum !== computedChecksum)
 						{
-							this.updateLog('Invalid checksum');
-
-							// Close the TCP connection
+							this.updateLog('Invalid custom server response checksum', 0);
 							client.end();
 							return;
 						}
+
+						let offset = 4;
+
+						// data 4 is the ID size
+						let idSize = data[offset++];
+						if ((offset + idSize) > checksumIndex)
+						{
+							this.updateLog('Invalid ID size in custom server response', 0);
+							client.end();
+							return;
+						}
+
+						// data 5 to 5 + idSize is the ID of the gateway in ASCII
+						let gatewayID = '';
+						for (let i = offset; i < offset + idSize; i++)
+						{
+							gatewayID += String.fromCharCode(data[i]);
+						}
+						offset += idSize;
+
+						// data 5 + idSize is the password size
+						if ((offset + 1) > checksumIndex)
+						{
+							this.updateLog('Missing password size in custom server response', 0);
+							client.end();
+							return;
+						}
+						let passwordSize = data[offset++];
+						if ((offset + passwordSize) > checksumIndex)
+						{
+							this.updateLog('Invalid password size in custom server response', 0);
+							client.end();
+							return;
+						}
+
+						// data 6 + idSize to 6 + idSize + passwordSize is the password of the gateway in ASCII
+						let password = '';
+
+						for (let i = offset; i < offset + passwordSize; i++)
+						{
+							password += String.fromCharCode(data[i]);
+						}
+						offset += passwordSize;
+
+						// data 6 + idSize + passwordSize is the server address size
+						if ((offset + 1) > checksumIndex)
+						{
+							this.updateLog('Missing server address size in custom server response', 0);
+							client.end();
+							return;
+						}
+						let serverAddressSize = data[offset++];
+						if ((offset + serverAddressSize) > checksumIndex)
+						{
+							this.updateLog('Invalid server address size in custom server response', 0);
+							client.end();
+							return;
+						}
+
+						// data 7 + idSize + passwordSize to 7 + idSize + passwordSize + serverAddressSize is the server address of the gateway in ASCII
+						let serverAddress = '';
+						for (let i = offset; i < offset + serverAddressSize; i++)
+						{
+							serverAddress += String.fromCharCode(data[i]);
+						}
+						offset += serverAddressSize;
+
+						if ((offset + 6) > checksumIndex)
+						{
+							this.updateLog('Invalid payload size in custom server response', 0);
+							client.end();
+							return;
+						}
+
+						// data 7 + idSize + passwordSize + serverAddressSize is the server port
+						let port = data[offset] * 256 + data[offset + 1];
+						offset += 2;
+
+						// data 9 + idSize + passwordSize + serverAddressSize + 1 is the 2 byte interval
+						let interval = (data[offset] << 8) + data[offset + 1];
+						offset += 2;
+
+						// data 11 + idSize + passwordSize + serverAddressSize + 1 is the format type
+						let format = data[offset++];
+
+						// data 12 + idSize + passwordSize + serverAddressSize + 1 is the enabled flag
+						let enabled = data[offset++];
 
 						// Report the collected settings
 						this.updateLog(
@@ -1250,10 +1336,12 @@ class MyApp extends Homey.App
 						{
 							this.updateLog('Updating the gateway settings', 0);
 							// format byte array to write the custom server settings to the gateway
-							let request = new Uint8Array(30);
+							let requestPacketSize = 12 + idSize + this.homeyIP.length;
+							let request = new Uint8Array(requestPacketSize + 2);
 							request[0] = 0xFF;
 							request[1] = 0xFF;
 							request[2] = 0x2B;
+							request[3] = requestPacketSize;
 							request[4] = idSize;	// ID size
 
 							// copy the gateway ID to the request
@@ -1286,19 +1374,13 @@ class MyApp extends Homey.App
 							// Enable the custom server
 							request[12 + idSize + this.homeyIP.length] = 1; // updated to use this.homeyIP.length
 
-							// set the packet size to 12 + idSize + this.homeyIP.length + 1
-							request[3] = 12 + idSize + this.homeyIP.length; // updated to use this.homeyIP.length
-
 							// Compute the checksum which is the sum of all the bytes from 2 to packetSize
 							let checksum = 0;
-							for (let i = 2; i < request.length - 1; i++) // adjusted loop to use request.length
+							for (let i = 2; i < requestPacketSize + 1; i++)
 							{
 								checksum += request[i];
 							}
-							request[13 + idSize + this.homeyIP.length] = checksum; // updated to set checksum in the last position of the request array
-
-							// Reaize the request to the correct size
-							request = request.slice(0, request[3] + 2);
+							request[requestPacketSize + 1] = checksum & 0xFF;
 
 							client.write(request);
 						}

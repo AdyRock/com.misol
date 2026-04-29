@@ -232,5 +232,8 @@
 	},
 	"0.2.22": {
 		"en": "Implemented auto repair for WittFlow devices if the IP address changes, Extra guards for bad data. Add support for new WH52 Soil Moisture sensor"
+	},
+	"0.2.23": {
+		"en": "Fixed invalid push port handling to prevent listener crashes. Improved Ecowitt gateway discovery and custom server configuration validation (broadcast targeting, packet bounds/checksums, and protocol parsing)."
 	}
 }
