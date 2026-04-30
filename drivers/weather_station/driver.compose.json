@@ -34,6 +34,11 @@
         "measure_rain.yearly",
         "measure_rain.total",
         "measure_hours_since_rained",
+        "measure_vpd",
+        "measure_wind_angle.avg10m",
+        "measure_rain.last24h",
+        "measure_voltage.ws90cap",
+        "measure_voltage.wh68",
         "alarm_battery",
         "measure_battery"
     ],
@@ -123,6 +128,47 @@
                 "en": "Rain Total",
                 "nl": "Regen totaal",
                 "de": "Regen gesamt"
+            }
+        },
+        "measure_rain.last24h": {
+            "title": {
+                "en": "Rain Last 24h",
+                "nl": "Regen laatste 24u",
+                "de": "Regen letzte 24h"
+            }
+        },
+        "measure_wind_angle.avg10m": {
+            "title": {
+                "en": "Wind Direction Avg 10m",
+                "nl": "Windrichting gem. 10m",
+                "de": "Windrichtung ø 10m"
+            }
+        },
+        "measure_voltage.ws90cap": {
+            "title": {
+                "en": "WS90 Capacitor Voltage",
+                "nl": "WS90 condensatorspanning",
+                "de": "WS90 Kondensatorspannung"
+            },
+            "units": {
+                "en": "V"
+            }
+        },
+        "measure_voltage.wh68": {
+            "title": {
+                "en": "WH68 Battery Voltage",
+                "nl": "WH68 batterijspanning",
+                "de": "WH68 Batteriespannung"
+            },
+            "units": {
+                "en": "V"
+            }
+        },
+        "measure_vpd": {
+            "title": {
+                "en": "Vapour Pressure Deficit",
+                "nl": "Dampdrukdeficit",
+                "de": "Sättigungsdefizit"
             }
         }
     },

@@ -43,6 +43,31 @@ class WeatherStationDevice extends Device
             await this.addCapability('measure_luminance');
         }
 
+        if (!this.hasCapability('measure_vpd'))
+        {
+            await this.addCapability('measure_vpd');
+        }
+
+        if (!this.hasCapability('measure_wind_angle.avg10m'))
+        {
+            await this.addCapability('measure_wind_angle.avg10m');
+        }
+
+        if (!this.hasCapability('measure_rain.last24h'))
+        {
+            await this.addCapability('measure_rain.last24h');
+        }
+
+        if (!this.hasCapability('measure_voltage.ws90cap'))
+        {
+            await this.addCapability('measure_voltage.ws90cap');
+        }
+
+        if (!this.hasCapability('measure_voltage.wh68'))
+        {
+            await this.addCapability('measure_voltage.wh68');
+        }
+
 		if (this.hasCapability('measure_rain'))
 		{
 			await this.removeCapability('measure_rain').catch(this.error);
@@ -195,6 +220,7 @@ class WeatherStationDevice extends Device
 			this.setUnitsOptions('measure_rain.monthly', { "units": unitsText, "decimals": decimals });
 			this.setUnitsOptions('measure_rain.yearly', { "units": unitsText, "decimals": decimals });
 			this.setUnitsOptions('measure_rain.total', { "units": unitsText, "decimals": decimals });
+			this.setUnitsOptions('measure_rain.last24h', { "units": unitsText, "decimals": decimals });
 		}
     }
 
@@ -291,6 +317,32 @@ class WeatherStationDevice extends Device
 				this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.error);
 			}
 
+			if (gateway.vpd !== undefined)
+			{
+				if (!this.hasCapability('measure_vpd'))
+				{
+					await this.addCapability('measure_vpd');
+				}
+				this.setCapabilityValue('measure_vpd', Number(gateway.vpd)).catch(this.error);
+			}
+			else if (this.hasCapability('measure_vpd'))
+			{
+				await this.removeCapability('measure_vpd').catch(this.error);
+			}
+
+            if (gateway.winddir_avg10m !== undefined)
+			{
+				if (!this.hasCapability('measure_wind_angle.avg10m'))
+				{
+					await this.addCapability('measure_wind_angle.avg10m');
+				}
+				this.setCapabilityValue('measure_wind_angle.avg10m', parseInt(gateway.winddir_avg10m)).catch(this.error);
+			}
+			else if (this.hasCapability('measure_wind_angle.avg10m'))
+			{
+				await this.removeCapability('measure_wind_angle.avg10m').catch(this.error);
+			}
+
             let rainConversion = 25.4;
 			if (this.homey.app.RainfallUnits === '1')
 			{
@@ -305,6 +357,7 @@ class WeatherStationDevice extends Device
             let monthlyrainin = 0;
             let yearlyrainin = 0;
             let totalrainin = null;
+            let last24hrainin = 0;
 
 			if (gateway.rrain_piezo !== undefined && !ignorePiezo)
             {
@@ -315,6 +368,7 @@ class WeatherStationDevice extends Device
                 weeklyrainin = gateway.wrain_piezo;
                 monthlyrainin = gateway.mrain_piezo;
                 yearlyrainin = gateway.yrain_piezo;
+                last24hrainin = gateway.last24hrain_piezo;
 
 				if (gateway.srain_piezo !== undefined)
 				{
@@ -469,6 +523,49 @@ class WeatherStationDevice extends Device
             {
                 this.setCapabilityValue('measure_rain.daily', rain).catch(this.error);
             }
+
+			if (last24hrainin !== 0 || (gateway.rrain_piezo !== undefined && !ignorePiezo))
+			{
+				if (!this.hasCapability('measure_rain.last24h'))
+				{
+					await this.addCapability('measure_rain.last24h');
+				}
+				rain = Number(last24hrainin) * rainConversion;
+				if (rain != this.getCapabilityValue('measure_rain.last24h'))
+				{
+					this.setCapabilityValue('measure_rain.last24h', rain).catch(this.error);
+				}
+			}
+			else if (this.hasCapability('measure_rain.last24h'))
+			{
+				await this.removeCapability('measure_rain.last24h').catch(this.error);
+			}
+
+			if (gateway.ws90cap_volt !== undefined)
+			{
+				if (!this.hasCapability('measure_voltage.ws90cap'))
+				{
+					await this.addCapability('measure_voltage.ws90cap');
+				}
+				this.setCapabilityValue('measure_voltage.ws90cap', Number(gateway.ws90cap_volt)).catch(this.error);
+			}
+			else if (this.hasCapability('measure_voltage.ws90cap'))
+			{
+				await this.removeCapability('measure_voltage.ws90cap').catch(this.error);
+			}
+
+			if (gateway.wh68batt !== undefined)
+			{
+				if (!this.hasCapability('measure_voltage.wh68'))
+				{
+					await this.addCapability('measure_voltage.wh68');
+				}
+				this.setCapabilityValue('measure_voltage.wh68', Number(gateway.wh68batt)).catch(this.error);
+			}
+			else if (this.hasCapability('measure_voltage.wh68'))
+			{
+				await this.removeCapability('measure_voltage.wh68').catch(this.error);
+			}
 
             if (gateway.wh65batt)
             {

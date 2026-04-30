@@ -1,0 +1,16 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Vapour Pressure Deficit",
+    "nl": "Dampdrukdeficit",
+    "de": "Sättigungsdefizit"
+  },
+  "getable": true,
+  "setable": false,
+  "units": {
+    "en": "kPa"
+  },
+  "insights": true,
+  "decimals": 3,
+  "icon": "/assets/dew.svg"
+}
