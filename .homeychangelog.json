@@ -235,5 +235,8 @@
 	},
 	"0.2.23": {
 		"en": "Fixed invalid push port handling to prevent listener crashes. Improved Ecowitt gateway discovery and custom server configuration validation (broadcast targeting, packet bounds/checksums, and protocol parsing)."
+	},
+	"0.2.24": {
+		"en": "Added weather station capabilities for VPD, 10-minute average wind direction, last 24h piezo rain, WS90 capacitor voltage and WH68 battery voltage. Capabilities are dynamically added or removed based on data reported by the gateway."
 	}
 }
