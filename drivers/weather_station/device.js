@@ -554,6 +554,19 @@ class WeatherStationDevice extends Device
 				await this.removeCapability('measure_voltage.ws90cap').catch(this.error);
 			}
 
+			if (gateway.ws85cap_volt !== undefined)
+			{
+				if (!this.hasCapability('measure_voltage.ws85cap'))
+				{
+					await this.addCapability('measure_voltage.ws85cap');
+				}
+				this.setCapabilityValue('measure_voltage.ws85cap', Number(gateway.ws85cap_volt)).catch(this.error);
+			}
+			else if (this.hasCapability('measure_voltage.ws85cap'))
+			{
+				await this.removeCapability('measure_voltage.ws85cap').catch(this.error);
+			}
+
 			if (gateway.wh68batt !== undefined)
 			{
 				if (!this.hasCapability('measure_voltage.wh68'))
@@ -565,6 +578,19 @@ class WeatherStationDevice extends Device
 			else if (this.hasCapability('measure_voltage.wh68'))
 			{
 				await this.removeCapability('measure_voltage.wh68').catch(this.error);
+			}
+
+			if (gateway.wh85batt !== undefined)
+			{
+				if (!this.hasCapability('measure_voltage.wh85'))
+				{
+					await this.addCapability('measure_voltage.wh85');
+				}
+				this.setCapabilityValue('measure_voltage.wh85', Number(gateway.wh85batt)).catch(this.error);
+			}
+			else if (this.hasCapability('measure_voltage.wh85'))
+			{
+				await this.removeCapability('measure_voltage.wh85').catch(this.error);
 			}
 
             if (gateway.wh65batt)

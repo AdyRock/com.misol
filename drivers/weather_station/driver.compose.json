@@ -38,7 +38,9 @@
         "measure_wind_angle.avg10m",
         "measure_rain.last24h",
         "measure_voltage.ws90cap",
+        "measure_voltage.ws85cap",
         "measure_voltage.wh68",
+        "measure_voltage.wh85",
         "alarm_battery",
         "measure_battery"
     ],
@@ -154,11 +156,31 @@
                 "en": "V"
             }
         },
+        "measure_voltage.ws85cap": {
+            "title": {
+                "en": "WS85 Capacitor Voltage",
+                "nl": "WS85 condensatorspanning",
+                "de": "WS85 Kondensatorspannung"
+            },
+            "units": {
+                "en": "V"
+            }
+        },
         "measure_voltage.wh68": {
             "title": {
                 "en": "WH68 Battery Voltage",
                 "nl": "WH68 batterijspanning",
                 "de": "WH68 Batteriespannung"
+            },
+            "units": {
+                "en": "V"
+            }
+        },
+        "measure_voltage.wh85": {
+            "title": {
+                "en": "WH85 Battery Voltage",
+                "nl": "WH85 batterijspanning",
+                "de": "WH85 Batteriespannung"
             },
             "units": {
                 "en": "V"
