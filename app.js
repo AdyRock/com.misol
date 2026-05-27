@@ -494,6 +494,12 @@ class MyApp extends Homey.App
 			return true;
 		});
 
+		this.measure_radiation_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_radiation_changed');
+		this.measure_radiation_changedTrigger.registerRunListener(async (args, state) =>
+		{
+			return true;
+		});
+
 		this.alarmPowerFalseTrigger = this.homey.flow.getDeviceTriggerCard('alarm_rain_false');
 		this.alarmPowerFalseTrigger.registerRunListener(async (args, state) =>
 		{

@@ -1,5 +1,3 @@
-# Misol & Ecowitt
-
 Bring Misol product into Homey.
 
 The app requires a Misol or Ecowitt gateway that supports the Custom Server option. Typical gateways are the GW1000, GW1100, GW2000 and GW3000, etc.

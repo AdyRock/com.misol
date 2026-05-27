@@ -264,7 +264,13 @@ class WindWS80Device extends Device
             const solarRadiation = Number(gateway.solarradiation);
             if (!isNaN(solarRadiation))
             {
-                this.setCapabilityValue('measure_radiation', solarRadiation).catch(this.error);
+                if (solarRadiation != this.getCapabilityValue('measure_radiation'))
+                {
+                    this.setCapabilityValue('measure_radiation', solarRadiation).catch(this.error);
+                    this.homey.app.measure_radiation_changedTrigger
+                        .trigger(this, { measure_radiation: solarRadiation }, { value: solarRadiation })
+                        .catch(this.error);
+                }
 				this.setCapabilityValue('measure_luminance', solarRadiation * 126.7).catch(this.error);
             }
 
