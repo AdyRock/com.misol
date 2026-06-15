@@ -1412,7 +1412,16 @@ class MyApp extends Homey.App
 							}
 							request[requestPacketSize + 1] = checksum & 0xFF;
 
+							const requestHex = Array.from(request, b => b.toString(16).padStart(2, '0')).join(' ');
+							this.updateLog(
+								`Sending custom server setup to ${ipAddress}: ID: ${gatewayID || '(empty)'}, IP: ${this.homeyIP}, Port: ${this.pushServerPort}, Interval: ${interval}, Format: 0, Enabled: 1, Packet: ${requestHex}`
+							);
+
 							client.write(request);
+						}
+						else
+						{
+							this.updateLog(`Gateway settings already match Homey for ${ipAddress}. No custom server update sent.`);
 						}
 
 						// Close the TCP connection
