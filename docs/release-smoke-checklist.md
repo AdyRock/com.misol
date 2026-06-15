@@ -23,14 +23,14 @@
 ## Driver Sanity
 
 1. Verify all drivers initialize once.
-   - Expected log entries for: Temp, Temp_Hum, Temp_Water, camera, co2, gateway, laser_distance, leaf_wetness, leak, lightning, pm10, pm25, rain_sensor, soil_moisture, weather_station, wind_ws80, wittflow
+   - Expected log entries for: Temp, Temp_Hum, Temp_Water, camera, co2, gateway, laser_distance, leaf_wetness, leak, lightning, pm10, pm25, rain_sensor, soil_moisture, weather_station, wind_ws80, wittflow, wittflow_wfc02
 
 2. Verify existing paired devices initialize.
    - Expected: per-device initialization logs without errors
 
 ## Functional Spot Checks
 
-1. Toggle wittflow on/off from Homey UI.
+1. Toggle wittflow and wittflow_wfc02 on/off from Homey UI.
    - Expected: capability updates, no warning loops
 
 2. Confirm rain capabilities appear/disappear correctly when payload includes/excludes fields.

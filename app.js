@@ -597,6 +597,30 @@ class MyApp extends Homey.App
 			return true;
 		});
 
+		this.measure_valve_position_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_valve_position_changed');
+		this.measure_valve_position_changedTrigger.registerRunListener(async (args, state) =>
+		{
+			return true;
+		});
+
+		this.measure_valve_position_threshold_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_valve_position.threshold_changed');
+		this.measure_valve_position_threshold_changedTrigger.registerRunListener(async (args, state) =>
+		{
+			const argValue = Number(args.value);
+
+			if (args.compare_type === '<=')
+			{
+				return state.value <= argValue;
+			}
+
+			if (args.compare_type === '>=')
+			{
+				return state.value >= argValue;
+			}
+
+			return false;
+		});
+
 		this.alarmleakFalseTrigger = this.homey.flow.getDeviceTriggerCard('alarm_leak_false');
 		this.alarmleakFalseTrigger.registerRunListener(async (args, state) =>
 		{

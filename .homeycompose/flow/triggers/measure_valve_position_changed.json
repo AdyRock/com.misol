@@ -1,0 +1,27 @@
+{
+    "title": {
+        "en": "The valve position changed",
+        "nl": "De klepstand is veranderd",
+        "de": "Die Ventilstellung hat sich geändert"
+    },
+    "tokens": [
+        {
+            "name": "measure_valve_position",
+            "title": {
+                "en": "Valve position",
+                "nl": "Klepstand",
+                "de": "Ventilstellung"
+            },
+            "type": "number",
+            "units": "%",
+            "example": 55
+        }
+    ],
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=wittflow_wfc02"
+        }
+    ]
+}

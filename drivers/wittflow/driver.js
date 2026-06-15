@@ -5,6 +5,12 @@ const Homey = require('homey');
 module.exports = class MyDriver extends Homey.Driver
 {
 
+	isWFC01Device(device)
+	{
+		const nickname = typeof device?.nickname === 'string' ? device.nickname.toUpperCase() : '';
+		return nickname.startsWith('WFC01') || device?.model === 1;
+	}
+
 	/**
 	 * onInit is called when the driver is initialized.
 	 */
@@ -22,15 +28,17 @@ module.exports = class MyDriver extends Homey.Driver
 	{
 		const devices = await this.homey.app.getIOTDeviceList();
 
-		// Extract each device object from the command arrays that have "model": 1
+		// WFC01-only pairing.
 		const filteredDevices = devices
 			.flatMap(deviceGroup => deviceGroup.command || [])
-			.filter(device => device.model === 1);
+			.filter(device => this.isWFC01Device(device));
 
-		// return an array of devices that has { name: `WittFlow : ${device.id}`, data: { id: device.id }, settings: { address: device.gatewayIP } };
 		return filteredDevices.map(device => ({
-			name: `WittFlow : ${device.id}`,
-			data: { id: device.id },
+			name: device.nickname || `WFC01 : ${device.id}`,
+			data: {
+				id: device.id,
+				model: 1,
+			},
 			settings: { address: device.gatewayIP }
 		}));
 	}
@@ -44,7 +52,7 @@ module.exports = class MyDriver extends Homey.Driver
 			if (viewId === 'loading')
 			{
 				const devices = await this.homey.app.getIOTDeviceList();
-				let deviceID = device.getData().id;
+				const deviceID = device.getData().id;
 
 				// Find the device in the list of devices
 				const foundDevice = devices

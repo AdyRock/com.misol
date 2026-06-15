@@ -1,0 +1,15 @@
+{
+    "type": "number",
+    "title": {
+        "en": "Valve Position",
+        "nl": "Klepstand",
+        "de": "Ventilstellung"
+    },
+    "units": {
+        "en": "%"
+    },
+    "getable": true,
+    "setable": false,
+    "insights": true,
+    "decimals": 0
+}

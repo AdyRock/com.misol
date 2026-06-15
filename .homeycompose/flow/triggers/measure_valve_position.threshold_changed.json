@@ -1,0 +1,76 @@
+{
+    "title": {
+        "en": "The valve position has become",
+        "nl": "De klepstand is geworden",
+        "de": "Die Ventilstellung wurde"
+    },
+    "titleFormatted": {
+        "en": "The valve position has become [[compare_type]] [[value]]%",
+        "nl": "De klepstand is [[compare_type]] [[value]]% geworden",
+        "de": "Die Ventilstellung wurde [[compare_type]] [[value]]%"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=wittflow_wfc02"
+        },
+        {
+            "type": "dropdown",
+            "name": "compare_type",
+            "title": {
+                "en": "Comparison type",
+                "nl": "Soort vergelijking",
+                "de": "Vergleichstyp"
+            },
+            "values": [
+                {
+                    "id": "<=",
+                    "label": {
+                        "en": "less than or equal to",
+                        "nl": "kleiner dan of gelijk aan",
+                        "de": "kleiner oder gleich"
+                    }
+                },
+                {
+                    "id": ">=",
+                    "label": {
+                        "en": "greater than or equal to",
+                        "nl": "groter dan of gelijk aan",
+                        "de": "größer oder gleich"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "number",
+            "name": "value",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "placeholder": {
+                "en": "Set a percentage",
+                "nl": "Stel een percentage in",
+                "de": "Prozentwert festlegen"
+            },
+            "title": {
+                "en": "Valve position",
+                "nl": "Klepstand",
+                "de": "Ventilstellung"
+            }
+        }
+    ],
+    "tokens": [
+        {
+            "name": "measure_valve_position",
+            "title": {
+                "en": "Valve position",
+                "nl": "Klepstand",
+                "de": "Ventilstellung"
+            },
+            "type": "number",
+            "units": "%",
+            "example": 55
+        }
+    ]
+}

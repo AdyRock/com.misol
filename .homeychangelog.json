@@ -241,5 +241,8 @@
 	},
 	"0.2.25": {
 		"en": "Added Solar Radiation changed Flow card."
+	},
+	"0.2.26": {
+		"en": "Added support for WFC02."
 	}
 }

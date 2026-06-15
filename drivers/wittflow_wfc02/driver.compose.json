@@ -1,11 +1,10 @@
 {
 	"name": {
-		"en": "WittFlow WFC01"
+		"en": "WittFlow WFC02"
 	},
 	"class": "watervalve",
 	"capabilities": [
-		"meter_water",
-		"measure_water",
+		"measure_valve_position",
 		"alarm_water",
 		"alarm_leak",
 		"measure_signal_strength",

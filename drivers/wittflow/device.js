@@ -6,8 +6,100 @@ const NORMAL_POLL_MS = 5000;
 const BACKOFF_POLL_MS = 120000;
 const TRANSIENT_NETWORK_ERRORS = ['EHOSTUNREACH', 'ENETUNREACH', 'ECONNREFUSED', 'ETIMEDOUT'];
 
+function isFiniteNumber(value)
+{
+	const parsed = typeof value === 'number' ? value : Number.parseFloat(value);
+	return Number.isFinite(parsed);
+}
+
+function toNumberOrNull(value)
+{
+	if (!isFiniteNumber(value))
+	{
+		return null;
+	}
+
+	return Number.parseFloat(value);
+}
+
+function firstNumber(status, keys)
+{
+	for (const key of keys)
+	{
+		if (status[key] === undefined || status[key] === null)
+		{
+			continue;
+		}
+
+		const parsed = toNumberOrNull(status[key]);
+		if (parsed !== null)
+		{
+			return parsed;
+		}
+	}
+
+	return null;
+}
+
 module.exports = class MyDevice extends Homey.Device
 {
+
+	async applyStatus(status)
+	{
+		const updates = [];
+
+		const temperature = firstNumber(status, ['water_temp']);
+		if (temperature !== null)
+		{
+			updates.push(this.setCapabilityValue('measure_temperature', temperature));
+		}
+
+		const onoffRaw = firstNumber(status, ['water_status']);
+		if (onoffRaw !== null)
+		{
+			updates.push(this.setCapabilityValue('onoff', onoffRaw === 1));
+		}
+
+		const batteryRaw = firstNumber(status, ['wfc01batt', 'battery']);
+		if (batteryRaw !== null)
+		{
+			const batteryPercent = batteryRaw <= 5 ? batteryRaw * 20 : batteryRaw;
+			updates.push(this.setCapabilityValue('measure_battery', Math.max(0, Math.min(100, batteryPercent))));
+		}
+
+		const signal = firstNumber(status, ['rssi', 'signal']);
+		if (signal !== null)
+		{
+			updates.push(this.setCapabilityValue('measure_signal_strength', signal));
+		}
+
+		const warning = firstNumber(status, ['warning']);
+		if (warning !== null)
+		{
+			updates.push(this.setCapabilityValue('alarm_water', (warning & 2) === 2));
+			updates.push(this.setCapabilityValue('alarm_leak', (warning & 1) === 1));
+		}
+
+		const flowVelocity = firstNumber(status, ['flow_velocity']);
+		const meterWater = firstNumber(status, ['happen_water']);
+
+		if (flowVelocity !== null)
+		{
+			updates.push(this.setCapabilityValue('measure_water', flowVelocity));
+		}
+
+		if (meterWater !== null)
+		{
+			updates.push(this.setCapabilityValue('meter_water', meterWater));
+		}
+
+		if (updates.length === 0)
+		{
+			throw new Error('Unexpected status response: no supported payload fields found');
+		}
+
+		await Promise.all(updates);
+	}
 
 	/**
 	 * onInit is called when the device is initialized.
@@ -142,16 +234,7 @@ module.exports = class MyDevice extends Homey.Device
 
 			const status = data.command[0];
 			await this.clearDeviceWarning();
-			await Promise.all([
-				this.setCapabilityValue('measure_temperature', parseFloat(status.water_temp)),
-				this.setCapabilityValue('onoff', status.water_status === 1),
-				this.setCapabilityValue('measure_battery', status.wfc01batt * 20),
-				this.setCapabilityValue('measure_signal_strength', status.rssi),
-				this.setCapabilityValue('alarm_water', (status.warning & 2) === 2),
-				this.setCapabilityValue('alarm_leak', (status.warning & 1) === 1),
-				this.setCapabilityValue('measure_water', parseFloat(status.flow_velocity)),
-				this.setCapabilityValue('meter_water', parseFloat(status.happen_water)),
-			]);
+			await this.applyStatus(status);
 		}
 		catch (error)
 		{
