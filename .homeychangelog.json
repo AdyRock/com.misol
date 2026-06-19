@@ -244,5 +244,8 @@
 	},
 	"0.2.26": {
 		"en": "Added support for WFC02."
+	},
+	"0.2.27": {
+		"en": "Updated icons for WFC01 and WFC02."
 	}
 }
