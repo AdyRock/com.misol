@@ -62,7 +62,7 @@ module.exports = class WFC02Device extends Homey.Device
 	getDeviceModel()
 	{
 		const model = Number.parseInt(this.getData().model, 10);
-		return Number.isFinite(model) ? model : 1;
+		return Number.isFinite(model) ? model : 2;
 	}
 
 	getDeviceNickname()

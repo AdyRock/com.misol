@@ -247,5 +247,8 @@
 	},
 	"0.2.27": {
 		"en": "Updated icons for WFC01 and WFC02."
+	},
+	"0.2.28": {
+		"en": "Fix for detecting WFC02 devices."
 	}
 }
