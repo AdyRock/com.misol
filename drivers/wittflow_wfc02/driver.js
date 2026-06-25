@@ -8,7 +8,7 @@ module.exports = class WFC02Driver extends Homey.Driver
 	isWFC02Device(device)
 	{
 		const nickname = typeof device?.nickname === 'string' ? device.nickname.toUpperCase() : '';
-		return nickname.startsWith('WFC02') || device?.model === 2;
+		return nickname.startsWith('WFC02') || device?.model === 3;
 	}
 
 	async onInit()
@@ -28,7 +28,7 @@ module.exports = class WFC02Driver extends Homey.Driver
 			name: device.nickname || `WFC02 : ${device.id}`,
 			data: {
 				id: device.id,
-				model: Number.isFinite(device.model) ? device.model : 2,
+				model: Number.isFinite(device.model) ? device.model : 3,
 				nickname: device.nickname || null,
 			},
 			settings: { address: device.gatewayIP },

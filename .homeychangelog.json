@@ -250,5 +250,8 @@
 	},
 	"0.2.28": {
 		"en": "Fix for detecting WFC02 devices."
+	},
+	"0.2.29": {
+		"en": "Fix for detecting WFC02 devices."
 	}
 }
