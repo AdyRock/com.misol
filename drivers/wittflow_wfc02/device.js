@@ -190,7 +190,7 @@ module.exports = class WFC02Device extends Homey.Device
 			updates.push(this.setCapabilityValue('onoff', onoffRaw === 1));
 		}
 
-		const batteryRaw = firstNumber(status, ['iotbatt', 'battery', 'wfc01batt']);
+		const batteryRaw = firstNumber(status, ['iotbatt', 'battery', 'wfc02batt']);
 		if (batteryRaw !== null)
 		{
 			const batteryPercent = batteryRaw <= 5 ? batteryRaw * 20 : batteryRaw;

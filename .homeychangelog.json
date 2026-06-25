@@ -256,5 +256,8 @@
 	},
 	"0.2.30": {
 		"en": "Fix for controlling WFC02 devices."
+	},
+	"0.2.31": {
+		"en": "Fix for WFC02 battery reporting."
 	}
 }
