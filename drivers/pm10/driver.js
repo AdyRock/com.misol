@@ -9,7 +9,7 @@ class PM10Driver extends Driver
      */
     async onInit()
     {
-        this.log('PM10Driver has been initialized');
+        this.homey.app.updateLog('PM10Driver has been initialized');
 
         this.measure_aq10_changedTrigger = this.homey.flow.getDeviceTriggerCard('measure_aq.pm10_changed');
         this.measure_aq10_changedTrigger.registerRunListener(async (args, state) =>
@@ -76,27 +76,27 @@ class PM10Driver extends Driver
 
     async triggerCo2QChanged(device, tokens, state)
     {
-        this.homey.app.triggerCo2QChanged(device, tokens, state).catch(this.error);
+        this.homey.app.triggerCo2QChanged(device, tokens, state).catch(this.homey.app.logError);
     }
 
     async triggerAQPM25Changed(device, tokens, state)
     {
-		this.homey.app.measure_aq25_changedTrigger.trigger(device, tokens, state).catch(this.error);
+		this.homey.app.measure_aq25_changedTrigger.trigger(device, tokens, state).catch(this.homey.app.logError);
     }
 
     async triggerAQPM25AvgChanged(device, tokens, state)
     {
-		this.homey.app.measure_aq25_avg_changedTrigger.trigger(device, tokens, state).catch(this.error);
+		this.homey.app.measure_aq25_avg_changedTrigger.trigger(device, tokens, state).catch(this.homey.app.logError);
     }
 
     async triggerAQPM10Changed(device, tokens, state)
     {
-		this.measure_aq10_changedTrigger.trigger(device, tokens, state).catch(this.error);
+		this.measure_aq10_changedTrigger.trigger(device, tokens, state).catch(this.homey.app.logError);
     }
 
     async triggerAQPM10AvgChanged(device, tokens, state)
     {
-		this.measure_aq10_avg_changedTrigger.trigger(device, tokens, state).catch(this.error);
+		this.measure_aq10_avg_changedTrigger.trigger(device, tokens, state).catch(this.homey.app.logError);
     }
 
     /**

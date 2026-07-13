@@ -9,7 +9,7 @@ class RainSensorDriver extends Driver
      */
     async onInit()
     {
-        this.log('RainSensorDriver has been initialized');
+        this.homey.app.updateLog('RainSensorDriver has been initialized');
     }
 
     /**

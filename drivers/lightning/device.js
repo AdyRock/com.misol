@@ -13,7 +13,7 @@ class LightningDevice extends Device
         if (!id)
         {
             const dd = this.getData();
-            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+            this.setSettings({gatewayID: dd.id}).catch(this.homey.app.logError);;
         }
         this.stationType = this.getSetting('stationType');
 
@@ -23,7 +23,7 @@ class LightningDevice extends Device
             this.lightning_time = this.getCapabilityValue('measure_lightning_time');
         }
 
-        this.log('Lightning Device has been initialized');
+        this.homey.app.updateLog('Lightning Device has been initialized');
     }
 
     /**
@@ -31,7 +31,7 @@ class LightningDevice extends Device
      */
     async onAdded()
     {
-        this.log('Lightning Device has been added');
+        this.homey.app.updateLog('Lightning Device has been added');
     }
 
     /**
@@ -44,10 +44,10 @@ class LightningDevice extends Device
      */
     async onSettings({ oldSettings, newSettings, changedKeys })
     {
-        this.log('Lightning Device settings where changed');
+        this.homey.app.updateLog('Lightning Device settings where changed');
         if ((changedKeys.indexOf("timeFormat") >= 0) || (changedKeys.indexOf("adjustTime") >= 0))
         {
-            this.setCapabilityValue('measure_lightning_time', this.convertDate(this.lightning_time, newSettings)).catch(this.error);
+            this.setCapabilityValue('measure_lightning_time', this.convertDate(this.lightning_time, newSettings)).catch(this.homey.app.logError);
         }
     }
 
@@ -103,7 +103,7 @@ class LightningDevice extends Device
      */
     async onRenamed(name)
     {
-        this.log('Lightning Device was renamed');
+        this.homey.app.updateLog('Lightning Device was renamed');
     }
 
     /**
@@ -111,7 +111,7 @@ class LightningDevice extends Device
      */
     async onDeleted()
     {
-        this.log('Lightning Device has been deleted');
+        this.homey.app.updateLog('Lightning Device has been deleted');
     }
 
     async updateCapabilities(gateway)
@@ -122,19 +122,19 @@ class LightningDevice extends Device
             if (!this.stationType)
             {
                 this.stationType = gateway.stationtype;
-                this.setSettings({stationType: this.stationType}).catch(this.error);;
+                this.setSettings({stationType: this.stationType}).catch(this.homey.app.logError);;
             }
 
 			if ((gateway.lightning != undefined) && (gateway.lightning !== ''))
             {
-                this.setCapabilityValue('measure_lightning', Number(gateway.lightning)).catch(this.error);
+                this.setCapabilityValue('measure_lightning', Number(gateway.lightning)).catch(this.homey.app.logError);
 
                 if (gateway.lightning_time !== '' && gateway.lightning_time != this.lightning_time)
                 {
 					const settings = this.getSettings();
                     this.lightning_time = gateway.lightning_time;
-                    this.setStoreValue('lightning_time', this.lightning_time).catch(this.error);
-                    this.setCapabilityValue('measure_lightning_time', this.convertDate(this.lightning_time, settings)).catch(this.error);
+                    this.setStoreValue('lightning_time', this.lightning_time).catch(this.homey.app.logError);
+                    this.setCapabilityValue('measure_lightning_time', this.convertDate(this.lightning_time, settings)).catch(this.homey.app.logError);
                 }
             }
 
@@ -144,13 +144,13 @@ class LightningDevice extends Device
 				const bat = parseInt(gateway.wh57batt);
 				if (!isNaN(bat) && (bat >= 0))
 				{
-					this.setCapabilityValue('measure_battery', bat * 20).catch(this.error);
+					this.setCapabilityValue('measure_battery', bat * 20).catch(this.homey.app.logError);
 				}
 			}
 
 			if ((gateway.lightning_num != undefined) && (gateway.lightning_num !== ''))
 			{
-				this.setCapabilityValue('measure_lightning_num', parseInt(gateway.lightning_num)).catch(this.error);
+				this.setCapabilityValue('measure_lightning_num', parseInt(gateway.lightning_num)).catch(this.homey.app.logError);
 			}
         }
     }

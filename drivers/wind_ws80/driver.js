@@ -9,7 +9,7 @@ class WindWS80Driver extends Driver
      */
     async onInit()
     {
-        this.log('WindWS80Driver has been initialized');
+        this.homey.app.updateLog('WindWS80Driver has been initialized');
     }
 
     /**

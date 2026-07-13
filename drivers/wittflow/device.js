@@ -106,7 +106,7 @@ module.exports = class MyDevice extends Homey.Device
 	 */
 	async onInit()
 	{
-		this.log('MyDevice has been initialized');
+		this.homey.app.updateLog('MyDevice has been initialized');
 		this.isDeleted = false;
 		// Register capability listeners
 		this.registerCapabilityListener('onoff', this.onOnOff.bind(this));
@@ -122,7 +122,7 @@ module.exports = class MyDevice extends Homey.Device
 	 */
 	async onAdded()
 	{
-		this.log('MyDevice has been added');
+		this.homey.app.updateLog('MyDevice has been added');
 	}
 
 	/**
@@ -135,7 +135,7 @@ module.exports = class MyDevice extends Homey.Device
 	 */
 	async onSettings({ oldSettings, newSettings, changedKeys })
 	{
-		this.log('MyDevice settings where changed');
+		this.homey.app.updateLog('MyDevice settings where changed');
 	}
 
 	/**
@@ -145,7 +145,7 @@ module.exports = class MyDevice extends Homey.Device
 	 */
 	async onRenamed(name)
 	{
-		this.log('MyDevice was renamed');
+		this.homey.app.updateLog('MyDevice was renamed');
 	}
 
 	/**
@@ -153,7 +153,7 @@ module.exports = class MyDevice extends Homey.Device
 	 */
 	async onDeleted()
 	{
-		this.log('MyDevice has been deleted');
+		this.homey.app.updateLog('MyDevice has been deleted');
 		this.isDeleted = true;
 		if (this.updateTimer) {
 			this.homey.clearTimeout(this.updateTimer);
@@ -169,7 +169,7 @@ module.exports = class MyDevice extends Homey.Device
 		}
 		catch (warningError)
 		{
-			this.error('Failed to set device warning:', warningError);
+			this.homey.app.logError('Failed to set device warning:', warningError);
 		}
 	}
 
@@ -181,13 +181,13 @@ module.exports = class MyDevice extends Homey.Device
 		}
 		catch (warningError)
 		{
-			this.error('Failed to clear device warning:', warningError);
+			this.homey.app.logError('Failed to clear device warning:', warningError);
 		}
 	}
 
 	async onOnOff(value)
 	{
-		this.log(`MyDevice onOff set to ${value}`);
+		this.homey.app.updateLog(`MyDevice onOff set to ${value}`);
 		await this.homey.app.setIOTDeviceOnOff(this.getSettings().address, 1, this.getData().id, value);
 	}
 
@@ -208,7 +208,7 @@ module.exports = class MyDevice extends Homey.Device
 		if (currentAddress !== foundDevice.gatewayIP)
 		{
 			await this.setSettings({ address: foundDevice.gatewayIP });
-			this.log(`WittFlow IP updated from ${currentAddress} to ${foundDevice.gatewayIP}`);
+			this.homey.app.updateLog(`WittFlow IP updated from ${currentAddress} to ${foundDevice.gatewayIP}`);
 			return { found: true, changed: true };
 		}
 
@@ -240,7 +240,7 @@ module.exports = class MyDevice extends Homey.Device
 		{
 			if (TRANSIENT_NETWORK_ERRORS.includes(error.code))
 			{
-				this.log(`Transient network error (${error.code}) while polling WittFlow at ${this.getSettings().address}; trying IP rediscovery.`);
+				this.homey.app.updateLog(`Transient network error (${error.code}) while polling WittFlow at ${this.getSettings().address}; trying IP rediscovery.`);
 
 				try
 				{
@@ -263,13 +263,13 @@ module.exports = class MyDevice extends Homey.Device
 				catch (rediscoveryError)
 				{
 					nextPollMs = BACKOFF_POLL_MS;
-					this.error('Failed to rediscover WittFlow address:', rediscoveryError);
+					this.homey.app.logError('Failed to rediscover WittFlow address:', rediscoveryError);
 					await this.setDeviceWarning('Device unreachable and address check failed. Retrying in 2 minutes.');
 				}
 			}
 			else
 			{
-				this.error('Failed to update device status:', error);
+				this.homey.app.logError('Failed to update device status:', error);
 				await this.setDeviceWarning(`Failed to update device status ${error.message}`);
 			}
 		}

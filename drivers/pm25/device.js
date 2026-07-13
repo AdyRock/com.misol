@@ -22,11 +22,11 @@ class PM25Device extends Device
         if (!id)
         {
             const dd = this.getData();
-            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+            this.setSettings({gatewayID: dd.id}).catch(this.homey.app.logError);;
         }
         this.stationType = this.getSetting('stationType');
 
-        this.log('PM25 has been initialized');
+        this.homey.app.updateLog('PM25 has been initialized');
     }
 
     /**
@@ -34,7 +34,7 @@ class PM25Device extends Device
      */
     async onAdded()
     {
-        this.log('PM25 has been added');
+        this.homey.app.updateLog('PM25 has been added');
     }
 
     /**
@@ -47,7 +47,7 @@ class PM25Device extends Device
      */
     async onSettings({ oldSettings, newSettings, changedKeys })
     {
-        this.log('PM25 settings where changed');
+        this.homey.app.updateLog('PM25 settings where changed');
     }
 
     /**
@@ -57,7 +57,7 @@ class PM25Device extends Device
      */
     async onRenamed(name)
     {
-        this.log('PM25 was renamed');
+        this.homey.app.updateLog('PM25 was renamed');
     }
 
     /**
@@ -65,7 +65,7 @@ class PM25Device extends Device
      */
     async onDeleted()
     {
-        this.log('PM25 has been deleted');
+        this.homey.app.updateLog('PM25 has been deleted');
     }
 
     async updateCapabilities(gateway)
@@ -76,13 +76,13 @@ class PM25Device extends Device
             if (!this.stationType)
             {
                 this.stationType = gateway.stationtype;
-                this.setSettings({stationType: this.stationType}).catch(this.error);;
+                this.setSettings({stationType: this.stationType}).catch(this.homey.app.logError);;
             }
 
             const pm25 = parseInt(gateway['pm25_ch' + dd.meterNumber]);
             if (!isNaN(pm25))
             {
-                this.setCapabilityValue('measure_pm25', pm25).catch(this.error);
+                this.setCapabilityValue('measure_pm25', pm25).catch(this.homey.app.logError);
 
                 // Calculate AQI
                 let tableIdx = AQITable.findIndex( entry => entry.ConcHi > pm25);
@@ -92,11 +92,11 @@ class PM25Device extends Device
                 }
                 let AQI = ((AQITable[ tableIdx ].AQIhi - AQITable[ tableIdx ].AQIlo) / (AQITable[ tableIdx ].ConcHi - AQITable[ tableIdx ].ConcLo)) * (pm25 - AQITable[ tableIdx ].ConcLo)  + AQITable[ tableIdx ].AQIlo;
 
-                this.setCapabilityValue('measure_aqi', AQI).catch(this.error);
+                this.setCapabilityValue('measure_aqi', AQI).catch(this.homey.app.logError);
                 let aqText = this.homey.__(AQITable[ tableIdx ].name);
                 if (aqText !== this.getCapabilityValue('measure_aq'))
                 {
-                    this.setCapabilityValue('measure_aq', aqText).catch(this.error);
+                    this.setCapabilityValue('measure_aq', aqText).catch(this.homey.app.logError);
 
                     const tokens = {
                         "measure_aq_name": aqText,
@@ -114,7 +114,7 @@ class PM25Device extends Device
             const pm25Avg = parseInt(gateway['pm25_avg_24h_ch' + dd.meterNumber]);
             if (!isNaN(pm25Avg))
             {
-                this.setCapabilityValue('measure_pm25.avg', pm25Avg).catch(this.error);
+                this.setCapabilityValue('measure_pm25.avg', pm25Avg).catch(this.homey.app.logError);
 
                 // Calculate AQI Ag
                 let tableIdx = AQITable.findIndex( entry => entry.ConcHi > pm25Avg);
@@ -124,11 +124,11 @@ class PM25Device extends Device
                 }
                 let AQI = ((AQITable[ tableIdx ].AQIhi - AQITable[ tableIdx ].AQIlo) / (AQITable[ tableIdx ].ConcHi - AQITable[ tableIdx ].ConcLo)) * (pm25Avg - AQITable[ tableIdx ].ConcLo)  + AQITable[ tableIdx ].AQIlo;
 
-                this.setCapabilityValue('measure_aqi.avg', AQI).catch(this.error);
+                this.setCapabilityValue('measure_aqi.avg', AQI).catch(this.homey.app.logError);
                 let aqText = this.homey.__(AQITable[ tableIdx ].name);
                 if (aqText !== this.getCapabilityValue('measure_aq.avg'))
                 {
-                    this.setCapabilityValue('measure_aq.avg', aqText).catch(this.error);
+                    this.setCapabilityValue('measure_aq.avg', aqText).catch(this.homey.app.logError);
 
                     const tokens = {
                         "measure_aq_name": aqText,
@@ -147,7 +147,7 @@ class PM25Device extends Device
             const bat = parseInt(gateway['pm25batt' + dd.meterNumber]);
             if (!isNaN(bat) && (bat >= 0))
             {
-                this.setCapabilityValue('measure_battery', bat * 20).catch(this.error);
+                this.setCapabilityValue('measure_battery', bat * 20).catch(this.homey.app.logError);
             }
 }
     }

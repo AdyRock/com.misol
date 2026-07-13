@@ -9,12 +9,12 @@ class CO2Driver extends Driver
      */
     async onInit()
     {
-        this.log('CO2Driver has been initialized');
+        this.homey.app.updateLog('CO2Driver has been initialized');
     }
 
     async triggerCo2QChanged(device, tokens, state)
     {
-		this.homey.app.triggerCo2QChanged(device, tokens, state).catch(this.error);
+		this.homey.app.triggerCo2QChanged(device, tokens, state).catch(this.homey.app.logError);
     }
 
     /**

@@ -9,7 +9,7 @@ class WeatherStationDriver extends Driver
      */
     async onInit()
     {
-        this.log('WeatherStationDriver has been initialized');
+        this.homey.app.updateLog('WeatherStationDriver has been initialized');
     }
 
     /**

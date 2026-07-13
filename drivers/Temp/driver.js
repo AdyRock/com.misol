@@ -9,7 +9,7 @@ class TempDriver extends Driver
      */
     async onInit()
     {
-        this.log('TempDriver has been initialized');
+        this.homey.app.updateLog('TempDriver has been initialized');
     }
 
     /**

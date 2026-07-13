@@ -9,7 +9,7 @@ class LeafWetnessDriver extends Driver
      */
     async onInit()
     {
-        this.log('LeafWetnessDriver has been initialized');
+        this.homey.app.updateLog('LeafWetnessDriver has been initialized');
     }
 
     /**

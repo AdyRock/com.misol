@@ -9,7 +9,7 @@ class TempWaterDriver extends Driver
      */
     async onInit()
     {
-        this.log('TempWaterDriver has been initialized');
+        this.homey.app.updateLog('TempWaterDriver has been initialized');
     }
 
     /**

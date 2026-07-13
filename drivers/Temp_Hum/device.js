@@ -13,11 +13,11 @@ class TempHumDevice extends Device
         if (!id)
         {
             const dd = this.getData();
-            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+            this.setSettings({gatewayID: dd.id}).catch(this.homey.app.logError);;
         }
         this.stationType = this.getSetting('stationType');
 
-        this.log('TempHumDevice has been initialized');
+        this.homey.app.updateLog('TempHumDevice has been initialized');
     }
 
     /**
@@ -25,7 +25,7 @@ class TempHumDevice extends Device
      */
     async onAdded()
     {
-        this.log('TempHumDevice has been added');
+        this.homey.app.updateLog('TempHumDevice has been added');
     }
 
     /**
@@ -38,7 +38,7 @@ class TempHumDevice extends Device
      */
     async onSettings({ oldSettings, newSettings, changedKeys })
     {
-        this.log('TempHumDevice settings where changed');
+        this.homey.app.updateLog('TempHumDevice settings where changed');
     }
 
     /**
@@ -48,7 +48,7 @@ class TempHumDevice extends Device
      */
     async onRenamed(name)
     {
-        this.log('TempHumDevice was renamed');
+        this.homey.app.updateLog('TempHumDevice was renamed');
     }
 
     /**
@@ -56,7 +56,7 @@ class TempHumDevice extends Device
      */
     async onDeleted()
     {
-        this.log('TempHumDevice has been deleted');
+        this.homey.app.updateLog('TempHumDevice has been deleted');
     }
 
     async updateCapabilities(gateway)
@@ -69,11 +69,11 @@ class TempHumDevice extends Device
                 if (!this.stationType)
                 {
                     this.stationType = gateway.stationtype;
-                    this.setSettings({stationType: this.stationType}).catch(this.error);;
+                    this.setSettings({stationType: this.stationType}).catch(this.homey.app.logError);;
                 }
 
-                this.setCapabilityValue('measure_humidity', parseInt(gateway['humidity' + dd.meterNumber])).catch(this.error);
-                this.setCapabilityValue('measure_temperature', (Number(gateway['temp' + dd.meterNumber + 'f']) -32) * 5 / 9).catch(this.error);
+                this.setCapabilityValue('measure_humidity', parseInt(gateway['humidity' + dd.meterNumber])).catch(this.homey.app.logError);
+                this.setCapabilityValue('measure_temperature', (Number(gateway['temp' + dd.meterNumber + 'f']) -32) * 5 / 9).catch(this.homey.app.logError);
 
                 if (gateway['batt' + dd.meterNumber])
                 {
@@ -82,7 +82,7 @@ class TempHumDevice extends Device
                     {
                         if (!this.hasCapability('measure_battery'))
                         {
-                            await this.addCapability('measure_battery').catch(this.error);
+                            await this.addCapability('measure_battery').catch(this.homey.app.logError);
                         }
                         var batteryType = this.getSetting( 'batteryType' );
                         var batP = 0;
@@ -104,13 +104,13 @@ class TempHumDevice extends Device
                         {
                             batP = 0;
                         }
-                        this.setCapabilityValue('measure_battery', batP).catch(this.error);
+                        this.setCapabilityValue('measure_battery', batP).catch(this.homey.app.logError);
                     }
                     else
                     {
                         if (this.hasCapability('measure_battery'))
                         {
-                            await this.removeCapability('measure_battery').catch(this.error);
+                            await this.removeCapability('measure_battery').catch(this.homey.app.logError);
                         }
                     }
                 }
@@ -118,7 +118,7 @@ class TempHumDevice extends Device
                 {
                     if (this.hasCapability('measure_battery'))
                     {
-                        await this.removeCapability('measure_battery').catch(this.error);
+                        await this.removeCapability('measure_battery').catch(this.homey.app.logError);
                     }
                 }
             }
@@ -127,8 +127,8 @@ class TempHumDevice extends Device
         {
             if ((gateway.PASSKEY === dd.id))
             {
-                this.setCapabilityValue('measure_humidity', parseInt(gateway.humidity)).catch(this.error);
-                this.setCapabilityValue('measure_temperature', (Number(gateway.tempf) -32) * 5 / 9).catch(this.error);
+                this.setCapabilityValue('measure_humidity', parseInt(gateway.humidity)).catch(this.homey.app.logError);
+                this.setCapabilityValue('measure_temperature', (Number(gateway.tempf) -32) * 5 / 9).catch(this.homey.app.logError);
             }
         }
     }

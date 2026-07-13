@@ -13,11 +13,11 @@ class LeafWetnessDevice extends Device
         if (!id)
         {
             const dd = this.getData();
-            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+            this.setSettings({gatewayID: dd.id}).catch(this.homey.app.logError);;
         }
         this.stationType = this.getSetting('stationType');
 
-		this.log('LeafWetnessDevice has been initialized');
+		this.homey.app.updateLog('LeafWetnessDevice has been initialized');
     }
 
     /**
@@ -25,7 +25,7 @@ class LeafWetnessDevice extends Device
      */
     async onAdded()
     {
-		this.log('LeafWetnessDevice has been added');
+		this.homey.app.updateLog('LeafWetnessDevice has been added');
     }
 
     /**
@@ -38,7 +38,7 @@ class LeafWetnessDevice extends Device
      */
     async onSettings({ oldSettings, newSettings, changedKeys })
     {
-        this.log('LeafWetnessDevice settings where changed');
+        this.homey.app.updateLog('LeafWetnessDevice settings where changed');
     }
 
     /**
@@ -48,7 +48,7 @@ class LeafWetnessDevice extends Device
      */
     async onRenamed(name)
     {
-        this.log('LeafWetnessDevice was renamed');
+        this.homey.app.updateLog('LeafWetnessDevice was renamed');
     }
 
     /**
@@ -56,7 +56,7 @@ class LeafWetnessDevice extends Device
      */
     async onDeleted()
     {
-        this.log('LeafWetnessDevice has been deleted');
+        this.homey.app.updateLog('LeafWetnessDevice has been deleted');
     }
 
     async updateCapabilities(gateway)
@@ -67,13 +67,13 @@ class LeafWetnessDevice extends Device
             if (!this.stationType)
             {
                 this.stationType = gateway.stationtype;
-                this.setSettings({stationType: this.stationType}).catch(this.error);;
+                this.setSettings({stationType: this.stationType}).catch(this.homey.app.logError);;
             }
 
 			const moisture = parseInt(gateway['leafwetness_ch' + dd.meterNumber]);
             if (moisture != this.getCapabilityValue('measure_moisture'))
             {
-                this.setCapabilityValue('measure_moisture', moisture).catch(this.error);
+                this.setCapabilityValue('measure_moisture', moisture).catch(this.homey.app.logError);
             }
 
             var batteryType = this.getSetting( 'batteryType' );
@@ -97,7 +97,7 @@ class LeafWetnessDevice extends Device
             {
                 batP = 0;
             }
-            this.setCapabilityValue('measure_battery', batP).catch(this.error);
+            this.setCapabilityValue('measure_battery', batP).catch(this.homey.app.logError);
         }
     }
 }

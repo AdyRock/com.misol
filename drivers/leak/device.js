@@ -13,11 +13,11 @@ class LeakDevice extends Device
         if (!id)
         {
             const dd = this.getData();
-            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+            this.setSettings({gatewayID: dd.id}).catch(this.homey.app.logError);;
         }
         this.stationType = this.getSetting('stationType');
 
-        this.log('LeakDevice has been initialized');
+        this.homey.app.updateLog('LeakDevice has been initialized');
     }
 
     /**
@@ -25,7 +25,7 @@ class LeakDevice extends Device
      */
     async onAdded()
     {
-        this.log('LeakDevice has been added');
+        this.homey.app.updateLog('LeakDevice has been added');
     }
 
     /**
@@ -38,7 +38,7 @@ class LeakDevice extends Device
      */
     async onSettings({ oldSettings, newSettings, changedKeys })
     {
-        this.log('LeakDevice settings where changed');
+        this.homey.app.updateLog('LeakDevice settings where changed');
     }
 
     /**
@@ -48,7 +48,7 @@ class LeakDevice extends Device
      */
     async onRenamed(name)
     {
-        this.log('LeakDevice was renamed');
+        this.homey.app.updateLog('LeakDevice was renamed');
     }
 
     /**
@@ -56,7 +56,7 @@ class LeakDevice extends Device
      */
     async onDeleted()
     {
-        this.log('LeakDevice has been deleted');
+        this.homey.app.updateLog('LeakDevice has been deleted');
     }
 
     async updateCapabilities(gateway)
@@ -69,42 +69,42 @@ class LeakDevice extends Device
                 if (!this.stationType)
                 {
                     this.stationType = gateway.stationtype;
-                    this.setSettings({stationType: this.stationType}).catch(this.error);;
+                    this.setSettings({stationType: this.stationType}).catch(this.homey.app.logError);;
                 }
 
-                this.setCapabilityValue('alarm_water', (gateway['leak_ch' + dd.meterNumber] === '1')).catch(this.error);
+                this.setCapabilityValue('alarm_water', (gateway['leak_ch' + dd.meterNumber] === '1')).catch(this.homey.app.logError);
 				if (gateway['leak_ch' + dd.meterNumber] === '2')
 				{
 					// The sensor is offline
 					if (this.hasCapability('measure_battery'))
 					{
-						this.setCapabilityValue('measure_battery', null).catch(this.error);
+						this.setCapabilityValue('measure_battery', null).catch(this.homey.app.logError);
 					}
 
-					this.setUnavailable().catch(this.error);
+					this.setUnavailable().catch(this.homey.app.logError);
 				}
 				else
 				{
-					this.setAvailable().catch(this.error);
+					this.setAvailable().catch(this.homey.app.logError);
 					if (gateway['leakbatt' + dd.meterNumber])
 					{
 						// The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up
 						if (!this.hasCapability('measure_battery'))
 						{
-							await this.addCapability('measure_battery').catch(this.error);
+							await this.addCapability('measure_battery').catch(this.homey.app.logError);
 						}
 
 						const bat = parseInt(gateway['leakbatt' + dd.meterNumber]);
 						if (!isNaN(bat) && (bat >= 0))
 						{
-							this.setCapabilityValue('measure_battery', bat * 20).catch(this.error);
+							this.setCapabilityValue('measure_battery', bat * 20).catch(this.homey.app.logError);
 						}
 					}
 					else
 					{
 						if (this.hasCapability('measure_battery'))
 						{
-							await this.removeCapability('measure_battery').catch(this.error);
+							await this.removeCapability('measure_battery').catch(this.homey.app.logError);
 						}
 					}
 				}

@@ -9,7 +9,7 @@ class LaserDriver extends Driver
      */
     async onInit()
     {
-        this.log('Laser Distance Driver has been initialized');
+        this.homey.app.updateLog('Laser Distance Driver has been initialized');
     }
 
     /**

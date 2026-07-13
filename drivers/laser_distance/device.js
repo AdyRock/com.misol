@@ -13,11 +13,11 @@ class LaserDevice extends Device
         if (!id)
         {
             const dd = this.getData();
-            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+            this.setSettings({gatewayID: dd.id}).catch(this.homey.app.logError);;
         }
         this.stationType = this.getSetting('stationType');
 
-        this.log('Laser Device has been initialized');
+        this.homey.app.updateLog('Laser Device has been initialized');
     }
 
     /**
@@ -25,7 +25,7 @@ class LaserDevice extends Device
      */
     async onAdded()
     {
-        this.log('Laser Device has been added');
+        this.homey.app.updateLog('Laser Device has been added');
     }
 
     /**
@@ -38,7 +38,7 @@ class LaserDevice extends Device
      */
     async onSettings({ oldSettings, newSettings, changedKeys })
     {
-        this.log('Laser Device settings where changed');
+        this.homey.app.updateLog('Laser Device settings where changed');
     }
 
     /**
@@ -48,7 +48,7 @@ class LaserDevice extends Device
      */
     async onRenamed(name)
     {
-        this.log('Laser Device was renamed');
+        this.homey.app.updateLog('Laser Device was renamed');
     }
 
     /**
@@ -56,7 +56,7 @@ class LaserDevice extends Device
      */
     async onDeleted()
     {
-        this.log('Laser Device has been deleted');
+        this.homey.app.updateLog('Laser Device has been deleted');
     }
 
     async updateCapabilities(gateway)
@@ -67,19 +67,19 @@ class LaserDevice extends Device
             if (!this.stationType)
             {
                 this.stationType = gateway.stationtype;
-                this.setSettings({stationType: this.stationType}).catch(this.error);;
+                this.setSettings({stationType: this.stationType}).catch(this.homey.app.logError);;
             }
 
 			const distance = Number(gateway['air_ch' + dd.meterNumber]) / 1000;
 			if (distance != this.getCapabilityValue('measure_distance'))
 			{
-				this.setCapabilityValue('measure_distance', distance).catch(this.error);
+				this.setCapabilityValue('measure_distance', distance).catch(this.homey.app.logError);
 			}
 
 			const depth = Number(gateway['depth_ch' + dd.meterNumber]) / 1000;
 			if (depth != this.getCapabilityValue('measure_distance.depth'))
 			{
-				this.setCapabilityValue('measure_distance.depth', depth).catch(this.error);
+				this.setCapabilityValue('measure_distance.depth', depth).catch(this.homey.app.logError);
 			}
 
 			var batteryType = this.getSetting('batteryType');
@@ -103,7 +103,7 @@ class LaserDevice extends Device
 			{
 				batP = 0;
 			}
-			this.setCapabilityValue('measure_battery', batP).catch(this.error);
+			this.setCapabilityValue('measure_battery', batP).catch(this.homey.app.logError);
         }
     }
 }

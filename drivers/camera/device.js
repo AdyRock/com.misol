@@ -12,7 +12,7 @@ class CameraDevice extends Device
      */
     async onInit()
     {
-        this.log('MyDevice has been initialized');
+		this.homey.app.updateLog('CameraDevice has been initialized');
         this.updatingEventImage = false;
 
         const settings = this.getSettings();
@@ -27,7 +27,7 @@ class CameraDevice extends Device
      */
     async onAdded()
     {
-        this.log('MyDevice has been added');
+		this.homey.app.updateLog('CameraDevice has been added');
     }
 
     /**
@@ -40,7 +40,7 @@ class CameraDevice extends Device
      */
     async onSettings({ oldSettings, newSettings, changedKeys })
     {
-        this.log('MyDevice settings where changed');
+		this.homey.app.updateLog('CameraDevice settings where changed');
 
         if (changedKeys.indexOf('ip') >= 0)
         {
@@ -55,7 +55,7 @@ class CameraDevice extends Device
      */
     async onRenamed(name)
     {
-        this.log('MyDevice was renamed');
+		this.homey.app.updateLog('CameraDevice was renamed');
     }
 
     /**
@@ -63,7 +63,7 @@ class CameraDevice extends Device
      */
     async onDeleted()
     {
-        this.log('MyDevice has been deleted');
+		this.homey.app.updateLog('CameraDevice has been deleted');
     }
 
     async setupImages()
@@ -86,7 +86,7 @@ class CameraDevice extends Device
                         if (!res.ok)
                         {
                             this.homey.app.updateLog('Fetch NOW error (' + this.name + '): ' + res.statusText, 0);
-                            this.setWarning(res.statusText).catch(this.error);
+                            this.setWarning(res.statusText).catch(this.homey.app.logError);
                             throw new Error(res.statusText);
                         }
 
@@ -146,7 +146,7 @@ class CameraDevice extends Device
 
         if (!res.ok)
         {
-            this.setWarning(res.statusText).catch(this.error);
+            this.setWarning(res.statusText).catch(this.homey.app.logError);
         }
 
         return res;

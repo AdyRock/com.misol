@@ -10,6 +10,24 @@ const dgram = require('dgram');
 var net = require('net');
 const nodemailer = require("nodemailer");
 
+function formatErrorArgs(appInstance, args)
+{
+	return args.map(arg =>
+	{
+		if (arg instanceof Error)
+		{
+			return arg.stack || arg.message;
+		}
+
+		if (typeof arg === 'string')
+		{
+			return arg;
+		}
+
+		return appInstance.varToString(arg);
+	}).join(' ');
+}
+
 class MyApp extends Homey.App
 {
 	/**
@@ -17,8 +35,19 @@ class MyApp extends Homey.App
 	 */
 	async onInit()
 	{
-		this.log('MyApp has been initialized');
+		this.updateLog('MyApp has been initialized');
 		this.diagLog = "";
+
+		const forwardErrorToAppLog = (...args) =>
+		{
+			this.updateLog(formatErrorArgs(this, args), 0);
+		};
+
+		this.logError = forwardErrorToAppLog;
+
+		Homey.App.prototype.error = forwardErrorToAppLog;
+		Homey.Driver.prototype.error = forwardErrorToAppLog;
+		Homey.Device.prototype.error = forwardErrorToAppLog;
 
 		if (process.env.DEBUG === '1')
 		{
@@ -646,7 +675,7 @@ class MyApp extends Homey.App
 
 	async triggerCo2QChanged(device, tokens, state)
 	{
-		this.measure_co2q_changedTrigger.trigger(device, tokens, state).catch(this.error);
+		this.measure_co2q_changedTrigger.trigger(device, tokens, state).catch(this.logError);
 	}
 
 	async changeUnits(Units)
@@ -911,7 +940,7 @@ class MyApp extends Homey.App
 		}
 		catch (err)
 		{
-			this.log("VarToString Error: ", err);
+			this.updateLog(`VarToString Error: ${err.message}`, 0);
 		}
 
 		return source.toString();
@@ -1610,6 +1639,7 @@ class MyApp extends Homey.App
 		// make the HTTP request using a promise
 		return new Promise((resolve, reject) =>
 		{
+			const commandValue = value ? 1 : 0;
 			let body = {};
 
 			if (value)
@@ -1620,7 +1650,7 @@ class MyApp extends Homey.App
 							cmd: "quick_run",
 							model,
 							id,
-							value,
+							value: commandValue,
 							on_type: 0,
 							off_type: 0,
 							always_on: 1,
@@ -1645,6 +1675,8 @@ class MyApp extends Homey.App
 				}
 			}
 			const postData = JSON.stringify(body);
+
+			this.updateLog(`POST { path: 'parse_quick_cmd_iot', postData: ${postData} }`);
 			const req = http.request({
 				hostname: address,
 				port: 80,
@@ -1667,12 +1699,55 @@ class MyApp extends Homey.App
 				{
 					try
 					{
-						this.updateLog(`IOT Device Status: ${data}`);
-						resolve(data);
+						const trimmedData = data.trim();
+						let parsedData = trimmedData;
+
+						if (trimmedData)
+						{
+							try
+							{
+								parsedData = JSON.parse(trimmedData);
+							}
+							catch (parseError)
+							{
+								parsedData = trimmedData;
+							}
+						}
+
+						this.updateLog(`IOT Device Command Response: ${typeof parsedData === 'string' ? parsedData : JSON.stringify(parsedData)}`);
+
+						if (res.statusCode >= 400)
+						{
+							reject(new Error(`HTTP ${res.statusCode}: ${trimmedData || 'empty response'}`));
+							return;
+						}
+
+						if (parsedData && typeof parsedData === 'object')
+						{
+							const errorCode = Number.parseInt(parsedData.errcode ?? parsedData.error_code ?? parsedData.code, 10);
+							const errorMessage = parsedData.msg || parsedData.message || parsedData.error || parsedData.reason;
+
+							if (Number.isFinite(errorCode) && errorCode !== 0)
+							{
+								reject(new Error(errorMessage || `Gateway command failed with code ${errorCode}`));
+								return;
+							}
+						}
+						else if (typeof parsedData === 'string')
+						{
+							const normalizedResponse = parsedData.toLowerCase();
+							if (normalizedResponse.includes('error') || normalizedResponse.includes('fail'))
+							{
+								reject(new Error(parsedData));
+								return;
+							}
+						}
+
+						resolve(parsedData);
 					}
 					catch (err)
 					{
-						this.updateLog(`Error parsing IOT Device Status: ${err.message}`, 0);
+						this.updateLog(`Error handling IOT Device Command Response: ${err.message}`, 0);
 						reject(err);
 					}
 				});

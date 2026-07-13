@@ -18,14 +18,14 @@ class WeatherStationDevice extends Device
         if (!id)
         {
             const dd = this.getData();
-            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+            this.setSettings({gatewayID: dd.id}).catch(this.homey.app.logError);;
         }
         this.stationType = this.getSetting('stationType');
 
 		const ignorePiezo = this.getSetting('ignorePiezo');
 		if (ignorePiezo === undefined)
 		{
-			this.setSettings({ignorePiezo: false}).catch(this.error);
+			this.setSettings({ignorePiezo: false}).catch(this.homey.app.logError);
 		}
 
         // if (!this.hasCapability('measure_hours_since_rained'))
@@ -70,7 +70,7 @@ class WeatherStationDevice extends Device
 
 		if (this.hasCapability('measure_rain'))
 		{
-			await this.removeCapability('measure_rain').catch(this.error);
+			await this.removeCapability('measure_rain').catch(this.homey.app.logError);
 		}
 
 		if (!this.hasCapability('measure_rain.rate'))
@@ -88,7 +88,7 @@ class WeatherStationDevice extends Device
         this.unitsChanged('SpeedUnits');
 		this.unitsChanged('RainfallUnits');
 
-		this.log('WeatherStationDevice has been initialized');
+		this.homey.app.updateLog('WeatherStationDevice has been initialized');
     }
 
     /**
@@ -99,7 +99,7 @@ class WeatherStationDevice extends Device
         this.unitsChanged('SpeedUnits');
 		this.unitsChanged('RainfallUnits');
 
-        this.log('WeatherStationDevice has been added');
+        this.homey.app.updateLog('WeatherStationDevice has been added');
     }
 
     /**
@@ -112,7 +112,7 @@ class WeatherStationDevice extends Device
      */
     async onSettings({ oldSettings, newSettings, changedKeys })
     {
-        this.log('WeatherStationDevice settings where changed');
+        this.homey.app.updateLog('WeatherStationDevice settings where changed');
     }
 
     /**
@@ -122,7 +122,7 @@ class WeatherStationDevice extends Device
      */
     async onRenamed(name)
     {
-        this.log('WeatherStationDevice was renamed');
+        this.homey.app.updateLog('WeatherStationDevice was renamed');
     }
 
     /**
@@ -130,7 +130,7 @@ class WeatherStationDevice extends Device
      */
     async onDeleted()
     {
-        this.log('WeatherStationDevice has been deleted');
+        this.homey.app.updateLog('WeatherStationDevice has been deleted');
     }
 
 	// Merge the new units with the current options
@@ -157,8 +157,8 @@ class WeatherStationDevice extends Device
 			}
 
 			const combinedOptions = Object.assign(options, newUnits);
-			this.setCapabilityOptions(capability, combinedOptions).catch(this.error);
-			this.setCapabilityValue(capability, null).catch(this.error);
+			this.setCapabilityOptions(capability, combinedOptions).catch(this.homey.app.logError);
+			this.setCapabilityValue(capability, null).catch(this.homey.app.logError);
 		}
 	}
 
@@ -232,7 +232,7 @@ class WeatherStationDevice extends Device
             if (!this.stationType)
             {
                 this.stationType = gateway.stationtype;
-                this.setSettings({stationType: this.stationType}).catch(this.error);
+                this.setSettings({stationType: this.stationType}).catch(this.homey.app.logError);
             }
 
 			const ignorePiezo = this.getSetting('ignorePiezo');
@@ -242,19 +242,19 @@ class WeatherStationDevice extends Device
 			if (gateway.humidity !== undefined)
 			{
             	var relativeHumidity = parseInt(gateway.humidity);
-            	this.setCapabilityValue('measure_humidity', relativeHumidity).catch(this.error);
+            	this.setCapabilityValue('measure_humidity', relativeHumidity).catch(this.homey.app.logError);
 			}
 
 			const pressure = Number(gateway.baromrelin);
 			if (!isNaN(pressure))
 			{
-				this.setCapabilityValue('measure_pressure', pressure * 33.8639).catch(this.error);
+				this.setCapabilityValue('measure_pressure', pressure * 33.8639).catch(this.homey.app.logError);
 			}
 
 			if (gateway.tempf !== undefined)
 			{
 				temperatureF = Number(gateway.tempf);
-				this.setCapabilityValue('measure_temperature', (temperatureF - 32) * 5 / 9).catch(this.error);
+				this.setCapabilityValue('measure_temperature', (temperatureF - 32) * 5 / 9).catch(this.homey.app.logError);
 			}
 
 			if (gateway.windspeedmph !== undefined)
@@ -264,36 +264,36 @@ class WeatherStationDevice extends Device
 				if (this.homey.app.SpeedUnits === '1')
 				{
 					// MPS
-					this.setCapabilityValue('measure_wind_strength', (windSpeed * 1.609344) * 1000 / 3600).catch(this.error);
-					this.setCapabilityValue('measure_gust_strength', (Number(gateway.windgustmph) * 1.609344) * 1000 / 3600).catch(this.error);
-					this.setCapabilityValue('measure_gust_strength.daily', (Number(gateway.maxdailygust) * 1.609344) * 1000 / 3600).catch(this.error);
+					this.setCapabilityValue('measure_wind_strength', (windSpeed * 1.609344) * 1000 / 3600).catch(this.homey.app.logError);
+					this.setCapabilityValue('measure_gust_strength', (Number(gateway.windgustmph) * 1.609344) * 1000 / 3600).catch(this.homey.app.logError);
+					this.setCapabilityValue('measure_gust_strength.daily', (Number(gateway.maxdailygust) * 1.609344) * 1000 / 3600).catch(this.homey.app.logError);
 				}
 				else if (this.homey.app.SpeedUnits === '2')
 				{
 					// MPH
-					this.setCapabilityValue('measure_wind_strength', windSpeed).catch(this.error);
-					this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph)).catch(this.error);
-					this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust)).catch(this.error);
+					this.setCapabilityValue('measure_wind_strength', windSpeed).catch(this.homey.app.logError);
+					this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph)).catch(this.homey.app.logError);
+					this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust)).catch(this.homey.app.logError);
 				}
 				else if (this.homey.app.SpeedUnits === '3')
 				{
 					// Knots
-					this.setCapabilityValue('measure_wind_strength', windSpeed / 1.15078).catch(this.error);
-					this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) / 1.15078).catch(this.error);
-					this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) / 1.15078).catch(this.error);
+					this.setCapabilityValue('measure_wind_strength', windSpeed / 1.15078).catch(this.homey.app.logError);
+					this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) / 1.15078).catch(this.homey.app.logError);
+					this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) / 1.15078).catch(this.homey.app.logError);
 				}
 				else
 				{
 					// KPH
-					this.setCapabilityValue('measure_wind_strength', windSpeed * 1.609344).catch(this.error);
-					this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) * 1.609344).catch(this.error);
-					this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) * 1.609344).catch(this.error);
+					this.setCapabilityValue('measure_wind_strength', windSpeed * 1.609344).catch(this.homey.app.logError);
+					this.setCapabilityValue('measure_gust_strength', Number(gateway.windgustmph) * 1.609344).catch(this.homey.app.logError);
+					this.setCapabilityValue('measure_gust_strength.daily', Number(gateway.maxdailygust) * 1.609344).catch(this.homey.app.logError);
 				}
 			}
 
             if (gateway.winddir !== undefined)
 			{
-				this.setCapabilityValue('measure_wind_angle', parseInt(gateway.winddir)).catch(this.error);
+				this.setCapabilityValue('measure_wind_angle', parseInt(gateway.winddir)).catch(this.homey.app.logError);
 
 				var index = parseInt(gateway.winddir / 22.5);
 				let langCode = this.homey.i18n.getLanguage();
@@ -303,7 +303,7 @@ class WeatherStationDevice extends Device
 					langCode = 'en';
 				}
 				let windDir = Sector[langCode][index];
-				this.setCapabilityValue('measure_wind_direction', windDir).catch(this.error);
+				this.setCapabilityValue('measure_wind_direction', windDir).catch(this.homey.app.logError);
 			}
 
             if (gateway.solarradiation !== undefined)
@@ -311,17 +311,17 @@ class WeatherStationDevice extends Device
 				const solarRadiation = Number(gateway.solarradiation);
 				if (solarRadiation != this.getCapabilityValue('measure_radiation'))
 				{
-					this.setCapabilityValue('measure_radiation', solarRadiation).catch(this.error);
+					this.setCapabilityValue('measure_radiation', solarRadiation).catch(this.homey.app.logError);
 					this.homey.app.measure_radiation_changedTrigger
 						.trigger(this, { measure_radiation: solarRadiation }, { value: solarRadiation })
-						.catch(this.error);
+						.catch(this.homey.app.logError);
 				}
-				this.setCapabilityValue('measure_luminance', solarRadiation * 126.7).catch(this.error);
+				this.setCapabilityValue('measure_luminance', solarRadiation * 126.7).catch(this.homey.app.logError);
 			}
 
             if (gateway.uv !== undefined)
 			{
-				this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.error);
+				this.setCapabilityValue('measure_ultraviolet', Number(gateway.uv)).catch(this.homey.app.logError);
 			}
 
 			if (gateway.vpd !== undefined)
@@ -330,11 +330,11 @@ class WeatherStationDevice extends Device
 				{
 					await this.addCapability('measure_vpd');
 				}
-				this.setCapabilityValue('measure_vpd', Number(gateway.vpd)).catch(this.error);
+				this.setCapabilityValue('measure_vpd', Number(gateway.vpd)).catch(this.homey.app.logError);
 			}
 			else if (this.hasCapability('measure_vpd'))
 			{
-				await this.removeCapability('measure_vpd').catch(this.error);
+				await this.removeCapability('measure_vpd').catch(this.homey.app.logError);
 			}
 
             if (gateway.winddir_avg10m !== undefined)
@@ -343,11 +343,11 @@ class WeatherStationDevice extends Device
 				{
 					await this.addCapability('measure_wind_angle.avg10m');
 				}
-				this.setCapabilityValue('measure_wind_angle.avg10m', parseInt(gateway.winddir_avg10m)).catch(this.error);
+				this.setCapabilityValue('measure_wind_angle.avg10m', parseInt(gateway.winddir_avg10m)).catch(this.homey.app.logError);
 			}
 			else if (this.hasCapability('measure_wind_angle.avg10m'))
 			{
-				await this.removeCapability('measure_wind_angle.avg10m').catch(this.error);
+				await this.removeCapability('measure_wind_angle.avg10m').catch(this.homey.app.logError);
 			}
 
             let rainConversion = 25.4;
@@ -384,7 +384,7 @@ class WeatherStationDevice extends Device
 						await this.addCapability('alarm_rain');
 					}
 
-					this.setCapabilityValue('alarm_rain', gateway.srain_piezo === '1').catch(this.error);
+					this.setCapabilityValue('alarm_rain', gateway.srain_piezo === '1').catch(this.homey.app.logError);
 				}
             }
 			else
@@ -434,14 +434,14 @@ class WeatherStationDevice extends Device
 				let rain = Number(totalrainin) * rainConversion;
 				if (rain != this.getCapabilityValue('measure_rain.total'))
 				{
-					this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
+					this.setCapabilityValue('measure_rain.total', rain).catch(this.homey.app.logError);
 				}
 			}
 			else
 			{
 				if (this.hasCapability('measure_rain.total'))
 				{
-					await this.removeCapability('measure_rain.total').catch(this.error);
+					await this.removeCapability('measure_rain.total').catch(this.homey.app.logError);
 				}
 			}
 
@@ -460,75 +460,75 @@ class WeatherStationDevice extends Device
                 }
 
                 rain = Number(rainratein) * rainConversion;
-                this.setCapabilityValue('measure_rain.rate', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.rate', rain).catch(this.homey.app.logError);
 
                 if (rain > 0)
                 {
                     const now = new Date(Date.now());
                     this.lastRained = now.getTime();
                     this.homey.settings.set('lastRainedTime', this.lastRained);
-                    this.setCapabilityValue('measure_hours_since_rained', 0).catch(this.error);
+                    this.setCapabilityValue('measure_hours_since_rained', 0).catch(this.homey.app.logError);
                 }
                 else
                 {
                     const now = new Date(Date.now());
                     const diff = now.getTime() - this.lastRained;
                     const noRainHours = Math.floor(diff / 1000 / 60 / 60);
-                    this.setCapabilityValue('measure_hours_since_rained', noRainHours).catch(this.error);
+                    this.setCapabilityValue('measure_hours_since_rained', noRainHours).catch(this.homey.app.logError);
                 }
             }
             else
             {
                 if (this.hasCapability('measure_rain.rate'))
                 {
-					await this.removeCapability('measure_rain.rate').catch(this.error);
+					await this.removeCapability('measure_rain.rate').catch(this.homey.app.logError);
                 }
                 if (this.hasCapability('measure_hours_since_rained'))
                 {
-					await this.removeCapability('measure_hours_since_rained').catch(this.error);
+					await this.removeCapability('measure_hours_since_rained').catch(this.homey.app.logError);
                 }
             }
 
             rain = Number(eventrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.event'))
             {
-                this.setCapabilityValue('measure_rain.event', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.event', rain).catch(this.homey.app.logError);
             }
 
             rain = Number(hourlyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.hourly'))
             {
-                this.setCapabilityValue('measure_rain.hourly', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.hourly', rain).catch(this.homey.app.logError);
             }
 
             rain = Number(dailyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.daily'))
             {
-                this.setCapabilityValue('measure_rain.daily', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.daily', rain).catch(this.homey.app.logError);
             }
 
             rain = Number(weeklyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.weekly'))
             {
-                this.setCapabilityValue('measure_rain.weekly', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.weekly', rain).catch(this.homey.app.logError);
             }
 
             rain = Number(monthlyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.monthly'))
             {
-                this.setCapabilityValue('measure_rain.monthly', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.monthly', rain).catch(this.homey.app.logError);
             }
 
             rain = Number(yearlyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.yearly'))
             {
-                this.setCapabilityValue('measure_rain.yearly', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.yearly', rain).catch(this.homey.app.logError);
             }
 
             rain = Number(dailyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.daily'))
             {
-                this.setCapabilityValue('measure_rain.daily', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.daily', rain).catch(this.homey.app.logError);
             }
 
 			if (last24hrainin !== 0 || (gateway.rrain_piezo !== undefined && !ignorePiezo))
@@ -540,12 +540,12 @@ class WeatherStationDevice extends Device
 				rain = Number(last24hrainin) * rainConversion;
 				if (rain != this.getCapabilityValue('measure_rain.last24h'))
 				{
-					this.setCapabilityValue('measure_rain.last24h', rain).catch(this.error);
+					this.setCapabilityValue('measure_rain.last24h', rain).catch(this.homey.app.logError);
 				}
 			}
 			else if (this.hasCapability('measure_rain.last24h'))
 			{
-				await this.removeCapability('measure_rain.last24h').catch(this.error);
+				await this.removeCapability('measure_rain.last24h').catch(this.homey.app.logError);
 			}
 
 			if (gateway.ws90cap_volt !== undefined)
@@ -554,11 +554,11 @@ class WeatherStationDevice extends Device
 				{
 					await this.addCapability('measure_voltage.ws90cap');
 				}
-				this.setCapabilityValue('measure_voltage.ws90cap', Number(gateway.ws90cap_volt)).catch(this.error);
+				this.setCapabilityValue('measure_voltage.ws90cap', Number(gateway.ws90cap_volt)).catch(this.homey.app.logError);
 			}
 			else if (this.hasCapability('measure_voltage.ws90cap'))
 			{
-				await this.removeCapability('measure_voltage.ws90cap').catch(this.error);
+				await this.removeCapability('measure_voltage.ws90cap').catch(this.homey.app.logError);
 			}
 
 			if (gateway.ws85cap_volt !== undefined)
@@ -567,11 +567,11 @@ class WeatherStationDevice extends Device
 				{
 					await this.addCapability('measure_voltage.ws85cap');
 				}
-				this.setCapabilityValue('measure_voltage.ws85cap', Number(gateway.ws85cap_volt)).catch(this.error);
+				this.setCapabilityValue('measure_voltage.ws85cap', Number(gateway.ws85cap_volt)).catch(this.homey.app.logError);
 			}
 			else if (this.hasCapability('measure_voltage.ws85cap'))
 			{
-				await this.removeCapability('measure_voltage.ws85cap').catch(this.error);
+				await this.removeCapability('measure_voltage.ws85cap').catch(this.homey.app.logError);
 			}
 
 			if (gateway.wh68batt !== undefined)
@@ -580,11 +580,11 @@ class WeatherStationDevice extends Device
 				{
 					await this.addCapability('measure_voltage.wh68');
 				}
-				this.setCapabilityValue('measure_voltage.wh68', Number(gateway.wh68batt)).catch(this.error);
+				this.setCapabilityValue('measure_voltage.wh68', Number(gateway.wh68batt)).catch(this.homey.app.logError);
 			}
 			else if (this.hasCapability('measure_voltage.wh68'))
 			{
-				await this.removeCapability('measure_voltage.wh68').catch(this.error);
+				await this.removeCapability('measure_voltage.wh68').catch(this.homey.app.logError);
 			}
 
 			if (gateway.wh85batt !== undefined)
@@ -593,33 +593,33 @@ class WeatherStationDevice extends Device
 				{
 					await this.addCapability('measure_voltage.wh85');
 				}
-				this.setCapabilityValue('measure_voltage.wh85', Number(gateway.wh85batt)).catch(this.error);
+				this.setCapabilityValue('measure_voltage.wh85', Number(gateway.wh85batt)).catch(this.homey.app.logError);
 			}
 			else if (this.hasCapability('measure_voltage.wh85'))
 			{
-				await this.removeCapability('measure_voltage.wh85').catch(this.error);
+				await this.removeCapability('measure_voltage.wh85').catch(this.homey.app.logError);
 			}
 
             if (gateway.wh65batt)
             {
                 if (this.hasCapability('measure_battery'))
                 {
-					await this.removeCapability('measure_battery').catch(this.error);
+					await this.removeCapability('measure_battery').catch(this.homey.app.logError);
                 }
-                this.setCapabilityValue('alarm_battery', gateway.wh65batt === '1').catch(this.error);
+                this.setCapabilityValue('alarm_battery', gateway.wh65batt === '1').catch(this.homey.app.logError);
             }
             else if (gateway.wh90batt)
             {
                 if (this.hasCapability('alarm_battery'))
                 {
-					await this.removeCapability('alarm_battery').catch(this.error);
+					await this.removeCapability('alarm_battery').catch(this.homey.app.logError);
                 }
                 var batV = Number(gateway.wh90batt);
                 if (batV > 0)
                 {
                     if (!this.hasCapability('measure_battery'))
                     {
-                        await this.addCapability('measure_battery').catch(this.error);
+                        await this.addCapability('measure_battery').catch(this.homey.app.logError);
                     }
 
                     var batteryType = this.getSetting('batteryType');
@@ -642,16 +642,16 @@ class WeatherStationDevice extends Device
                     {
                         batP = 0;
                     }
-                    this.setCapabilityValue('measure_battery', batP).catch(this.error);
+                    this.setCapabilityValue('measure_battery', batP).catch(this.homey.app.logError);
                 }
             }
             else if (gateway.battout)
             {
                 if (this.hasCapability('measure_battery'))
                 {
-					await this.removeCapability('measure_battery').catch(this.error);
+					await this.removeCapability('measure_battery').catch(this.homey.app.logError);
                 }
-                this.setCapabilityValue('alarm_battery', gateway.battout === '0').catch(this.error);
+                this.setCapabilityValue('alarm_battery', gateway.battout === '0').catch(this.homey.app.logError);
             }
 
 			if (temperatureF !== null || relativeHumidity !== undefined)
@@ -692,7 +692,7 @@ class WeatherStationDevice extends Device
 				feelsLike = Math.round(feelsLike * 10 + Number.EPSILON) / 10;
 				if (feelsLike != this.getCapabilityValue('measure_temperature.feelsLike'))
 				{
-					this.setCapabilityValue('measure_temperature.feelsLike', feelsLike).catch(this.error);
+					this.setCapabilityValue('measure_temperature.feelsLike', feelsLike).catch(this.homey.app.logError);
 				}
 
 				// Calculate Dew Point
@@ -712,7 +712,7 @@ class WeatherStationDevice extends Device
 
 				if (dewPoint != this.getCapabilityValue('measure_temperature.dewPoint'))
 				{
-					this.setCapabilityValue('measure_temperature.dewPoint', dewPoint).catch(this.error);
+					this.setCapabilityValue('measure_temperature.dewPoint', dewPoint).catch(this.homey.app.logError);
 				}
 			}
         }

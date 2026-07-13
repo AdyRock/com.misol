@@ -13,7 +13,7 @@ module.exports = class WFC02Driver extends Homey.Driver
 
 	async onInit()
 	{
-		this.log('WFC02 Driver has been initialized');
+		this.homey.app.updateLog('WFC02 Driver has been initialized');
 	}
 
 	async onPairListDevices()

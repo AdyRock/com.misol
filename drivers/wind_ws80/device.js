@@ -18,34 +18,34 @@ class WindWS80Device extends Device
         if (!id)
         {
             const dd = this.getData();
-            this.setSettings({gatewayID: dd.id}).catch(this.error);
+            this.setSettings({gatewayID: dd.id}).catch(this.homey.app.logError);
         }
         this.stationType = this.getSetting('stationType');
 
         if (!this.hasCapability('measure_wind_direction'))
         {
-            await this.addCapability('measure_wind_direction').catch(this.error);
+            await this.addCapability('measure_wind_direction').catch(this.homey.app.logError);
         }
 
         if (!this.hasCapability('measure_luminance'))
         {
-            await this.addCapability('measure_luminance').catch(this.error);
+            await this.addCapability('measure_luminance').catch(this.homey.app.logError);
         }
 
 		if (this.hasCapability('measure_rain'))
 		{
-            await this.removeCapability('measure_rain').catch(this.error);
+            await this.removeCapability('measure_rain').catch(this.homey.app.logError);
 		}
 
 		if (this.hasCapability('measure_rain.rate'))
 		{
-            await this.removeCapability('measure_rain.rate').catch(this.error);
+            await this.removeCapability('measure_rain.rate').catch(this.homey.app.logError);
 		}
 
         this.unitsChanged('SpeedUnits');
 		this.unitsChanged('RainfallUnits');
 
-		this.log('WindWS80Device has been initialized');
+		this.homey.app.updateLog('WindWS80Device has been initialized');
     }
 
     /**
@@ -56,7 +56,7 @@ class WindWS80Device extends Device
 			this.unitsChanged('SpeedUnits');
 			this.unitsChanged('RainfallUnits');
 
-            this.log('WindWS80Device has been added');
+            this.homey.app.updateLog('WindWS80Device has been added');
     }
 
     /**
@@ -76,7 +76,7 @@ class WindWS80Device extends Device
             this.setSetting('gatewayID', dd.id);
         }
 
-        this.log('WindWS80Device settings where changed');
+        this.homey.app.updateLog('WindWS80Device settings where changed');
     }
 
     /**
@@ -86,7 +86,7 @@ class WindWS80Device extends Device
      */
     async onRenamed(name)
     {
-        this.log('WindWS80Device was renamed');
+        this.homey.app.updateLog('WindWS80Device was renamed');
     }
 
     /**
@@ -94,7 +94,7 @@ class WindWS80Device extends Device
      */
     async onDeleted()
     {
-        this.log('WindWS80Device has been deleted');
+        this.homey.app.updateLog('WindWS80Device has been deleted');
     }
 
 	// Merge the new units with the current options
@@ -121,8 +121,8 @@ class WindWS80Device extends Device
 			}
 
 			const combinedOptions = Object.assign(options, newUnits);
-			this.setCapabilityOptions(capability, combinedOptions).catch(this.error);
-			this.setCapabilityValue(capability, null).catch(this.error);
+			this.setCapabilityOptions(capability, combinedOptions).catch(this.homey.app.logError);
+			this.setCapabilityValue(capability, null).catch(this.homey.app.logError);
 		}
 	}
 
@@ -165,7 +165,7 @@ class WindWS80Device extends Device
             if (!this.stationType)
             {
                 this.stationType = gateway.stationtype;
-                this.setSettings({stationType: this.stationType}).catch(this.error);;
+                this.setSettings({stationType: this.stationType}).catch(this.homey.app.logError);;
             }
 
             const temperatureF = Number(gateway.tempf);
@@ -174,18 +174,18 @@ class WindWS80Device extends Device
 
             if (!isNaN(relativeHumidityRaw))
             {
-                this.setCapabilityValue('measure_humidity', relativeHumidityRaw).catch(this.error);
+                this.setCapabilityValue('measure_humidity', relativeHumidityRaw).catch(this.homey.app.logError);
             }
 
             const pressure = Number(gateway.baromrelin);
             if (!isNaN(pressure))
             {
-                this.setCapabilityValue('measure_pressure', pressure * 33.8639).catch(this.error);
+                this.setCapabilityValue('measure_pressure', pressure * 33.8639).catch(this.homey.app.logError);
             }
 
             if (!isNaN(temperatureF))
             {
-                this.setCapabilityValue('measure_temperature', (temperatureF - 32) * 5 / 9).catch(this.error);
+                this.setCapabilityValue('measure_temperature', (temperatureF - 32) * 5 / 9).catch(this.homey.app.logError);
             }
 
             const windGust = Number(gateway.windgustmph);
@@ -195,60 +195,60 @@ class WindWS80Device extends Device
 			if (!isNaN(windSpeed) && ( this.homey.app.SpeedUnits === '0' ))
             {
 				// km/h
-                this.setCapabilityValue('measure_wind_strength', windSpeed * 1.609344).catch(this.error);
+                this.setCapabilityValue('measure_wind_strength', windSpeed * 1.609344).catch(this.homey.app.logError);
                 if (!isNaN(windGust))
                 {
-                    this.setCapabilityValue('measure_gust_strength', windGust * 1.609344).catch(this.error);
+                    this.setCapabilityValue('measure_gust_strength', windGust * 1.609344).catch(this.homey.app.logError);
                 }
                 if (!isNaN(maxDailyGust))
                 {
-                    this.setCapabilityValue('measure_gust_strength.daily', maxDailyGust * 1.609344).catch(this.error);
+                    this.setCapabilityValue('measure_gust_strength.daily', maxDailyGust * 1.609344).catch(this.homey.app.logError);
                 }
             }
             else if (!isNaN(windSpeed) && ( this.homey.app.SpeedUnits === '1' ))
             {
 				// m/s
-                this.setCapabilityValue('measure_wind_strength', (windSpeed * 1.609344) * 1000 / 3600).catch(this.error);
+                this.setCapabilityValue('measure_wind_strength', (windSpeed * 1.609344) * 1000 / 3600).catch(this.homey.app.logError);
                 if (!isNaN(windGust))
                 {
-                    this.setCapabilityValue('measure_gust_strength', (windGust * 1.609344) * 1000 / 3600).catch(this.error);
+                    this.setCapabilityValue('measure_gust_strength', (windGust * 1.609344) * 1000 / 3600).catch(this.homey.app.logError);
                 }
                 if (!isNaN(maxDailyGust))
                 {
-                    this.setCapabilityValue('measure_gust_strength.daily', (maxDailyGust * 1.609344) * 1000 / 3600).catch(this.error);
+                    this.setCapabilityValue('measure_gust_strength.daily', (maxDailyGust * 1.609344) * 1000 / 3600).catch(this.homey.app.logError);
                 }
             }
 			else if (!isNaN(windSpeed) && ( this.homey.app.SpeedUnits === '2' ))
 			{
 				// mph
-				this.setCapabilityValue('measure_wind_strength', windSpeed).catch(this.error);
+				this.setCapabilityValue('measure_wind_strength', windSpeed).catch(this.homey.app.logError);
 				if (!isNaN(windGust))
 				{
-					this.setCapabilityValue('measure_gust_strength', windGust).catch(this.error);
+					this.setCapabilityValue('measure_gust_strength', windGust).catch(this.homey.app.logError);
 				}
 				if (!isNaN(maxDailyGust))
 				{
-					this.setCapabilityValue('measure_gust_strength.daily', maxDailyGust).catch(this.error);
+					this.setCapabilityValue('measure_gust_strength.daily', maxDailyGust).catch(this.homey.app.logError);
 				}
 			}
 			else if (!isNaN(windSpeed) && ( this.homey.app.SpeedUnits === '3' ))
 			{
 				// knots
-				this.setCapabilityValue('measure_wind_strength', windSpeed / 1.15078).catch(this.error);
+				this.setCapabilityValue('measure_wind_strength', windSpeed / 1.15078).catch(this.homey.app.logError);
 				if (!isNaN(windGust))
 				{
-					this.setCapabilityValue('measure_gust_strength', windGust / 1.15078).catch(this.error);
+					this.setCapabilityValue('measure_gust_strength', windGust / 1.15078).catch(this.homey.app.logError);
 				}
 				if (!isNaN(maxDailyGust))
 				{
-					this.setCapabilityValue('measure_gust_strength.daily', maxDailyGust / 1.15078).catch(this.error);
+					this.setCapabilityValue('measure_gust_strength.daily', maxDailyGust / 1.15078).catch(this.homey.app.logError);
 				}
 			}
 
             const windDirection = parseInt(gateway.winddir);
             if (!isNaN(windDirection))
             {
-                this.setCapabilityValue('measure_wind_angle', windDirection).catch(this.error);
+                this.setCapabilityValue('measure_wind_angle', windDirection).catch(this.homey.app.logError);
 
                 const index = Math.max(0, Math.min(16, parseInt(windDirection / 22.5)));
                 let langCode = this.homey.i18n.getLanguage();
@@ -258,7 +258,7 @@ class WindWS80Device extends Device
                     langCode = 'en';
                 }
                 const windDir = Sector[langCode][index];
-                this.setCapabilityValue('measure_wind_direction', windDir).catch(this.error);
+                this.setCapabilityValue('measure_wind_direction', windDir).catch(this.homey.app.logError);
             }
 
             const solarRadiation = Number(gateway.solarradiation);
@@ -266,18 +266,18 @@ class WindWS80Device extends Device
             {
                 if (solarRadiation != this.getCapabilityValue('measure_radiation'))
                 {
-                    this.setCapabilityValue('measure_radiation', solarRadiation).catch(this.error);
+                    this.setCapabilityValue('measure_radiation', solarRadiation).catch(this.homey.app.logError);
                     this.homey.app.measure_radiation_changedTrigger
                         .trigger(this, { measure_radiation: solarRadiation }, { value: solarRadiation })
-                        .catch(this.error);
+                        .catch(this.homey.app.logError);
                 }
-				this.setCapabilityValue('measure_luminance', solarRadiation * 126.7).catch(this.error);
+				this.setCapabilityValue('measure_luminance', solarRadiation * 126.7).catch(this.homey.app.logError);
             }
 
             const uv = Number(gateway.uv);
             if (!isNaN(uv))
             {
-                this.setCapabilityValue('measure_ultraviolet', uv).catch(this.error);
+                this.setCapabilityValue('measure_ultraviolet', uv).catch(this.homey.app.logError);
             }
 
             var batteryType = this.getSetting( 'batteryType' );
@@ -303,7 +303,7 @@ class WindWS80Device extends Device
                 {
                     batP = 0;
                 }
-                this.setCapabilityValue('measure_battery', batP).catch(this.error);
+                this.setCapabilityValue('measure_battery', batP).catch(this.homey.app.logError);
             }
 
 
@@ -345,7 +345,7 @@ class WindWS80Device extends Device
                 temperature = Math.round( temperature * 10 + Number.EPSILON ) / 10;
                 if (temperature != this.getCapabilityValue('measure_temperature.feelsLike'))
                 {
-                    this.setCapabilityValue('measure_temperature.feelsLike', temperature).catch(this.error);
+                    this.setCapabilityValue('measure_temperature.feelsLike', temperature).catch(this.homey.app.logError);
                 }
 
                 let relativeHumidity = relativeHumidityRaw / 100;
@@ -366,7 +366,7 @@ class WindWS80Device extends Device
 
                 if (dewPoint != this.getCapabilityValue('measure_temperature.dewPoint'))
                 {
-                    this.setCapabilityValue('measure_temperature.dewPoint', dewPoint).catch(this.error);
+                    this.setCapabilityValue('measure_temperature.dewPoint', dewPoint).catch(this.homey.app.logError);
                 }
             }
         }

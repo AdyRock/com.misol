@@ -13,13 +13,13 @@ class RainSensorDevice extends Device
         if (!id)
         {
             const dd = this.getData();
-            this.setSettings({gatewayID: dd.id}).catch(this.error);
+            this.setSettings({gatewayID: dd.id}).catch(this.homey.app.logError);
         }
 
 		const ignorePiezo = this.getSetting('ignorePiezo');
 		if (ignorePiezo === undefined)
 		{
-			this.setSettings({ ignorePiezo: false }).catch(this.error);
+			this.setSettings({ ignorePiezo: false }).catch(this.homey.app.logError);
 		}
 
         if (!this.hasCapability('measure_hours_since_rained'))
@@ -42,7 +42,7 @@ class RainSensorDevice extends Device
 
 		this.unitsChanged('RainfallUnits');
 
-		this.log('RainSensorDevice has been initialized');
+		this.homey.app.updateLog('RainSensorDevice has been initialized');
     }
 
     /**
@@ -51,7 +51,7 @@ class RainSensorDevice extends Device
     async onAdded()
     {
 		this.unitsChanged('RainfallUnits');
-        this.log('RainSensorDevice has been added');
+        this.homey.app.updateLog('RainSensorDevice has been added');
     }
 
     /**
@@ -64,7 +64,7 @@ class RainSensorDevice extends Device
      */
     async onSettings({ oldSettings, newSettings, changedKeys })
     {
-        this.log('RainSensorDevice settings where changed');
+        this.homey.app.updateLog('RainSensorDevice settings where changed');
     }
 
     /**
@@ -74,7 +74,7 @@ class RainSensorDevice extends Device
      */
     async onRenamed(name)
     {
-        this.log('RainSensorDevice was renamed');
+        this.homey.app.updateLog('RainSensorDevice was renamed');
     }
 
     /**
@@ -82,7 +82,7 @@ class RainSensorDevice extends Device
      */
     async onDeleted()
     {
-        this.log('RainSensorDevice has been deleted');
+        this.homey.app.updateLog('RainSensorDevice has been deleted');
     }
 
 	// Merge the new units with the current options
@@ -109,8 +109,8 @@ class RainSensorDevice extends Device
 			}
 
 			const combinedOptions = Object.assign(options, newUnits);
-			this.setCapabilityOptions(capability, combinedOptions).catch(this.error);
-			this.setCapabilityValue(capability, null).catch(this.error);
+			this.setCapabilityOptions(capability, combinedOptions).catch(this.homey.app.logError);
+			this.setCapabilityValue(capability, null).catch(this.homey.app.logError);
 		}
 	}
 
@@ -155,7 +155,7 @@ class RainSensorDevice extends Device
             if (!this.stationType)
             {
                 this.stationType = gateway.stationtype;
-                this.setSettings({stationType: this.stationType}).catch(this.error);
+                this.setSettings({stationType: this.stationType}).catch(this.homey.app.logError);
             }
 
 			const ignorePiezo = this.getSetting('ignorePiezo');
@@ -197,7 +197,7 @@ class RainSensorDevice extends Device
 						await this.addCapability('alarm_rain');
 					}
 
-					this.setCapabilityValue('alarm_rain', gateway.srain_piezo === '1').catch(this.error);
+					this.setCapabilityValue('alarm_rain', gateway.srain_piezo === '1').catch(this.homey.app.logError);
 				}
 			}
 			else if (gateway.eventrainin !== undefined)
@@ -225,14 +225,14 @@ class RainSensorDevice extends Device
 				let rain = Number(totalrainin) * rainConversion;
 				if (rain != this.getCapabilityValue('measure_rain.total'))
 				{
-					this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
+					this.setCapabilityValue('measure_rain.total', rain).catch(this.homey.app.logError);
 				}
 			}
 			else
 			{
 				if (this.hasCapability('measure_rain.total'))
 				{
-					await this.removeCapability('measure_rain.total').catch(this.error);
+					await this.removeCapability('measure_rain.total').catch(this.homey.app.logError);
 				}
 			}
 
@@ -250,70 +250,70 @@ class RainSensorDevice extends Device
 				}
 
 				let rain = Number(rainratein) * rainConversion;
-				this.setCapabilityValue('measure_rain.rate', rain).catch(this.error);
+				this.setCapabilityValue('measure_rain.rate', rain).catch(this.homey.app.logError);
 
 				if (rain > 0)
 				{
 					const now = new Date(Date.now());
 					this.lastRained = now.getTime();
 					this.homey.settings.set('lastRainedTime', this.lastRained);
-					this.setCapabilityValue('measure_hours_since_rained', 0).catch(this.error);
+					this.setCapabilityValue('measure_hours_since_rained', 0).catch(this.homey.app.logError);
 				}
 				else
 				{
 					const now = new Date(Date.now());
 					const diff = now.getTime() - this.lastRained;
 					const noRainHours = Math.floor(diff / 1000 / 60 / 60);
-					this.setCapabilityValue('measure_hours_since_rained', noRainHours).catch(this.error);
+					this.setCapabilityValue('measure_hours_since_rained', noRainHours).catch(this.homey.app.logError);
 				}
 			}
 			else
 			{
 				if (this.hasCapability('measure_rain.rate'))
 				{
-					await this.removeCapability('measure_rain.rate').catch(this.error);
+					await this.removeCapability('measure_rain.rate').catch(this.homey.app.logError);
 				}
 				if (this.hasCapability('measure_hours_since_rained'))
 				{
-					await this.removeCapability('measure_hours_since_rained').catch(this.error);
+					await this.removeCapability('measure_hours_since_rained').catch(this.homey.app.logError);
 				}
 			}
 
 			rain = Number(eventrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.event'))
             {
-                this.setCapabilityValue('measure_rain.event', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.event', rain).catch(this.homey.app.logError);
                 //this.driver.trigger_measure_rain_event(this, rain);
             }
 
 			rain = Number(hourlyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.hourly'))
             {
-                this.setCapabilityValue('measure_rain.hourly', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.hourly', rain).catch(this.homey.app.logError);
             }
 
 			rain = Number(dailyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.daily'))
             {
-                this.setCapabilityValue('measure_rain.daily', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.daily', rain).catch(this.homey.app.logError);
             }
 
 			rain = Number(weeklyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.weekly'))
             {
-                this.setCapabilityValue('measure_rain.weekly', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.weekly', rain).catch(this.homey.app.logError);
             }
 
 			rain = Number(monthlyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.monthly'))
             {
-                this.setCapabilityValue('measure_rain.monthly', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.monthly', rain).catch(this.homey.app.logError);
             }
 
 			rain = Number(yearlyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.yearly'))
             {
-                this.setCapabilityValue('measure_rain.yearly', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.yearly', rain).catch(this.homey.app.logError);
             }
 
             if (this.hasCapability('measure_rain.total'))
@@ -321,14 +321,14 @@ class RainSensorDevice extends Device
 				rain = Number(totalrainin) * rainConversion
 				if (rain != this.getCapabilityValue('measure_rain.total'))
 				{
-					this.setCapabilityValue('measure_rain.total', rain).catch(this.error);
+					this.setCapabilityValue('measure_rain.total', rain).catch(this.homey.app.logError);
 				}
 			}
 
 			rain = Number(dailyrainin) * rainConversion;
             if (rain != this.getCapabilityValue('measure_rain.daily'))
             {
-                this.setCapabilityValue('measure_rain.daily', rain).catch(this.error);
+                this.setCapabilityValue('measure_rain.daily', rain).catch(this.homey.app.logError);
             }
 
 			if ((gateway.wh40batt !== undefined) || (gateway.wn20batt !== undefined))
@@ -354,7 +354,7 @@ class RainSensorDevice extends Device
 				{
 					batP = 0;
 				}
-				this.setCapabilityValue('measure_battery', batP).catch(this.error);
+				this.setCapabilityValue('measure_battery', batP).catch(this.homey.app.logError);
 			}
         }
     }

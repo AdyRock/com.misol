@@ -9,7 +9,7 @@ class MyDriver extends Driver
      */
     async onInit()
     {
-        this.log('MyDriver has been initialized');
+        this.homey.app.updateLog('MyDriver has been initialized');
     }
 
     /**

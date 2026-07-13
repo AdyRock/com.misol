@@ -9,7 +9,7 @@ class LeakDriver extends Driver
      */
     async onInit()
     {
-        this.log('LeakDriver has been initialized');
+        this.homey.app.updateLog('LeakDriver has been initialized');
     }
 
     /**

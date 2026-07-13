@@ -26,7 +26,7 @@ class CO2Device extends Device
         }
         this.stationType = this.getSetting('stationType');
 
-        this.log('CO2 has been initialized');
+        this.homey.app.updateLog('CO2 has been initialized');
     }
 
     /**
@@ -34,7 +34,7 @@ class CO2Device extends Device
      */
     async onAdded()
     {
-		this.log('CO2 has been added');
+		this.homey.app.updateLog('CO2 has been added');
     }
 
     /**
@@ -47,7 +47,7 @@ class CO2Device extends Device
      */
     async onSettings({ oldSettings, newSettings, changedKeys })
     {
-        this.log('CO2 settings where changed');
+        this.homey.app.updateLog('CO2 settings where changed');
     }
 
     /**
@@ -57,7 +57,7 @@ class CO2Device extends Device
      */
     async onRenamed(name)
     {
-        this.log('CO2 was renamed');
+        this.homey.app.updateLog('CO2 was renamed');
     }
 
     /**
@@ -65,7 +65,7 @@ class CO2Device extends Device
      */
     async onDeleted()
     {
-        this.log('CO2 has been deleted');
+        this.homey.app.updateLog('CO2 has been deleted');
     }
 
     async updateCapabilities(gateway)
@@ -76,8 +76,8 @@ class CO2Device extends Device
 			let co2 = parseInt(gateway.co2in);
             if (!isNaN(co2))
             {
-                this.setCapabilityValue('measure_co2', co2).catch(this.error);
-                this.setCapabilityValue('alarm_co2', (co2 > 1200)).catch(this.error);
+                this.setCapabilityValue('measure_co2', co2).catch(this.homey.app.logError);
+                this.setCapabilityValue('alarm_co2', (co2 > 1200)).catch(this.homey.app.logError);
 
                 let tableIdx = Co2QTable.findIndex( entry => entry.ConcHi > co2);
                 if (tableIdx < 0)
@@ -88,7 +88,7 @@ class CO2Device extends Device
                 let aqText = this.homey.__(Co2QTable[ tableIdx ].name);
                 if (aqText !== this.getCapabilityValue('measure_co2_quality'))
                 {
-                    this.setCapabilityValue('measure_co2_quality', aqText).catch(this.error);
+                    this.setCapabilityValue('measure_co2_quality', aqText).catch(this.homey.app.logError);
 
                     const tokens = {
                         "measure_aq_name": aqText,
@@ -106,7 +106,7 @@ class CO2Device extends Device
 			let co2avg = parseInt(gateway.co2in_24h);
             if (!isNaN(co2avg))
             {
-                this.setCapabilityValue('measure_co2.avg', co2avg).catch(this.error);
+                this.setCapabilityValue('measure_co2.avg', co2avg).catch(this.homey.app.logError);
 
                 let tableIdx = Co2QTable.findIndex( entry => entry.ConcHi > co2avg);
                 if (tableIdx < 0)
@@ -117,7 +117,7 @@ class CO2Device extends Device
                 let aqText = this.homey.__(Co2QTable[ tableIdx ].name);
                 if (aqText !== this.getCapabilityValue('measure_co2_quality.avg'))
                 {
-                    this.setCapabilityValue('measure_co2_quality.avg', aqText).catch(this.error);
+                    this.setCapabilityValue('measure_co2_quality.avg', aqText).catch(this.homey.app.logError);
 
                     const tokens = {
                         "measure_aq_name": aqText,

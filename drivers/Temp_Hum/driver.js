@@ -9,7 +9,7 @@ class TempHumDriver extends Driver
      */
     async onInit()
     {
-        this.log('TempHumDriver has been initialized');
+        this.homey.app.updateLog('TempHumDriver has been initialized');
     }
 
     /**

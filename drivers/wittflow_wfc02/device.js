@@ -43,6 +43,22 @@ function firstNumber(status, keys)
 	return null;
 }
 
+function summarizeControlStatus(status)
+{
+	if (!status || typeof status !== 'object')
+	{
+		return 'no status payload';
+	}
+
+	return JSON.stringify({
+		model: status.model,
+		water_status: status.water_status,
+		iot_running: status.iot_running,
+		wfc02_position: status.wfc02_position,
+		warning: status.warning,
+	});
+}
+
 module.exports = class WFC02Device extends Homey.Device
 {
 
@@ -83,12 +99,12 @@ module.exports = class WFC02Device extends Homey.Device
 			...this.getData(),
 			model: parsedModel,
 		});
-		this.log(`WFC02 model updated to ${parsedModel}`);
+		this.homey.app.updateLog(`WFC02 model updated to ${parsedModel}`);
 	}
 
 	async onInit()
 	{
-		this.log('WFC02 Device has been initialized');
+		this.homey.app.updateLog('WFC02 Device has been initialized');
 		this.isDeleted = false;
 
 		this.registerCapabilityListener('onoff', this.onOnOff.bind(this));
@@ -101,7 +117,7 @@ module.exports = class WFC02Device extends Homey.Device
 
 	async onDeleted()
 	{
-		this.log('WFC02 Device has been deleted');
+		this.homey.app.updateLog('WFC02 Device has been deleted');
 		this.isDeleted = true;
 		if (this.updateTimer)
 		{
@@ -118,7 +134,7 @@ module.exports = class WFC02Device extends Homey.Device
 		}
 		catch (warningError)
 		{
-			this.error('Failed to set device warning:', warningError);
+			this.homey.app.logError('Failed to set device warning:', warningError);
 		}
 	}
 
@@ -130,13 +146,41 @@ module.exports = class WFC02Device extends Homey.Device
 		}
 		catch (warningError)
 		{
-			this.error('Failed to clear device warning:', warningError);
+			this.homey.app.logError('Failed to clear device warning:', warningError);
+		}
+	}
+
+	async logControlStatus(label, address, model, id)
+	{
+		try
+		{
+			const data = await this.homey.app.getIOTDeviceStatus(address, model, id);
+			const status = Array.isArray(data?.command) ? data.command[0] : null;
+			this.homey.app.updateLog(`WFC02 ${label} status: ${summarizeControlStatus(status)}`);
+		}
+		catch (error)
+		{
+			this.homey.app.logError(`Failed to read WFC02 ${label} status:`, error);
 		}
 	}
 
 	async onOnOff(value)
 	{
-		await this.homey.app.setIOTDeviceOnOff(this.getSettings().address, this.getDeviceModel(), this.getData().id, value);
+		const address = this.getSettings().address;
+		const model = this.getDeviceModel();
+		const id = this.getData().id;
+
+		this.homey.app.updateLog(`Sending WFC02 on/off command: value=${value}, model=${model}, id=${id}, address=${address}`);
+		await this.homey.app.setIOTDeviceOnOff(address, model, id, value);
+		await this.logControlStatus('immediate post-command', address, model, id);
+
+		if (!this.isDeleted)
+		{
+			this.homey.setTimeout(() =>
+			{
+				this.logControlStatus('delayed post-command', address, model, id).catch(this.homey.app.logError);
+			}, 3000);
+		}
 	}
 
 	async refreshAddressFromIOTList()
@@ -157,7 +201,7 @@ module.exports = class WFC02Device extends Homey.Device
 		if (changed)
 		{
 			await this.setSettings({ address: foundDevice.gatewayIP });
-			this.log(`WFC02 IP updated from ${currentAddress} to ${foundDevice.gatewayIP}`);
+			this.homey.app.updateLog(`WFC02 IP updated from ${currentAddress} to ${foundDevice.gatewayIP}`);
 		}
 
 		const nextModel = Number.isFinite(foundDevice.model) ? foundDevice.model : currentData.model;
@@ -237,11 +281,11 @@ module.exports = class WFC02Device extends Homey.Device
 
 				this.homey.app.measure_valve_position_changedTrigger
 					?.trigger(this, { measure_valve_position: normalizedValvePosition }, { value: normalizedValvePosition })
-					.catch(this.error);
+					.catch(this.homey.app.logError);
 
 				this.homey.app.measure_valve_position_threshold_changedTrigger
 					?.trigger(this, { measure_valve_position: normalizedValvePosition }, { value: normalizedValvePosition })
-					.catch(this.error);
+					.catch(this.homey.app.logError);
 			}
 		}
 
@@ -295,13 +339,13 @@ module.exports = class WFC02Device extends Homey.Device
 				catch (rediscoveryError)
 				{
 					nextPollMs = BACKOFF_POLL_MS;
-					this.error('Failed to rediscover WFC02 address:', rediscoveryError);
+					this.homey.app.logError('Failed to rediscover WFC02 address:', rediscoveryError);
 					await this.setDeviceWarning('Device unreachable and address check failed. Retrying in 2 minutes.');
 				}
 			}
 			else
 			{
-				this.error('Failed to update WFC02 status:', error);
+				this.homey.app.logError('Failed to update WFC02 status:', error);
 				await this.setDeviceWarning(`Failed to update device status ${error.message}`);
 			}
 		}

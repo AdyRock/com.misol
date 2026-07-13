@@ -13,7 +13,7 @@ class MyDevice extends Device
         if (!id)
         {
             const dd = this.getData();
-            this.setSettings({gatewayID: dd.id}).catch(this.error);;
+            this.setSettings({gatewayID: dd.id}).catch(this.homey.app.logError);;
         }
         this.stationType = this.getSetting('stationType');
 
@@ -25,10 +25,10 @@ class MyDevice extends Device
                     nl: 'Bodemtemperatuur',
                     de: 'Bodentemperatur'
                 }
-            }).catch(this.error);
+            }).catch(this.homey.app.logError);
         }
 
-        this.log('MyDevice has been initialized');
+        this.homey.app.updateLog('MyDevice has been initialized');
     }
 
     /**
@@ -36,7 +36,7 @@ class MyDevice extends Device
      */
     async onAdded()
     {
-        this.log('MyDevice has been added');
+        this.homey.app.updateLog('MyDevice has been added');
     }
 
     /**
@@ -49,7 +49,7 @@ class MyDevice extends Device
      */
     async onSettings({ oldSettings, newSettings, changedKeys })
     {
-        this.log('MyDevice settings where changed');
+        this.homey.app.updateLog('MyDevice settings where changed');
     }
 
     /**
@@ -59,7 +59,7 @@ class MyDevice extends Device
      */
     async onRenamed(name)
     {
-        this.log('MyDevice was renamed');
+        this.homey.app.updateLog('MyDevice was renamed');
     }
 
     /**
@@ -67,7 +67,7 @@ class MyDevice extends Device
      */
     async onDeleted()
     {
-        this.log('MyDevice has been deleted');
+        this.homey.app.updateLog('MyDevice has been deleted');
     }
 
     async updateCapabilities(gateway)
@@ -80,23 +80,23 @@ class MyDevice extends Device
             if (!this.stationType)
             {
                 this.stationType = gateway.stationtype;
-                this.setSettings({stationType: this.stationType}).catch(this.error);;
+                this.setSettings({stationType: this.stationType}).catch(this.homey.app.logError);;
             }
 
             // Remove new-style capabilities if they exist
             if (this.hasCapability('measure_temperature'))
             {
-                await this.removeCapability('measure_temperature').catch(this.error);
+                await this.removeCapability('measure_temperature').catch(this.homey.app.logError);
             }
             if (this.hasCapability('measure_ec'))
             {
-                await this.removeCapability('measure_ec').catch(this.error);
+                await this.removeCapability('measure_ec').catch(this.homey.app.logError);
             }
 
             const moisture = parseInt(gateway['soilmoisture' + dd.meterNumber]);
             if (moisture != this.getCapabilityValue('measure_moisture'))
             {
-                this.setCapabilityValue('measure_moisture', moisture).catch(this.error);
+                this.setCapabilityValue('measure_moisture', moisture).catch(this.homey.app.logError);
             }
 
             var batteryType = this.getSetting( 'batteryType' );
@@ -120,7 +120,7 @@ class MyDevice extends Device
             {
                 batP = 0;
             }
-            this.setCapabilityValue('measure_battery', batP).catch(this.error);
+            this.setCapabilityValue('measure_battery', batP).catch(this.homey.app.logError);
         }
 
         // Check for new-style soil sensor (WH52 - soil_ec_hum + soil_ec_temp + soil_ec + soil_ec_batt)
@@ -129,51 +129,51 @@ class MyDevice extends Device
             if (!this.stationType)
             {
                 this.stationType = gateway.stationtype;
-                this.setSettings({stationType: this.stationType}).catch(this.error);;
+                this.setSettings({stationType: this.stationType}).catch(this.homey.app.logError);;
             }
 
             // Add new-style capabilities if they don't exist
             if (!this.hasCapability('measure_temperature'))
             {
-                await this.addCapability('measure_temperature').catch(this.error);
+                await this.addCapability('measure_temperature').catch(this.homey.app.logError);
                 await this.setCapabilityOptions('measure_temperature', {
                     title: {
                         en: 'Soil Temperature',
                         nl: 'Bodemtemperatuur',
                         de: 'Bodentemperatur'
                     }
-                }).catch(this.error);
+                }).catch(this.homey.app.logError);
             }
             if (!this.hasCapability('measure_ec'))
             {
-                await this.addCapability('measure_ec').catch(this.error);
+                await this.addCapability('measure_ec').catch(this.homey.app.logError);
             }
 
             // Soil Moisture from soil_ec_humX
             const moisture = parseInt(gateway['soil_ec_hum' + dd.meterNumber]);
             if (moisture != this.getCapabilityValue('measure_moisture'))
             {
-                this.setCapabilityValue('measure_moisture', moisture).catch(this.error);
+                this.setCapabilityValue('measure_moisture', moisture).catch(this.homey.app.logError);
             }
 
-            // Soil Temperature from soil_ec_tempX (convert from °F to °C)
+            // Soil Temperature from soil_ec_tempX (convert from Ã‚Â°F to Ã‚Â°C)
             if (gateway['soil_ec_temp' + dd.meterNumber] !== undefined)
             {
                 const tempF = Number(gateway['soil_ec_temp' + dd.meterNumber]);
                 const tempC = (tempF - 32) * 5 / 9;
                 if (tempC != this.getCapabilityValue('measure_temperature'))
                 {
-                    this.setCapabilityValue('measure_temperature', Math.round(tempC * 100) / 100).catch(this.error);
+                    this.setCapabilityValue('measure_temperature', Math.round(tempC * 100) / 100).catch(this.homey.app.logError);
                 }
             }
 
-            // Soil EC from soil_ecX (electrical conductivity in μS/cm)
+            // Soil EC from soil_ecX (electrical conductivity in ÃŽÂ¼S/cm)
             if (gateway['soil_ec' + dd.meterNumber] !== undefined)
             {
                 const ec = Number(gateway['soil_ec' + dd.meterNumber]);
                 if (ec != this.getCapabilityValue('measure_ec'))
                 {
-                    this.setCapabilityValue('measure_ec', ec).catch(this.error);
+                    this.setCapabilityValue('measure_ec', ec).catch(this.homey.app.logError);
                 }
             }
 
@@ -199,7 +199,7 @@ class MyDevice extends Device
             {
                 batP = 0;
             }
-            this.setCapabilityValue('measure_battery', batP).catch(this.error);
+            this.setCapabilityValue('measure_battery', batP).catch(this.homey.app.logError);
         }
     }
 }

@@ -9,7 +9,7 @@ class LightningDriver extends Driver
      */
     async onInit()
     {
-        this.log('Lightning Driver has been initialized');
+        this.homey.app.updateLog('Lightning Driver has been initialized');
     }
 
     /**

@@ -10,7 +10,7 @@ class CameraDriver extends Driver
      */
     async onInit()
     {
-        this.log('MyDriver has been initialized');
+		this.homey.app.updateLog('CameraDriver has been initialized');
         this.snapshotReadyTrigger = this.homey.flow.getDeviceTriggerCard('snapshotReadyTrigger');
 
     }

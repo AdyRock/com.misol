@@ -9,17 +9,17 @@ class PM25Driver extends Driver
      */
     async onInit()
     {
-        this.log('PM25Driver has been initialized');
+        this.homey.app.updateLog('PM25Driver has been initialized');
     }
 
     async triggerAQChanged(device, tokens, state)
     {
-		this.homey.app.measure_aq25_changedTrigger.trigger(device, tokens, state).catch(this.error);
+		this.homey.app.measure_aq25_changedTrigger.trigger(device, tokens, state).catch(this.homey.app.logError);
     }
 
     async triggerAQAvgChanged(device, tokens, state)
     {
-		this.homey.app.measure_aq25_avg_changedTrigger.trigger(device, tokens, state).catch(this.error);
+		this.homey.app.measure_aq25_avg_changedTrigger.trigger(device, tokens, state).catch(this.homey.app.logError);
     }
 
     /**

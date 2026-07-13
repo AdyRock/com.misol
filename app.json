@@ -4898,6 +4898,70 @@
     },
     {
       "name": {
+        "en": "Soil Moisture 2",
+        "nl": "Bodemvocht 2",
+        "de": "Bodenfeuchte-Messer 2"
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "class": "sensor",
+      "capabilities": [
+        "measure_moisture",
+        "measure_temperature",
+        "measure_ec"
+      ],
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "id": "gatewayID",
+          "type": "label",
+          "label": {
+            "en": "Gateway ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the ID of the gateway.",
+            "de": "Zeigt die ID des Gateways."
+          }
+        },
+        {
+          "id": "stationType",
+          "type": "label",
+          "label": {
+            "en": "Station Type",
+            "de": "Stationstyp"
+          },
+          "value": "",
+          "hint": {
+            "en": "Shows the type of gateway.",
+            "de": "Zeigt den Stationstyp"
+          }
+        }
+      ],
+      "images": {
+        "small": "/drivers/soil_moisture/assets/images/small.png",
+        "large": "/drivers/soil_moisture/assets/images/large.png"
+      },
+      "id": "soil_moisture2"
+    },
+    {
+      "name": {
         "en": "Weather Station",
         "nl": "Weerstation",
         "de": "Wetterstation"

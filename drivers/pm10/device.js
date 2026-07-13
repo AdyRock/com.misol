@@ -55,7 +55,7 @@ class PM10Device extends Device
             this.addCapability('measure_aq.pm10_avg');
         }
 
-        this.log('PM10 has been initialized');
+        this.homey.app.updateLog('PM10 has been initialized');
     }
 
     /**
@@ -63,7 +63,7 @@ class PM10Device extends Device
      */
     async onAdded()
     {
-        this.log('PM10 has been added');
+        this.homey.app.updateLog('PM10 has been added');
     }
 
     /**
@@ -76,7 +76,7 @@ class PM10Device extends Device
      */
     async onSettings({ oldSettings, newSettings, changedKeys })
     {
-        this.log('PM10 settings where changed');
+        this.homey.app.updateLog('PM10 settings where changed');
     }
 
     /**
@@ -86,7 +86,7 @@ class PM10Device extends Device
      */
     async onRenamed(name)
     {
-        this.log('PM10 was renamed');
+        this.homey.app.updateLog('PM10 was renamed');
     }
 
     /**
@@ -94,7 +94,7 @@ class PM10Device extends Device
      */
     async onDeleted()
     {
-        this.log('PM10 has been deleted');
+        this.homey.app.updateLog('PM10 has been deleted');
     }
 
     async updateCapabilities(gateway)
@@ -105,14 +105,14 @@ class PM10Device extends Device
             if (!this.stationType)
             {
                 this.stationType = gateway.stationtype;
-                this.setSettings({stationType: this.stationType}).catch(this.error);;
+                this.setSettings({stationType: this.stationType}).catch(this.homey.app.logError);;
             }
 
             let co2 = parseInt(gateway.co2);
             if (!isNaN(co2))
             {
-                this.setCapabilityValue('measure_co2', co2).catch(this.error);
-                this.setCapabilityValue('alarm_co2', (co2 > 1200)).catch(this.error);
+                this.setCapabilityValue('measure_co2', co2).catch(this.homey.app.logError);
+                this.setCapabilityValue('alarm_co2', (co2 > 1200)).catch(this.homey.app.logError);
 
                 let tableIdx = Co2QTable.findIndex( entry => entry.ConcHi > co2);
                 if (tableIdx < 0)
@@ -123,7 +123,7 @@ class PM10Device extends Device
                 let aqText = this.homey.__(Co2QTable[ tableIdx ].name);
                 if (aqText !== this.getCapabilityValue('measure_co2_quality'))
                 {
-                    this.setCapabilityValue('measure_co2_quality', aqText).catch(this.error);
+                    this.setCapabilityValue('measure_co2_quality', aqText).catch(this.homey.app.logError);
 
                     const tokens = {
                         "measure_aq_name": aqText,
@@ -141,7 +141,7 @@ class PM10Device extends Device
             let co2avg = parseInt(gateway.co2_24h);
             if (!isNaN(co2avg))
             {
-                this.setCapabilityValue('measure_co2.avg', co2avg).catch(this.error);
+                this.setCapabilityValue('measure_co2.avg', co2avg).catch(this.homey.app.logError);
 
                 let tableIdx = Co2QTable.findIndex( entry => entry.ConcHi > co2avg);
                 if (tableIdx < 0)
@@ -152,7 +152,7 @@ class PM10Device extends Device
                 let aqText = this.homey.__(Co2QTable[ tableIdx ].name);
                 if (aqText !== this.getCapabilityValue('measure_co2_quality.avg'))
                 {
-                    this.setCapabilityValue('measure_co2_quality.avg', aqText).catch(this.error);
+                    this.setCapabilityValue('measure_co2_quality.avg', aqText).catch(this.homey.app.logError);
 
                     const tokens = {
                         "measure_aq_name": aqText,
@@ -170,13 +170,13 @@ class PM10Device extends Device
             const pm10 = parseInt(gateway.pm10_co2);
             if (!isNaN(pm10))
             {
-                this.setCapabilityValue('measure_pm10', pm10).catch(this.error);
-                this.setCapabilityValue('alarm_pm10', (pm10 > 255)).catch(this.error);
+                this.setCapabilityValue('measure_pm10', pm10).catch(this.homey.app.logError);
+                this.setCapabilityValue('alarm_pm10', (pm10 > 255)).catch(this.homey.app.logError);
 
                 const pm10Avg = parseInt(gateway.pm10_24h_co2);
                 if (!isNaN(pm10Avg))
                 {
-                    this.setCapabilityValue('measure_pm10.avg', pm10Avg).catch(this.error);
+                    this.setCapabilityValue('measure_pm10.avg', pm10Avg).catch(this.homey.app.logError);
                 }
 
                 // Calculate PM10 AQI
@@ -188,11 +188,11 @@ class PM10Device extends Device
 
                 let AQI = ((AQITablePM10[ tableIdx ].AQIhi - AQITablePM10[ tableIdx ].AQIlo) / (AQITablePM10[ tableIdx ].ConcHi - AQITablePM10[ tableIdx ].ConcLo)) * (pm10 - AQITablePM10[ tableIdx ].ConcLo)  + AQITablePM10[ tableIdx ].AQIlo;
 
-                this.setCapabilityValue('measure_aqi.pm10', AQI).catch(this.error);
+                this.setCapabilityValue('measure_aqi.pm10', AQI).catch(this.homey.app.logError);
                 let aqText = this.homey.__(AQITablePM10[ tableIdx ].name);
                 if (aqText !== this.getCapabilityValue('measure_aq.pm10'))
                 {
-                    this.setCapabilityValue('measure_aq.pm10', aqText).catch(this.error);
+                    this.setCapabilityValue('measure_aq.pm10', aqText).catch(this.homey.app.logError);
 
                     const tokens = {
                         "measure_aq.pm10_name": aqText,
@@ -216,11 +216,11 @@ class PM10Device extends Device
 
                     AQI = ((AQITablePM10[ tableIdx ].AQIhi - AQITablePM10[ tableIdx ].AQIlo) / (AQITablePM10[ tableIdx ].ConcHi - AQITablePM10[ tableIdx ].ConcLo)) * (pm10Avg - AQITablePM10[ tableIdx ].ConcLo)  + AQITablePM10[ tableIdx ].AQIlo;
 
-                    this.setCapabilityValue('measure_aqi.pm10_avg', AQI).catch(this.error);
+                    this.setCapabilityValue('measure_aqi.pm10_avg', AQI).catch(this.homey.app.logError);
                     aqText = this.homey.__(AQITablePM10[ tableIdx ].name);
                     if (aqText !== this.getCapabilityValue('measure_aq.pm10_avg'))
                     {
-                        this.setCapabilityValue('measure_aq.pm10_avg', aqText).catch(this.error);
+                        this.setCapabilityValue('measure_aq.pm10_avg', aqText).catch(this.homey.app.logError);
 
                         const tokens = {
                             "measure_aq.pm10_name": aqText,
@@ -240,8 +240,8 @@ class PM10Device extends Device
             const pm25 = parseInt(gateway.pm25_co2);
             if (!isNaN(pm25))
             {
-                this.setCapabilityValue('measure_pm25', pm25).catch(this.error);
-                this.setCapabilityValue('alarm_pm25', (pm25 > 56)).catch(this.error);
+                this.setCapabilityValue('measure_pm25', pm25).catch(this.homey.app.logError);
+                this.setCapabilityValue('alarm_pm25', (pm25 > 56)).catch(this.homey.app.logError);
 
                 // Calculate PM2.5 AQI
                 let tableIdx = AQITablePM25.findIndex( entry => entry.ConcHi > pm25);
@@ -252,11 +252,11 @@ class PM10Device extends Device
 
                 let AQI = ((AQITablePM25[ tableIdx ].AQIhi - AQITablePM25[ tableIdx ].AQIlo) / (AQITablePM25[ tableIdx ].ConcHi - AQITablePM25[ tableIdx ].ConcLo)) * (pm25 - AQITablePM25[ tableIdx ].ConcLo)  + AQITablePM25[ tableIdx ].AQIlo;
 
-                this.setCapabilityValue('measure_aqi', AQI).catch(this.error);
+                this.setCapabilityValue('measure_aqi', AQI).catch(this.homey.app.logError);
                 let aqText = this.homey.__(AQITablePM25[ tableIdx ].name);
                 if (aqText !== this.getCapabilityValue('measure_aq'))
                 {
-                    this.setCapabilityValue('measure_aq', aqText).catch(this.error);
+                    this.setCapabilityValue('measure_aq', aqText).catch(this.homey.app.logError);
 
                     const tokens = {
                         "measure_aq_name": aqText,
@@ -276,7 +276,7 @@ class PM10Device extends Device
             if (!isNaN(pm25Avg))
             {
                 // Calculate AQI Avg
-                this.setCapabilityValue('measure_pm25.avg', pm25Avg).catch(this.error);
+                this.setCapabilityValue('measure_pm25.avg', pm25Avg).catch(this.homey.app.logError);
 
                 let tableIdx = AQITablePM25.findIndex( entry => entry.ConcHi > pm25Avg);
                 if (tableIdx < 0)
@@ -286,11 +286,11 @@ class PM10Device extends Device
 
                 let AQI = ((AQITablePM25[ tableIdx ].AQIhi - AQITablePM25[ tableIdx ].AQIlo) / (AQITablePM25[ tableIdx ].ConcHi - AQITablePM25[ tableIdx ].ConcLo)) * (pm25Avg - AQITablePM25[ tableIdx ].ConcLo)  + AQITablePM25[ tableIdx ].AQIlo;
 
-                this.setCapabilityValue('measure_aqi.avg', AQI).catch(this.error);
+                this.setCapabilityValue('measure_aqi.avg', AQI).catch(this.homey.app.logError);
                 let aqText = this.homey.__(AQITablePM25[ tableIdx ].name);
                 if (aqText !== this.getCapabilityValue('measure_aq.avg'))
                 {
-                    this.setCapabilityValue('measure_aq.avg', aqText).catch(this.error);
+                    this.setCapabilityValue('measure_aq.avg', aqText).catch(this.homey.app.logError);
 
                     const tokens = {
                         "measure_aq_name": aqText,
@@ -304,8 +304,8 @@ class PM10Device extends Device
                     this.driver.triggerAQPM25AvgChanged(this, tokens, state);
                 }
 
-                this.setCapabilityValue('measure_temperature', (Number(gateway.tf_co2) -32) * 5 / 9).catch(this.error);
-                this.setCapabilityValue('measure_humidity', parseInt(gateway.humi_co2)).catch(this.error);
+                this.setCapabilityValue('measure_temperature', (Number(gateway.tf_co2) -32) * 5 / 9).catch(this.homey.app.logError);
+                this.setCapabilityValue('measure_humidity', parseInt(gateway.humi_co2)).catch(this.homey.app.logError);
             }
 
             // The battery level appears to be 0 to 5 in steps of 1 representing the bar to light up, a value of 6 indicates it is plugged int to a PSU
@@ -315,14 +315,14 @@ class PM10Device extends Device
                 if (bat > 5)
                 {
                     // On DC power
-                    this.setCapabilityValue('alarm_power', false).catch(this.error);
-                    this.setCapabilityValue('measure_battery', null).catch(this.error);
+                    this.setCapabilityValue('alarm_power', false).catch(this.homey.app.logError);
+                    this.setCapabilityValue('measure_battery', null).catch(this.homey.app.logError);
                 }
                 else
                 {
                     // Running on battery
-                    this.setCapabilityValue('alarm_power', true).catch(this.error);
-                    this.setCapabilityValue('measure_battery', bat * 20).catch(this.error);
+                    this.setCapabilityValue('alarm_power', true).catch(this.homey.app.logError);
+                    this.setCapabilityValue('measure_battery', bat * 20).catch(this.homey.app.logError);
                 }
             }
         }
