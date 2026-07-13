@@ -259,5 +259,8 @@
 	},
 	"0.2.31": {
 		"en": "Fix for WFC02 battery reporting."
+	},
+	"0.2.32": {
+		"en": "Updated soil moisture sensor to support WH52."
 	}
 }
