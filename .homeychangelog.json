@@ -262,5 +262,8 @@
 	},
 	"0.2.32": {
 		"en": "Updated soil moisture sensor to support WH52."
+	},
+	"0.2.33": {
+		"en": "Fix water meter value reporting."
 	}
 }

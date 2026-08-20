@@ -792,7 +792,7 @@ class MyApp extends Homey.App
 						data.sourceIP = remoteIP;
 
 						// Save the IP address in the gateway list if it's not already in there
-						if (!this.gateways.find(g => (g.id === data.PASSKEY) && (g.ipAddress === remoteIP)))
+						if (remoteIP !== this.homeyIP && !this.gateways.find(g => (g.id === data.PASSKEY) && (g.ipAddress === remoteIP)))
 						{
 							this.gateways.push({
 								id: data.PASSKEY,
@@ -1245,6 +1245,12 @@ class MyApp extends Homey.App
 
 				client.on('error', (err) =>
 				{
+					if (err.code === 'ECONNRESET')
+					{
+						this.updateLog(`Gateway ${ipAddress} closed the TCP connection`);
+						return;
+					}
+
 					this.updateLog(`Client error: ${err.message}`, 0);
 				});
 
@@ -1514,7 +1520,22 @@ class MyApp extends Homey.App
 				{
 					try
 					{
+						if (res.statusCode < 200 || res.statusCode >= 300)
+						{
+							throw new Error(`HTTP ${res.statusCode}: ${data.trim() || 'empty response'}`);
+						}
+
+						if (data.trimStart().startsWith('<'))
+						{
+							throw new Error(`HTTP response was not JSON from gateway ${gatewayIP}`);
+						}
+
 						const deviceList = JSON.parse(data);
+						if (!deviceList || !Array.isArray(deviceList.command))
+						{
+							throw new Error('IOT Device List response is missing the command array');
+						}
+
 						// Add the gatewayIP to each device
 						deviceList.command.forEach(device =>
 						{
@@ -1605,6 +1626,16 @@ class MyApp extends Homey.App
 				{
 					try
 					{
+						if (res.statusCode < 200 || res.statusCode >= 300)
+						{
+							throw new Error(`HTTP ${res.statusCode}: ${data.trim() || 'empty response'}`);
+						}
+
+						if (data.trimStart().startsWith('<'))
+						{
+							throw new Error(`HTTP response was not JSON from device ${address}`);
+						}
+
 						const status = JSON.parse(data);
 						this.updateLog(`IOT Device Status: ${JSON.stringify(status)}`);
 						resolve(status);

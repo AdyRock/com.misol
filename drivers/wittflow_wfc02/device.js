@@ -4,9 +4,11 @@ const Homey = require('homey');
 
 const NORMAL_POLL_MS = 5000;
 const BACKOFF_POLL_MS = 120000;
-const TRANSIENT_NETWORK_ERRORS = ['EHOSTUNREACH', 'ENETUNREACH', 'ECONNREFUSED', 'ETIMEDOUT'];
+const TRANSIENT_NETWORK_ERRORS = ['EHOSTUNREACH', 'ENETUNREACH', 'ECONNREFUSED', 'ETIMEDOUT', 'ECONNRESET'];
 const FLOW_RATE_CAPABILITY = 'measure_water';
 const FLOW_TOTAL_CAPABILITY = 'meter_water';
+// The gateway reports the total as a raw pulse-derived count, not m3; the flow meter's pulse factor must be divided out
+const WATER_METER_PULSES_PER_LITRE = 250;
 
 function isFiniteNumber(value)
 {
@@ -255,7 +257,8 @@ module.exports = class WFC02Device extends Homey.Device
 		}
 
 		const flowVelocity = firstNumber(status, ['wfc02_flow_velocity', 'flow_velocity']);
-		const meterWater = firstNumber(status, ['velocity_total', 'happen_water']);
+		const meterWaterRaw = firstNumber(status, ['velocity_total', 'happen_water']);
+		const meterWater = meterWaterRaw !== null ? meterWaterRaw / WATER_METER_PULSES_PER_LITRE : null;
 
 		await this.ensureFlowCapabilities(flowVelocity, meterWater);
 
