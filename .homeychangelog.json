@@ -265,5 +265,8 @@
 	},
 	"0.2.33": {
 		"en": "Fix water meter value reporting."
+	},
+	"0.2.34": {
+		"en": "Updated handling for optional chaining and nullish coalescing in WFC01 device discovery."
 	}
 }
