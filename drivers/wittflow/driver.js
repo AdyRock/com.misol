@@ -29,8 +29,8 @@ module.exports = class MyDriver extends Homey.Driver
 		const devices = await this.homey.app.getIOTDeviceList();
 
 		// WFC01-only pairing.
-		const filteredDevices = devices
-			.flatMap(deviceGroup => deviceGroup.command || [])
+		const filteredDevices = (devices || [])
+			.flatMap(deviceGroup => deviceGroup?.command || [])
 			.filter(device => this.isWFC01Device(device));
 
 		return filteredDevices.map(device => ({
@@ -55,9 +55,9 @@ module.exports = class MyDriver extends Homey.Driver
 				const deviceID = device.getData().id;
 
 				// Find the device in the list of devices
-				const foundDevice = devices
-					.flatMap(deviceGroup => deviceGroup.command || [])
-					.find(device => device.id === deviceID);
+				const foundDevice = (devices || [])
+					.flatMap(deviceGroup => deviceGroup?.command || [])
+					.find(device => device && device.id === deviceID);
 
 				if (foundDevice)
 				{

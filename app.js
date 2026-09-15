@@ -1388,11 +1388,11 @@ class MyApp extends Homey.App
 						);
 
 						// Save the IP address in the gateway list if it's not already in there
-						if (!this.gateways.find(g => (g.id === gatewayID) && (g.ipAddress === serverAddress)))
+						if (ipAddress && (ipAddress !== this.homeyIP) && !this.gateways.find(g => (g.id === gatewayID) && (g.ipAddress === ipAddress)))
 						{
 							this.gateways.push({
 								id: gatewayID,
-								ipAddress: serverAddress,
+								ipAddress: ipAddress,
 							});
 						}
 
@@ -1561,7 +1561,8 @@ class MyApp extends Homey.App
 
 	async getIOTDeviceList()
 	{
-		const devicePromises = this.gateways.map(async gateway =>
+		const validGateways = this.gateways.filter(gateway => gateway && gateway.ipAddress);
+		const devicePromises = validGateways.map(async gateway =>
 		{
 			try
 			{
@@ -1576,7 +1577,7 @@ class MyApp extends Homey.App
 
 		const results = await Promise.allSettled(devicePromises);
 		const deviceList = results
-			.filter(result => result.status === 'fulfilled' && result.value !== null)
+			.filter(result => result.status === 'fulfilled' && Array.isArray(result.value?.command))
 			.map(result => result.value);
 
 		return deviceList;

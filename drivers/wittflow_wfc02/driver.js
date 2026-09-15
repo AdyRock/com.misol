@@ -20,8 +20,8 @@ module.exports = class WFC02Driver extends Homey.Driver
 	{
 		const devices = await this.homey.app.getIOTDeviceList();
 
-		const filteredDevices = devices
-			.flatMap(deviceGroup => deviceGroup.command || [])
+		const filteredDevices = (devices || [])
+			.flatMap(deviceGroup => deviceGroup?.command || [])
 			.filter(device => this.isWFC02Device(device));
 
 		return filteredDevices.map(device => ({
@@ -43,9 +43,9 @@ module.exports = class WFC02Driver extends Homey.Driver
 			{
 				const devices = await this.homey.app.getIOTDeviceList();
 				const currentData = device.getData();
-				const foundDevice = devices
-					.flatMap(deviceGroup => deviceGroup.command || [])
-					.find(candidate => candidate.id === currentData.id || (currentData.nickname && candidate.nickname === currentData.nickname));
+				const foundDevice = (devices || [])
+					.flatMap(deviceGroup => deviceGroup?.command || [])
+					.find(candidate => candidate && (candidate.id === currentData.id || (currentData.nickname && candidate.nickname === currentData.nickname)));
 
 				if (!foundDevice)
 				{

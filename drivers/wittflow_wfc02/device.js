@@ -189,9 +189,9 @@ module.exports = class WFC02Device extends Homey.Device
 	{
 		const devices = await this.homey.app.getIOTDeviceList();
 		const currentData = this.getData();
-		const foundDevice = devices
-			.flatMap(deviceGroup => deviceGroup.command || [])
-			.find(candidate => candidate.id === currentData.id || (currentData.nickname && candidate.nickname === currentData.nickname));
+		const foundDevice = (devices || [])
+			.flatMap(deviceGroup => deviceGroup?.command || [])
+			.find(candidate => candidate && (candidate.id === currentData.id || (currentData.nickname && candidate.nickname === currentData.nickname)));
 
 		if (!foundDevice || !foundDevice.gatewayIP)
 		{

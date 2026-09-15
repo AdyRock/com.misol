@@ -198,9 +198,9 @@ module.exports = class MyDevice extends Homey.Device
 	{
 		const devices = await this.homey.app.getIOTDeviceList();
 		const deviceID = this.getData().id;
-		const foundDevice = devices
-			.flatMap(deviceGroup => deviceGroup.command || [])
-			.find(device => device.id === deviceID);
+		const foundDevice = (devices || [])
+			.flatMap(deviceGroup => deviceGroup?.command || [])
+			.find(device => device && device.id === deviceID);
 
 		if (!foundDevice || !foundDevice.gatewayIP)
 		{
