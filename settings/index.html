@@ -53,6 +53,15 @@
             </div>
         </fieldset>
         <fieldset class="homey-form-fieldset">
+            <h2 data-i18n="settings.manualConfig"></h2>
+            <p data-i18n="settings.manualConfigInfo"></p>
+            <div class="field row">
+                <label class="homey-form-label" for="gatewayIP"><span data-i18n="settings.gatewayIP"></span></label>
+                <input class="homey-form-input" id="gatewayIP" type="text" placeholder="192.168.1.100" />
+            </div>
+            <p><button class="homey-button-secondary-shadow" id="configureGateway"><span data-i18n="settings.configureGateway"></span></button></p>
+        </fieldset>
+        <fieldset class="homey-form-fieldset">
             <p><button class="homey-button-primary-full" id="save" class="right"><span data-i18n="settings.saveChanges"></span></button></p>
         </fieldset>
     </div>
@@ -110,6 +119,9 @@
         var detectedDevicesElement = document.getElementById('detectedDevices');
         var diagLogElement = document.getElementById('diagLog');
         var logEnabledElement = document.getElementById('logEnabled');
+
+        var gatewayIPElement = document.getElementById('gatewayIP');
+        var configureGatewayElement = document.getElementById('configureGateway');
 
         var saveElement = document.getElementById('save');
         var clearLogElement = document.getElementById('clearDiagLog');
@@ -236,6 +248,25 @@
                 Homey.set('autoConfigEnabled', autoConfigEnabledElement.checked, function(err)
                 {
                     if (err) return Homey.alert(err);
+                });
+            });
+
+            configureGatewayElement.addEventListener('click', function(e)
+            {
+                var ipAddress = gatewayIPElement.value.trim();
+                Homey.api('POST', '/configureGateway/',
+                {
+                    ipAddress: ipAddress
+                }, function(err, result)
+                {
+                    if (err)
+                    {
+                        return Homey.alert(Homey.__('settings.configureGatewayFailed') + ': ' + err.message);
+                    }
+                    else
+                    {
+                        return Homey.alert(Homey.__('settings.configureGatewaySuccess'));
+                    }
                 });
             });
 

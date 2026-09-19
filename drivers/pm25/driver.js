@@ -44,6 +44,11 @@ class PM25Driver extends Driver
 
         return devices;
     }
+
+    async onPair(session)
+    {
+        this.homey.app.registerGatewayPairHandlers(session);
+    }
 }
 
 module.exports = PM25Driver;

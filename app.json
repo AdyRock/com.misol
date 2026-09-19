@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.misol",
-  "version": "0.2.34",
+  "version": "0.2.35",
   "compatibility": ">=12.2.0",
   "sdk": 3,
   "platforms": [
@@ -62,6 +62,10 @@
     "sendLog": {
       "method": "post",
       "path": "/sendLog/"
+    },
+    "configureGateway": {
+      "method": "post",
+      "path": "/configureGateway/"
     }
   },
   "flow": {
@@ -3430,6 +3434,12 @@
       },
       "pair": [
         {
+          "id": "connect",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
+        {
           "id": "list_my_devices",
           "template": "list_devices",
           "navigation": {
@@ -3533,6 +3543,12 @@
       },
       "pair": [
         {
+          "id": "connect",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
+        {
           "id": "list_my_devices",
           "template": "list_devices",
           "navigation": {
@@ -3634,6 +3650,12 @@
         ]
       },
       "pair": [
+        {
+          "id": "connect",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
         {
           "id": "list_my_devices",
           "template": "list_devices",
@@ -3804,6 +3826,12 @@
       ],
       "pair": [
         {
+          "id": "connect",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
+        {
           "id": "list_my_devices",
           "template": "list_devices",
           "navigation": {
@@ -3866,6 +3894,12 @@
       ],
       "pair": [
         {
+          "id": "connect",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
+        {
           "id": "list_my_devices",
           "template": "list_devices",
           "navigation": {
@@ -3923,6 +3957,12 @@
         ]
       },
       "pair": [
+        {
+          "id": "connect",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
         {
           "id": "list_my_devices",
           "template": "list_devices",
@@ -4039,6 +4079,12 @@
       },
       "pair": [
         {
+          "id": "connect",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
+        {
           "id": "list_my_devices",
           "template": "list_devices",
           "navigation": {
@@ -4140,6 +4186,12 @@
         ]
       },
       "pair": [
+        {
+          "id": "connect",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
         {
           "id": "list_my_devices",
           "template": "list_devices",
@@ -4244,6 +4296,12 @@
         ]
       },
       "pair": [
+        {
+          "id": "connect",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
         {
           "id": "list_my_devices",
           "template": "list_devices",
@@ -4530,6 +4588,12 @@
       ],
       "pair": [
         {
+          "id": "connect",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
+        {
           "id": "list_my_devices",
           "template": "list_devices",
           "navigation": {
@@ -4625,6 +4689,12 @@
         }
       ],
       "pair": [
+        {
+          "id": "connect",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
         {
           "id": "list_my_devices",
           "template": "list_devices",
@@ -4738,6 +4808,12 @@
       },
       "pair": [
         {
+          "id": "connect",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
+        {
           "id": "list_my_devices",
           "template": "list_devices",
           "navigation": {
@@ -4818,6 +4894,12 @@
         ]
       },
       "pair": [
+        {
+          "id": "connect",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
         {
           "id": "list_my_devices",
           "template": "list_devices",
@@ -5100,6 +5182,12 @@
       },
       "pair": [
         {
+          "id": "connect",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
+        {
           "id": "list_my_devices",
           "template": "list_devices",
           "navigation": {
@@ -5293,6 +5381,12 @@
         }
       ],
       "pair": [
+        {
+          "id": "connect",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
         {
           "id": "list_my_devices",
           "template": "list_devices",

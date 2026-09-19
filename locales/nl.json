@@ -18,7 +18,13 @@
         "Units": "Eenheden",
         "SpeedUnits": "Windsnelheid",
 		"RainfallUnits": "Regenval Eenheden",
-		"instructions": "Zorg ervoor dat je de gateway eerst instelt in de WS View-app op je telefoon, zodat de gegevens naar Homey worden verzonden.<br>Instructies zijn hier te vinden:"
+		"instructions": "Zorg ervoor dat je de gateway eerst instelt in de WS View-app op je telefoon, zodat de gegevens naar Homey worden verzonden.<br>Instructies zijn hier te vinden:",
+		"manualConfig": "Gateway configureren via IP",
+		"manualConfigInfo": "Als automatische detectie je gateway niet vindt (bijv. omdat broadcast door je netwerk wordt geblokkeerd), voer hier het IP-adres in om deze direct te configureren.",
+		"gatewayIP": "IP-adres van de gateway",
+		"configureGateway": "Gateway configureren",
+		"configureGatewaySuccess": "Gateway succesvol geconfigureerd",
+		"configureGatewayFailed": "Configureren van gateway mislukt"
     },
     "good": "Goed",
     "Moderate": "Gemiddeld",
@@ -36,5 +42,17 @@
         "mm": "mm",
         "in": "inch"
     },
-	"hourAbbr": "u"
+	"hourAbbr": "u",
+	"gatewayPair": {
+		"title": "Gateway verbinden",
+		"subtitle": "Er is nog geen gateway gedetecteerd, dus je kunt deze direct configureren via het IP-adres.",
+		"intro": "Voer het IP-adres van de gateway in",
+		"ipAddress": "IP-adres van de gateway",
+		"configure": "Configureren & wachten op gegevens",
+		"skip": "Overslaan, ik heb hem al handmatig geconfigureerd",
+		"enterIP": "Voer het IP-adres van de gateway in",
+		"invalidIP": "Voer een geldig IP-adres in",
+		"waitingForData": "Gateway wordt geconfigureerd, wachten op gegevens\u2026",
+		"noDataReceived": "De gateway is geconfigureerd, maar er zijn nog geen gegevens ontvangen. Controleer of hij zich in hetzelfde netwerk bevindt en probeer het opnieuw."
+	}
 }

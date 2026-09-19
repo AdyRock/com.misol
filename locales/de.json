@@ -20,7 +20,13 @@
 		"RainfallUnits": "Regenhöhe",
 		"instructions": "Stellen Sie sicher, dass Sie das Gateway zuerst in der WS View-App auf Ihrem Telefon einrichten, damit die Daten an Homey gesendet werden.<br>Anweisungen finden Sie hier:",
 		"autoConfigEnabled": "Gateways automatisch konfigurieren",
-		"autoConfigInfo": "Wenn aktiviert, werden die Gateways im selben Netzwerk automatisch so konfiguriert, dass sie Daten an Homey senden."
+		"autoConfigInfo": "Wenn aktiviert, werden die Gateways im selben Netzwerk automatisch so konfiguriert, dass sie Daten an Homey senden.",
+		"manualConfig": "Gateway per IP konfigurieren",
+		"manualConfigInfo": "Wenn die automatische Erkennung Ihr Gateway nicht findet (z. B. weil Broadcasts von Ihrem Netzwerk blockiert werden), geben Sie hier seine IP-Adresse ein, um es direkt zu konfigurieren.",
+		"gatewayIP": "Gateway IP-Adresse",
+		"configureGateway": "Gateway konfigurieren",
+		"configureGatewaySuccess": "Gateway erfolgreich konfiguriert",
+		"configureGatewayFailed": "Gateway konnte nicht konfiguriert werden"
     },
     "good": "Gut",
     "Moderate": "Mäßig",
@@ -48,5 +54,17 @@
         "try_again": "Erneut versuchen",
         "correct": "Erfolgreich",
         "adding": "Füge Gerät hinzu"
+    },
+    "gatewayPair": {
+        "title": "Gateway verbinden",
+        "subtitle": "Es wurde noch kein Gateway erkannt, daher kannst du es direkt über die IP-Adresse konfigurieren.",
+        "intro": "IP-Adresse des Gateways eingeben",
+        "ipAddress": "IP-Adresse des Gateways",
+        "configure": "Konfigurieren & auf Daten warten",
+        "skip": "Überspringen, ich habe es bereits manuell konfiguriert",
+        "enterIP": "Bitte die IP-Adresse des Gateways eingeben",
+        "invalidIP": "Bitte eine gültige IP-Adresse eingeben",
+        "waitingForData": "Gateway wird konfiguriert, warte auf Daten…",
+        "noDataReceived": "Das Gateway wurde konfiguriert, es wurden aber noch keine Daten empfangen. Prüfe, ob es sich im selben Netzwerk befindet, und versuche es erneut."
     }
 }

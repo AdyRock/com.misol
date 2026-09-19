@@ -1,6 +1,6 @@
 {
     "id": "com.misol",
-    "version": "0.2.34",
+    "version": "0.2.35",
     "compatibility": ">=12.2.0",
     "sdk": 3,
     "platforms": [
@@ -61,6 +61,10 @@
         "sendLog": {
             "method": "post",
             "path": "/sendLog/"
+        },
+        "configureGateway": {
+            "method": "post",
+            "path": "/configureGateway/"
         }
     }
 }

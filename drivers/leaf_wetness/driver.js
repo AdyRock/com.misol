@@ -34,6 +34,11 @@ class LeafWetnessDriver extends Driver
 
         return devices;
     }
+
+    async onPair(session)
+    {
+        this.homey.app.registerGatewayPairHandlers(session);
+    }
 }
 
 module.exports = LeafWetnessDriver;

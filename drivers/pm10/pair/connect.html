@@ -1,0 +1,75 @@
+<header class="homey-header">
+    <h1 class="homey-title" data-i18n="gatewayPair.title">
+        <!-- This will be filled with the translated string with key 'gatewayPair.title'. -->
+    </h1>
+    <p class="homey-subtitle" data-i18n="gatewayPair.subtitle"></p>
+</header>
+
+<fieldset class="homey-form-fieldset">
+    <legend class="homey-form-legend"><span data-i18n="gatewayPair.intro"></span></legend>
+
+    <div class="homey-form-group">
+        <label class="homey-form-label" for="ip_address"><span data-i18n="gatewayPair.ipAddress"></span></label>
+        <input class="homey-form-input" id="ip_address" type="text" placeholder="192.168.1.100" />
+    </div>
+
+    <p><button class="homey-button-primary-full" id="configure"><span data-i18n="gatewayPair.configure"></span></button></p>
+    <p><button class="homey-button-secondary-shadow" id="skip"><span data-i18n="gatewayPair.skip"></span></button></p>
+    <p id="status"></p>
+</fieldset>
+
+<script type="text/javascript">
+    var configureButton = document.getElementById('configure');
+    var skipButton = document.getElementById('skip');
+    var ipInput = document.getElementById('ip_address');
+    var statusElement = document.getElementById('status');
+
+    function goToList()
+    {
+        Homey.showView('list_my_devices');
+    }
+
+    // Skip this page automatically if a gateway is already pushing data
+    Homey.emit('check_detected', {}, function(err, hasDevices)
+    {
+        if (!err && hasDevices)
+        {
+            goToList();
+        }
+    });
+
+    configureButton.addEventListener('click', function(e)
+    {
+        var ipAddress = ipInput.value.trim();
+        if (!ipAddress)
+        {
+            Homey.alert(Homey.__('gatewayPair.enterIP'));
+            return;
+        }
+
+        configureButton.classList.add('is-loading');
+        configureButton.disabled = true;
+        statusElement.textContent = Homey.__('gatewayPair.waitingForData');
+
+        Homey.emit('configure_gateway', { ipAddress: ipAddress }, function(err, result)
+        {
+            configureButton.classList.remove('is-loading');
+            configureButton.disabled = false;
+
+            if (err)
+            {
+                statusElement.textContent = '';
+                Homey.alert((err && err.message) ? err.message : err, 'error');
+            }
+            else
+            {
+                goToList();
+            }
+        });
+    });
+
+    skipButton.addEventListener('click', function(e)
+    {
+        goToList();
+    });
+</script>

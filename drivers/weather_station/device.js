@@ -417,6 +417,10 @@ class WeatherStationDevice extends Device
 				{
 					yearlyrainin = gateway.yearlyrainin;
 				}
+				if (gateway.last24hrainin !== undefined)
+				{
+					last24hrainin = gateway.last24hrainin;
+				}
 			}
 
 			if (gateway.totalrainin !== undefined)

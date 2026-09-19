@@ -43,6 +43,11 @@ class MyDriver extends Driver
 
         return devices;
     }
+
+    async onPair(session)
+    {
+        this.homey.app.registerGatewayPairHandlers(session);
+    }
 }
 
 module.exports = MyDriver;

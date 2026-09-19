@@ -20,7 +20,13 @@
 		"RainfallUnits": "Rainfall Units",
 		"instructions": "Make sure you setup the gateway in WS View app on your phone first so that data is pushed to Homey.<br>Instructions can be found here:",
 		"autoConfigEnabled": "Auto Configure Gateways",
-		"autoConfigInfo": "Auto Configure Gateways will automatically detect and configure gateways, on the same network segment, to push data to Homey."
+		"autoConfigInfo": "Auto Configure Gateways will automatically detect and configure gateways, on the same network segment, to push data to Homey.",
+		"manualConfig": "Configure Gateway by IP",
+		"manualConfigInfo": "If auto discovery does not find your gateway (e.g. broadcast is blocked by your network), enter its IP address here to configure it directly.",
+		"gatewayIP": "Gateway IP address",
+		"configureGateway": "Configure Gateway",
+		"configureGatewaySuccess": "Gateway configured successfully",
+		"configureGatewayFailed": "Failed to configure gateway"
     },
     "good": "Good",
     "Moderate": "Moderate",
@@ -48,5 +54,17 @@
         "try_again": "Try again",
         "correct": "Successful",
         "adding": "Adding device"
+    },
+    "gatewayPair": {
+        "title": "Connect Gateway",
+        "subtitle": "No gateway has been detected yet so you can configure it directly by IP address.",
+        "intro": "Enter the gateway's IP address",
+        "ipAddress": "Gateway IP address",
+        "configure": "Configure & Wait for Data",
+        "skip": "Skip, I already configured it manually",
+        "enterIP": "Please enter the gateway's IP address",
+        "invalidIP": "Please enter a valid IP address",
+        "waitingForData": "Configuring gateway and waiting for data to arrive…",
+        "noDataReceived": "The gateway was configured but no data has been received yet. Check the gateway is on the same network and try again."
     }
 }

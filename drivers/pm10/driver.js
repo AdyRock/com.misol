@@ -118,6 +118,11 @@ class PM10Driver extends Driver
 
         return devices;
     }
+
+    async onPair(session)
+    {
+        this.homey.app.registerGatewayPairHandlers(session);
+    }
 }
 
 module.exports = PM10Driver;

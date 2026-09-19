@@ -15,5 +15,14 @@ module.exports = {
     async sendLog({ homey, body })
     {
         return await homey.app.sendLog(body);
+    },
+    async configureGateway({ homey, body })
+    {
+        if (!body || !body.ipAddress || !/^\d+\.\d+\.\d+\.\d+$/.test(body.ipAddress))
+        {
+            throw new Error('A valid IP address is required');
+        }
+
+        return await homey.app.configureGateway(body.ipAddress);
     }
 };

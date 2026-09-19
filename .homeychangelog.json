@@ -1,4 +1,10 @@
 {
+	"0.2.37": {
+		"en": "All device pairing flows now offer manual gateway configuration by IP if no gateway has been detected yet, not just the Gateway driver."
+	},
+	"0.2.36": {
+		"en": "Added a manual gateway configuration option, both in app settings and as a new pairing step, for installations where broadcast discovery does not reach the gateway."
+	},
 	"0.1.0": {
 		"en": "First version"
 	},
@@ -268,5 +274,8 @@
 	},
 	"0.2.34": {
 		"en": "Updated handling for optional chaining and nullish coalescing in WFC01 device discovery."
+	},
+	"0.2.35": {
+		"en": "Added logging of each push event to verify correct handling. Added an option to configure a gateway during pairing if no data has been received."
 	}
 }
