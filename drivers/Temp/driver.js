@@ -39,6 +39,8 @@ class TempDriver extends Driver
 
     async onPair(session)
     {
+        session.setHandler('list_devices', this.onPairListDevices.bind(this));
+        session.setHandler('list_my_devices', this.onPairListDevices.bind(this));
         this.homey.app.registerGatewayPairHandlers(session);
     }
 }

@@ -18,20 +18,33 @@ class MyDriver extends Driver
      */
     async onPairListDevices()
     {
-        const devices = this.homey.app.detectedGateways.map(device => (
-        {
-            name: device.model,
-            data:
+        // Filter out entries missing a usable id/name so the pairing template never
+        // receives a null/empty value it can't render.
+        const devices = this.homey.app.detectedGateways
+            .filter(device => !!device && !!device.PASSKEY)
+            .map(device => (
             {
-                id: device.PASSKEY
-            }
-        }));
+                name: this.homey.app.getGatewayDisplayName(device),
+                data:
+                {
+                    id: device.PASSKEY
+                }
+            }));
+
+        // TEMP diagnostics: dump exactly what is sent to the pairing list template,
+        // and the raw detectedGateways, to track down the "reading length" crash.
+        this.homey.app.updateLog(`onPairListDevices devices: ${this.homey.app.varToString(devices)}`, 0);
+        this.homey.app.updateLog(`onPairListDevices raw detectedGateways: ${this.homey.app.varToString(this.homey.app.detectedGateways)}`, 0);
 
         return devices;
     }
 
     async onPair(session)
     {
+        // TEMP diagnostics: confirm onPair is actually invoked for this pairing session.
+        this.homey.app.updateLog('Gateway driver onPair() called', 0);
+        session.setHandler('list_devices', this.onPairListDevices.bind(this));
+        session.setHandler('list_my_devices', this.onPairListDevices.bind(this));
         this.homey.app.registerGatewayPairHandlers(session);
     }
 }

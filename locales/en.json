@@ -57,14 +57,13 @@
     },
     "gatewayPair": {
         "title": "Connect Gateway",
-        "subtitle": "No gateway has been detected yet so you can configure it directly by IP address.",
         "intro": "Enter the gateway's IP address",
         "ipAddress": "Gateway IP address",
         "configure": "Configure & Wait for Data",
-        "skip": "Skip, I already configured it manually",
+        "configureHint": "This can take up to a couple of minutes while the gateway starts sending data - please be patient.",
         "enterIP": "Please enter the gateway's IP address",
         "invalidIP": "Please enter a valid IP address",
-        "waitingForData": "Configuring gateway and waiting for data to arrive…",
+        "waitingForData": "Configuring gateway and waiting for data to arrive, this can take a couple of minutes…",
         "noDataReceived": "The gateway was configured but no data has been received yet. Check the gateway is on the same network and try again."
     }
 }

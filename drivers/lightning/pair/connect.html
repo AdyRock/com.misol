@@ -2,7 +2,10 @@
     <h1 class="homey-title" data-i18n="gatewayPair.title">
         <!-- This will be filled with the translated string with key 'gatewayPair.title'. -->
     </h1>
-    <p class="homey-subtitle" data-i18n="gatewayPair.subtitle"></p>
+    <p><strong>Detected gateways</strong></p>
+    <p class="homey-text-small">If your gateway is listed below, you can usually press Continue.</p>
+    <ul id="detected_gateways"></ul>
+    <p><button class="homey-button-secondary-shadow" id="refresh_detected">Refresh detected gateways</button></p>
 </header>
 
 <fieldset class="homey-form-fieldset">
@@ -13,30 +16,71 @@
         <input class="homey-form-input" id="ip_address" type="text" placeholder="192.168.1.100" />
     </div>
 
-    <p><button class="homey-button-primary-full" id="configure"><span data-i18n="gatewayPair.configure"></span></button></p>
-    <p><button class="homey-button-secondary-shadow" id="skip"><span data-i18n="gatewayPair.skip"></span></button></p>
+    <p><button class="homey-button-secondary-shadow" id="configure"><span data-i18n="gatewayPair.configure"></span></button></p>
+    <p class="homey-text-small" data-i18n="gatewayPair.configureHint"></p>
     <p id="status"></p>
+
 </fieldset>
 
 <script type="text/javascript">
     var configureButton = document.getElementById('configure');
-    var skipButton = document.getElementById('skip');
+    var refreshButton = document.getElementById('refresh_detected');
     var ipInput = document.getElementById('ip_address');
     var statusElement = document.getElementById('status');
+    var detectedGatewaysList = document.getElementById('detected_gateways');
 
-    function goToList()
+    function escapeHtml(value)
     {
-        Homey.showView('list_my_devices');
+        return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
     }
 
-    // Skip this page automatically if a gateway is already pushing data
-    Homey.emit('check_detected', {}, function(err, hasDevices)
+    function renderDetectedGateways(gateways)
     {
-        if (!err && hasDevices)
+        if (!Array.isArray(gateways) || gateways.length === 0)
         {
-            goToList();
+            detectedGatewaysList.innerHTML = '<li>No gateways detected yet.</li>';
+            return;
         }
-    });
+
+        detectedGatewaysList.innerHTML = gateways.map(function(gateway)
+        {
+            var stationType = gateway.stationType ? String(gateway.stationType) : 'Unknown station type';
+            var id = gateway.id ? String(gateway.id) : '-';
+            var ip = gateway.sourceIP ? String(gateway.sourceIP) : '';
+            var text = stationType + ' (' + id + ')';
+            if (ip)
+            {
+                text += ' - ' + ip;
+            }
+
+            return '<li>' + escapeHtml(text) + '</li>';
+        }).join('');
+    }
+
+    function refreshDetectedGateways()
+    {
+        refreshButton.classList.add('is-loading');
+        refreshButton.disabled = true;
+
+        Homey.emit('get_detected_gateways', {}, function(err, gateways)
+        {
+            refreshButton.classList.remove('is-loading');
+            refreshButton.disabled = false;
+
+            if (err)
+            {
+                detectedGatewaysList.innerHTML = '<li>Could not load detected gateways.</li>';
+                return;
+            }
+
+            renderDetectedGateways(gateways);
+        });
+    }
 
     configureButton.addEventListener('click', function(e)
     {
@@ -61,15 +105,14 @@
                 statusElement.textContent = '';
                 Homey.alert((err && err.message) ? err.message : err, 'error');
             }
-            else
-            {
-                goToList();
-            }
+            // On success the driver moves on to the next view itself via session.nextView()
         });
     });
 
-    skipButton.addEventListener('click', function(e)
+    refreshButton.addEventListener('click', function(e)
     {
-        goToList();
+        refreshDetectedGateways();
     });
+
+    refreshDetectedGateways();
 </script>

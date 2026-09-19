@@ -45,14 +45,13 @@
 	"hourAbbr": "u",
 	"gatewayPair": {
 		"title": "Gateway verbinden",
-		"subtitle": "Er is nog geen gateway gedetecteerd, dus je kunt deze direct configureren via het IP-adres.",
 		"intro": "Voer het IP-adres van de gateway in",
 		"ipAddress": "IP-adres van de gateway",
 		"configure": "Configureren & wachten op gegevens",
-		"skip": "Overslaan, ik heb hem al handmatig geconfigureerd",
+		"configureHint": "Dit kan tot een paar minuten duren voordat de gateway gegevens begint te sturen - even geduld a.u.b.",
 		"enterIP": "Voer het IP-adres van de gateway in",
 		"invalidIP": "Voer een geldig IP-adres in",
-		"waitingForData": "Gateway wordt geconfigureerd, wachten op gegevens\u2026",
+		"waitingForData": "Gateway wordt geconfigureerd, wachten op gegevens - dit kan een paar minuten duren…",
 		"noDataReceived": "De gateway is geconfigureerd, maar er zijn nog geen gegevens ontvangen. Controleer of hij zich in hetzelfde netwerk bevindt en probeer het opnieuw."
 	}
 }

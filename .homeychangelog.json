@@ -1,10 +1,4 @@
 {
-	"0.2.37": {
-		"en": "All device pairing flows now offer manual gateway configuration by IP if no gateway has been detected yet, not just the Gateway driver."
-	},
-	"0.2.36": {
-		"en": "Added a manual gateway configuration option, both in app settings and as a new pairing step, for installations where broadcast discovery does not reach the gateway."
-	},
 	"0.1.0": {
 		"en": "First version"
 	},

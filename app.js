@@ -946,6 +946,51 @@ class MyApp extends Homey.App
 		return source.toString();
 	}
 
+	getGatewayStationType(gateway)
+	{
+		if (!gateway || typeof gateway !== 'object')
+		{
+			return '';
+		}
+
+		const stationType = gateway.stationType || gateway.stationtype || gateway.model || gateway.type;
+		if (stationType === null || stationType === undefined)
+		{
+			return '';
+		}
+
+		return String(stationType).trim();
+	}
+
+	getGatewayDisplayName(gateway)
+	{
+		if (!gateway || typeof gateway !== 'object')
+		{
+			return 'Gateway';
+		}
+
+		const passkey = gateway.PASSKEY ? String(gateway.PASSKEY).trim() : '';
+		const stationType = this.getGatewayStationType(gateway);
+		const sourceIP = gateway.sourceIP ? String(gateway.sourceIP).trim() : '';
+
+		if (stationType && passkey && sourceIP)
+		{
+			return `${stationType} (${passkey}) - ${sourceIP}`;
+		}
+
+		if (stationType && passkey)
+		{
+			return `${stationType} (${passkey})`;
+		}
+
+		if (passkey && sourceIP)
+		{
+			return `${passkey} - ${sourceIP}`;
+		}
+
+		return stationType || passkey || 'Gateway';
+	}
+
 	updateLog(newMessage, errorLevel = 1)
 	{
 		if ((errorLevel == 0) || this.homey.settings.get('logEnabled'))
@@ -1066,12 +1111,52 @@ class MyApp extends Homey.App
 
 	// Shared pairing handlers so any driver can offer the "connect gateway by IP" step
 	// when no gateway has been detected yet (e.g. broadcast discovery failed).
+	// Navigation is driven from here via session.nextView(), matching Homey's normal
+	// pairing procedure, rather than the client HTML calling Homey.showView()/nextView() directly.
 	registerGatewayPairHandlers(session)
 	{
-		session.setHandler('check_detected', async () => this.detectedGateways.length > 0);
+		this.updateLog('registerGatewayPairHandlers called', 0);
+
+		session.setHandler('get_detected_gateways', async () =>
+		{
+			const gateways = this.detectedGateways
+				.filter(gateway => !!gateway && !!gateway.PASSKEY)
+				.map(gateway =>
+				({
+					id: String(gateway.PASSKEY),
+					stationType: this.getGatewayStationType(gateway),
+					sourceIP: gateway.sourceIP ? String(gateway.sourceIP).trim() : '',
+					displayName: this.getGatewayDisplayName(gateway)
+				}));
+
+			this.updateLog(`get_detected_gateways returned ${gateways.length} gateways`, 0);
+			return gateways;
+		});
+
+		session.setHandler('check_detected', async () =>
+		{
+			this.updateLog('check_detected handler invoked', 0);
+			return this.detectedGateways.length > 0;
+		});
+
+		session.setHandler('skip', async () =>
+		{
+			this.updateLog('skip handler invoked', 0);
+			try
+			{
+				await session.nextView();
+				this.updateLog('skip: nextView succeeded', 0);
+			}
+			catch (err)
+			{
+				this.updateLog(`skip: nextView failed: ${err.message}`, 0);
+				throw err;
+			}
+		});
 
 		session.setHandler('configure_gateway', async (data) =>
 		{
+			this.updateLog(`configure_gateway handler invoked: ${this.varToString(data)}`, 0);
 			const ipAddress = (data && data.ipAddress) ? String(data.ipAddress).trim() : '';
 			if (!/^\d+\.\d+\.\d+\.\d+$/.test(ipAddress))
 			{
@@ -1081,14 +1166,25 @@ class MyApp extends Homey.App
 			// Push our custom server settings to the gateway directly, bypassing UDP discovery
 			await this.configureGateway(ipAddress);
 
-			// Wait for the gateway to start pushing data before letting the user continue
-			const timeoutMs = 60000;
+			// Wait for the gateway to start pushing data before letting the user continue.
+			// The gateway's upload interval is set to 16s, so allow a couple of minutes overall.
+			const timeoutMs = 120000;
 			const pollMs = 2000;
 			const start = Date.now();
 			while ((Date.now() - start) < timeoutMs)
 			{
 				if (this.detectedGateways.length > 0)
 				{
+					try
+					{
+						await session.nextView();
+						this.updateLog('configure_gateway: nextView succeeded', 0);
+					}
+					catch (err)
+					{
+						this.updateLog(`configure_gateway: nextView failed: ${err.message}`, 0);
+						throw err;
+					}
 					return true;
 				}
 

@@ -57,14 +57,13 @@
     },
     "gatewayPair": {
         "title": "Gateway verbinden",
-        "subtitle": "Es wurde noch kein Gateway erkannt, daher kannst du es direkt über die IP-Adresse konfigurieren.",
         "intro": "IP-Adresse des Gateways eingeben",
         "ipAddress": "IP-Adresse des Gateways",
         "configure": "Konfigurieren & auf Daten warten",
-        "skip": "Überspringen, ich habe es bereits manuell konfiguriert",
+        "configureHint": "Dies kann bis zu ein paar Minuten dauern, bis das Gateway mit dem Senden von Daten beginnt - bitte habe etwas Geduld.",
         "enterIP": "Bitte die IP-Adresse des Gateways eingeben",
         "invalidIP": "Bitte eine gültige IP-Adresse eingeben",
-        "waitingForData": "Gateway wird konfiguriert, warte auf Daten…",
+        "waitingForData": "Gateway wird konfiguriert, warte auf Daten - dies kann ein paar Minuten dauern…",
         "noDataReceived": "Das Gateway wurde konfiguriert, es wurden aber noch keine Daten empfangen. Prüfe, ob es sich im selben Netzwerk befindet, und versuche es erneut."
     }
 }
